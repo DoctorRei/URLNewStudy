@@ -12,25 +12,24 @@ protocol ILoginViewController: AnyObject {
     
 }
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     
     let loginLabel = UILabel()
     let passwordLabel = UILabel()
     let loginTF = UITextField()
     let passwordTF = UITextField()
     let loginButton = UIButton(configuration: .filled())
+    let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
     
     var loginPresenter: ILoginPresenter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 0.53, green: 0.81, blue: 0.92, alpha: 1)
         
         setupSubviews()
-        setupLoginLabel()
-        setupLoginTF()
-        setupPasswordLabel()
-        setupPasswordTF()
+        setupImage()
+        setupLabels()
+        setupTextFields()
         setupButton()
         setupLayout()
     }
@@ -46,12 +45,27 @@ private extension LoginViewController {
         view.addSubview(passwordLabel)
         view.addSubview(passwordTF)
         view.addSubview(loginButton)
+        view.insertSubview(backgroundImage, at: 0)
+    }
+}
+
+//MARK: - Setup Background Image
+
+private extension LoginViewController {
+    func setupImage() {
+        backgroundImage.image = UIImage(named: "AnimeGirls")
+        backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
     }
 }
 
 //MARK: - Setup Labels
 
 private extension LoginViewController {
+    func setupLabels() {
+        setupLoginLabel()
+        setupPasswordLabel()
+    }
+    
     func setupLoginLabel() {
         loginLabel.text = "Login"
         loginLabel.textColor = .black
@@ -68,14 +82,22 @@ private extension LoginViewController {
 //MARK: - Setup TextFields
 
 private extension LoginViewController {
+    func setupTextFields() {
+        setupLoginTF()
+        setupPasswordTF()
+    }
+    
     func setupLoginTF() {
         loginTF.placeholder = "Enter your login"
         loginTF.textAlignment = .center
+        loginTF.backgroundColor = .gray
+        loginTF.alpha = 0.8
     }
     
     func setupPasswordTF() {
         passwordTF.placeholder = "Enter your password"
         passwordTF.textAlignment = .center
+        
     }
 }
 
@@ -97,7 +119,7 @@ private extension LoginViewController {
         
         NSLayoutConstraint.activate([
             
-            loginLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
+            loginLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
             loginLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             loginTF.topAnchor.constraint(equalTo: loginLabel.topAnchor, constant: 45),
@@ -112,7 +134,7 @@ private extension LoginViewController {
             passwordTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
             passwordTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
             
-            loginButton.topAnchor.constraint(equalTo: passwordTF.topAnchor, constant: 100),
+            loginButton.topAnchor.constraint(equalTo: passwordTF.topAnchor, constant: 70),
             loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 130),
             loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -130),
             

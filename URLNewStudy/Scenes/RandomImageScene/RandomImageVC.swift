@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RandomImageScene: UIViewController {
+class RandomImageVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
