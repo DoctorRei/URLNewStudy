@@ -13,7 +13,15 @@
 		E9958D0D2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9958D0B2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld */; };
 		E9958D0F2B35E0A4001B4290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9958D0E2B35E0A4001B4290 /* Assets.xcassets */; };
 		E9958D122B35E0A4001B4290 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9958D102B35E0A4001B4290 /* LaunchScreen.storyboard */; };
-		E9A150462B38471600AB2799 /* LoginScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A150452B38471600AB2799 /* LoginScene.swift */; };
+		E9A150462B38471600AB2799 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A150452B38471600AB2799 /* LoginViewController.swift */; };
+		E9AB5FED2B49647E00297486 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AB5FEC2B49647E00297486 /* UserModel.swift */; };
+		E9AB5FF22B4967C400297486 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AB5FF12B4967C400297486 /* LoginPresenter.swift */; };
+		E9AB5FF42B496A6F00297486 /* LoginAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AB5FF32B496A6F00297486 /* LoginAssembly.swift */; };
+		E9AB5FF72B496AA500297486 /* MVXProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AB5FF62B496AA500297486 /* MVXProtocol.swift */; };
+		E9AB5FF92B496C2F00297486 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AB5FF82B496C2F00297486 /* LoginRouter.swift */; };
+		E9AB5FFB2B4991B700297486 /* RandomImageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AB5FFA2B4991B700297486 /* RandomImageAssembly.swift */; };
+		E9AB5FFD2B4991CA00297486 /* RandomImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AB5FFC2B4991CA00297486 /* RandomImagePresenter.swift */; };
+		E9AB5FFF2B4991D300297486 /* RandomImageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AB5FFE2B4991D300297486 /* RandomImageRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +33,15 @@
 		E9958D0E2B35E0A4001B4290 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9958D112B35E0A4001B4290 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9958D132B35E0A4001B4290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E9A150452B38471600AB2799 /* LoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScene.swift; sourceTree = "<group>"; };
+		E9A150452B38471600AB2799 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E9AB5FEC2B49647E00297486 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		E9AB5FF12B4967C400297486 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		E9AB5FF32B496A6F00297486 /* LoginAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAssembly.swift; sourceTree = "<group>"; };
+		E9AB5FF62B496AA500297486 /* MVXProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVXProtocol.swift; sourceTree = "<group>"; };
+		E9AB5FF82B496C2F00297486 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		E9AB5FFA2B4991B700297486 /* RandomImageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomImageAssembly.swift; sourceTree = "<group>"; };
+		E9AB5FFC2B4991CA00297486 /* RandomImagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomImagePresenter.swift; sourceTree = "<group>"; };
+		E9AB5FFE2B4991D300297486 /* RandomImageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomImageRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +74,11 @@
 		E9958D012B35E0A3001B4290 /* URLNewStudy */ = {
 			isa = PBXGroup;
 			children = (
+				E9AB5FF52B496A9200297486 /* Base */,
+				E9AB5FF02B49659500297486 /* BL */,
+				E9AB5FEE2B49653D00297486 /* Scenes */,
 				E9958D022B35E0A3001B4290 /* AppDelegate.swift */,
 				E9958D042B35E0A3001B4290 /* SceneDelegate.swift */,
-				E99A282F2B35E4AC00C6F151 /* RandomImageScene */,
-				E9A150472B38472300AB2799 /* LoginScene */,
 				E9958D102B35E0A4001B4290 /* LaunchScreen.storyboard */,
 				E9958D132B35E0A4001B4290 /* Info.plist */,
 				E9958D0E2B35E0A4001B4290 /* Assets.xcassets */,
@@ -73,7 +90,10 @@
 		E99A282F2B35E4AC00C6F151 /* RandomImageScene */ = {
 			isa = PBXGroup;
 			children = (
+				E9AB5FFA2B4991B700297486 /* RandomImageAssembly.swift */,
 				E9958D062B35E0A3001B4290 /* RandomImageScene.swift */,
+				E9AB5FFC2B4991CA00297486 /* RandomImagePresenter.swift */,
+				E9AB5FFE2B4991D300297486 /* RandomImageRouter.swift */,
 			);
 			path = RandomImageScene;
 			sourceTree = "<group>";
@@ -81,9 +101,45 @@
 		E9A150472B38472300AB2799 /* LoginScene */ = {
 			isa = PBXGroup;
 			children = (
-				E9A150452B38471600AB2799 /* LoginScene.swift */,
+				E9AB5FF32B496A6F00297486 /* LoginAssembly.swift */,
+				E9A150452B38471600AB2799 /* LoginViewController.swift */,
+				E9AB5FF12B4967C400297486 /* LoginPresenter.swift */,
+				E9AB5FF82B496C2F00297486 /* LoginRouter.swift */,
 			);
 			path = LoginScene;
+			sourceTree = "<group>";
+		};
+		E9AB5FEE2B49653D00297486 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				E9A150472B38472300AB2799 /* LoginScene */,
+				E99A282F2B35E4AC00C6F151 /* RandomImageScene */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		E9AB5FEF2B49656C00297486 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E9AB5FEC2B49647E00297486 /* UserModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E9AB5FF02B49659500297486 /* BL */ = {
+			isa = PBXGroup;
+			children = (
+				E9AB5FEF2B49656C00297486 /* Models */,
+			);
+			path = BL;
+			sourceTree = "<group>";
+		};
+		E9AB5FF52B496A9200297486 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E9AB5FF62B496AA500297486 /* MVXProtocol.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,9 +214,17 @@
 			files = (
 				E9958D072B35E0A3001B4290 /* RandomImageScene.swift in Sources */,
 				E9958D032B35E0A3001B4290 /* AppDelegate.swift in Sources */,
+				E9AB5FF22B4967C400297486 /* LoginPresenter.swift in Sources */,
 				E9958D0D2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld in Sources */,
+				E9AB5FF72B496AA500297486 /* MVXProtocol.swift in Sources */,
+				E9AB5FFD2B4991CA00297486 /* RandomImagePresenter.swift in Sources */,
+				E9AB5FFF2B4991D300297486 /* RandomImageRouter.swift in Sources */,
 				E9958D052B35E0A3001B4290 /* SceneDelegate.swift in Sources */,
-				E9A150462B38471600AB2799 /* LoginScene.swift in Sources */,
+				E9AB5FED2B49647E00297486 /* UserModel.swift in Sources */,
+				E9A150462B38471600AB2799 /* LoginViewController.swift in Sources */,
+				E9AB5FFB2B4991B700297486 /* RandomImageAssembly.swift in Sources */,
+				E9AB5FF92B496C2F00297486 /* LoginRouter.swift in Sources */,
+				E9AB5FF42B496A6F00297486 /* LoginAssembly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
