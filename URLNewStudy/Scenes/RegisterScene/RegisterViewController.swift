@@ -98,6 +98,6 @@ private extension RegisterViewController {
 
 extension RegisterViewController: IRegisterViewController {
     func render(viewModel: RegisterViewModel) {
-        loginLabel.text = viewModel.name
+        loginTF.text = viewModel.name
     }
 }

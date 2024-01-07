@@ -9,7 +9,7 @@ import Foundation
 
 protocol ILoginPresenter {
     func runRegisterFlow()
-    func getName(name: String)
+    func getLogin(Login: String)
 }
 
 final class LoginPresenter {
@@ -23,8 +23,8 @@ final class LoginPresenter {
 }
 
 extension LoginPresenter: ILoginPresenter {
-    func getName(name: String) {
-        self.name = name
+    func getLogin(Login: String) {
+        self.name = Login
     }
     
     func runRegisterFlow() {

@@ -15,8 +15,8 @@ protocol ILoginViewController: AnyObject {
 final class LoginViewController: UIViewController {
     
     let loginLabel = UILabel()
-    let loginTF = UITextField()
-    let passwordTF = UITextField()
+    let loginTF = CustomTextField(placeholder: "Enter you'r login")
+    let passwordTF = CustomTextField(placeholder: "Enter you'r password")
     let loginButton = UIButton(configuration: .filled())
     let registerButton = UIButton(configuration: .filled())
     let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
@@ -45,7 +45,6 @@ private extension LoginViewController {
         setupTFDelegate()
         setupImage()
         setupLabels()
-        setupTextFields()
         setupButtons()
         setupLayout()
         addActions()
@@ -95,37 +94,8 @@ private extension LoginViewController {
 //MARK: - Setup TextFields
 
 private extension LoginViewController {
-    func setupTextFields() {
-        setupLoginTF()
-        setupPasswordTF()
-    }
-    
     func setupTFDelegate() {
         loginTF.delegate = self
-    }
-    
-    func setupLoginTF() {
-        loginTF.placeholder = "Enter your login"
-        loginTF.textAlignment = .center
-        
-        loginTF.backgroundColor = .white
-        loginTF.alpha = 1
-        
-        loginTF.layer.borderColor = UIColor.systemBlue.cgColor
-        loginTF.layer.borderWidth = 2.0
-        loginTF.layer.cornerRadius = 10
-    }
-    
-    func setupPasswordTF() {
-        passwordTF.placeholder = "Enter your password"
-        passwordTF.textAlignment = .center
-        
-        passwordTF.backgroundColor = .white
-        passwordTF.alpha = 1
-        
-        passwordTF.layer.borderColor = UIColor.systemBlue.cgColor
-        passwordTF.layer.borderWidth = 2.0
-        passwordTF.layer.cornerRadius = 10
     }
 }
 
@@ -193,7 +163,7 @@ extension LoginViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else { return }
 
-        loginPresenter?.getName(name: text)
+        loginPresenter?.getLogin(Login: text)
     }
 }
 
