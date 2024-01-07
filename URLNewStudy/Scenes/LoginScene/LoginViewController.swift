@@ -15,7 +15,7 @@ protocol ILoginViewController: AnyObject {
 final class LoginViewController: UIViewController {
     
     let loginLabel = UILabel()
-    let passwordLabel = UILabel()
+//    let passwordLabel = UILabel()
     let loginTF = UITextField()
     let passwordTF = UITextField()
     let loginButton = UIButton(configuration: .filled())
@@ -42,7 +42,7 @@ private extension LoginViewController {
     func setupSubviews() {
         view.addSubview(loginLabel)
         view.addSubview(loginTF)
-        view.addSubview(passwordLabel)
+//        view.addSubview(passwordLabel)
         view.addSubview(passwordTF)
         view.addSubview(loginButton)
         view.insertSubview(backgroundImage, at: 0)
@@ -55,6 +55,7 @@ private extension LoginViewController {
     func setupImage() {
         backgroundImage.image = UIImage(named: "AnimeGirls")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
+        backgroundImage.alpha = 0.5
     }
 }
 
@@ -63,20 +64,23 @@ private extension LoginViewController {
 private extension LoginViewController {
     func setupLabels() {
         setupLoginLabel()
-        setupPasswordLabel()
+//        setupPasswordLabel()
     }
     
     func setupLoginLabel() {
         loginLabel.text = "Login"
         loginLabel.textColor = .black
         loginLabel.textAlignment = .center
+        loginLabel.textColor = .white
+        loginLabel.shadowColor = .black
+        loginLabel.font = UIFont.systemFont(ofSize: 30)
     }
     
-    func setupPasswordLabel() {
-        passwordLabel.text = "Password"
-        passwordLabel.textColor = .black
-        passwordLabel.textAlignment = .center
-    }
+//    func setupPasswordLabel() {
+//        passwordLabel.text = "Password"
+//        passwordLabel.textColor = .black
+//        passwordLabel.textAlignment = .center
+//    }
 }
 
 //MARK: - Setup TextFields
@@ -125,7 +129,7 @@ private extension LoginViewController {
     func setupLayout() {
         loginLabel.translatesAutoresizingMaskIntoConstraints = false
         loginTF.translatesAutoresizingMaskIntoConstraints = false
-        passwordLabel.translatesAutoresizingMaskIntoConstraints = false
+//        passwordLabel.translatesAutoresizingMaskIntoConstraints = false
         passwordTF.translatesAutoresizingMaskIntoConstraints = false
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -134,7 +138,7 @@ private extension LoginViewController {
             loginLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
             loginLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            loginTF.topAnchor.constraint(equalTo: loginLabel.topAnchor, constant: 25),
+            loginTF.topAnchor.constraint(equalTo: loginLabel.topAnchor, constant: 40),
             loginTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
             loginTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
             
@@ -142,11 +146,11 @@ private extension LoginViewController {
 //            passwordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
 //            passwordLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
             
-            passwordTF.topAnchor.constraint(equalTo: loginTF.topAnchor, constant: 45),
+            passwordTF.topAnchor.constraint(equalTo: loginTF.topAnchor, constant: 40),
             passwordTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
             passwordTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
             
-            loginButton.topAnchor.constraint(equalTo: passwordTF.topAnchor, constant: 70),
+            loginButton.topAnchor.constraint(equalTo: passwordTF.topAnchor, constant: 40),
             loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
             loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
             

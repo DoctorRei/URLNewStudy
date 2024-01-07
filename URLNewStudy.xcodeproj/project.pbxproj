@@ -13,6 +13,10 @@
 		E9958D0D2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9958D0B2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld */; };
 		E9958D0F2B35E0A4001B4290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9958D0E2B35E0A4001B4290 /* Assets.xcassets */; };
 		E9958D122B35E0A4001B4290 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9958D102B35E0A4001B4290 /* LaunchScreen.storyboard */; };
+		E996DD3E2B4ABE7C003700A4 /* RegisterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996DD3D2B4ABE7C003700A4 /* RegisterAssembly.swift */; };
+		E996DD402B4ABE88003700A4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996DD3F2B4ABE88003700A4 /* RegisterViewController.swift */; };
+		E996DD422B4ABE91003700A4 /* RegisterPresnter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996DD412B4ABE91003700A4 /* RegisterPresnter.swift */; };
+		E996DD442B4ABE9B003700A4 /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996DD432B4ABE9B003700A4 /* RegisterRouter.swift */; };
 		E9A150462B38471600AB2799 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A150452B38471600AB2799 /* LoginViewController.swift */; };
 		E9AB5FED2B49647E00297486 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AB5FEC2B49647E00297486 /* UserModel.swift */; };
 		E9AB5FF22B4967C400297486 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AB5FF12B4967C400297486 /* LoginPresenter.swift */; };
@@ -33,6 +37,10 @@
 		E9958D0E2B35E0A4001B4290 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9958D112B35E0A4001B4290 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9958D132B35E0A4001B4290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E996DD3D2B4ABE7C003700A4 /* RegisterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAssembly.swift; sourceTree = "<group>"; };
+		E996DD3F2B4ABE88003700A4 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		E996DD412B4ABE91003700A4 /* RegisterPresnter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresnter.swift; sourceTree = "<group>"; };
+		E996DD432B4ABE9B003700A4 /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
 		E9A150452B38471600AB2799 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E9AB5FEC2B49647E00297486 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		E9AB5FF12B4967C400297486 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -87,6 +95,17 @@
 			path = URLNewStudy;
 			sourceTree = "<group>";
 		};
+		E996DD3C2B4ABE3A003700A4 /* RegisterScene */ = {
+			isa = PBXGroup;
+			children = (
+				E996DD3D2B4ABE7C003700A4 /* RegisterAssembly.swift */,
+				E996DD3F2B4ABE88003700A4 /* RegisterViewController.swift */,
+				E996DD412B4ABE91003700A4 /* RegisterPresnter.swift */,
+				E996DD432B4ABE9B003700A4 /* RegisterRouter.swift */,
+			);
+			path = RegisterScene;
+			sourceTree = "<group>";
+		};
 		E99A282F2B35E4AC00C6F151 /* RandomImageScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				E9A150472B38472300AB2799 /* LoginScene */,
+				E996DD3C2B4ABE3A003700A4 /* RegisterScene */,
 				E99A282F2B35E4AC00C6F151 /* RandomImageScene */,
 			);
 			path = Scenes;
@@ -216,13 +236,17 @@
 				E9958D032B35E0A3001B4290 /* AppDelegate.swift in Sources */,
 				E9AB5FF22B4967C400297486 /* LoginPresenter.swift in Sources */,
 				E9958D0D2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld in Sources */,
+				E996DD3E2B4ABE7C003700A4 /* RegisterAssembly.swift in Sources */,
 				E9AB5FF72B496AA500297486 /* MVXProtocol.swift in Sources */,
+				E996DD402B4ABE88003700A4 /* RegisterViewController.swift in Sources */,
 				E9AB5FFD2B4991CA00297486 /* RandomImagePresenter.swift in Sources */,
 				E9AB5FFF2B4991D300297486 /* RandomImageRouter.swift in Sources */,
+				E996DD422B4ABE91003700A4 /* RegisterPresnter.swift in Sources */,
 				E9958D052B35E0A3001B4290 /* SceneDelegate.swift in Sources */,
 				E9AB5FED2B49647E00297486 /* UserModel.swift in Sources */,
 				E9A150462B38471600AB2799 /* LoginViewController.swift in Sources */,
 				E9AB5FFB2B4991B700297486 /* RandomImageAssembly.swift in Sources */,
+				E996DD442B4ABE9B003700A4 /* RegisterRouter.swift in Sources */,
 				E9AB5FF92B496C2F00297486 /* LoginRouter.swift in Sources */,
 				E9AB5FF42B496A6F00297486 /* LoginAssembly.swift in Sources */,
 			);
