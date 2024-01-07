@@ -13,6 +13,7 @@
 		E9958D0D2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9958D0B2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld */; };
 		E9958D0F2B35E0A4001B4290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9958D0E2B35E0A4001B4290 /* Assets.xcassets */; };
 		E9958D122B35E0A4001B4290 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9958D102B35E0A4001B4290 /* LaunchScreen.storyboard */; };
+		E996B13E2B4B22260025ECD6 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996B13D2B4B22260025ECD6 /* CustomTextField.swift */; };
 		E996DD3E2B4ABE7C003700A4 /* RegisterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996DD3D2B4ABE7C003700A4 /* RegisterAssembly.swift */; };
 		E996DD402B4ABE88003700A4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996DD3F2B4ABE88003700A4 /* RegisterViewController.swift */; };
 		E996DD422B4ABE91003700A4 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996DD412B4ABE91003700A4 /* RegisterPresenter.swift */; };
@@ -37,6 +38,7 @@
 		E9958D0E2B35E0A4001B4290 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9958D112B35E0A4001B4290 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9958D132B35E0A4001B4290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E996B13D2B4B22260025ECD6 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		E996DD3D2B4ABE7C003700A4 /* RegisterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAssembly.swift; sourceTree = "<group>"; };
 		E996DD3F2B4ABE88003700A4 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E996DD412B4ABE91003700A4 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 		E9958D012B35E0A3001B4290 /* URLNewStudy */ = {
 			isa = PBXGroup;
 			children = (
+				E996B13C2B4B22090025ECD6 /* CustomViews */,
 				E9AB5FF52B496A9200297486 /* Base */,
 				E9AB5FF02B49659500297486 /* BL */,
 				E9AB5FEE2B49653D00297486 /* Scenes */,
@@ -93,6 +96,14 @@
 				E9958D0B2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld */,
 			);
 			path = URLNewStudy;
+			sourceTree = "<group>";
+		};
+		E996B13C2B4B22090025ECD6 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				E996B13D2B4B22260025ECD6 /* CustomTextField.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		E996DD3C2B4ABE3A003700A4 /* RegisterScene */ = {
@@ -240,6 +251,7 @@
 				E9AB5FF72B496AA500297486 /* MVXProtocol.swift in Sources */,
 				E996DD402B4ABE88003700A4 /* RegisterViewController.swift in Sources */,
 				E9AB5FFD2B4991CA00297486 /* RandomImagePresenter.swift in Sources */,
+				E996B13E2B4B22260025ECD6 /* CustomTextField.swift in Sources */,
 				E9AB5FFF2B4991D300297486 /* RandomImageRouter.swift in Sources */,
 				E996DD422B4ABE91003700A4 /* RegisterPresenter.swift in Sources */,
 				E9958D052B35E0A3001B4290 /* SceneDelegate.swift in Sources */,

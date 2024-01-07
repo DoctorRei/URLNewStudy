@@ -187,6 +187,8 @@ private extension LoginViewController {
     }
 }
 
+//MARK: - Delegate
+
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else { return }
@@ -194,6 +196,8 @@ extension LoginViewController: UITextFieldDelegate {
         loginPresenter?.getName(name: text)
     }
 }
+
+//MARK: - Protocole
 
 extension LoginViewController: ILoginViewController {
     
