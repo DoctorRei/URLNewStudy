@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ILoginPresenter {
-    
+    func runRegisterFlow()
 }
 
 final class LoginPresenter {
@@ -21,5 +21,7 @@ final class LoginPresenter {
 }
 
 extension LoginPresenter: ILoginPresenter {
-    
+    func runRegisterFlow() {
+        router.routeTo(scene: LoginRouter.Target.registerScene)
+    }
 }

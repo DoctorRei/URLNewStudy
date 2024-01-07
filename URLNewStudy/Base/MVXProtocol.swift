@@ -10,3 +10,9 @@ import UIKit
 protocol IBaseAssembly {
     func configure(viewController: UIViewController)
 }
+
+protocol IBaseRouting {
+    func routeTo(scene: Any)
+    init(navigationController: UINavigationController)
+    
+}

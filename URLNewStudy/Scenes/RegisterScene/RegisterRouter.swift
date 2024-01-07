@@ -7,11 +7,17 @@
 
 import UIKit
 
-protocol IRegisterRouter {
+protocol IRegisterRouter: IBaseRouting  {
     
 }
 
 final class RegisterRouter {
+    
+    enum Target {
+        case loginScene
+        case randomImageScene
+    }
+    
     let navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -19,6 +25,10 @@ final class RegisterRouter {
     }
 }
 
-extension RegisterRouter: ILoginRouter {
+extension RegisterRouter: IRegisterRouter {
+    func routeTo(scene: Any) {
+        
+    }
+    
     
 }

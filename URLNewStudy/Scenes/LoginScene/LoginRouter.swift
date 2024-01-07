@@ -7,11 +7,17 @@
 
 import UIKit
 
-protocol ILoginRouter {
+protocol ILoginRouter: IBaseRouting {
     
 }
 
-class LoginRouter {
+final class LoginRouter {
+    
+    enum Target {
+        case registerScene
+        case randomImageScene
+    }
+    
     let navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -20,5 +26,22 @@ class LoginRouter {
 }
 
 extension LoginRouter: ILoginRouter {
+    func routeTo(scene: Any) {
+        guard let registerTarget = scene as? LoginRouter.Target else { return }
+        
+        switch registerTarget {
+        case .registerScene:
+            let registerVC = RegisterViewController()
+            let registerAssembly = RegisterAssembly(navigationController: navigationController)
+            registerAssembly.configure(viewController: registerVC)
+            
+            navigationController.pushViewController(registerVC, animated: true)
+        case .randomImageScene:
+            break
+        }
+        
+        
+    }
+    
     
 }

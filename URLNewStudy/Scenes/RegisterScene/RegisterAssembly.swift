@@ -17,8 +17,10 @@ final class RegisterAssembly {
 
 extension RegisterAssembly: IBaseAssembly {
     func configure(viewController: UIViewController) {
-        <#code#>
+        guard let registerVC = viewController as? RegisterViewController else { return }
+        let router = RegisterRouter(navigationController: navigationController)
+        let presenter = RegisterPresenter(view: registerVC, router: router)
+         
+        registerVC.presenter = presenter
     }
-    
-    
 }

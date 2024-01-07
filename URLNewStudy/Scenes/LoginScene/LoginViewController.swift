@@ -15,25 +15,40 @@ protocol ILoginViewController: AnyObject {
 final class LoginViewController: UIViewController {
     
     let loginLabel = UILabel()
-//    let passwordLabel = UILabel()
     let loginTF = UITextField()
     let passwordTF = UITextField()
     let loginButton = UIButton(configuration: .filled())
+    let registerButton = UIButton(configuration: .filled())
     let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
     
     var loginPresenter: ILoginPresenter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupViews()
+    }
+}
+
+//MARK: - Actions
+
+private extension LoginViewController {
+    @objc func touchRegisterButton() {
+        loginPresenter?.runRegisterFlow()
+    }
+}
+
+//MARK: - View Settings
+
+private extension LoginViewController {
+    func setupViews() {
         setupSubviews()
         setupImage()
         setupLabels()
         setupTextFields()
-        setupButton()
+        setupButtons()
         setupLayout()
+        addActions()
     }
-    
 }
 
 //MARK: - SetupSubviews
@@ -42,9 +57,9 @@ private extension LoginViewController {
     func setupSubviews() {
         view.addSubview(loginLabel)
         view.addSubview(loginTF)
-//        view.addSubview(passwordLabel)
         view.addSubview(passwordTF)
         view.addSubview(loginButton)
+        view.addSubview(registerButton)
         view.insertSubview(backgroundImage, at: 0)
     }
 }
@@ -64,7 +79,6 @@ private extension LoginViewController {
 private extension LoginViewController {
     func setupLabels() {
         setupLoginLabel()
-//        setupPasswordLabel()
     }
     
     func setupLoginLabel() {
@@ -75,12 +89,6 @@ private extension LoginViewController {
         loginLabel.shadowColor = .black
         loginLabel.font = UIFont.systemFont(ofSize: 30)
     }
-    
-//    func setupPasswordLabel() {
-//        passwordLabel.text = "Password"
-//        passwordLabel.textColor = .black
-//        passwordLabel.textAlignment = .center
-//    }
 }
 
 //MARK: - Setup TextFields
@@ -113,13 +121,30 @@ private extension LoginViewController {
         passwordTF.layer.borderColor = UIColor.systemBlue.cgColor
         passwordTF.layer.borderWidth = 2.0
         passwordTF.layer.cornerRadius = 10
-        
     }
 }
 
+//MARK: - Button Settings
+
 private extension LoginViewController {
-    func setupButton() {
+    func setupButtons() {
+        setupLoginButton()
+        setupRegisterButton()
+    }
+    
+    func setupLoginButton() {
         loginButton.setTitle("Enter", for: .normal)
+    }
+    
+    func setupRegisterButton() {
+        registerButton.setTitle("Register", for: .normal)
+    }
+    
+    func addActions() {
+        registerButton.addTarget(
+            self,
+            action: #selector(touchRegisterButton),
+            for: .touchUpInside)
     }
 }
 
@@ -129,9 +154,9 @@ private extension LoginViewController {
     func setupLayout() {
         loginLabel.translatesAutoresizingMaskIntoConstraints = false
         loginTF.translatesAutoresizingMaskIntoConstraints = false
-//        passwordLabel.translatesAutoresizingMaskIntoConstraints = false
         passwordTF.translatesAutoresizingMaskIntoConstraints = false
         loginButton.translatesAutoresizingMaskIntoConstraints = false
+        registerButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             
@@ -142,10 +167,6 @@ private extension LoginViewController {
             loginTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
             loginTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
             
-//            passwordLabel.topAnchor.constraint(equalTo: loginTF.topAnchor, constant: 45),
-//            passwordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
-//            passwordLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
-            
             passwordTF.topAnchor.constraint(equalTo: loginTF.topAnchor, constant: 40),
             passwordTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
             passwordTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
@@ -154,6 +175,9 @@ private extension LoginViewController {
             loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
             loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
             
+            registerButton.topAnchor.constraint(equalTo: loginButton.topAnchor, constant: 40),
+            registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
+            registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100)
         ])
     }
     

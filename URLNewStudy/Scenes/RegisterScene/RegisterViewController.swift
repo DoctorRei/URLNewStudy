@@ -14,7 +14,7 @@ protocol IRegisterViewController: AnyObject {
 class RegisterViewController: UIViewController {
     private let loginLabel = UILabel()
     
-    //    var presenter = IRegisterPresenter?
+    var presenter: IRegisterPresenter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +31,7 @@ private extension RegisterViewController {
         view.backgroundColor = .cyan
         addSubViews()
         setupRegisterLabel()
-        
-        // setupLayout()
+        setupLayout()
     }
 }
 

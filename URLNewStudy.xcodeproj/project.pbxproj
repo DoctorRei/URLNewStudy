@@ -15,7 +15,7 @@
 		E9958D122B35E0A4001B4290 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9958D102B35E0A4001B4290 /* LaunchScreen.storyboard */; };
 		E996DD3E2B4ABE7C003700A4 /* RegisterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996DD3D2B4ABE7C003700A4 /* RegisterAssembly.swift */; };
 		E996DD402B4ABE88003700A4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996DD3F2B4ABE88003700A4 /* RegisterViewController.swift */; };
-		E996DD422B4ABE91003700A4 /* RegisterPresnter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996DD412B4ABE91003700A4 /* RegisterPresnter.swift */; };
+		E996DD422B4ABE91003700A4 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996DD412B4ABE91003700A4 /* RegisterPresenter.swift */; };
 		E996DD442B4ABE9B003700A4 /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996DD432B4ABE9B003700A4 /* RegisterRouter.swift */; };
 		E9A150462B38471600AB2799 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A150452B38471600AB2799 /* LoginViewController.swift */; };
 		E9AB5FED2B49647E00297486 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AB5FEC2B49647E00297486 /* UserModel.swift */; };
@@ -39,7 +39,7 @@
 		E9958D132B35E0A4001B4290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E996DD3D2B4ABE7C003700A4 /* RegisterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAssembly.swift; sourceTree = "<group>"; };
 		E996DD3F2B4ABE88003700A4 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		E996DD412B4ABE91003700A4 /* RegisterPresnter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresnter.swift; sourceTree = "<group>"; };
+		E996DD412B4ABE91003700A4 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		E996DD432B4ABE9B003700A4 /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
 		E9A150452B38471600AB2799 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E9AB5FEC2B49647E00297486 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 			children = (
 				E996DD3D2B4ABE7C003700A4 /* RegisterAssembly.swift */,
 				E996DD3F2B4ABE88003700A4 /* RegisterViewController.swift */,
-				E996DD412B4ABE91003700A4 /* RegisterPresnter.swift */,
+				E996DD412B4ABE91003700A4 /* RegisterPresenter.swift */,
 				E996DD432B4ABE9B003700A4 /* RegisterRouter.swift */,
 			);
 			path = RegisterScene;
@@ -241,7 +241,7 @@
 				E996DD402B4ABE88003700A4 /* RegisterViewController.swift in Sources */,
 				E9AB5FFD2B4991CA00297486 /* RandomImagePresenter.swift in Sources */,
 				E9AB5FFF2B4991D300297486 /* RandomImageRouter.swift in Sources */,
-				E996DD422B4ABE91003700A4 /* RegisterPresnter.swift in Sources */,
+				E996DD422B4ABE91003700A4 /* RegisterPresenter.swift in Sources */,
 				E9958D052B35E0A3001B4290 /* SceneDelegate.swift in Sources */,
 				E9AB5FED2B49647E00297486 /* UserModel.swift in Sources */,
 				E9A150462B38471600AB2799 /* LoginViewController.swift in Sources */,
