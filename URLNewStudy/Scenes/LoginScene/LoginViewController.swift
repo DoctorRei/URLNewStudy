@@ -42,6 +42,7 @@ private extension LoginViewController {
 private extension LoginViewController {
     func setupViews() {
         setupSubviews()
+        setupTFDelegate()
         setupImage()
         setupLabels()
         setupTextFields()
@@ -97,6 +98,10 @@ private extension LoginViewController {
     func setupTextFields() {
         setupLoginTF()
         setupPasswordTF()
+    }
+    
+    func setupTFDelegate() {
+        loginTF.delegate = self
     }
     
     func setupLoginTF() {
@@ -180,8 +185,14 @@ private extension LoginViewController {
             registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100)
         ])
     }
-    
-    
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+
+        loginPresenter?.getName(name: text)
+    }
 }
 
 extension LoginViewController: ILoginViewController {

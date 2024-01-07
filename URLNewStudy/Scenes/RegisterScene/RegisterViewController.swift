@@ -8,7 +8,7 @@
 import UIKit
 
 protocol IRegisterViewController: AnyObject {
-    
+    func render(viewModel: RegisterViewModel)
 }
 
 class RegisterViewController: UIViewController {
@@ -19,7 +19,8 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        //        presenter.render
+        setupLayout()
+        presenter?.render()
     }
     
 }
@@ -31,7 +32,6 @@ private extension RegisterViewController {
         view.backgroundColor = .cyan
         addSubViews()
         setupRegisterLabel()
-        setupLayout()
     }
 }
 
@@ -60,5 +60,7 @@ private extension RegisterViewController {
 }
 
 extension RegisterViewController: IRegisterViewController {
-    
+    func render(viewModel: RegisterViewModel) {
+        loginLabel.text = viewModel.name
+    }
 }

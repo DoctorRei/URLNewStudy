@@ -9,11 +9,13 @@ import Foundation
 
 protocol ILoginPresenter {
     func runRegisterFlow()
+    func getName(name: String)
 }
 
 final class LoginPresenter {
     weak var view: ILoginViewController?
     let router: ILoginRouter
+    private var name = "misha"
     
     init(router: ILoginRouter) {
         self.router = router
@@ -21,7 +23,11 @@ final class LoginPresenter {
 }
 
 extension LoginPresenter: ILoginPresenter {
+    func getName(name: String) {
+        self.name = name
+    }
+    
     func runRegisterFlow() {
-        router.routeTo(scene: LoginRouter.Target.registerScene)
+        router.routeTo(scene: LoginRouter.Target.registerScene(name: name))
     }
 }
