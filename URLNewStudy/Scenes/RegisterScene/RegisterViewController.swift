@@ -17,6 +17,7 @@ final class RegisterViewController: UIViewController {
     private let passwordTF = CustomTextField(placeholder: "Password")
     private let verifyPasswordTF = CustomTextField(placeholder: "Verify password")
     private let emailTF = CustomTextField(placeholder: "E-mail")
+    private let registerButton = UIButton(configuration: .filled())
     
     var presenter: IRegisterPresenter?
     
@@ -28,6 +29,14 @@ final class RegisterViewController: UIViewController {
     }
 }
 
+//MARK: - Actions
+
+private extension RegisterViewController {
+    @objc func touchRegisterButton() {
+        presenter?.runRandomImageVCFlow()
+    }
+}
+
 //MARK: - Setup View
 
 private extension RegisterViewController {
@@ -35,13 +44,33 @@ private extension RegisterViewController {
         view.backgroundColor = .cyan
         addSubViews()
         setupRegisterLabel()
+        setupRegisterButton()
+        addActions()
     }
 }
 
-//MARK: - Setup Text Fields
+//MARK: - Setup Button
 
-extension RegisterViewController {
-        
+private extension RegisterViewController {
+    func setupRegisterButton() {
+        registerButton.setTitle("Register", for: .normal)
+    }
+    
+    func addActions() {
+        registerButton.addTarget(
+            self,
+            action: #selector(touchRegisterButton),
+            for: .touchUpInside)
+    }
+}
+
+//MARK: - Setup Label
+
+private extension RegisterViewController {
+    func setupRegisterLabel() {
+        loginLabel.text = "Register"
+        loginLabel.textColor = .black
+    }
 }
 
 //MARK: - Setting 
@@ -53,11 +82,7 @@ private extension RegisterViewController {
         view.addSubview(passwordTF)
         view.addSubview(verifyPasswordTF)
         view.addSubview(emailTF)
-    }
-    
-    func setupRegisterLabel() {
-        loginLabel.text = "Register"
-        loginLabel.textColor = .black
+        view.addSubview(registerButton)
     }
 }
 
@@ -70,6 +95,7 @@ private extension RegisterViewController {
         passwordTF.translatesAutoresizingMaskIntoConstraints = false
         verifyPasswordTF.translatesAutoresizingMaskIntoConstraints = false
         emailTF.translatesAutoresizingMaskIntoConstraints = false
+        registerButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             loginLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
@@ -90,6 +116,10 @@ private extension RegisterViewController {
             emailTF.topAnchor.constraint(equalTo: verifyPasswordTF.topAnchor, constant: 40),
             emailTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
             emailTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
+            
+            registerButton.topAnchor.constraint(equalTo: emailTF.topAnchor, constant: 40),
+            registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
+            registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100)
         ])
     }
 }

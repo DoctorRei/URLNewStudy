@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ILoginRouter: IBaseRouting {
-    
+    func routeTo(scene: Any)
 }
 
 final class LoginRouter {

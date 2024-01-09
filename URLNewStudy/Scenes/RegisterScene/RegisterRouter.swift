@@ -15,7 +15,7 @@ final class RegisterRouter {
     
     enum Target {
         case loginScene
-        case randomImageScene
+        case randomImgScene
     }
     
     let navigationController: UINavigationController
@@ -27,8 +27,17 @@ final class RegisterRouter {
 
 extension RegisterRouter: IRegisterRouter {
     func routeTo(scene: Any) {
+        guard let registerTarget = scene as? RegisterRouter.Target else {return}
         
+        switch registerTarget {
+        case .loginScene:
+            break
+        case .randomImgScene:
+            let randomImageVC = RandomImageVC()
+            let randomImageAssembly = RandomImageAssembly(navigationController: navigationController)
+            randomImageAssembly.configure(viewController: randomImageVC)
+            
+            navigationController.pushViewController(randomImageVC, animated: true)
+        }
     }
-    
-    
 }

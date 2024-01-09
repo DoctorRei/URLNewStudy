@@ -15,7 +15,7 @@ protocol ILoginPresenter {
 final class LoginPresenter {
     weak var view: ILoginViewController?
     let router: ILoginRouter
-    private var name = "misha"
+    private var name = ""
     
     init(router: ILoginRouter) {
         self.router = router

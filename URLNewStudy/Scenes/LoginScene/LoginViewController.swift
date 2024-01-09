@@ -97,6 +97,9 @@ private extension LoginViewController {
     func setupTFDelegate() {
         loginTF.delegate = self
     }
+    
+    //TODO: - нужно выставить полю сокрытие вводимых данных, убрать автозамену слов и т9. 
+    
 }
 
 //MARK: - Button Settings

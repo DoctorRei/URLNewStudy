@@ -13,6 +13,7 @@ struct RegisterViewModel {
 
 protocol IRegisterPresenter {
     func render()
+    func runRandomImageVCFlow()
 }
 
 final class RegisterPresenter {
@@ -32,5 +33,9 @@ extension RegisterPresenter: IRegisterPresenter {
     func render() {
         let viewModel = RegisterViewModel(name: name)
         view.render(viewModel: viewModel)
+    }
+    
+    func runRandomImageVCFlow() {
+        router.routeTo(scene: RegisterRouter.Target.randomImgScene)
     }
 }
