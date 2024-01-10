@@ -9,6 +9,7 @@ import UIKit
 
 protocol ILoginRouter: IBaseRouting {
     func routeTo(scene: Any)
+    func showError(message: String)
 }
 
 final class LoginRouter {
@@ -22,6 +23,19 @@ final class LoginRouter {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+    }
+}
+
+extension LoginRouter {
+    func showError(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let actionDone = UIAlertAction(title: "Ok", style: .default)
+        let actionRegister = UIAlertAction(title: "Register", style: .default)
+        
+        alert.addAction(actionDone)
+        alert.addAction(actionRegister)
+        
+        navigationController.topViewController?.present(alert, animated: true)
     }
 }
 

@@ -37,7 +37,7 @@ extension LoginPresenter: ILoginPresenter {
         if result {
             router.routeTo(scene: LoginRouter.Target.randomImageScene)
         } else {
-            print("SomeWrong")
+            router.showError(message: "Wrong login or password")
         }
     }
     
