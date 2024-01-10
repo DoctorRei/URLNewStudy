@@ -30,6 +30,7 @@ extension LoginRouter: ILoginRouter {
         guard let registerTarget = scene as? LoginRouter.Target else { return }
         
         switch registerTarget {
+        
         case .registerScene(let name):
             let registerVC = RegisterViewController()
             let registerAssembly = RegisterAssembly(
@@ -38,8 +39,13 @@ extension LoginRouter: ILoginRouter {
             registerAssembly.configure(viewController: registerVC)
             
             navigationController.pushViewController(registerVC, animated: true)
+        
         case .randomImageScene:
-            break
+            let randomImageVC = RandomImageVC()
+            let randomImageAssembly = RandomImageAssembly(navigationController: navigationController)
+            randomImageAssembly.configure(viewController: randomImageVC)
+            
+            navigationController.pushViewController(randomImageVC, animated: true)
         }
     }
 }

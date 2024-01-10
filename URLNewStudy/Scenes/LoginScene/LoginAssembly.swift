@@ -22,7 +22,8 @@ extension LoginAssembly: IBaseAssembly {
         guard let loginVC = viewController as? LoginViewController else {return}
         
         let router = LoginRouter(navigationController: navigationController)
-        let presenter = LoginPresenter(router: router)
+        let worker = LoginWorker()
+        let presenter = LoginPresenter(router: router, worker: worker)
         loginVC.loginPresenter = presenter
         presenter.view = loginVC
     }

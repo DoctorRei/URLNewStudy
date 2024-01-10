@@ -35,6 +35,11 @@ private extension LoginViewController {
     @objc func touchRegisterButton() {
         loginPresenter?.runRegisterFlow()
     }
+    
+    @objc func touchEnterButton() {
+        let viewModelLogin = ViewModelLogin(login: loginTF.text ?? "", password: passwordTF.text ?? "")
+        loginPresenter?.logIn(viewModel: viewModelLogin)
+    }
 }
 
 //MARK: - View Settings
@@ -122,6 +127,11 @@ private extension LoginViewController {
         registerButton.addTarget(
             self,
             action: #selector(touchRegisterButton),
+            for: .touchUpInside)
+        
+        loginButton.addTarget(
+            self,
+            action: #selector(touchEnterButton),
             for: .touchUpInside)
     }
 }
