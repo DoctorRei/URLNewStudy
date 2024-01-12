@@ -7,12 +7,16 @@
 
 import Foundation
 
-enum  KeychainError: Error {
+protocol IKeychainManager {
+    func save(password: Data, account: String) throws -> String
+}
+
+enum KeychainError: Error {
     case duplicateItem
     case unknown(status: OSStatus)
 }
 
-final class KeychainManager {
+final class KeychainManager: IKeychainManager {
     func save(password: Data, account: String) throws -> String {
         let query: [CFString: Any] = [
             kSecClass: kSecClassGenericPassword,

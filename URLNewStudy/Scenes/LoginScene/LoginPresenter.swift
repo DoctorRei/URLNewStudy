@@ -9,7 +9,7 @@ import Foundation
 
 protocol ILoginPresenter {
     func runRegisterFlow()
-    func getLogin(Login: String)
+    func getLoginAndPassword(Login: String)
     func logIn(viewModel: ViewModelLogin)
 }
 
@@ -23,6 +23,7 @@ final class LoginPresenter {
     private let worker: ILoginWorker
     private let router: ILoginRouter
     private var name = ""
+    private var password = Data()
     
     init(router: ILoginRouter, worker: ILoginWorker) {
         self.router = router
@@ -41,11 +42,11 @@ extension LoginPresenter: ILoginPresenter {
         }
     }
     
-    func getLogin(Login: String) {
+    func getLoginAndPassword(Login: String) {
         self.name = Login
     }
     
     func runRegisterFlow() {
-        router.routeTo(scene: LoginRouter.Target.registerScene(name: name))
+        router.routeTo(scene: LoginRouter.Target.registerScene(name: name, password: password))
     }
 }

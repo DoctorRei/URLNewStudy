@@ -15,7 +15,7 @@ protocol ILoginRouter: IBaseRouting {
 final class LoginRouter {
     
     enum Target {
-        case registerScene(name: String)
+        case registerScene(name: String, password: Data)
         case randomImageScene
     }
     
@@ -44,16 +44,17 @@ extension LoginRouter: ILoginRouter {
         guard let registerTarget = scene as? LoginRouter.Target else { return }
         
         switch registerTarget {
-        
-        case .registerScene(let name):
+            
+        case .registerScene(let name, let password):
             let registerVC = RegisterViewController()
             let registerAssembly = RegisterAssembly(
                 navigationController: navigationController,
-                name: name)
+                name: name,
+                password: password)
             registerAssembly.configure(viewController: registerVC)
             
             navigationController.pushViewController(registerVC, animated: true)
-        
+            
         case .randomImageScene:
             let randomImageVC = RandomImageVC()
             let randomImageAssembly = RandomImageAssembly(navigationController: navigationController)

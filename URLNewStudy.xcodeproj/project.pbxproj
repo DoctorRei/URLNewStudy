@@ -140,7 +140,6 @@
 				E9AB5FF12B4967C400297486 /* LoginPresenter.swift */,
 				E9AB5FF82B496C2F00297486 /* LoginRouter.swift */,
 				E9A591932B4ED8AB00A498D3 /* LoginWorker.swift */,
-				E9A7996A2B519FB1005220F2 /* KeychainManager.swift */,
 			);
 			path = LoginScene;
 			sourceTree = "<group>";
@@ -159,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				E9AB5FEC2B49647E00297486 /* UserModel.swift */,
+				E9A7996A2B519FB1005220F2 /* KeychainManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

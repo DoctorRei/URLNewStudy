@@ -176,7 +176,7 @@ extension LoginViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else { return }
 
-        loginPresenter?.getLogin(Login: text)
+        loginPresenter?.getLoginAndPassword(Login: text)
     }
 }
 

@@ -9,6 +9,7 @@ import UIKit
 
 protocol IRegisterViewController: AnyObject {
     func render(viewModel: RegisterViewModel)
+    func checkValidPassword() -> Bool
 }
 
 final class RegisterViewController: UIViewController {
@@ -18,6 +19,7 @@ final class RegisterViewController: UIViewController {
     private let verifyPasswordTF = CustomTextField(placeholder: "Verify password")
     private let emailTF = CustomTextField(placeholder: "E-mail")
     private let registerButton = UIButton(configuration: .filled())
+    private var statusTest = ""
     
     var presenter: IRegisterPresenter?
     
@@ -33,7 +35,15 @@ final class RegisterViewController: UIViewController {
 
 private extension RegisterViewController {
     @objc func touchRegisterButton() {
-        presenter?.runRandomImageVCFlow()
+        if checkValidPassword() {
+            presenter?.saveNewUser(
+                login: loginTF.text ?? "",
+                password: passwordTF.text?.data(using: .utf8) ?? Data())
+        } else {
+            print("touchRegisterButton НЕ СРАБОТАЛ")
+        }
+        
+        print("touchRegisterButton сработал")
     }
 }
 
@@ -124,10 +134,14 @@ private extension RegisterViewController {
     }
 }
 
-//MARK: - Protocole
+//MARK: - Protocol
 
 extension RegisterViewController: IRegisterViewController {
+    func checkValidPassword() -> Bool {
+        passwordTF.text == verifyPasswordTF.text
+    }
+    
     func render(viewModel: RegisterViewModel) {
-        loginTF.text = viewModel.name
+        loginTF.text = viewModel.login
     }
 }
