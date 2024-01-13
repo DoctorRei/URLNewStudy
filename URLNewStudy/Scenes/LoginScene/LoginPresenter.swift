@@ -7,6 +7,8 @@
 
 import Foundation
 
+//MARK: Protocol
+
 protocol ILoginPresenter {
     func runRegisterFlow()
     func getLogin(login: String)
@@ -14,10 +16,14 @@ protocol ILoginPresenter {
     func logIn(viewModel: ViewModelLogin)
 }
 
+//MARK: - View Model
+
 struct ViewModelLogin {
     let login: String
     let password: String
 }
+
+//MARK: - LoginPresenter
 
 final class LoginPresenter {
     weak var view: ILoginViewController?
@@ -26,19 +32,24 @@ final class LoginPresenter {
     private var name = ""
     private var password = Data()
     
-    private func convertPassword(value: String) -> Data {
-        return value.data(using: .utf8) ?? Data()
-    }
-    
     init(router: ILoginRouter, worker: ILoginWorker) {
         self.router = router
         self.worker = worker
     }
+    
+    private func convertPassword(value: String) -> Data {
+        return value.data(using: .utf8) ?? Data()
+    }
 }
+
+//MARK: Protocol extensions
 
 extension LoginPresenter: ILoginPresenter {
     func logIn(viewModel: ViewModelLogin) {
-        let result = worker.login(login: viewModel.login, password: viewModel.password)
+        let result = worker.login(
+            login: viewModel.login,
+            password: viewModel.password
+        )
         
         if result {
             router.routeTo(scene: LoginRouter.Target.randomImageScene)
@@ -56,6 +67,8 @@ extension LoginPresenter: ILoginPresenter {
     }
     
     func runRegisterFlow() {
-        router.routeTo(scene: LoginRouter.Target.registerScene(name: name, password: password))
+        router.routeTo(
+            scene: LoginRouter.Target.registerScene(name: name, password: password)
+        )
     }
 }

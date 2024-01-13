@@ -17,6 +17,7 @@ enum KeychainError: Error {
 }
 
 final class KeychainManager: IKeychainManager {
+    
     func save(password: Data, account: String) throws -> String {
         let query: [CFString: Any] = [
             kSecClass: kSecClassGenericPassword,
@@ -35,5 +36,24 @@ final class KeychainManager: IKeychainManager {
         }
         
         return "Saved"
+    }
+    
+    func checkPassword(for account: String) throws -> Data? {
+        let query: [CFString: Any] = [
+            kSecClass: kSecClassGenericPassword,
+            kSecAttrAccount: account,
+            kSecReturnData: kCFBooleanTrue as Any
+        ]
+        
+        var result: AnyObject?
+        
+        // получаем данные из кейчеин
+        let status = SecItemCopyMatching(query as CFDictionary, &result)
+        
+        guard status == errSecSuccess else {
+            throw KeychainError.unknown(status: status)
+        }
+        
+        return result as? Data
     }
 }
