@@ -9,7 +9,7 @@ import Foundation
 
 protocol ILoginPresenter {
     func runRegisterFlow()
-    func getLoginAndPassword(Login: String)
+    func getLoginAndPassword(login: String, password: Data)
     func logIn(viewModel: ViewModelLogin)
 }
 
@@ -42,8 +42,9 @@ extension LoginPresenter: ILoginPresenter {
         }
     }
     
-    func getLoginAndPassword(Login: String) {
-        self.name = Login
+    func getLoginAndPassword(login: String, password: Data) {
+        self.name = login
+        self.password = password
     }
     
     func runRegisterFlow() {

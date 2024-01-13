@@ -35,15 +35,15 @@ final class RegisterViewController: UIViewController {
 
 private extension RegisterViewController {
     @objc func touchRegisterButton() {
+        print("touchRegisterButton сработал")
+        
         if checkValidPassword() {
             presenter?.saveNewUser(
                 login: loginTF.text ?? "",
                 password: passwordTF.text?.data(using: .utf8) ?? Data())
         } else {
-            print("touchRegisterButton НЕ СРАБОТАЛ")
+            print("Регистрация НЕ СРАБОТАЛА")
         }
-        
-        print("touchRegisterButton сработал")
     }
 }
 
@@ -143,5 +143,6 @@ extension RegisterViewController: IRegisterViewController {
     
     func render(viewModel: RegisterViewModel) {
         loginTF.text = viewModel.login
+        passwordTF.text = String(data: viewModel.password, encoding: .utf8)
     }
 }

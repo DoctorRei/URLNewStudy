@@ -28,7 +28,13 @@ final class RegisterPresenter {
     private let password: Data
     private var status: String
     
-    init(router: IRegisterRouter, view: IRegisterViewController!, keychainManager: IKeychainManager, name: String, password: Data, status: String) {
+    init(
+        router: IRegisterRouter,
+        view: IRegisterViewController!,
+        keychainManager: IKeychainManager,
+        name: String, password: Data,
+        status: String
+    ) {
         self.router = router
         self.view = view
         self.keychainManager = keychainManager
