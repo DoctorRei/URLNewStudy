@@ -101,6 +101,7 @@ private extension LoginViewController {
 private extension LoginViewController {
     func setupTFDelegate() {
         loginTF.delegate = self
+        passwordTF.delegate = self
     }
     
     //TODO: - нужно выставить полю сокрытие вводимых данных, убрать автозамену слов и т9. 
@@ -174,10 +175,13 @@ private extension LoginViewController {
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let text = textField.text else { return } // удалить нахер пароль
-        guard let password = passwordTF.text?.data(using: .utf8)  else { return }
+        guard let text = textField.text else { return }
 
-        loginPresenter?.getLoginAndPassword(login: text, password: password)
+        if textField == loginTF {
+            loginPresenter?.getLogin(login: text)
+        } else {
+            loginPresenter?.getPassword(password: text)
+        }
     }
 }
 
