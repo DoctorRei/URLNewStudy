@@ -14,6 +14,7 @@ protocol ILoginPresenter {
     func getLogin(login: String)
     func getPassword(password: String)
     func logIn(viewModel: ViewModelLogin)
+    func validatePassword(login: String, password: String)
 }
 
 //MARK: - View Model
@@ -27,6 +28,7 @@ struct ViewModelLogin {
 
 final class LoginPresenter {
     weak var view: ILoginViewController?
+    var keychainManager: IKeychainManager?
     private let worker: ILoginWorker
     private let router: ILoginRouter
     private var name = ""
@@ -45,6 +47,22 @@ final class LoginPresenter {
 //MARK: Protocol extensions
 
 extension LoginPresenter: ILoginPresenter {
+    func validatePassword(login: String, password: String) {
+        let viewModel = ViewModelLogin(login: login, password: password)
+        
+        name = keychainManager?.getPassword(for: login) ?? "bad"
+        print(name)
+        
+        if name == password {
+            worker.updateModel(login: login, password: password)
+            logIn(viewModel: viewModel)
+            print("keyChain check ok")
+        } else {
+            print("Wrong password or login")
+        }
+        
+    }
+    
     func logIn(viewModel: ViewModelLogin) {
         let result = worker.login(
             login: viewModel.login,

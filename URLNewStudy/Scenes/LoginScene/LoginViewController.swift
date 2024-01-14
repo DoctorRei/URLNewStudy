@@ -37,8 +37,9 @@ private extension LoginViewController {
     }
     
     @objc func touchEnterButton() {
-        let viewModelLogin = ViewModelLogin(login: loginTF.text ?? "", password: passwordTF.text ?? "")
-        loginPresenter?.logIn(viewModel: viewModelLogin)
+        guard let password = passwordTF.text else {return}
+        guard let login = loginTF.text else {return}
+        loginPresenter?.validatePassword(login: login, password: password)
     }
 }
 

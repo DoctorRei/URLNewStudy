@@ -8,15 +8,23 @@
 import Foundation
 
 protocol ILoginWorker {
+    func updateModel(login: String, password: String)
     func login(login: String, password: String) -> Bool
 }
 
+// сохраняет последний вход
+
 final class LoginWorker {
-    private let validLogin = "admin"
+    private var validLogin = "admin"
     private var validPassword = "admin"
 }
 
 extension LoginWorker: ILoginWorker {
+    func updateModel(login: String, password: String) {
+        validPassword = password
+        validLogin = password
+    }
+    
     func login(login: String, password: String) -> Bool {
         login == validLogin && password == validPassword
     }
