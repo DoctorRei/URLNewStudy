@@ -28,15 +28,16 @@ struct ViewModelLogin {
 
 final class LoginPresenter {
     weak var view: ILoginViewController?
-    var keychainManager: IKeychainManager?
+    private let keychainManager: IKeychainManager!
     private let worker: ILoginWorker
     private let router: ILoginRouter
     private var name = ""
     private var password = Data()
     
-    init(router: ILoginRouter, worker: ILoginWorker) {
+    init(router: ILoginRouter, worker: ILoginWorker, keychainManager: IKeychainManager!) {
         self.router = router
         self.worker = worker
+        self.keychainManager = keychainManager
     }
     
     private func convertPassword(value: String) -> Data {
@@ -49,18 +50,20 @@ final class LoginPresenter {
 extension LoginPresenter: ILoginPresenter {
     func validatePassword(login: String, password: String) {
         let viewModel = ViewModelLogin(login: login, password: password)
-        
-        name = keychainManager?.getPassword(for: login) ?? "bad"
-        print(name)
-        
-        if name == password {
-            worker.updateModel(login: login, password: password)
-            logIn(viewModel: viewModel)
-            print("keyChain check ok")
-        } else {
-            print("Wrong password or login")
+        do {
+            let data = try keychainManager.checkPassword(for: login)
+            name = String(decoding: data ?? Data(), as: UTF8.self)
+            
+            if name == password {
+                worker.updateModel(login: login, password: password)
+                logIn(viewModel: viewModel)
+                print("keyChain check ok")
+            } else {
+                print("Wrong password or login")
+            }
+        } catch {
+            print(error)
         }
-        
     }
     
     func logIn(viewModel: ViewModelLogin) {
