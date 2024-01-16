@@ -24,7 +24,13 @@ extension RegisterAssembly: IBaseAssembly {
         guard let registerVC = viewController as? RegisterViewController else { return }
         let router = RegisterRouter(navigationController: navigationController)
         let keychainManager = KeychainManager()
-        let presenter = RegisterPresenter(router: router, view: registerVC, keychainManager: keychainManager, name: name, password: password, status: "")
+        let presenter = RegisterPresenter(
+            router: router, view: registerVC,
+            keychainManager: keychainManager,
+            name: name,
+            password: password,
+            status: ""
+        )
          
         registerVC.presenter = presenter
     }

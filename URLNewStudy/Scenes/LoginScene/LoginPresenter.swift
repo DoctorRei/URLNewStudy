@@ -47,6 +47,8 @@ final class LoginPresenter {
 
 //MARK: Protocol extensions
 
+//TODO: - Навести порядок в этом дерьме и разложить все по полочкам.
+
 extension LoginPresenter: ILoginPresenter {
     func validatePassword(login: String, password: String) {
         let viewModel = ViewModelLogin(login: login, password: password)
