@@ -91,14 +91,14 @@ private extension RandomImageVC {
             testLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             testLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            mainImage.topAnchor.constraint(equalTo: testLabel.topAnchor, constant: 30),
-            mainImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            mainImage.widthAnchor.constraint(equalToConstant: 360),
+            mainImage.topAnchor.constraint(equalTo: testLabel.bottomAnchor, constant: 30),
+            mainImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            mainImage.widthAnchor.constraint(equalToConstant: 310),
             mainImage.heightAnchor.constraint(equalToConstant: 510),
             
-//            getButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
-//            getButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 100),
-//            getButton.topAnchor.constraint(equalTo: mainImage.topAnchor, constant: 30)
+            getButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
+            getButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
+            getButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
             
         ])
     }
