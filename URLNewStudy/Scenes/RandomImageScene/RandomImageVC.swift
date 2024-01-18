@@ -59,6 +59,10 @@ private extension RandomImageVC {
         mainImage.layer.borderColor = UIColor.white.cgColor
         
     }
+    
+    func setupRandomPhoto() {
+        
+    }
 }
 
 //MARK: - SetupButton

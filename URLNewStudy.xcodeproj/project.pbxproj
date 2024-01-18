@@ -21,6 +21,7 @@
 		E996DD402B4ABE88003700A4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996DD3F2B4ABE88003700A4 /* RegisterViewController.swift */; };
 		E996DD422B4ABE91003700A4 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996DD412B4ABE91003700A4 /* RegisterPresenter.swift */; };
 		E996DD442B4ABE9B003700A4 /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996DD432B4ABE9B003700A4 /* RegisterRouter.swift */; };
+		E9972C392B59453F00413AB2 /* RandomImageWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9972C382B59453F00413AB2 /* RandomImageWorker.swift */; };
 		E9A150462B38471600AB2799 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A150452B38471600AB2799 /* LoginViewController.swift */; };
 		E9A591942B4ED8AB00A498D3 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A591932B4ED8AB00A498D3 /* LoginWorker.swift */; };
 		E9A7996B2B519FB1005220F2 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A7996A2B519FB1005220F2 /* KeychainManager.swift */; };
@@ -51,6 +52,7 @@
 		E996DD3F2B4ABE88003700A4 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E996DD412B4ABE91003700A4 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		E996DD432B4ABE9B003700A4 /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
+		E9972C382B59453F00413AB2 /* RandomImageWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomImageWorker.swift; sourceTree = "<group>"; };
 		E9A150452B38471600AB2799 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E9A591932B4ED8AB00A498D3 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		E9A7996A2B519FB1005220F2 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				E9958D062B35E0A3001B4290 /* RandomImageVC.swift */,
 				E9AB5FFC2B4991CA00297486 /* RandomImagePresenter.swift */,
 				E9AB5FFE2B4991D300297486 /* RandomImageRouter.swift */,
+				E9972C382B59453F00413AB2 /* RandomImageWorker.swift */,
 			);
 			path = RandomImageScene;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				E9AB5FFF2B4991D300297486 /* RandomImageRouter.swift in Sources */,
 				E996DD422B4ABE91003700A4 /* RegisterPresenter.swift in Sources */,
 				E9958D052B35E0A3001B4290 /* SceneDelegate.swift in Sources */,
+				E9972C392B59453F00413AB2 /* RandomImageWorker.swift in Sources */,
 				E9AB5FED2B49647E00297486 /* UserModel.swift in Sources */,
 				E9A150462B38471600AB2799 /* LoginViewController.swift in Sources */,
 				E9AB5FFB2B4991B700297486 /* RandomImageAssembly.swift in Sources */,

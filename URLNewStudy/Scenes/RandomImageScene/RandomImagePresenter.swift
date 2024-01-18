@@ -17,13 +17,15 @@ protocol IRandomImagePresenter {
 }
 
 final class RandomImagePresenter {
-    let router: IRandomImageRouter
     
+    let router: IRandomImageRouter
+    private var worker: IRandomImageWorker!
     private weak var view: IRandomImageVC!
     
-    init(view: IRandomImageVC, router: IRandomImageRouter) {
+    init(view: IRandomImageVC, router: IRandomImageRouter, worker: IRandomImageWorker) {
         self.view = view
         self.router = router
+        self.worker = worker
     }
 }
 
