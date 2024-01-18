@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol IRandomImageWorker {
-    func getImage() -> UIImage
+    func getImage(completion: @escaping (UIImage) -> Void)
 }
 
 final class RandomImageWorker {
@@ -22,23 +22,27 @@ final class RandomImageWorker {
 }
 
 extension RandomImageWorker: IRandomImageWorker {
-    func getImage() -> UIImage {
+    func getImage(completion: @escaping (UIImage) -> Void) {
         //TODO: - Сделать метод, который принимает Set() с юрлами и вкидывает их сюда
         
+        print("getImage воркера начал работу")
         let url = Links.shinobu.url // пока заглушка, в идеале реализовать фильтры по картинкам
-        var image = UIImage()
         
         networkManager.fetch(JsonForPictures.self, from: url) { data in
             switch data {
             case .success(let imageFromUrl):
                 self.networkManager.downloadImage(with: imageFromUrl.url) { downloadedImage in
-                    image = UIImage(data: downloadedImage) ?? UIImage()
+                    guard let image = UIImage(data: downloadedImage) else { return}
+                    DispatchQueue.main.async {
+                        completion(image)
+                        print("getImage получил фотку")
+                    }
                 }
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
-        return image
+        print("getImage завершил успешно")
     }
     
 }

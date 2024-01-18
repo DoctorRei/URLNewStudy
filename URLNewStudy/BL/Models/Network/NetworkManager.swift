@@ -19,11 +19,6 @@ enum NetworkError: Error {
 }
 
 final class NetworkManager: INetworkManager {
-    
-    static let shared = NetworkManager()
-    
-    private init() {}
-    
     func fetch<T:Decodable>(_ type: T.Type, from url: URL, completion: @escaping (Result<T, NetworkError>) -> Void) {
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data else {
@@ -47,7 +42,9 @@ final class NetworkManager: INetworkManager {
     
     func downloadImage(with url: String, completion: @escaping (Data) -> Void) {
         guard let convertedURL = URL(string: url) else {return}
-        guard let imageData = try? Data(contentsOf: convertedURL) else { return}
-        completion(imageData)
+        DispatchQueue.global().async {
+            guard let imageData = try? Data(contentsOf: convertedURL) else { return}
+            completion(imageData)
+        }
     }
 }

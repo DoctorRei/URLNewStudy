@@ -20,7 +20,7 @@ final class RandomImagePresenter {
     
     let router: IRandomImageRouter
     private var worker: IRandomImageWorker!
-    private weak var view: IRandomImageVC!
+    weak var view: IRandomImageVC!
     
     init(view: IRandomImageVC, router: IRandomImageRouter, worker: IRandomImageWorker) {
         self.view = view
@@ -31,6 +31,11 @@ final class RandomImagePresenter {
 
 extension RandomImagePresenter: IRandomImagePresenter {
     func render() {
-        view.render()
+        var image = UIImage()
+        worker.getImage { dataImage in
+            image = dataImage
+        }
+        view.render(with: image)
+        print("render презентера сработал")
     }
 }

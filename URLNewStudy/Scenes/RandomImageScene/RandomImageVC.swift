@@ -8,19 +8,31 @@
 import UIKit
 
 protocol IRandomImageVC: AnyObject {
-    func render()
+    func render(with image: UIImage)
 }
 
 final class RandomImageVC: UIViewController {
     
     private let testLabel = UILabel()
     private var mainImage = UIImageView()
-    private let getButton = UIButton(configuration: .filled())
+    private let goButton = UIButton(configuration: .filled())
+    
+    var presenter: IRandomImagePresenter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
+    }
+}
+
+//MARK: - Actions
+
+private extension RandomImageVC {
+    @objc func touchGoButton() {
+        
+        presenter?.render()
+        print("Нажали кнопку GO")
     }
 }
 
@@ -34,6 +46,7 @@ private extension RandomImageVC {
         setupImageView()
         setupButton()
         setupLayout()
+        addActions()
     }
 }
 
@@ -59,17 +72,20 @@ private extension RandomImageVC {
         mainImage.layer.borderColor = UIColor.white.cgColor
         
     }
-    
-    func setupRandomPhoto() {
-        
-    }
 }
 
 //MARK: - SetupButton
 
 private extension RandomImageVC {
     func setupButton() {
-        getButton.setTitle("GO", for: .normal)
+        goButton.setTitle("GO", for: .normal)
+    }
+    
+    func addActions() {
+        goButton.addTarget(
+            self,
+            action: #selector(touchGoButton),
+            for: .touchUpInside)
     }
 }
 
@@ -79,7 +95,7 @@ private extension RandomImageVC {
     func addSubViews() {
         view.addSubview(testLabel)
         view.addSubview(mainImage)
-        view.addSubview(getButton)
+        view.addSubview(goButton)
     }
 }
 
@@ -89,7 +105,7 @@ private extension RandomImageVC {
     private func setupLayout() {
         testLabel.translatesAutoresizingMaskIntoConstraints = false
         mainImage.translatesAutoresizingMaskIntoConstraints = false
-        getButton.translatesAutoresizingMaskIntoConstraints = false
+        goButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             testLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
@@ -100,19 +116,19 @@ private extension RandomImageVC {
             mainImage.widthAnchor.constraint(equalToConstant: 310),
             mainImage.heightAnchor.constraint(equalToConstant: 510),
             
-            getButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
-            getButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
-            getButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
+            goButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
+            goButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
+            goButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
             
         ])
     }
 }
 
-
 //MARK: - Protocole
 
 extension RandomImageVC: IRandomImageVC {
-    func render() {
-        print("Тут будут данные с экрана")
+    func render(with image: UIImage) {
+            self.mainImage.image = image
+            print("Рендер в нашем вью контроллере закончил работу")
     }
 }

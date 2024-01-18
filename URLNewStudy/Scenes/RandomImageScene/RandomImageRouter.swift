@@ -25,9 +25,17 @@ final class RandomImageRouter {
     }
 }
 
-extension RegisterRouter: IRandomImageRouter {
-//    func routeTo(scene: Any) {
-//        guard let registerTarget = scene as? RegisterRouter.Target else {return}
-//
-//    }
+//TODO: - Заглушка навигации
+
+extension RandomImageRouter: IRandomImageRouter {
+    func routeTo(scene: Any) {
+        guard let randomImageTarget = scene as? RandomImageRouter.Target else {return}
+        
+        switch randomImageTarget {
+        case .loginScene:
+            break
+        case .mainScene:
+            break
+        }
+    }
 }
