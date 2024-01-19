@@ -30,9 +30,8 @@ final class RandomImageVC: UIViewController {
 
 private extension RandomImageVC {
     @objc func touchGoButton() {
-        
-        presenter?.render()
-        print("Нажали кнопку GO")
+            presenter?.render()
+            print("Нажали кнопку GO")
     }
 }
 
@@ -129,6 +128,6 @@ private extension RandomImageVC {
 extension RandomImageVC: IRandomImageVC {
     func render(with image: UIImage) {
             self.mainImage.image = image
-            print("Рендер в нашем вью контроллере закончил работу")
+                print("Рендер в нашем вью контроллере закончил работу")
     }
 }

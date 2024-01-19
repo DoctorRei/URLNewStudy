@@ -32,10 +32,14 @@ final class RandomImagePresenter {
 extension RandomImagePresenter: IRandomImagePresenter {
     func render() {
         var image = UIImage()
+        
         worker.getImage { dataImage in
             image = dataImage
+            
+            self.view.render(with: image)
+            print("render презентера сработал")
         }
-        view.render(with: image)
-        print("render презентера сработал")
     }
+    
 }
+

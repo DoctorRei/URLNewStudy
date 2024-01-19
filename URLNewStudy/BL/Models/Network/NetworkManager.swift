@@ -20,31 +20,35 @@ enum NetworkError: Error {
 
 final class NetworkManager: INetworkManager {
     func fetch<T:Decodable>(_ type: T.Type, from url: URL, completion: @escaping (Result<T, NetworkError>) -> Void) {
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data else {
-                completion(.failure(.noData))
-                print(error?.localizedDescription ?? "no error description")
-                return
-            }
-            
-            let decoder = JSONDecoder()
-            
-            do {
-                let dataModel = try decoder.decode(T.self, from: data)
-                DispatchQueue.main.async {
-                    completion(.success(dataModel))
+       
+        
+            URLSession.shared.dataTask(with: url) { data, _, error in
+                guard let data else {
+                    completion(.failure(.noData))
+                    print(error?.localizedDescription ?? "no error description")
+                    return
                 }
-            } catch {
-                completion(.failure(.DecodingError))
-            }
-        }.resume()
+                
+                let decoder = JSONDecoder()
+                
+                do {
+                    let dataModel = try decoder.decode(T.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(.success(dataModel))
+                    }
+                } catch {
+                    completion(.failure(.DecodingError))
+                }
+            }.resume()
+        
     }
     
     func downloadImage(with url: String, completion: @escaping (Data) -> Void) {
         guard let convertedURL = URL(string: url) else {return}
-        DispatchQueue.global().async {
+        DispatchQueue.main.async {
             guard let imageData = try? Data(contentsOf: convertedURL) else { return}
             completion(imageData)
         }
+            
     }
 }
