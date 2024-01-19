@@ -127,7 +127,9 @@ private extension RandomImageVC {
 
 extension RandomImageVC: IRandomImageVC {
     func render(with image: UIImage) {
+        DispatchQueue.main.async {
             self.mainImage.image = image
-                print("Рендер в нашем вью контроллере закончил работу")
+                    print("Рендер в нашем вью контроллере закончил работу")
+        }
     }
 }

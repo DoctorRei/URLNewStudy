@@ -45,7 +45,7 @@ final class NetworkManager: INetworkManager {
     
     func downloadImage(with url: String, completion: @escaping (Data) -> Void) {
         guard let convertedURL = URL(string: url) else {return}
-        DispatchQueue.main.async {
+        DispatchQueue.global().async {
             guard let imageData = try? Data(contentsOf: convertedURL) else { return}
             completion(imageData)
         }
