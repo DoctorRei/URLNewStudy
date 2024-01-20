@@ -1,0 +1,26 @@
+//
+//  SettingsAssembly.swift
+//  URLNewStudy
+//
+//  Created by Акира on 20.01.2024.
+//
+
+import Foundation
+import UIKit
+
+class SettingsAssembly {
+    
+    let navigationController: UINavigationController
+    
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
+}
+
+extension SettingsAssembly: IBaseAssembly {
+    func configure(viewController: UIViewController) {
+        
+    }    
+}
+
+

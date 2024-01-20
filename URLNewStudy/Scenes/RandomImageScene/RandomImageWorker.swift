@@ -24,8 +24,6 @@ final class RandomImageWorker {
 extension RandomImageWorker: IRandomImageWorker {
     func getImage(completion: @escaping (UIImage) -> Void) {
         //TODO: - Сделать метод, который принимает Set() с юрлами и вкидывает их сюда
-        
-        print("getImage воркера начал работу")
         let url = Links.shinobu.url // пока заглушка, в идеале реализовать фильтры по картинкам
         
         DispatchQueue.global().sync {
@@ -36,7 +34,6 @@ extension RandomImageWorker: IRandomImageWorker {
                         guard let image = UIImage(data: downloadedImage) else { return}
                         DispatchQueue.global().sync {
                             completion(image)
-                            print("getImage получил фотку")
                         }
                     }
                 case .failure(let error):
@@ -44,7 +41,5 @@ extension RandomImageWorker: IRandomImageWorker {
                 }
             }
         }
-        print("getImage завершил успешно")
     }
-    
 }
