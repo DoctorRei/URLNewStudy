@@ -35,7 +35,7 @@ extension RandomImagePresenter: IRandomImagePresenter {
         
         worker.getImage { dataImage in
             image = dataImage
-            self.view.render(with: image)
+            self.view.render(with: image) 
         }
     }
     

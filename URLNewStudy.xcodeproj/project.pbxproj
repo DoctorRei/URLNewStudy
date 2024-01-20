@@ -26,6 +26,10 @@
 		E99C53A52B5C2433009DF497 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C53A42B5C2433009DF497 /* SettingsViewController.swift */; };
 		E99C53A72B5C2440009DF497 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C53A62B5C2440009DF497 /* SettingsPresenter.swift */; };
 		E99C53A92B5C2449009DF497 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C53A82B5C2449009DF497 /* SettingsRouter.swift */; };
+		E99C53AB2B5C2933009DF497 /* FavoritesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C53AA2B5C2933009DF497 /* FavoritesAssembly.swift */; };
+		E99C53AD2B5C294E009DF497 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C53AC2B5C294E009DF497 /* FavoritesViewController.swift */; };
+		E99C53AF2B5C29B1009DF497 /* FavoritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C53AE2B5C29B1009DF497 /* FavoritesPresenter.swift */; };
+		E99C53B12B5C29E9009DF497 /* FavoritesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C53B02B5C29E9009DF497 /* FavoritesRouter.swift */; };
 		E9A150462B38471600AB2799 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A150452B38471600AB2799 /* LoginViewController.swift */; };
 		E9A591942B4ED8AB00A498D3 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A591932B4ED8AB00A498D3 /* LoginWorker.swift */; };
 		E9A7996B2B519FB1005220F2 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A7996A2B519FB1005220F2 /* KeychainManager.swift */; };
@@ -61,6 +65,10 @@
 		E99C53A42B5C2433009DF497 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E99C53A62B5C2440009DF497 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		E99C53A82B5C2449009DF497 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
+		E99C53AA2B5C2933009DF497 /* FavoritesAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesAssembly.swift; sourceTree = "<group>"; };
+		E99C53AC2B5C294E009DF497 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		E99C53AE2B5C29B1009DF497 /* FavoritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPresenter.swift; sourceTree = "<group>"; };
+		E99C53B02B5C29E9009DF497 /* FavoritesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRouter.swift; sourceTree = "<group>"; };
 		E9A150452B38471600AB2799 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E9A591932B4ED8AB00A498D3 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		E9A7996A2B519FB1005220F2 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
@@ -180,6 +188,10 @@
 		E99C53A12B5C235E009DF497 /* FavoritesScene */ = {
 			isa = PBXGroup;
 			children = (
+				E99C53AA2B5C2933009DF497 /* FavoritesAssembly.swift */,
+				E99C53AC2B5C294E009DF497 /* FavoritesViewController.swift */,
+				E99C53AE2B5C29B1009DF497 /* FavoritesPresenter.swift */,
+				E99C53B02B5C29E9009DF497 /* FavoritesRouter.swift */,
 			);
 			path = FavoritesScene;
 			sourceTree = "<group>";
@@ -311,6 +323,7 @@
 				E9958D032B35E0A3001B4290 /* AppDelegate.swift in Sources */,
 				E99C53A32B5C2421009DF497 /* SettingsAssembly.swift in Sources */,
 				E9AB5FF22B4967C400297486 /* LoginPresenter.swift in Sources */,
+				E99C53B12B5C29E9009DF497 /* FavoritesRouter.swift in Sources */,
 				E97DE5412B5558F0003EC6EC /* NetworkManager.swift in Sources */,
 				E9958D0D2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld in Sources */,
 				E996DD3E2B4ABE7C003700A4 /* RegisterAssembly.swift in Sources */,
@@ -321,14 +334,17 @@
 				E97DE5482B557D2B003EC6EC /* JSon.swift in Sources */,
 				E9AB5FFF2B4991D300297486 /* RandomImageRouter.swift in Sources */,
 				E996DD422B4ABE91003700A4 /* RegisterPresenter.swift in Sources */,
+				E99C53AB2B5C2933009DF497 /* FavoritesAssembly.swift in Sources */,
 				E99C53A72B5C2440009DF497 /* SettingsPresenter.swift in Sources */,
 				E9958D052B35E0A3001B4290 /* SceneDelegate.swift in Sources */,
 				E9972C392B59453F00413AB2 /* RandomImageWorker.swift in Sources */,
+				E99C53AF2B5C29B1009DF497 /* FavoritesPresenter.swift in Sources */,
 				E99C53A92B5C2449009DF497 /* SettingsRouter.swift in Sources */,
 				E9AB5FED2B49647E00297486 /* UserModel.swift in Sources */,
 				E9A150462B38471600AB2799 /* LoginViewController.swift in Sources */,
 				E9AB5FFB2B4991B700297486 /* RandomImageAssembly.swift in Sources */,
 				E996DD442B4ABE9B003700A4 /* RegisterRouter.swift in Sources */,
+				E99C53AD2B5C294E009DF497 /* FavoritesViewController.swift in Sources */,
 				E97DE5462B557D1E003EC6EC /* Links.swift in Sources */,
 				E9AB5FF92B496C2F00297486 /* LoginRouter.swift in Sources */,
 				E9A591942B4ED8AB00A498D3 /* LoginWorker.swift in Sources */,
