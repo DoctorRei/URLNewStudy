@@ -14,5 +14,12 @@ protocol IBaseAssembly {
 protocol IBaseRouting {
     func routeTo(scene: Any)
     init(navigationController: UINavigationController)
+}
+
+protocol IBaseTabBar {
+    func createTabBar() -> UIViewController
     
+    func createRandomImageViewController() -> UIViewController
+    func createSettingsViewController() -> UIViewController
+    func createFavoritesViewController() -> UIViewController
 }

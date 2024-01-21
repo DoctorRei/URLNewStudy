@@ -17,7 +17,7 @@ class RandomImageAssembly {
     }
 }
 
-extension RandomImageAssembly: IBaseAssembly {
+ extension RandomImageAssembly: IBaseAssembly {
     func configure(viewController: UIViewController) {
         guard let randomImgVC = viewController as? RandomImageVC else { return }
         let router = RandomImageRouter(navigationController: navigationController)

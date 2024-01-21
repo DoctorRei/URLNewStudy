@@ -18,7 +18,7 @@ class SettingsAssembly {
 }
 
 extension SettingsAssembly: IBaseAssembly {
-    func configure(viewController: UIViewController) {
+     func configure(viewController: UIViewController) {
         guard let settingsVC = viewController as? SettingsViewController else { return}
         
         let router = SettingsRouter(navigationController: navigationController)

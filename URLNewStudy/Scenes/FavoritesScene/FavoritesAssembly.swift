@@ -18,7 +18,7 @@ final class FavoritesAssembly {
 }
 
 extension FavoritesAssembly: IBaseAssembly {
-    func configure(viewController: UIViewController) {
+     func configure(viewController: UIViewController) {
         guard let favoritesVC = viewController as? FavoritesViewController else {return}
         let router = FavoritesRouter(navigationController: navigationController)
         let presenter = FavoritesPresenter(router: router)
