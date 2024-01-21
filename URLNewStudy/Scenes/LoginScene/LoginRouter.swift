@@ -16,7 +16,7 @@ final class LoginRouter {
     
     enum Target {
         case registerScene(name: String, password: Data)
-        case randomImageScene
+        case tabBarController
     }
     
     let navigationController: UINavigationController
@@ -55,12 +55,12 @@ extension LoginRouter: ILoginRouter {
             
             navigationController.pushViewController(registerVC, animated: true)
             
-        case .randomImageScene:
-            let randomImageVC = RandomImageVC()
-            let randomImageAssembly = RandomImageAssembly(navigationController: navigationController)
-            randomImageAssembly.configure(viewController: randomImageVC)
+        case .tabBarController:
+            let tabBarVC = TabBarView()
+            let tabBarAssembly = TabBarAssembly(navigationController: navigationController)
+            tabBarAssembly.configure(viewController: tabBarVC)
             
-            navigationController.pushViewController(randomImageVC, animated: true)
+            navigationController.pushViewController(tabBarVC, animated: true)
         }
     }
 }

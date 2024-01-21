@@ -16,9 +16,7 @@ protocol IBaseRouting {
     init(navigationController: UINavigationController)
 }
 
-protocol IBaseTabBar {
-    func createTabBar() -> UIViewController
-    
+protocol IBaseTabBar {    
     func createRandomImageViewController() -> UIViewController
     func createSettingsViewController() -> UIViewController
     func createFavoritesViewController() -> UIViewController

@@ -18,25 +18,27 @@ final class TabBarAssembly {
 
 extension TabBarAssembly: IBaseAssembly {
     func configure(viewController: UIViewController) {
-        guard let tabBarController = viewController as? TabBarView else { return }
-        let randomImgVC = createRandomImageViewController()
-        let settingsVC = createSettingsViewController()
-        let favoritesVC = createFavoritesViewController()
+        guard let tabBarVC = viewController as? TabBarView else { return}
+        let presenter = TabBarPresenter(view: tabBarVC)
         
-        tabBarController.setupControllers(controllers: [randomImgVC, settingsVC, favoritesVC])
+        tabBarVC.presenter = presenter
+        presenter.view = tabBarVC
+        
+        guard let randomImgVC = createRandomImageViewController() as? RandomImageVC else { return}
+        randomImgVC.title = "First"
+        guard let settingsVC = createSettingsViewController() as? SettingsViewController else {return}
+        settingsVC.title = "Second"
+        guard let favoritesVC = createFavoritesViewController() as? FavoritesViewController else {return}
+        settingsVC.title = "Third"
+        
+        tabBarVC.presenter?.buildTabBar(
+            with: randomImgVC,
+            seccondItemVC: settingsVC,
+            thirdItemVC: favoritesVC)
     }
 }
 
 extension TabBarAssembly: IBaseTabBar {
-    func createTabBar() -> UIViewController {
-        let tabBarView = TabBarView()
-        let presenter = TabBarPresenter(view: tabBarView )
-        
-        tabBarView.presenter = presenter
-        
-        return tabBarView
-    }
-    
     func createRandomImageViewController() -> UIViewController {
         let randomImgVC = RandomImageVC()
         let router = RandomImageRouter(navigationController: navigationController)
@@ -70,7 +72,7 @@ extension TabBarAssembly: IBaseTabBar {
         let presenter = FavoritesPresenter(router: router)
         
         presenter.view = favoritesVC
-        favoritesVC.presenter = presenter        
+        favoritesVC.presenter = presenter
         
         return favoritesVC
     }

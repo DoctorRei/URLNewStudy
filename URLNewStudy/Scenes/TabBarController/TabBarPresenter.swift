@@ -24,7 +24,9 @@ final class TabBarPresenter {
 
 extension TabBarPresenter: ITabBarPresenter {
     func buildTabBar(with firstItemVC: UIViewController, seccondItemVC: UIViewController, thirdItemVC: UIViewController) {
-        
+
         self.view?.setupControllers(controllers: [firstItemVC, seccondItemVC, thirdItemVC] )
     }
+    
+    
 }

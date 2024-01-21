@@ -18,7 +18,7 @@ class TabBarView: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .red
     }
     
 
@@ -26,7 +26,7 @@ class TabBarView: UITabBarController {
 
 extension TabBarView: ITabBarView {
     func setupControllers(controllers: [UIViewController]) {
-        tabBarController?.setViewControllers(controllers, animated: true)
+        setViewControllers(controllers, animated: true)
     }
     
 }
