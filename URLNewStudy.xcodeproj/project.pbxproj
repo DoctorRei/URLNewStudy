@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E97DDC802B5D5514005D7C8B /* ImagesForTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DDC7F2B5D5514005D7C8B /* ImagesForTabBar.swift */; };
 		E97DE5412B5558F0003EC6EC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5402B5558F0003EC6EC /* NetworkManager.swift */; };
 		E97DE5462B557D1E003EC6EC /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5452B557D1E003EC6EC /* Links.swift */; };
 		E97DE5482B557D2B003EC6EC /* JSon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5472B557D2B003EC6EC /* JSon.swift */; };
@@ -16,6 +17,9 @@
 		E9958D0D2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9958D0B2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld */; };
 		E9958D0F2B35E0A4001B4290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9958D0E2B35E0A4001B4290 /* Assets.xcassets */; };
 		E9958D122B35E0A4001B4290 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9958D102B35E0A4001B4290 /* LaunchScreen.storyboard */; };
+		E99693E32B5D8F3D003C7D47 /* SettingsTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99693E22B5D8F3D003C7D47 /* SettingsTabBarButton.swift */; };
+		E99693E52B5D8F4A003C7D47 /* RandomImageTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99693E42B5D8F4A003C7D47 /* RandomImageTabBarButton.swift */; };
+		E99693E72B5D8F5A003C7D47 /* FavoritesTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99693E62B5D8F5A003C7D47 /* FavoritesTabBarButton.swift */; };
 		E996B13E2B4B22260025ECD6 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996B13D2B4B22260025ECD6 /* CustomTextField.swift */; };
 		E996DD3E2B4ABE7C003700A4 /* RegisterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996DD3D2B4ABE7C003700A4 /* RegisterAssembly.swift */; };
 		E996DD402B4ABE88003700A4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996DD3F2B4ABE88003700A4 /* RegisterViewController.swift */; };
@@ -47,6 +51,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E97DDC7F2B5D5514005D7C8B /* ImagesForTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesForTabBar.swift; sourceTree = "<group>"; };
 		E97DE5402B5558F0003EC6EC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E97DE5452B557D1E003EC6EC /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		E97DE5472B557D2B003EC6EC /* JSon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSon.swift; sourceTree = "<group>"; };
@@ -58,6 +63,9 @@
 		E9958D0E2B35E0A4001B4290 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9958D112B35E0A4001B4290 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9958D132B35E0A4001B4290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E99693E22B5D8F3D003C7D47 /* SettingsTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabBarButton.swift; sourceTree = "<group>"; };
+		E99693E42B5D8F4A003C7D47 /* RandomImageTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomImageTabBarButton.swift; sourceTree = "<group>"; };
+		E99693E62B5D8F5A003C7D47 /* FavoritesTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTabBarButton.swift; sourceTree = "<group>"; };
 		E996B13D2B4B22260025ECD6 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		E996DD3D2B4ABE7C003700A4 /* RegisterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAssembly.swift; sourceTree = "<group>"; };
 		E996DD3F2B4ABE88003700A4 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -149,10 +157,29 @@
 			path = URLNewStudy;
 			sourceTree = "<group>";
 		};
-		E996B13C2B4B22090025ECD6 /* CustomViews */ = {
+		E99693E02B5D8EBE003C7D47 /* CustomTextField */ = {
 			isa = PBXGroup;
 			children = (
 				E996B13D2B4B22260025ECD6 /* CustomTextField.swift */,
+			);
+			path = CustomTextField;
+			sourceTree = "<group>";
+		};
+		E99693E12B5D8ED1003C7D47 /* TabBarButtons */ = {
+			isa = PBXGroup;
+			children = (
+				E99693E22B5D8F3D003C7D47 /* SettingsTabBarButton.swift */,
+				E99693E42B5D8F4A003C7D47 /* RandomImageTabBarButton.swift */,
+				E99693E62B5D8F5A003C7D47 /* FavoritesTabBarButton.swift */,
+			);
+			path = TabBarButtons;
+			sourceTree = "<group>";
+		};
+		E996B13C2B4B22090025ECD6 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				E99693E12B5D8ED1003C7D47 /* TabBarButtons */,
+				E99693E02B5D8EBE003C7D47 /* CustomTextField */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -243,6 +270,7 @@
 				E97DE5442B557D05003EC6EC /* Network */,
 				E9AB5FEC2B49647E00297486 /* UserModel.swift */,
 				E9A7996A2B519FB1005220F2 /* KeychainManager.swift */,
+				E97DDC7F2B5D5514005D7C8B /* ImagesForTabBar.swift */,
 				E9958D0E2B35E0A4001B4290 /* Assets.xcassets */,
 			);
 			path = Models;
@@ -346,13 +374,16 @@
 				E97DE5412B5558F0003EC6EC /* NetworkManager.swift in Sources */,
 				E9958D0D2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld in Sources */,
 				E996DD3E2B4ABE7C003700A4 /* RegisterAssembly.swift in Sources */,
+				E99693E32B5D8F3D003C7D47 /* SettingsTabBarButton.swift in Sources */,
 				E9AB5FF72B496AA500297486 /* MVXProtocol.swift in Sources */,
 				E996DD402B4ABE88003700A4 /* RegisterViewController.swift in Sources */,
 				E9AB5FFD2B4991CA00297486 /* RandomImagePresenter.swift in Sources */,
+				E99693E52B5D8F4A003C7D47 /* RandomImageTabBarButton.swift in Sources */,
 				E996B13E2B4B22260025ECD6 /* CustomTextField.swift in Sources */,
 				E97DE5482B557D2B003EC6EC /* JSon.swift in Sources */,
 				E9AB5FFF2B4991D300297486 /* RandomImageRouter.swift in Sources */,
 				E996DD422B4ABE91003700A4 /* RegisterPresenter.swift in Sources */,
+				E97DDC802B5D5514005D7C8B /* ImagesForTabBar.swift in Sources */,
 				E99C53AB2B5C2933009DF497 /* FavoritesAssembly.swift in Sources */,
 				E99C53A72B5C2440009DF497 /* SettingsPresenter.swift in Sources */,
 				E9958D052B35E0A3001B4290 /* SceneDelegate.swift in Sources */,
@@ -368,6 +399,7 @@
 				E97DE5462B557D1E003EC6EC /* Links.swift in Sources */,
 				E9AB5FF92B496C2F00297486 /* LoginRouter.swift in Sources */,
 				E9A591942B4ED8AB00A498D3 /* LoginWorker.swift in Sources */,
+				E99693E72B5D8F5A003C7D47 /* FavoritesTabBarButton.swift in Sources */,
 				E99C53A52B5C2433009DF497 /* SettingsViewController.swift in Sources */,
 				E9AB5FF42B496A6F00297486 /* LoginAssembly.swift in Sources */,
 				E9A7996B2B519FB1005220F2 /* KeychainManager.swift in Sources */,

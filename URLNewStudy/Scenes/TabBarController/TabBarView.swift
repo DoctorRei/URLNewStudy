@@ -11,17 +11,21 @@ protocol ITabBarView: AnyObject {
     func setupControllers(controllers: [UIViewController])
 }
 
-class TabBarView: UITabBarController {
+final class TabBarView: UITabBarController {
 
     var presenter: ITabBarPresenter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .red
+        
     }
-    
+}
 
+extension TabBarView {
+    func createTabBarButton() -> UIButton {
+        return UIButton()
+    }
 }
 
 extension TabBarView: ITabBarView {

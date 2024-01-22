@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 
+protocol ITabBarAssembly {
+    func createRandomImageViewController() -> UIViewController
+    func createSettingsViewController() -> UIViewController
+    func createFavoritesViewController() -> UIViewController
+}
+
 final class TabBarAssembly {
     private let navigationController: UINavigationController
     
@@ -24,11 +30,22 @@ extension TabBarAssembly: IBaseAssembly {
         tabBarVC.presenter = presenter
         presenter.view = tabBarVC
         
+        //TODO: - Настройку реализовать потом адекватно
+        
         guard let randomImgVC = createRandomImageViewController() as? RandomImageVC else { return}
         randomImgVC.title = "First"
+        randomImgVC.tabBarItem.image = UIImage(systemName: "sparkles")
+        randomImgVC.tabBarItem.selectedImage?.withTintColor(.yellow)
+        randomImgVC.tabBarItem.selectedImage?.withTintColor(.yellow, renderingMode: .automatic)
+        
         guard let settingsVC = createSettingsViewController() as? SettingsViewController else {return}
         settingsVC.title = "Second"
+        settingsVC.tabBarItem.image = UIImage(systemName: "gearshape")
+        settingsVC.tabBarItem.selectedImage = UIImage(systemName: "gearshape.fill")
+        
         guard let favoritesVC = createFavoritesViewController() as? FavoritesViewController else {return}
+        favoritesVC.tabBarItem.image = UIImage(systemName: "heart")
+        favoritesVC.tabBarItem.selectedImage = UIImage(systemName: "heart.fill")
         settingsVC.title = "Third"
         
         tabBarVC.presenter?.buildTabBar(
@@ -38,7 +55,7 @@ extension TabBarAssembly: IBaseAssembly {
     }
 }
 
-extension TabBarAssembly: IBaseTabBar {
+extension TabBarAssembly: ITabBarAssembly {
     func createRandomImageViewController() -> UIViewController {
         let randomImgVC = RandomImageVC()
         let router = RandomImageRouter(navigationController: navigationController)
