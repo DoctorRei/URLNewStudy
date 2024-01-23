@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E97DDC802B5D5514005D7C8B /* ImagesForTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DDC7F2B5D5514005D7C8B /* ImagesForTabBar.swift */; };
+		E97DDC802B5D5514005D7C8B /* LikedGirls.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DDC7F2B5D5514005D7C8B /* LikedGirls.swift */; };
 		E97DE5412B5558F0003EC6EC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5402B5558F0003EC6EC /* NetworkManager.swift */; };
 		E97DE5462B557D1E003EC6EC /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5452B557D1E003EC6EC /* Links.swift */; };
 		E97DE5482B557D2B003EC6EC /* JSon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5472B557D2B003EC6EC /* JSon.swift */; };
+		E980C5712B5EE2DB0022674C /* FavoritesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E980C5702B5EE2DB0022674C /* FavoritesViewCell.swift */; };
 		E9958D032B35E0A3001B4290 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9958D022B35E0A3001B4290 /* AppDelegate.swift */; };
 		E9958D052B35E0A3001B4290 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9958D042B35E0A3001B4290 /* SceneDelegate.swift */; };
 		E9958D072B35E0A3001B4290 /* RandomImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9958D062B35E0A3001B4290 /* RandomImageVC.swift */; };
@@ -51,10 +52,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E97DDC7F2B5D5514005D7C8B /* ImagesForTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesForTabBar.swift; sourceTree = "<group>"; };
+		E97DDC7F2B5D5514005D7C8B /* LikedGirls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedGirls.swift; sourceTree = "<group>"; };
 		E97DE5402B5558F0003EC6EC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E97DE5452B557D1E003EC6EC /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		E97DE5472B557D2B003EC6EC /* JSon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSon.swift; sourceTree = "<group>"; };
+		E980C5702B5EE2DB0022674C /* FavoritesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewCell.swift; sourceTree = "<group>"; };
 		E9958CFF2B35E0A3001B4290 /* URLNewStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URLNewStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9958D022B35E0A3001B4290 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9958D042B35E0A3001B4290 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +126,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		E980C56F2B5EE2BC0022674C /* CustomFavoritesCell */ = {
+			isa = PBXGroup;
+			children = (
+				E980C5702B5EE2DB0022674C /* FavoritesViewCell.swift */,
+			);
+			path = CustomFavoritesCell;
+			sourceTree = "<group>";
+		};
 		E9958CF62B35E0A3001B4290 = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +188,7 @@
 		E996B13C2B4B22090025ECD6 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				E980C56F2B5EE2BC0022674C /* CustomFavoritesCell */,
 				E99693E12B5D8ED1003C7D47 /* TabBarButtons */,
 				E99693E02B5D8EBE003C7D47 /* CustomTextField */,
 			);
@@ -270,7 +281,7 @@
 				E97DE5442B557D05003EC6EC /* Network */,
 				E9AB5FEC2B49647E00297486 /* UserModel.swift */,
 				E9A7996A2B519FB1005220F2 /* KeychainManager.swift */,
-				E97DDC7F2B5D5514005D7C8B /* ImagesForTabBar.swift */,
+				E97DDC7F2B5D5514005D7C8B /* LikedGirls.swift */,
 				E9958D0E2B35E0A4001B4290 /* Assets.xcassets */,
 			);
 			path = Models;
@@ -374,6 +385,7 @@
 				E97DE5412B5558F0003EC6EC /* NetworkManager.swift in Sources */,
 				E9958D0D2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld in Sources */,
 				E996DD3E2B4ABE7C003700A4 /* RegisterAssembly.swift in Sources */,
+				E980C5712B5EE2DB0022674C /* FavoritesViewCell.swift in Sources */,
 				E99693E32B5D8F3D003C7D47 /* SettingsTabBarButton.swift in Sources */,
 				E9AB5FF72B496AA500297486 /* MVXProtocol.swift in Sources */,
 				E996DD402B4ABE88003700A4 /* RegisterViewController.swift in Sources */,
@@ -383,7 +395,7 @@
 				E97DE5482B557D2B003EC6EC /* JSon.swift in Sources */,
 				E9AB5FFF2B4991D300297486 /* RandomImageRouter.swift in Sources */,
 				E996DD422B4ABE91003700A4 /* RegisterPresenter.swift in Sources */,
-				E97DDC802B5D5514005D7C8B /* ImagesForTabBar.swift in Sources */,
+				E97DDC802B5D5514005D7C8B /* LikedGirls.swift in Sources */,
 				E99C53AB2B5C2933009DF497 /* FavoritesAssembly.swift in Sources */,
 				E99C53A72B5C2440009DF497 /* SettingsPresenter.swift in Sources */,
 				E9958D052B35E0A3001B4290 /* SceneDelegate.swift in Sources */,
