@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E97DDC802B5D5514005D7C8B /* LikedGirls.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DDC7F2B5D5514005D7C8B /* LikedGirls.swift */; };
+		E97A4CE82B61380B0040AED6 /* LikedGirlsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A4CE72B61380B0040AED6 /* LikedGirlsViewCell.swift */; };
 		E97DE5412B5558F0003EC6EC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5402B5558F0003EC6EC /* NetworkManager.swift */; };
 		E97DE5462B557D1E003EC6EC /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5452B557D1E003EC6EC /* Links.swift */; };
 		E97DE5482B557D2B003EC6EC /* JSon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5472B557D2B003EC6EC /* JSon.swift */; };
-		E980C5712B5EE2DB0022674C /* FavoritesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E980C5702B5EE2DB0022674C /* FavoritesViewCell.swift */; };
 		E9958D032B35E0A3001B4290 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9958D022B35E0A3001B4290 /* AppDelegate.swift */; };
 		E9958D052B35E0A3001B4290 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9958D042B35E0A3001B4290 /* SceneDelegate.swift */; };
 		E9958D072B35E0A3001B4290 /* RandomImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9958D062B35E0A3001B4290 /* RandomImageVC.swift */; };
@@ -38,6 +37,7 @@
 		E99C53B42B5C2D7C009DF497 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C53B32B5C2D7C009DF497 /* TabBarView.swift */; };
 		E99C53B62B5C2DCC009DF497 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C53B52B5C2DCC009DF497 /* TabBarPresenter.swift */; };
 		E99C53B82B5C2ED9009DF497 /* TabBarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C53B72B5C2ED9009DF497 /* TabBarAssembly.swift */; };
+		E99F4ABA2B60474F00D3B569 /* TestGirls.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99F4AB92B60474F00D3B569 /* TestGirls.swift */; };
 		E9A150462B38471600AB2799 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A150452B38471600AB2799 /* LoginViewController.swift */; };
 		E9A591942B4ED8AB00A498D3 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A591932B4ED8AB00A498D3 /* LoginWorker.swift */; };
 		E9A7996B2B519FB1005220F2 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A7996A2B519FB1005220F2 /* KeychainManager.swift */; };
@@ -52,11 +52,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E97DDC7F2B5D5514005D7C8B /* LikedGirls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedGirls.swift; sourceTree = "<group>"; };
+		E97A4CE72B61380B0040AED6 /* LikedGirlsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedGirlsViewCell.swift; sourceTree = "<group>"; };
 		E97DE5402B5558F0003EC6EC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E97DE5452B557D1E003EC6EC /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		E97DE5472B557D2B003EC6EC /* JSon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSon.swift; sourceTree = "<group>"; };
-		E980C5702B5EE2DB0022674C /* FavoritesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewCell.swift; sourceTree = "<group>"; };
 		E9958CFF2B35E0A3001B4290 /* URLNewStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URLNewStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9958D022B35E0A3001B4290 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9958D042B35E0A3001B4290 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +84,7 @@
 		E99C53B32B5C2D7C009DF497 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		E99C53B52B5C2DCC009DF497 /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
 		E99C53B72B5C2ED9009DF497 /* TabBarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAssembly.swift; sourceTree = "<group>"; };
+		E99F4AB92B60474F00D3B569 /* TestGirls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGirls.swift; sourceTree = "<group>"; };
 		E9A150452B38471600AB2799 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E9A591932B4ED8AB00A498D3 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		E9A7996A2B519FB1005220F2 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 		E980C56F2B5EE2BC0022674C /* CustomFavoritesCell */ = {
 			isa = PBXGroup;
 			children = (
-				E980C5702B5EE2DB0022674C /* FavoritesViewCell.swift */,
+				E97A4CE72B61380B0040AED6 /* LikedGirlsViewCell.swift */,
 			);
 			path = CustomFavoritesCell;
 			sourceTree = "<group>";
@@ -281,7 +281,7 @@
 				E97DE5442B557D05003EC6EC /* Network */,
 				E9AB5FEC2B49647E00297486 /* UserModel.swift */,
 				E9A7996A2B519FB1005220F2 /* KeychainManager.swift */,
-				E97DDC7F2B5D5514005D7C8B /* LikedGirls.swift */,
+				E99F4AB92B60474F00D3B569 /* TestGirls.swift */,
 				E9958D0E2B35E0A4001B4290 /* Assets.xcassets */,
 			);
 			path = Models;
@@ -375,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E97A4CE82B61380B0040AED6 /* LikedGirlsViewCell.swift in Sources */,
 				E9958D072B35E0A3001B4290 /* RandomImageVC.swift in Sources */,
 				E99C53B82B5C2ED9009DF497 /* TabBarAssembly.swift in Sources */,
 				E9958D032B35E0A3001B4290 /* AppDelegate.swift in Sources */,
@@ -385,7 +386,6 @@
 				E97DE5412B5558F0003EC6EC /* NetworkManager.swift in Sources */,
 				E9958D0D2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld in Sources */,
 				E996DD3E2B4ABE7C003700A4 /* RegisterAssembly.swift in Sources */,
-				E980C5712B5EE2DB0022674C /* FavoritesViewCell.swift in Sources */,
 				E99693E32B5D8F3D003C7D47 /* SettingsTabBarButton.swift in Sources */,
 				E9AB5FF72B496AA500297486 /* MVXProtocol.swift in Sources */,
 				E996DD402B4ABE88003700A4 /* RegisterViewController.swift in Sources */,
@@ -395,7 +395,6 @@
 				E97DE5482B557D2B003EC6EC /* JSon.swift in Sources */,
 				E9AB5FFF2B4991D300297486 /* RandomImageRouter.swift in Sources */,
 				E996DD422B4ABE91003700A4 /* RegisterPresenter.swift in Sources */,
-				E97DDC802B5D5514005D7C8B /* LikedGirls.swift in Sources */,
 				E99C53AB2B5C2933009DF497 /* FavoritesAssembly.swift in Sources */,
 				E99C53A72B5C2440009DF497 /* SettingsPresenter.swift in Sources */,
 				E9958D052B35E0A3001B4290 /* SceneDelegate.swift in Sources */,
@@ -411,6 +410,7 @@
 				E97DE5462B557D1E003EC6EC /* Links.swift in Sources */,
 				E9AB5FF92B496C2F00297486 /* LoginRouter.swift in Sources */,
 				E9A591942B4ED8AB00A498D3 /* LoginWorker.swift in Sources */,
+				E99F4ABA2B60474F00D3B569 /* TestGirls.swift in Sources */,
 				E99693E72B5D8F5A003C7D47 /* FavoritesTabBarButton.swift in Sources */,
 				E99C53A52B5C2433009DF497 /* SettingsViewController.swift in Sources */,
 				E9AB5FF42B496A6F00297486 /* LoginAssembly.swift in Sources */,

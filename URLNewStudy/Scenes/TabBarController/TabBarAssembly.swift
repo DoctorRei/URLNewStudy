@@ -46,7 +46,7 @@ extension TabBarAssembly: IBaseAssembly {
         guard let favoritesVC = createFavoritesViewController() as? FavoritesViewController else {return}
         favoritesVC.tabBarItem.image = UIImage(systemName: "heart")
         favoritesVC.tabBarItem.selectedImage = UIImage(systemName: "heart.fill")
-        settingsVC.title = "Third"
+        favoritesVC.title = "Third"
         
         tabBarVC.presenter?.buildTabBar(
             with: randomImgVC,

@@ -14,105 +14,67 @@ protocol IFavoritesViewController: AnyObject {
 
 final class FavoritesViewController: UIViewController {
     
-    var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<GirlCollection, LikedGirls>!
-    var currentSnapshot: NSDiffableDataSourceSnapshot<GirlCollection, LikedGirls>!
-    
     var presenter: IFavoritesPresenter?
+    var collectionView: UICollectionView!
+    var source = Source.randomPhotos(with: 20)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
-        configureDataSource()
-    }
-    
-    func setupView() {
-        view.backgroundColor = .cyan
-        navigationItem.title = "Favorites"
         setupCollectionView()
-    }
-}
-
-private extension FavoritesViewController {
-    func setupSubviews() {
-        // скорее всего нужно будет брать сетапКолекшнвью,получать оттуда коллекцию и присваивать как эддсабвью
-    }
-}
-
-private extension FavoritesViewController {
-    func getSectionProvider(with sectionIndex: Int, and layoutEnvironment: NSCollectionLayoutEnvironment)
-    -> NSCollectionLayoutSection? {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0)
-        )
         
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupFractionalWidth = CGFloat(layoutEnvironment.container.effectiveContentSize.width > 500 ? 0.425 : 0.85)
-        
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(groupFractionalWidth),
-            heightDimension: .absolute(250)
-        )
-        
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: groupSize,
-            subitems: [item]
-        )
-        
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPagingCentered
-        section.interGroupSpacing = 20
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
-        
-        return section
     }
     
-    func createLayout() -> UICollectionViewLayout {
-        let configure = UICollectionViewCompositionalLayoutConfiguration()
-        configure.interSectionSpacing = 20
+    func setupCollectionView() {
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: setupFlowLayout())
+        collectionView.dataSource = self
+        collectionView.backgroundColor = .cyan
         
-        let layout = UICollectionViewCompositionalLayout(sectionProvider: getSectionProvider, configuration: configure)
+        view.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+        
+        collectionView.register(
+            LikedGirlsViewCell.self,
+            forCellWithReuseIdentifier: "\(LikedGirlsViewCell.self)"
+        )
+    }
+    
+    func setupFlowLayout() -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 10
+        layout.sectionInset = .init(top: 10, left: 25, bottom: 10, right: 25)
         
         return layout
     }
 }
 
 private extension FavoritesViewController {
-    func setupCollectionView() {
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .gray
-        
+    func setupSubviews() {
         view.addSubview(collectionView)
-        NSLayoutConstraint.activate([
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
     }
 }
 
-private extension FavoritesViewController {
-    func configureDataSource() {
-        let cellRegistration = UICollectionView.CellRegistration<FavoritesViewCell, LikedGirls> { cell, indexPath, image in
-            cell.configure(with: image)
-        }
+extension FavoritesViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        source.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "\(LikedGirlsViewCell.self)",
+            for: indexPath
+        ) as? LikedGirlsViewCell else { return UICollectionViewCell()}
         
-        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { collectionView, indexPath, girl in
-            collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: girl)
-        }
-        
-        currentSnapshot = NSDiffableDataSourceSnapshot()
-        
-        GirlCollection.generateCollections().forEach { girl in
-            currentSnapshot.appendSections([girl])
-            currentSnapshot.appendItems(girl.girls)
-        }
-        
-        dataSource.apply(currentSnapshot, animatingDifferences: false)
+        cell.imageView.image = UIImage(named: source[indexPath.item].imageName)
+        return cell
     }
 }
 
