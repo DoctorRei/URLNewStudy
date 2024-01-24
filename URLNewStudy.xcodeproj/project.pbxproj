@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E97A4CE82B61380B0040AED6 /* LikedGirlsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A4CE72B61380B0040AED6 /* LikedGirlsViewCell.swift */; };
+		E97A4CED2B615F9C0040AED6 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A4CEC2B615F9C0040AED6 /* StorageManager.swift */; };
+		E97A4CEF2B6167CE0040AED6 /* SavedImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A4CEE2B6167CE0040AED6 /* SavedImages.swift */; };
 		E97DE5412B5558F0003EC6EC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5402B5558F0003EC6EC /* NetworkManager.swift */; };
 		E97DE5462B557D1E003EC6EC /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5452B557D1E003EC6EC /* Links.swift */; };
 		E97DE5482B557D2B003EC6EC /* JSon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5472B557D2B003EC6EC /* JSon.swift */; };
@@ -17,9 +19,6 @@
 		E9958D0D2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9958D0B2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld */; };
 		E9958D0F2B35E0A4001B4290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9958D0E2B35E0A4001B4290 /* Assets.xcassets */; };
 		E9958D122B35E0A4001B4290 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9958D102B35E0A4001B4290 /* LaunchScreen.storyboard */; };
-		E99693E32B5D8F3D003C7D47 /* SettingsTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99693E22B5D8F3D003C7D47 /* SettingsTabBarButton.swift */; };
-		E99693E52B5D8F4A003C7D47 /* RandomImageTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99693E42B5D8F4A003C7D47 /* RandomImageTabBarButton.swift */; };
-		E99693E72B5D8F5A003C7D47 /* FavoritesTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99693E62B5D8F5A003C7D47 /* FavoritesTabBarButton.swift */; };
 		E996B13E2B4B22260025ECD6 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996B13D2B4B22260025ECD6 /* CustomTextField.swift */; };
 		E996DD3E2B4ABE7C003700A4 /* RegisterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996DD3D2B4ABE7C003700A4 /* RegisterAssembly.swift */; };
 		E996DD402B4ABE88003700A4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996DD3F2B4ABE88003700A4 /* RegisterViewController.swift */; };
@@ -37,11 +36,10 @@
 		E99C53B42B5C2D7C009DF497 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C53B32B5C2D7C009DF497 /* TabBarView.swift */; };
 		E99C53B62B5C2DCC009DF497 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C53B52B5C2DCC009DF497 /* TabBarPresenter.swift */; };
 		E99C53B82B5C2ED9009DF497 /* TabBarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C53B72B5C2ED9009DF497 /* TabBarAssembly.swift */; };
-		E99F4ABA2B60474F00D3B569 /* TestGirls.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99F4AB92B60474F00D3B569 /* TestGirls.swift */; };
+		E99F4ABA2B60474F00D3B569 /* GirlPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99F4AB92B60474F00D3B569 /* GirlPhotos.swift */; };
 		E9A150462B38471600AB2799 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A150452B38471600AB2799 /* LoginViewController.swift */; };
 		E9A591942B4ED8AB00A498D3 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A591932B4ED8AB00A498D3 /* LoginWorker.swift */; };
 		E9A7996B2B519FB1005220F2 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A7996A2B519FB1005220F2 /* KeychainManager.swift */; };
-		E9AB5FED2B49647E00297486 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AB5FEC2B49647E00297486 /* UserModel.swift */; };
 		E9AB5FF22B4967C400297486 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AB5FF12B4967C400297486 /* LoginPresenter.swift */; };
 		E9AB5FF42B496A6F00297486 /* LoginAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AB5FF32B496A6F00297486 /* LoginAssembly.swift */; };
 		E9AB5FF72B496AA500297486 /* MVXProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AB5FF62B496AA500297486 /* MVXProtocol.swift */; };
@@ -53,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		E97A4CE72B61380B0040AED6 /* LikedGirlsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedGirlsViewCell.swift; sourceTree = "<group>"; };
+		E97A4CEC2B615F9C0040AED6 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		E97A4CEE2B6167CE0040AED6 /* SavedImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedImages.swift; sourceTree = "<group>"; };
 		E97DE5402B5558F0003EC6EC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E97DE5452B557D1E003EC6EC /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		E97DE5472B557D2B003EC6EC /* JSon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSon.swift; sourceTree = "<group>"; };
@@ -64,9 +64,6 @@
 		E9958D0E2B35E0A4001B4290 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9958D112B35E0A4001B4290 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9958D132B35E0A4001B4290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E99693E22B5D8F3D003C7D47 /* SettingsTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabBarButton.swift; sourceTree = "<group>"; };
-		E99693E42B5D8F4A003C7D47 /* RandomImageTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomImageTabBarButton.swift; sourceTree = "<group>"; };
-		E99693E62B5D8F5A003C7D47 /* FavoritesTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTabBarButton.swift; sourceTree = "<group>"; };
 		E996B13D2B4B22260025ECD6 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		E996DD3D2B4ABE7C003700A4 /* RegisterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAssembly.swift; sourceTree = "<group>"; };
 		E996DD3F2B4ABE88003700A4 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -84,11 +81,10 @@
 		E99C53B32B5C2D7C009DF497 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		E99C53B52B5C2DCC009DF497 /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
 		E99C53B72B5C2ED9009DF497 /* TabBarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAssembly.swift; sourceTree = "<group>"; };
-		E99F4AB92B60474F00D3B569 /* TestGirls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGirls.swift; sourceTree = "<group>"; };
+		E99F4AB92B60474F00D3B569 /* GirlPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GirlPhotos.swift; sourceTree = "<group>"; };
 		E9A150452B38471600AB2799 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E9A591932B4ED8AB00A498D3 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		E9A7996A2B519FB1005220F2 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
-		E9AB5FEC2B49647E00297486 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		E9AB5FF12B4967C400297486 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		E9AB5FF32B496A6F00297486 /* LoginAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAssembly.swift; sourceTree = "<group>"; };
 		E9AB5FF62B496AA500297486 /* MVXProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVXProtocol.swift; sourceTree = "<group>"; };
@@ -175,21 +171,10 @@
 			path = CustomTextField;
 			sourceTree = "<group>";
 		};
-		E99693E12B5D8ED1003C7D47 /* TabBarButtons */ = {
-			isa = PBXGroup;
-			children = (
-				E99693E22B5D8F3D003C7D47 /* SettingsTabBarButton.swift */,
-				E99693E42B5D8F4A003C7D47 /* RandomImageTabBarButton.swift */,
-				E99693E62B5D8F5A003C7D47 /* FavoritesTabBarButton.swift */,
-			);
-			path = TabBarButtons;
-			sourceTree = "<group>";
-		};
 		E996B13C2B4B22090025ECD6 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				E980C56F2B5EE2BC0022674C /* CustomFavoritesCell */,
-				E99693E12B5D8ED1003C7D47 /* TabBarButtons */,
 				E99693E02B5D8EBE003C7D47 /* CustomTextField */,
 			);
 			path = CustomViews;
@@ -278,10 +263,8 @@
 		E9AB5FEF2B49656C00297486 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E97DE5442B557D05003EC6EC /* Network */,
-				E9AB5FEC2B49647E00297486 /* UserModel.swift */,
-				E9A7996A2B519FB1005220F2 /* KeychainManager.swift */,
-				E99F4AB92B60474F00D3B569 /* TestGirls.swift */,
+				E99F4AB92B60474F00D3B569 /* GirlPhotos.swift */,
+				E97A4CEE2B6167CE0040AED6 /* SavedImages.swift */,
 				E9958D0E2B35E0A4001B4290 /* Assets.xcassets */,
 			);
 			path = Models;
@@ -290,6 +273,9 @@
 		E9AB5FF02B49659500297486 /* BL */ = {
 			isa = PBXGroup;
 			children = (
+				E97DE5442B557D05003EC6EC /* Network */,
+				E97A4CEC2B615F9C0040AED6 /* StorageManager.swift */,
+				E9A7996A2B519FB1005220F2 /* KeychainManager.swift */,
 				E9AB5FEF2B49656C00297486 /* Models */,
 			);
 			path = BL;
@@ -378,6 +364,7 @@
 				E97A4CE82B61380B0040AED6 /* LikedGirlsViewCell.swift in Sources */,
 				E9958D072B35E0A3001B4290 /* RandomImageVC.swift in Sources */,
 				E99C53B82B5C2ED9009DF497 /* TabBarAssembly.swift in Sources */,
+				E97A4CEF2B6167CE0040AED6 /* SavedImages.swift in Sources */,
 				E9958D032B35E0A3001B4290 /* AppDelegate.swift in Sources */,
 				E99C53A32B5C2421009DF497 /* SettingsAssembly.swift in Sources */,
 				E9AB5FF22B4967C400297486 /* LoginPresenter.swift in Sources */,
@@ -386,14 +373,13 @@
 				E97DE5412B5558F0003EC6EC /* NetworkManager.swift in Sources */,
 				E9958D0D2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld in Sources */,
 				E996DD3E2B4ABE7C003700A4 /* RegisterAssembly.swift in Sources */,
-				E99693E32B5D8F3D003C7D47 /* SettingsTabBarButton.swift in Sources */,
 				E9AB5FF72B496AA500297486 /* MVXProtocol.swift in Sources */,
 				E996DD402B4ABE88003700A4 /* RegisterViewController.swift in Sources */,
 				E9AB5FFD2B4991CA00297486 /* RandomImagePresenter.swift in Sources */,
-				E99693E52B5D8F4A003C7D47 /* RandomImageTabBarButton.swift in Sources */,
 				E996B13E2B4B22260025ECD6 /* CustomTextField.swift in Sources */,
 				E97DE5482B557D2B003EC6EC /* JSon.swift in Sources */,
 				E9AB5FFF2B4991D300297486 /* RandomImageRouter.swift in Sources */,
+				E97A4CED2B615F9C0040AED6 /* StorageManager.swift in Sources */,
 				E996DD422B4ABE91003700A4 /* RegisterPresenter.swift in Sources */,
 				E99C53AB2B5C2933009DF497 /* FavoritesAssembly.swift in Sources */,
 				E99C53A72B5C2440009DF497 /* SettingsPresenter.swift in Sources */,
@@ -401,7 +387,6 @@
 				E9972C392B59453F00413AB2 /* RandomImageWorker.swift in Sources */,
 				E99C53AF2B5C29B1009DF497 /* FavoritesPresenter.swift in Sources */,
 				E99C53A92B5C2449009DF497 /* SettingsRouter.swift in Sources */,
-				E9AB5FED2B49647E00297486 /* UserModel.swift in Sources */,
 				E9A150462B38471600AB2799 /* LoginViewController.swift in Sources */,
 				E9AB5FFB2B4991B700297486 /* RandomImageAssembly.swift in Sources */,
 				E99C53B42B5C2D7C009DF497 /* TabBarView.swift in Sources */,
@@ -410,8 +395,7 @@
 				E97DE5462B557D1E003EC6EC /* Links.swift in Sources */,
 				E9AB5FF92B496C2F00297486 /* LoginRouter.swift in Sources */,
 				E9A591942B4ED8AB00A498D3 /* LoginWorker.swift in Sources */,
-				E99F4ABA2B60474F00D3B569 /* TestGirls.swift in Sources */,
-				E99693E72B5D8F5A003C7D47 /* FavoritesTabBarButton.swift in Sources */,
+				E99F4ABA2B60474F00D3B569 /* GirlPhotos.swift in Sources */,
 				E99C53A52B5C2433009DF497 /* SettingsViewController.swift in Sources */,
 				E9AB5FF42B496A6F00297486 /* LoginAssembly.swift in Sources */,
 				E9A7996B2B519FB1005220F2 /* KeychainManager.swift in Sources */,

@@ -14,15 +14,21 @@ protocol IFavoritesViewController: AnyObject {
 
 final class FavoritesViewController: UIViewController {
     
+    //MARK: - Property
+    
     var presenter: IFavoritesPresenter?
     var collectionView: UICollectionView!
     var source = Source.randomPhotos(with: 20)
+    
+    //MARK: - ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
         
     }
+    
+    //MARK: - Setup Collection
     
     func setupCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: setupFlowLayout())
@@ -56,11 +62,7 @@ final class FavoritesViewController: UIViewController {
     }
 }
 
-private extension FavoritesViewController {
-    func setupSubviews() {
-        view.addSubview(collectionView)
-    }
-}
+//MARK: - Data Source
 
 extension FavoritesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -77,6 +79,8 @@ extension FavoritesViewController: UICollectionViewDataSource {
         return cell
     }
 }
+
+//MARK: - IFavoritesViewController Protocol
 
 extension FavoritesViewController: IFavoritesViewController {
     func render() {
