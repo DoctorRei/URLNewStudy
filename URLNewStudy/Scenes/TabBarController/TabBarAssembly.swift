@@ -5,7 +5,6 @@
 //  Created by Акира on 20.01.2024.
 //
 
-import Foundation
 import UIKit
 
 protocol ITabBarAssembly {
@@ -37,6 +36,7 @@ extension TabBarAssembly: IBaseAssembly {
         randomImgVC.tabBarItem.image = UIImage(systemName: "sparkles")
         randomImgVC.tabBarItem.selectedImage?.withTintColor(.yellow)
         randomImgVC.tabBarItem.selectedImage?.withTintColor(.yellow, renderingMode: .automatic)
+        
         
         guard let settingsVC = createSettingsViewController() as? SettingsViewController else {return}
         settingsVC.title = "Second"

@@ -5,7 +5,6 @@
 //  Created by Акира on 24.12.2023.
 //
 
-import Foundation
 import UIKit
 
 protocol ILoginViewController: AnyObject {
@@ -76,7 +75,7 @@ private extension LoginViewController {
     func setupImage() {
         backgroundImage.image = UIImage(named: "AnimeGirls")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
-        backgroundImage.alpha = 0.5
+        backgroundImage.alpha = 1
     }
 }
 

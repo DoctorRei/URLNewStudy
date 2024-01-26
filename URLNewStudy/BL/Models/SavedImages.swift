@@ -5,7 +5,6 @@
 //  Created by Акира on 24.01.2024.
 //
 
-import Foundation
 import CoreData
 import UIKit
 
@@ -13,8 +12,9 @@ import UIKit
 public class GirlPicture: NSManagedObject {}
 
 extension GirlPicture {
-    @NSManaged public var url: String?
-    @NSManaged public var image: [UIImage]
+    @NSManaged public var url:  String?
+    @NSManaged public var picture: UIImage
+    @NSManaged public var id: Int16
 }
 
 extension GirlPicture: Identifiable {

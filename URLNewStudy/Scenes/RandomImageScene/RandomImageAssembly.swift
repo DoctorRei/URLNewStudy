@@ -5,7 +5,6 @@
 //  Created by Акира on 06.01.2024.
 //
 
-import Foundation
 import UIKit
 
 class RandomImageAssembly {
