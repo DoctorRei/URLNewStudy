@@ -35,6 +35,7 @@ private extension RandomImageVC {
     
     @objc func touchImage() {
         print("Image tapped")
+        StorageManager.shared.deleteAllImages()
     }
 }
 

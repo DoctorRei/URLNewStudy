@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E93B6D3B2B64C3C6004DAD7F /* Girl.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E93B6D392B64C3C6004DAD7F /* Girl.xcdatamodeld */; };
+		E93B6D3F2B64C3EE004DAD7F /* Girl+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93B6D3D2B64C3EE004DAD7F /* Girl+CoreDataProperties.swift */; };
 		E97A4CE82B61380B0040AED6 /* LikedGirlsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A4CE72B61380B0040AED6 /* LikedGirlsViewCell.swift */; };
 		E97A4CED2B615F9C0040AED6 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A4CEC2B615F9C0040AED6 /* StorageManager.swift */; };
-		E97A4CEF2B6167CE0040AED6 /* SavedImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A4CEE2B6167CE0040AED6 /* SavedImages.swift */; };
 		E97DE5412B5558F0003EC6EC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5402B5558F0003EC6EC /* NetworkManager.swift */; };
 		E97DE5462B557D1E003EC6EC /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5452B557D1E003EC6EC /* Links.swift */; };
 		E97DE5482B557D2B003EC6EC /* JSon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5472B557D2B003EC6EC /* JSon.swift */; };
@@ -17,7 +18,6 @@
 		E9958D032B35E0A3001B4290 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9958D022B35E0A3001B4290 /* AppDelegate.swift */; };
 		E9958D052B35E0A3001B4290 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9958D042B35E0A3001B4290 /* SceneDelegate.swift */; };
 		E9958D072B35E0A3001B4290 /* RandomImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9958D062B35E0A3001B4290 /* RandomImageVC.swift */; };
-		E9958D0D2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9958D0B2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld */; };
 		E9958D0F2B35E0A4001B4290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9958D0E2B35E0A4001B4290 /* Assets.xcassets */; };
 		E9958D122B35E0A4001B4290 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9958D102B35E0A4001B4290 /* LaunchScreen.storyboard */; };
 		E996B13E2B4B22260025ECD6 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996B13D2B4B22260025ECD6 /* CustomTextField.swift */; };
@@ -51,9 +51,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E93B6D3A2B64C3C6004DAD7F /* Girl.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Girl.xcdatamodel; sourceTree = "<group>"; };
+		E93B6D3D2B64C3EE004DAD7F /* Girl+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Girl+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E97A4CE72B61380B0040AED6 /* LikedGirlsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedGirlsViewCell.swift; sourceTree = "<group>"; };
 		E97A4CEC2B615F9C0040AED6 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
-		E97A4CEE2B6167CE0040AED6 /* SavedImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedImages.swift; sourceTree = "<group>"; };
 		E97DE5402B5558F0003EC6EC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E97DE5452B557D1E003EC6EC /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		E97DE5472B557D2B003EC6EC /* JSon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSon.swift; sourceTree = "<group>"; };
@@ -62,7 +63,6 @@
 		E9958D022B35E0A3001B4290 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9958D042B35E0A3001B4290 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E9958D062B35E0A3001B4290 /* RandomImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomImageVC.swift; sourceTree = "<group>"; };
-		E9958D0C2B35E0A3001B4290 /* URLNewStudy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = URLNewStudy.xcdatamodel; sourceTree = "<group>"; };
 		E9958D0E2B35E0A4001B4290 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9958D112B35E0A4001B4290 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9958D132B35E0A4001B4290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -160,7 +160,6 @@
 				E9958D042B35E0A3001B4290 /* SceneDelegate.swift */,
 				E9958D102B35E0A4001B4290 /* LaunchScreen.storyboard */,
 				E9958D132B35E0A4001B4290 /* Info.plist */,
-				E9958D0B2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld */,
 				E9958D0E2B35E0A4001B4290 /* Assets.xcassets */,
 			);
 			path = URLNewStudy;
@@ -268,7 +267,8 @@
 			isa = PBXGroup;
 			children = (
 				E99F4AB92B60474F00D3B569 /* GirlPhotos.swift */,
-				E97A4CEE2B6167CE0040AED6 /* SavedImages.swift */,
+				E93B6D3D2B64C3EE004DAD7F /* Girl+CoreDataProperties.swift */,
+				E93B6D392B64C3C6004DAD7F /* Girl.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -368,18 +368,17 @@
 				E98354812B63ED2000012803 /* FavoritesWorker.swift in Sources */,
 				E9958D072B35E0A3001B4290 /* RandomImageVC.swift in Sources */,
 				E99C53B82B5C2ED9009DF497 /* TabBarAssembly.swift in Sources */,
-				E97A4CEF2B6167CE0040AED6 /* SavedImages.swift in Sources */,
 				E9958D032B35E0A3001B4290 /* AppDelegate.swift in Sources */,
 				E99C53A32B5C2421009DF497 /* SettingsAssembly.swift in Sources */,
 				E9AB5FF22B4967C400297486 /* LoginPresenter.swift in Sources */,
 				E99C53B62B5C2DCC009DF497 /* TabBarPresenter.swift in Sources */,
 				E99C53B12B5C29E9009DF497 /* FavoritesRouter.swift in Sources */,
 				E97DE5412B5558F0003EC6EC /* NetworkManager.swift in Sources */,
-				E9958D0D2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld in Sources */,
 				E996DD3E2B4ABE7C003700A4 /* RegisterAssembly.swift in Sources */,
 				E9AB5FF72B496AA500297486 /* MVXProtocol.swift in Sources */,
 				E996DD402B4ABE88003700A4 /* RegisterViewController.swift in Sources */,
 				E9AB5FFD2B4991CA00297486 /* RandomImagePresenter.swift in Sources */,
+				E93B6D3F2B64C3EE004DAD7F /* Girl+CoreDataProperties.swift in Sources */,
 				E996B13E2B4B22260025ECD6 /* CustomTextField.swift in Sources */,
 				E97DE5482B557D2B003EC6EC /* JSon.swift in Sources */,
 				E9AB5FFF2B4991D300297486 /* RandomImageRouter.swift in Sources */,
@@ -395,6 +394,7 @@
 				E9AB5FFB2B4991B700297486 /* RandomImageAssembly.swift in Sources */,
 				E99C53B42B5C2D7C009DF497 /* TabBarView.swift in Sources */,
 				E996DD442B4ABE9B003700A4 /* RegisterRouter.swift in Sources */,
+				E93B6D3B2B64C3C6004DAD7F /* Girl.xcdatamodeld in Sources */,
 				E99C53AD2B5C294E009DF497 /* FavoritesViewController.swift in Sources */,
 				E97DE5462B557D1E003EC6EC /* Links.swift in Sources */,
 				E9AB5FF92B496C2F00297486 /* LoginRouter.swift in Sources */,
@@ -612,13 +612,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E9958D0B2B35E0A3001B4290 /* URLNewStudy.xcdatamodeld */ = {
+		E93B6D392B64C3C6004DAD7F /* Girl.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E9958D0C2B35E0A3001B4290 /* URLNewStudy.xcdatamodel */,
+				E93B6D3A2B64C3C6004DAD7F /* Girl.xcdatamodel */,
 			);
-			currentVersion = E9958D0C2B35E0A3001B4290 /* URLNewStudy.xcdatamodel */;
-			path = URLNewStudy.xcdatamodeld;
+			currentVersion = E93B6D3A2B64C3C6004DAD7F /* Girl.xcdatamodel */;
+			path = Girl.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -10,72 +10,93 @@ import CoreData
 
 //MARK: - CRUD
 
-public final class StorageManager {
-    public static let shared = StorageManager()
-    private init() {}
+class StorageManager {
     
-    private var appDelegate: AppDelegate {
-        UIApplication.shared.delegate as! AppDelegate
+    static var shared = StorageManager()
+    
+    private let context: NSManagedObjectContext
+    
+    private let persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "Girl")
+        container.loadPersistentStores { _, error in
+            if let error = error as? NSError {
+                fatalError(error.localizedDescription)
+            }
+        }
+        return container
+    }()
+    
+    
+    private init () {
+        context = persistentContainer.viewContext
     }
     
-    private var context: NSManagedObjectContext {
-        appDelegate.persistentContainer.viewContext
+    func saveContext() {
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let error = error as NSError
+                fatalError(error.localizedDescription)
+            }
+        }
     }
     
-    public func createPicture(with url: String, picture: UIImage, and id: Int16) {
-        guard let pictureGirlEntityDescription = NSEntityDescription.entity(
-            forEntityName: "Girl",
-            in: context
-        ) else { return }
+    func createImage(with id: UUID, url: String, Image: Data) {
+        guard let imageDescription = NSEntityDescription.entity(forEntityName: "Girl", in: context) else { return }
+        let image = Girl(entity: imageDescription, insertInto: context)
         
-        let pictureGirl = GirlPicture(entity: pictureGirlEntityDescription, insertInto: context)
+        image.id = id
+        image.url = url
+        image.image = Image
         
-        pictureGirl.url = url
-        pictureGirl.picture = picture
-        pictureGirl.id = id
+        saveContext()
         
-        appDelegate.saveContext()
+        print("Сработало")
     }
     
-    public func fetchPictures() -> [GirlPicture] {
+    func fetchPhotos() -> [Girl] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
         do {
-            return (try? context.fetch(fetchRequest) as? [GirlPicture]) ?? []
+            return (try? context.fetch(fetchRequest) as? [Girl]) ?? []
         }
     }
     
-    public func fetchPicture(with id: Int16) -> GirlPicture? {
+    func fetchImage(id: UUID) -> Girl? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
         do {
-            let pictures = try? context.fetch(fetchRequest) as? [GirlPicture]
-            return pictures?.first(where: { $0.id == id })
+            let images = try? context.fetch(fetchRequest) as? [Girl]
+            return images?.first(where: {$0.id == id})
         }
     }
     
-    public func updatePicture(with url: String, id: Int16) {
+    func updateImage(id: UUID, url: String) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
         do {
-            guard let pictures = try? context.fetch(fetchRequest) as? [GirlPicture],
-                  let picture = pictures.first(where: { $0.id == id }) else { return }
-            picture.url = url
-        }
-        appDelegate.saveContext()
-    }
-    
-    public func deleteAllPictures() {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
-        do {
-            let pictures = try? context.fetch(fetchRequest) as? [GirlPicture]
-            pictures?.forEach { context.delete($0) }
+            guard let images = try? context.fetch(fetchRequest) as? [Girl],
+                  let image = images.first(where: {$0.id == id}) else { return }
+            image.url = url
         }
     }
     
-    public func deletePicture(with id: Int16) {
+    func deleteAllImages() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
         do {
-            guard let pictures = try? context.fetch(fetchRequest) as? [GirlPicture],
-                  let picture = pictures.first(where: { $0.id == id }) else { return }
-            context.delete(picture)
+            let images = try? context.fetch(fetchRequest) as? [Girl]
+            images?.forEach{ context.delete($0) }
         }
+        saveContext()
+        print("сработало")
     }
+    
+    func deleteImage(id: UUID) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
+        do {
+            guard let images = try? context.fetch(fetchRequest) as? [Girl],
+                  let image = images.first(where: { $0.id == id}) else { return }
+            context.delete(image)
+        }
+        saveContext()
+    }
+    
 }
