@@ -32,6 +32,10 @@ private extension RandomImageVC {
     @objc func touchGoButton() {
             presenter?.render()
     }
+    
+    @objc func touchImage() {
+        print("Image tapped")
+    }
 }
 
 //MARK: - Setup View
@@ -61,6 +65,11 @@ private extension RandomImageVC {
 
 private extension RandomImageVC {
     func setupImageView() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(touchImage))
+        tapGesture.numberOfTapsRequired = 2
+        mainImage.addGestureRecognizer(tapGesture)
+        mainImage.isUserInteractionEnabled = true
+        
         mainImage.image = UIImage(named: "imageTestForXcode")
         mainImage.contentMode = .scaleAspectFill
         mainImage.clipsToBounds = true
@@ -85,6 +94,7 @@ private extension RandomImageVC {
             action: #selector(touchGoButton),
             for: .touchUpInside)
     }
+    
 }
 
 //MARK: - Setting
