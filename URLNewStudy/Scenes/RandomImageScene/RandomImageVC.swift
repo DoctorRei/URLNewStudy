@@ -17,7 +17,7 @@ final class RandomImageVC: UIViewController {
     private var mainImage = UIImageView()
     private let goButton = UIButton(configuration: .filled())
     
-    var presenter: IRandomImagePresenter?
+    var presenter: RandomImagePresenterProtocole?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +34,7 @@ private extension RandomImageVC {
     }
     
     @objc func touchImage() {
-        print("Image tapped")
-        StorageManager.shared.deleteAllImages()
+        presenter?.saveToStorage()
     }
 }
 

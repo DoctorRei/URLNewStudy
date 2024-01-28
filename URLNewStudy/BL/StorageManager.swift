@@ -8,9 +8,19 @@
 import UIKit
 import CoreData
 
+protocol StorageManagerProtocole {
+    func createImage(with id: UUID, url: String, Image: Data)
+    func fetchImages() -> [Girl]
+    func fetchImage(id: UUID) -> Girl?
+    func updateImage(id: UUID, url: String)
+    func deleteAllImages()
+    func deleteImage(id: UUID)
+    
+}
+
 //MARK: - CRUD
 
-class StorageManager {
+final class StorageManager: StorageManagerProtocole {
     
     static var shared = StorageManager()
     
@@ -51,11 +61,9 @@ class StorageManager {
         image.image = Image
         
         saveContext()
-        
-        print("Сработало")
     }
     
-    func fetchPhotos() -> [Girl] {
+    func fetchImages() -> [Girl] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
         do {
             return (try? context.fetch(fetchRequest) as? [Girl]) ?? []

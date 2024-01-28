@@ -61,10 +61,12 @@ extension TabBarAssembly: ITabBarAssembly {
         let router = RandomImageRouter(navigationController: navigationController)
         let networkManager = NetworkManager()
         let worker = RandomImageWorker(networkManager: networkManager)
+        let storageManager = StorageManager.shared
         let presenter = RandomImagePresenter(
-            view: randomImgVC,
             router: router,
-            worker: worker)
+            worker: worker,
+            storageManager: storageManager,
+            view: randomImgVC)
         
         presenter.view = randomImgVC
         randomImgVC.presenter = presenter

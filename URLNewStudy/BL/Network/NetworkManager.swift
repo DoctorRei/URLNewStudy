@@ -19,6 +19,7 @@ enum NetworkError: Error {
 }
 
 final class NetworkManager: INetworkManager {
+    
     func fetch<T:Decodable>(_ type: T.Type, from url: URL, completion: @escaping (Result<T, NetworkError>) -> Void) {
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data else {
