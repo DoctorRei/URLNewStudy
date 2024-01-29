@@ -9,7 +9,6 @@ import UIKit
 
 protocol FavoritesViewControllerProtocole: AnyObject {
     func render() -> [Girl]
-    func updateSource(with data: Girl)
 }
 
 final class FavoritesViewController: UIViewController {
@@ -18,22 +17,21 @@ final class FavoritesViewController: UIViewController {
     
     var presenter: FavoritesPresenterProtocole?
     var collectionView: UICollectionView!
-    var source: [Girl]?
+    lazy var source = render()
     
     //MARK: - ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        source = render()
         setupCollectionView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       source = render()
-        setupCollectionView()
+        source = render()
         collectionView.reloadData()
     }
+    
     
     //MARK: - Setup Collection
     
@@ -73,7 +71,7 @@ final class FavoritesViewController: UIViewController {
 
 extension FavoritesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        source?.count ?? 0
+        source.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -82,7 +80,7 @@ extension FavoritesViewController: UICollectionViewDataSource {
             for: indexPath
         ) as? LikedGirlsViewCell else { return UICollectionViewCell() }
         
-        cell.imageView.image = UIImage(data: source?[indexPath.item].image ?? Data())
+        cell.imageView.image = UIImage(data: source[indexPath.item].image ?? Data())
         return cell
     }
 }
@@ -91,18 +89,7 @@ extension FavoritesViewController: UICollectionViewDataSource {
 
 extension FavoritesViewController: FavoritesViewControllerProtocole {
     func render() -> [Girl] {
-        guard let girlImages = presenter?.loadLikedImages() else { return []}
+       guard let girlImages = presenter?.loadLikedImages() else { return [] }
         return girlImages
-    }
-    
-    func updateSource(with data: Girl) {
-        if source != nil {
-            source?.append(data)
-            setupCollectionView()
-        } else {
-            source = render()
-            source?.append(data)
-            setupCollectionView()
-        }
     }
 }

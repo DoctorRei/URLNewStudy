@@ -50,7 +50,6 @@ extension RandomImagePresenter: RandomImagePresenterProtocole {
     func saveToStorage() {
         if let id = imageID, let url = imageURL, let data = ImageCashe {
             storageManager.createImage(with: id , url: url, Image: data)
-            router.updateSources(with: id)
         } else {
             print("Data nill")
         }
