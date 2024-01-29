@@ -22,7 +22,7 @@ final class RegisterPresenter {
     
     let router: IRegisterRouter
     private weak var view: IRegisterViewController!
-    private let keychainManager: IKeychainManager!
+    private let keychainManager: KeychainManagerProtocole!
     
     private let name: String
     private let password: Data
@@ -31,7 +31,7 @@ final class RegisterPresenter {
     init(
         router: IRegisterRouter,
         view: IRegisterViewController!,
-        keychainManager: IKeychainManager,
+        keychainManager: KeychainManagerProtocole,
         name: String, password: Data,
         status: String
     ) {

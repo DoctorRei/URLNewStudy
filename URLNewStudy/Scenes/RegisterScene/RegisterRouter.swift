@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol IRegisterRouter: IBaseRouting  {
+protocol IRegisterRouter: BaseRoutingProtocole  {
     
 }
 

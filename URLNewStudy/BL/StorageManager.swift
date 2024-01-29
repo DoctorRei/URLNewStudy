@@ -15,7 +15,6 @@ protocol StorageManagerProtocole {
     func updateImage(id: UUID, url: String)
     func deleteAllImages()
     func deleteImage(id: UUID)
-    
 }
 
 //MARK: - CRUD
@@ -65,9 +64,9 @@ final class StorageManager: StorageManagerProtocole {
     
     func fetchImages() -> [Girl] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
-        do {
-            return (try? context.fetch(fetchRequest) as? [Girl]) ?? []
-        }
+            do {
+                return (try? context.fetch(fetchRequest) as? [Girl]) ?? []
+            }
     }
     
     func fetchImage(id: UUID) -> Girl? {
@@ -106,5 +105,7 @@ final class StorageManager: StorageManagerProtocole {
         }
         saveContext()
     }
+    
+    
     
 }

@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol ITabBarView: AnyObject {
+protocol TabBarProtocole: AnyObject {
     func setupControllers(controllers: [UIViewController])
 }
 
 final class TabBarView: UITabBarController {
 
-    var presenter: ITabBarPresenter?
+    var presenter: TabBarPresenterProtocole?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ extension TabBarView {
     }
 }
 
-extension TabBarView: ITabBarView {
+extension TabBarView: TabBarProtocole {
     func setupControllers(controllers: [UIViewController]) {
         setViewControllers(controllers, animated: true)
     }

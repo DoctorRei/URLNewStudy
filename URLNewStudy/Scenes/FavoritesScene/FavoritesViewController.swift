@@ -7,24 +7,32 @@
 
 import UIKit
 
-protocol IFavoritesViewController: AnyObject {
-    func render()
+protocol FavoritesViewControllerProtocole: AnyObject {
+    func render() -> [Girl]
+    func updateSource(with data: Girl)
 }
 
 final class FavoritesViewController: UIViewController {
     
     //MARK: - Property
     
-    var presenter: IFavoritesPresenter?
+    var presenter: FavoritesPresenterProtocole?
     var collectionView: UICollectionView!
-    var source = Source.randomPhotos(with: 20)
+    var source: [Girl]?
     
     //MARK: - ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        source = render()
         setupCollectionView()
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+       source = render()
+        setupCollectionView()
+        collectionView.reloadData()
     }
     
     //MARK: - Setup Collection
@@ -65,24 +73,36 @@ final class FavoritesViewController: UIViewController {
 
 extension FavoritesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        source.count
+        source?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "\(LikedGirlsViewCell.self)",
             for: indexPath
-        ) as? LikedGirlsViewCell else { return UICollectionViewCell()}
+        ) as? LikedGirlsViewCell else { return UICollectionViewCell() }
         
-        cell.imageView.image = UIImage(named: source[indexPath.item].imageName)
+        cell.imageView.image = UIImage(data: source?[indexPath.item].image ?? Data())
         return cell
     }
 }
 
-//MARK: - IFavoritesViewController Protocol
+//MARK: - FavoritesViewController Protocol
 
-extension FavoritesViewController: IFavoritesViewController {
-    func render() {
-        
+extension FavoritesViewController: FavoritesViewControllerProtocole {
+    func render() -> [Girl] {
+        guard let girlImages = presenter?.loadLikedImages() else { return []}
+        return girlImages
+    }
+    
+    func updateSource(with data: Girl) {
+        if source != nil {
+            source?.append(data)
+            setupCollectionView()
+        } else {
+            source = render()
+            source?.append(data)
+            setupCollectionView()
+        }
     }
 }

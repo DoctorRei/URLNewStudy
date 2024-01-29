@@ -19,7 +19,7 @@ final class RegisterAssembly {
     }
 }
 
-extension RegisterAssembly: IBaseAssembly {
+extension RegisterAssembly: BaseAssemblyProtocole {
     func configure(viewController: UIViewController) {
         guard let registerVC = viewController as? RegisterViewController else { return }
         let router = RegisterRouter(navigationController: navigationController)

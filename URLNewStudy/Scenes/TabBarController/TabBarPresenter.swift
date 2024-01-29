@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol ITabBarPresenter: AnyObject  {
-    init(view: ITabBarView)
+protocol TabBarPresenterProtocole: AnyObject  {
+    init(view: TabBarProtocole)
     
     func buildTabBar(
         with firstItemVC: UIViewController,
@@ -19,16 +19,16 @@ protocol ITabBarPresenter: AnyObject  {
 }
 
 final class TabBarPresenter {
-    weak var view: ITabBarView?
+    weak var view: TabBarProtocole?
     var tabs: [UIImage] = []
     
-    init(view: ITabBarView) {
+    init(view: TabBarProtocole) {
         self.view = view
     }
     
 }
 
-extension TabBarPresenter: ITabBarPresenter {
+extension TabBarPresenter: TabBarPresenterProtocole {
     
     
     func buildTabBar(

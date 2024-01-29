@@ -28,13 +28,13 @@ struct ViewModelLogin {
 
 final class LoginPresenter {
     weak var view: ILoginViewController?
-    private let keychainManager: IKeychainManager!
+    private let keychainManager: KeychainManagerProtocole!
     private let worker: ILoginWorker
     private let router: ILoginRouter
     private var name = ""
     private var password = Data()
     
-    init(router: ILoginRouter, worker: ILoginWorker, keychainManager: IKeychainManager!) {
+    init(router: ILoginRouter, worker: ILoginWorker, keychainManager: KeychainManagerProtocole!) {
         self.router = router
         self.worker = worker
         self.keychainManager = keychainManager

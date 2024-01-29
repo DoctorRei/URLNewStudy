@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E93B6D3B2B64C3C6004DAD7F /* Girl.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E93B6D392B64C3C6004DAD7F /* Girl.xcdatamodeld */; };
-		E93B6D3F2B64C3EE004DAD7F /* Girl+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93B6D3D2B64C3EE004DAD7F /* Girl+CoreDataProperties.swift */; };
+		E93B6D3F2B64C3EE004DAD7F /* GirlCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93B6D3D2B64C3EE004DAD7F /* GirlCoreData.swift */; };
 		E97A4CE82B61380B0040AED6 /* LikedGirlsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A4CE72B61380B0040AED6 /* LikedGirlsViewCell.swift */; };
 		E97A4CED2B615F9C0040AED6 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A4CEC2B615F9C0040AED6 /* StorageManager.swift */; };
 		E97DE5412B5558F0003EC6EC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5402B5558F0003EC6EC /* NetworkManager.swift */; };
@@ -37,7 +37,6 @@
 		E99C53B42B5C2D7C009DF497 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C53B32B5C2D7C009DF497 /* TabBarView.swift */; };
 		E99C53B62B5C2DCC009DF497 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C53B52B5C2DCC009DF497 /* TabBarPresenter.swift */; };
 		E99C53B82B5C2ED9009DF497 /* TabBarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C53B72B5C2ED9009DF497 /* TabBarAssembly.swift */; };
-		E99F4ABA2B60474F00D3B569 /* GirlPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99F4AB92B60474F00D3B569 /* GirlPhotos.swift */; };
 		E9A150462B38471600AB2799 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A150452B38471600AB2799 /* LoginViewController.swift */; };
 		E9A591942B4ED8AB00A498D3 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A591932B4ED8AB00A498D3 /* LoginWorker.swift */; };
 		E9A7996B2B519FB1005220F2 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A7996A2B519FB1005220F2 /* KeychainManager.swift */; };
@@ -52,7 +51,7 @@
 
 /* Begin PBXFileReference section */
 		E93B6D3A2B64C3C6004DAD7F /* Girl.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Girl.xcdatamodel; sourceTree = "<group>"; };
-		E93B6D3D2B64C3EE004DAD7F /* Girl+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Girl+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E93B6D3D2B64C3EE004DAD7F /* GirlCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GirlCoreData.swift; sourceTree = "<group>"; };
 		E97A4CE72B61380B0040AED6 /* LikedGirlsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedGirlsViewCell.swift; sourceTree = "<group>"; };
 		E97A4CEC2B615F9C0040AED6 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		E97DE5402B5558F0003EC6EC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -83,7 +82,6 @@
 		E99C53B32B5C2D7C009DF497 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		E99C53B52B5C2DCC009DF497 /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
 		E99C53B72B5C2ED9009DF497 /* TabBarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAssembly.swift; sourceTree = "<group>"; };
-		E99F4AB92B60474F00D3B569 /* GirlPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GirlPhotos.swift; sourceTree = "<group>"; };
 		E9A150452B38471600AB2799 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E9A591932B4ED8AB00A498D3 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		E9A7996A2B519FB1005220F2 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
@@ -266,8 +264,7 @@
 		E9AB5FEF2B49656C00297486 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E99F4AB92B60474F00D3B569 /* GirlPhotos.swift */,
-				E93B6D3D2B64C3EE004DAD7F /* Girl+CoreDataProperties.swift */,
+				E93B6D3D2B64C3EE004DAD7F /* GirlCoreData.swift */,
 				E93B6D392B64C3C6004DAD7F /* Girl.xcdatamodeld */,
 			);
 			path = Models;
@@ -378,7 +375,7 @@
 				E9AB5FF72B496AA500297486 /* MVXProtocol.swift in Sources */,
 				E996DD402B4ABE88003700A4 /* RegisterViewController.swift in Sources */,
 				E9AB5FFD2B4991CA00297486 /* RandomImagePresenter.swift in Sources */,
-				E93B6D3F2B64C3EE004DAD7F /* Girl+CoreDataProperties.swift in Sources */,
+				E93B6D3F2B64C3EE004DAD7F /* GirlCoreData.swift in Sources */,
 				E996B13E2B4B22260025ECD6 /* CustomTextField.swift in Sources */,
 				E97DE5482B557D2B003EC6EC /* JSon.swift in Sources */,
 				E9AB5FFF2B4991D300297486 /* RandomImageRouter.swift in Sources */,
@@ -399,7 +396,6 @@
 				E97DE5462B557D1E003EC6EC /* Links.swift in Sources */,
 				E9AB5FF92B496C2F00297486 /* LoginRouter.swift in Sources */,
 				E9A591942B4ED8AB00A498D3 /* LoginWorker.swift in Sources */,
-				E99F4ABA2B60474F00D3B569 /* GirlPhotos.swift in Sources */,
 				E99C53A52B5C2433009DF497 /* SettingsViewController.swift in Sources */,
 				E9AB5FF42B496A6F00297486 /* LoginAssembly.swift in Sources */,
 				E9A7996B2B519FB1005220F2 /* KeychainManager.swift in Sources */,

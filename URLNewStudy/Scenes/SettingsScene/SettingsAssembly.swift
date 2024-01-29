@@ -16,7 +16,7 @@ class SettingsAssembly {
     }
 }
 
-extension SettingsAssembly: IBaseAssembly {
+extension SettingsAssembly: BaseAssemblyProtocole {
      func configure(viewController: UIViewController) {
         guard let settingsVC = viewController as? SettingsViewController else { return}
         

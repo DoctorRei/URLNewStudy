@@ -14,7 +14,7 @@ protocol RandomImagePresenterProtocole {
 
 final class RandomImagePresenter {
     
-    let router: IRandomImageRouter
+    let router: RandomImageRouterProtocole
     private var worker: IRandomImageWorker!
     private var storageManager: StorageManagerProtocole
     weak var view: IRandomImageVC!
@@ -24,7 +24,7 @@ final class RandomImagePresenter {
     private var ImageCashe: Data?
     
     init(
-        router: IRandomImageRouter,
+        router: RandomImageRouterProtocole,
         worker: IRandomImageWorker!,
         storageManager: StorageManagerProtocole,
         view: IRandomImageVC!
@@ -50,9 +50,9 @@ extension RandomImagePresenter: RandomImagePresenterProtocole {
     func saveToStorage() {
         if let id = imageID, let url = imageURL, let data = ImageCashe {
             storageManager.createImage(with: id , url: url, Image: data)
+            router.updateSources(with: id)
         } else {
             print("Data nill")
         }
     }
 }
-

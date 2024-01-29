@@ -35,6 +35,7 @@ private extension RandomImageVC {
     
     @objc func touchImage() {
         presenter?.saveToStorage()
+        print("Сработал тач")
     }
 }
 

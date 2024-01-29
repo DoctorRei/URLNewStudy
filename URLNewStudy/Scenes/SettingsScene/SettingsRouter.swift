@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ISettingsRouter: IBaseRouting  {
+protocol ISettingsRouter: BaseRoutingProtocole  {
     
 }
 
@@ -29,9 +29,9 @@ final class SettingsRouter {
 
 extension SettingsRouter: ISettingsRouter {
     func routeTo(scene: Any) {
-        guard let randomImageTarget = scene as? RandomImageRouter.Target else {return}
+        guard let settingsRouter = scene as? SettingsRouter.Target else {return}
         
-        switch randomImageTarget {
+        switch settingsRouter {
         case .loginScene:
             break
         case .mainScene:

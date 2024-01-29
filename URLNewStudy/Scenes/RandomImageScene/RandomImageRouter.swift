@@ -7,14 +7,15 @@
 
 import UIKit
 
-protocol IRandomImageRouter: IBaseRouting  {
-    
+protocol RandomImageRouterProtocole: BaseRoutingProtocole  {
+    func routeTo(scene: Any)
+    func updateSources(with id: UUID)
 }
 
 final class RandomImageRouter {
     
     enum Target {
-        case loginScene
+        case favoritesVC
         case mainScene
     }
     
@@ -27,15 +28,27 @@ final class RandomImageRouter {
 
 //TODO: - Заглушка навигации
 
-extension RandomImageRouter: IRandomImageRouter {
+extension RandomImageRouter: RandomImageRouterProtocole {
     func routeTo(scene: Any) {
         guard let randomImageTarget = scene as? RandomImageRouter.Target else {return}
         
         switch randomImageTarget {
-        case .loginScene:
+        case .favoritesVC:
             break
         case .mainScene:
             break
         }
+    }
+    
+    func updateSources(with id: UUID) {
+        let favorites = FavoritesViewController()
+        let router = FavoritesRouter(navigationController: navigationController)
+        let storageManager = StorageManager.shared
+        let presenter = FavoritesPresenter(router: router, storageManager: storageManager, view: favorites)
+        
+        presenter.view = favorites
+        favorites.presenter = presenter
+        
+        presenter.updateImages(with: id)
     }
 }

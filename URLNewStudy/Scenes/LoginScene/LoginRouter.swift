@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ILoginRouter: IBaseRouting {
+protocol ILoginRouter: BaseRoutingProtocole {
     func routeTo(scene: Any)
     func showError(message: String)
 }

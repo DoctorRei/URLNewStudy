@@ -7,13 +7,11 @@
 
 import UIKit
 
-protocol IBaseAssembly {
+protocol BaseAssemblyProtocole {
     func configure(viewController: UIViewController)
 }
 
-protocol IBaseRouting {
+protocol BaseRoutingProtocole {
     func routeTo(scene: Any)
     init(navigationController: UINavigationController)
 }
-
-

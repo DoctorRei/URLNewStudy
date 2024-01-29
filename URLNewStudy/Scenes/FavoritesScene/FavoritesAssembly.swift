@@ -16,11 +16,12 @@ final class FavoritesAssembly {
     }
 }
 
-extension FavoritesAssembly: IBaseAssembly {
-     func configure(viewController: UIViewController) {
+extension FavoritesAssembly: BaseAssemblyProtocole {
+    func configure(viewController: UIViewController) {
         guard let favoritesVC = viewController as? FavoritesViewController else {return}
         let router = FavoritesRouter(navigationController: navigationController)
-        let presenter = FavoritesPresenter(router: router)
+        let storageManager = StorageManager.shared
+        let presenter = FavoritesPresenter(router: router, storageManager: storageManager, view: favoritesVC)
         
         favoritesVC.presenter = presenter
         presenter.view = favoritesVC

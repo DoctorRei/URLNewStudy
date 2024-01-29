@@ -21,11 +21,10 @@ final class TabBarAssembly {
     }
 }
 
-extension TabBarAssembly: IBaseAssembly {
+extension TabBarAssembly: BaseAssemblyProtocole {
     func configure(viewController: UIViewController) {
         guard let tabBarVC = viewController as? TabBarView else { return}
         let presenter = TabBarPresenter(view: tabBarVC)
-        
         tabBarVC.presenter = presenter
         presenter.view = tabBarVC
         
@@ -36,7 +35,6 @@ extension TabBarAssembly: IBaseAssembly {
         randomImgVC.tabBarItem.image = UIImage(systemName: "sparkles")
         randomImgVC.tabBarItem.selectedImage?.withTintColor(.yellow)
         randomImgVC.tabBarItem.selectedImage?.withTintColor(.yellow, renderingMode: .automatic)
-        
         
         guard let settingsVC = createSettingsViewController() as? SettingsViewController else {return}
         settingsVC.title = "Second"
@@ -88,7 +86,8 @@ extension TabBarAssembly: ITabBarAssembly {
     func createFavoritesViewController() -> UIViewController {
         let favoritesVC = FavoritesViewController()
         let router = FavoritesRouter(navigationController: navigationController)
-        let presenter = FavoritesPresenter(router: router)
+        let storageManager = StorageManager.shared
+        let presenter = FavoritesPresenter(router: router, storageManager: storageManager, view: favoritesVC)
         
         presenter.view = favoritesVC
         favoritesVC.presenter = presenter

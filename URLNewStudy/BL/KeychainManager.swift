@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol IKeychainManager {
+protocol KeychainManagerProtocole {
     func save(password: Data, account: String) throws -> String
     func checkPassword(for account: String) throws -> Data?
 }
@@ -17,7 +17,7 @@ enum KeychainError: Error {
     case unknown(status: OSStatus)
 }
 
-final class KeychainManager: IKeychainManager {
+final class KeychainManager: KeychainManagerProtocole {
     
     func save(password: Data, account: String) throws -> String {
         let query: [CFString: Any] = [

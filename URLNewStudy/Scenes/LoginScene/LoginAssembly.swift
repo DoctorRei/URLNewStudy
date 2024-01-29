@@ -16,7 +16,7 @@ final class LoginAssembly {
     }
 }
 
-extension LoginAssembly: IBaseAssembly {
+extension LoginAssembly: BaseAssemblyProtocole {
     
     func configure(viewController: UIViewController) {
         guard let loginVC = viewController as? LoginViewController else {return}

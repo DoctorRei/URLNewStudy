@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol IFavoritesRouter: IBaseRouting {
+protocol IFavoritesRouter: BaseRoutingProtocole {
     
 }
 
 final class FavoritesRouter {
     
     enum Target {
-        case loginScene
+        case favoritesVC
         case mainScene
     }
     
@@ -32,7 +32,7 @@ extension FavoritesRouter: IFavoritesRouter {
         guard let randomImageTarget = scene as? RandomImageRouter.Target else {return}
         
         switch randomImageTarget {
-        case .loginScene:
+        case .favoritesVC:
             break
         case .mainScene:
             break
