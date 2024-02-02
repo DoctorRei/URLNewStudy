@@ -11,6 +11,7 @@ protocol RandomImagePresenterProtocole {
     func render()
     func saveToStorage()
     func renderWithKF()
+    func getUrlFromApi() -> String
 }
 
 final class RandomImagePresenter {
@@ -61,5 +62,12 @@ extension RandomImagePresenter: RandomImagePresenterProtocole {
         worker.getImageFromKF(imageUrl: urlToKF) { data in
             self.view.renderKF(with: data)
         }
+    }
+    
+    func getUrlFromApi() -> String {
+        worker.getUrlFromApi { url in
+            self.imageURL = url
+        }
+        return imageURL ?? ""
     }
 }

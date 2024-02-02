@@ -150,8 +150,8 @@ extension RandomImageVC: IRandomImageVC {
     }
     
     func testDownload() {
-        let url = URL(string: "https://sun9-60.userapi.com/impg/uGCQ9aHEJ-DxbHomvSED7K_xI6xHT55_ZqDNAQ/lm1b_7TZiHA.jpg?size=810x1080&quality=95&sign=adc24adc6da3a384380503c44394e758&type=album") ?? Links.awoo.url
-        let resource = KF.ImageResource(downloadURL: url)
+        guard let url = presenter?.getUrlFromApi() else { return }
+        let resource = KF.ImageResource(downloadURL: URL(string: url) ?? Links.awoo.url)
         let placeholder = UIImage(named: "forXCode2")
         let processor = DefaultImageProcessor()
 
@@ -161,15 +161,6 @@ extension RandomImageVC: IRandomImageVC {
         } completionHandler: { (result) in
             self.hande(result)
         }
-
-//        mainImage.kf.setImage(
-//            with: resource,
-//            placeholder: placeholder) { receivedSize, totalSize in
-//                let percentage = Float(receivedSize) / Float(totalSize) * 100.0
-//                print("Download is \(percentage)")
-//            } completionHandler: { result in
-//                self.hande(result)
-//            }
     }
     
     func hande(_ result: Result<RetrieveImageResult, KingfisherError>) {

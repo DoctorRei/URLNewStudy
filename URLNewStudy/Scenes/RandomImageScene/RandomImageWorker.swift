@@ -11,6 +11,7 @@ import Kingfisher
 protocol RandomImageWorkerProtocole {
     func getImage(completion: @escaping (UIImage, String, Data) -> Void)
     func getImageFromKF(imageUrl: URL, completion: @escaping (UIImageView) -> Void)
+    func getUrlFromApi(completion: @escaping (String) -> Void)
 }
 
 final class RandomImageWorker {
@@ -47,6 +48,22 @@ extension RandomImageWorker: RandomImageWorkerProtocole {
 
 
 extension RandomImageWorker {
+    
+    func getUrlFromApi(completion: @escaping (String) -> Void) {
+        let apiLink = Links.shinobu.url
+        
+        DispatchQueue.global().sync {
+            networkManager.fetch(JsonForPictures.self, from: apiLink) { url in
+                switch url {
+                case .success(let url):
+                    completion(url.url)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
     func getImageFromKF(imageUrl: URL, completion: @escaping (UIImageView) -> Void) {
         var randomPicture = UIImageView()
 
