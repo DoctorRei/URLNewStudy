@@ -64,9 +64,9 @@ final class StorageManager: StorageManagerProtocole {
     
     func fetchImages() -> [Girl] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
-            do {
-                return (try? context.fetch(fetchRequest) as? [Girl]) ?? []
-            }
+        do {
+            return (try? context.fetch(fetchRequest) as? [Girl]) ?? []
+        }
     }
     
     func fetchImage(id: UUID) -> Girl? {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol INetworkManager {
+protocol NetworkManagerProtocole {
     func fetch<T:Decodable>(_ type: T.Type, from url: URL, completion: @escaping (Result<T, NetworkError>) -> Void)
     func downloadImage(with url: String, completion: @escaping(Data) -> Void)
 }
@@ -18,7 +18,7 @@ enum NetworkError: Error {
     case DecodingError
 }
 
-final class NetworkManager: INetworkManager {
+final class NetworkManager: NetworkManagerProtocole {
     
     func fetch<T:Decodable>(_ type: T.Type, from url: URL, completion: @escaping (Result<T, NetworkError>) -> Void) {
         URLSession.shared.dataTask(with: url) { data, _, error in

@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol IRandomImageVC: AnyObject {
     func render(with image: UIImage)
+    func renderKF(with image: UIImageView)
 }
 
 final class RandomImageVC: UIViewController {
@@ -30,11 +32,12 @@ final class RandomImageVC: UIViewController {
 
 private extension RandomImageVC {
     @objc func touchGoButton() {
-            presenter?.render()
+        testDownload()
     }
     
     @objc func touchImage() {
         presenter?.saveToStorage()
+        
         print("Сработал тач")
     }
 }
@@ -139,6 +142,46 @@ extension RandomImageVC: IRandomImageVC {
     func render(with image: UIImage) {
         DispatchQueue.main.async {
             self.mainImage.image = image
+        }
+    }
+    
+    func renderKF(with image: UIImageView) {
+        self.mainImage = image
+    }
+    
+    func testDownload() {
+        let url = URL(string: "https://sun9-60.userapi.com/impg/uGCQ9aHEJ-DxbHomvSED7K_xI6xHT55_ZqDNAQ/lm1b_7TZiHA.jpg?size=810x1080&quality=95&sign=adc24adc6da3a384380503c44394e758&type=album") ?? Links.awoo.url
+        let resource = KF.ImageResource(downloadURL: url)
+        let placeholder = UIImage(named: "forXCode2")
+        let processor = DefaultImageProcessor()
+
+        mainImage.kf.setImage(with: resource, placeholder: placeholder, options: [.processor(processor)]) { receivedSize, totalSize in
+            let percentage = Float(receivedSize) / Float(totalSize) * 100.0
+            print("Download is \(percentage)")
+        } completionHandler: { (result) in
+            self.hande(result)
+        }
+
+//        mainImage.kf.setImage(
+//            with: resource,
+//            placeholder: placeholder) { receivedSize, totalSize in
+//                let percentage = Float(receivedSize) / Float(totalSize) * 100.0
+//                print("Download is \(percentage)")
+//            } completionHandler: { result in
+//                self.hande(result)
+//            }
+    }
+    
+    func hande(_ result: Result<RetrieveImageResult, KingfisherError>) {
+        switch result {
+        case .success(let downloadedImage):
+            let image = downloadedImage.image
+            let cacheType = downloadedImage.cacheType
+            let source = downloadedImage.source
+            let originalSource = downloadedImage.originalSource
+            print("Image size: \(image.size), Cache: \(cacheType), Source: \(source), Original Source: \(originalSource)")
+        case .failure(let error):
+            print(error.localizedDescription)
         }
     }
     
