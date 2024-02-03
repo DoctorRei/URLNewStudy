@@ -8,10 +8,9 @@
 import UIKit
 
 protocol RandomImagePresenterProtocole {
-    func render()
     func saveToStorage()
-    func renderWithKF(imageToWorker: UIImageView)
-    func getUrlFromApi() -> String
+    func deleteAll()
+    func render(imageToWorker: UIImageView)
 }
 
 final class RandomImagePresenter {
@@ -41,14 +40,18 @@ final class RandomImagePresenter {
 }
 
 extension RandomImagePresenter: RandomImagePresenterProtocole {
-    func render() {
-        worker.getImage { image, url, data in
-            self.imageID = UUID()
-            self.imageURL = url
-            self.ImageCoreData = data
-            
-            self.view.render(with: image)
-        }
+//    func render() {
+//        worker.getImage { image, url, data in
+//            self.imageID = UUID()
+//            self.imageURL = url
+//            self.ImageCoreData = data
+//
+//            self.view.render(with: image)
+//        }
+//    }
+    
+    func deleteAll() {
+        storageManager.deleteAllImages()
     }
     
     func saveToStorage() {
@@ -59,19 +62,11 @@ extension RandomImagePresenter: RandomImagePresenterProtocole {
         }
     }
     
-    func renderWithKF(imageToWorker: UIImageView) {
+    func render(imageToWorker: UIImageView) {
         imageViewTest = imageToWorker
         worker.getImageFromKF(imageToVC: imageViewTest) { [weak self] image in
             self?.imageViewTest = image
-            self?.view.renderKF(with: self?.imageViewTest ?? UIImageView())
+            self?.view.render(with: self?.imageViewTest ?? UIImageView())
         }
     }
-    
-    func getUrlFromApi() -> String {
-            worker.getUrlFromApi { url in
-                self.imageURL = url
-            }
-            return imageURL ?? ""
-        }
-    
 }

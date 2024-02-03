@@ -9,8 +9,7 @@ import UIKit
 import Kingfisher
 
 protocol IRandomImageVC: AnyObject {
-    func render(with image: UIImage)
-    func renderKF(with image: UIImageView)
+    func render(with image: UIImageView)
 }
 
 final class RandomImageVC: UIViewController {
@@ -32,7 +31,7 @@ final class RandomImageVC: UIViewController {
 
 private extension RandomImageVC {
     @objc func touchGoButton() {
-        testRender()
+        updateImage()
     }
     
     @objc func touchImage() {
@@ -139,47 +138,14 @@ private extension RandomImageVC {
 //MARK: - Protocole
 
 extension RandomImageVC: IRandomImageVC {
-    func render(with image: UIImage) {
-        DispatchQueue.main.async {
-            self.mainImage.image = image
-        }
+    
+    func updateImage() {
+        presenter?.render(imageToWorker: self.mainImage)
     }
     
-    func testRender() {
-        presenter?.renderWithKF(imageToWorker: self.mainImage)
-    }
-    
-    func renderKF(with image: UIImageView) {
+    func render(with image: UIImageView) {
         DispatchQueue.main.async {
             self.mainImage = image
         }
     }
-    
-    func testDownload() {
-        guard let url = presenter?.getUrlFromApi() else { return }
-        let resource = KF.ImageResource(downloadURL: URL(string: url) ?? Links.awoo.url)
-        let processor = DefaultImageProcessor()
-
-        mainImage.kf.indicatorType = .activity
-        mainImage.kf.setImage(with: resource, options: [.processor(processor)]) { receivedSize, totalSize in
-            let percentage = Float(receivedSize) / Float(totalSize) * 100.0
-            print("Download is \(percentage)")
-        } completionHandler: { (result) in
-            self.hande(result)
-        }
-    }
-    
-    func hande(_ result: Result<RetrieveImageResult, KingfisherError>) {
-        switch result {
-        case .success(let downloadedImage):
-            let image = downloadedImage.image
-            let cacheType = downloadedImage.cacheType
-            let source = downloadedImage.source
-            let originalSource = downloadedImage.originalSource
-            print("Image size: \(image.size), Cache: \(cacheType), Source: \(source), Original Source: \(originalSource)")
-        case .failure(let error):
-            print(error.localizedDescription)
-        }
-    }
-    
 }
