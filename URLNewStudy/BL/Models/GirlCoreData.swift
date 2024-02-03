@@ -22,8 +22,6 @@ extension Girl {
     }
 
     @NSManaged public var url: String?
-    @NSManaged public var image: Data?
-    @NSManaged public var id: UUID?
 }
 
 extension Girl : Identifiable {

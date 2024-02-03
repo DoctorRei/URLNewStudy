@@ -9,7 +9,7 @@ import Foundation
 
 //MARK: Protocol
 
-protocol ILoginPresenter {
+protocol LoginPresenterProtocole {
     func runRegisterFlow()
     func getLogin(login: String)
     func getPassword(password: String)
@@ -27,7 +27,7 @@ struct ViewModelLogin {
 //MARK: - LoginPresenter
 
 final class LoginPresenter {
-    weak var view: ILoginViewController?
+    weak var view: LoginViewControllerProtocole?
     private let keychainManager: KeychainManagerProtocole!
     private let worker: ILoginWorker
     private let router: ILoginRouter
@@ -49,7 +49,7 @@ final class LoginPresenter {
 
 //TODO: - Навести порядок в этом дерьме и разложить все по полочкам.
 
-extension LoginPresenter: ILoginPresenter {
+extension LoginPresenter: LoginPresenterProtocole {
     func validatePassword(login: String, password: String) {
         let viewModel = ViewModelLogin(login: login, password: password)
         do {

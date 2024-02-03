@@ -20,9 +20,11 @@ protocol RandomImageWorkerProtocole {
 final class RandomImageWorker {
     
     private let networkManager: NetworkManagerProtocole
+    private let storageManager: StorageManager
     
-    init(networkManager: NetworkManagerProtocole) {
+    init(networkManager: NetworkManagerProtocole, storageManager: StorageManager) {
         self.networkManager = networkManager
+        self.storageManager = storageManager
     }
 }
 
@@ -101,6 +103,7 @@ extension RandomImageWorker {
     func saveToStorage(with url: String, likedImage: UIImageView) {
         guard let imageToSave = likedImage.image else { return }
         KingfisherManager.shared.cache.store(imageToSave, forKey: url)
+        storageManager.createImage(url: url)
         print("Сейв сработал")
     }
     

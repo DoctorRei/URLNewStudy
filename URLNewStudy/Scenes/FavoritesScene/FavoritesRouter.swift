@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol IFavoritesRouter: BaseRoutingProtocole {
+protocol FavoritesRouterProtocole: BaseRoutingProtocole {
     
 }
 
@@ -27,7 +27,7 @@ final class FavoritesRouter {
 
 //TODO: - Заглушка навигации
 
-extension FavoritesRouter: IFavoritesRouter {
+extension FavoritesRouter: FavoritesRouterProtocole {
     func routeTo(scene: Any) {
         guard let randomImageTarget = scene as? RandomImageRouter.Target else {return}
         

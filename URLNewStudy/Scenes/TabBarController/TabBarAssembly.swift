@@ -58,8 +58,8 @@ extension TabBarAssembly: ITabBarAssembly {
         let randomImgVC = RandomImageVC()
         let router = RandomImageRouter(navigationController: navigationController)
         let networkManager = NetworkManager()
-        let worker = RandomImageWorker(networkManager: networkManager)
         let storageManager = StorageManager.shared
+        let worker = RandomImageWorker(networkManager: networkManager, storageManager: storageManager)
         let presenter = RandomImagePresenter(
             router: router,
             worker: worker,
@@ -87,7 +87,8 @@ extension TabBarAssembly: ITabBarAssembly {
         let favoritesVC = FavoritesViewController()
         let router = FavoritesRouter(navigationController: navigationController)
         let storageManager = StorageManager.shared
-        let presenter = FavoritesPresenter(router: router, storageManager: storageManager, view: favoritesVC)
+        let worker = FavoritesWorker(storageManager: storageManager)
+        let presenter = FavoritesPresenter(view: favoritesVC, router: router, storageManager: storageManager, worker: worker)
         
         presenter.view = favoritesVC
         favoritesVC.presenter = presenter

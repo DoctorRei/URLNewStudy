@@ -17,15 +17,13 @@ protocol RandomImagePresenterProtocole {
 final class RandomImagePresenter {
     
     let router: RandomImageRouterProtocole
-    private var worker: RandomImageWorkerProtocole!
+    private var worker: RandomImageWorkerProtocole
     private var storageManager: StorageManagerProtocole
     weak var view: IRandomImageVC!
     
     private var imageViewTest = UIImageView()
     private var urlToKF = Links.shinobu.url
-    //    private var imageID: UUID?
     private var imageURL: String?
-    //    private var ImageCoreData: Data?
     
     init(
         router: RandomImageRouterProtocole,
@@ -57,6 +55,7 @@ extension RandomImagePresenter: RandomImagePresenterProtocole {
             return
         }
         worker.saveToStorage(with: url, likedImage: imageViewTest)
+        
     }
     
     func deleteAll() {

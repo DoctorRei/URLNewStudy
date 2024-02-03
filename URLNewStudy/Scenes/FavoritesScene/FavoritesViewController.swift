@@ -8,7 +8,7 @@
 import UIKit
 
 protocol FavoritesViewControllerProtocole: AnyObject {
-    func render() -> [Girl]
+    func render() -> [UIImage]
 }
 
 final class FavoritesViewController: UIViewController {
@@ -80,7 +80,7 @@ extension FavoritesViewController: UICollectionViewDataSource {
             for: indexPath
         ) as? LikedGirlsViewCell else { return UICollectionViewCell() }
         
-        cell.imageView.image = UIImage(data: source[indexPath.item].image ?? Data())
+        cell.imageView.image = source[indexPath.item]
         return cell
     }
 }
@@ -88,7 +88,7 @@ extension FavoritesViewController: UICollectionViewDataSource {
 //MARK: - FavoritesViewController Protocol
 
 extension FavoritesViewController: FavoritesViewControllerProtocole {
-    func render() -> [Girl] {
+    func render() -> [UIImage] {
        guard let girlImages = presenter?.loadLikedImages() else { return [] }
         return girlImages
     }

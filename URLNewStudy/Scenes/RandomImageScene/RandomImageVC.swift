@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 protocol IRandomImageVC: AnyObject {
     func render(with image: UIImageView)

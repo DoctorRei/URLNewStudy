@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ILoginViewController: AnyObject {
+protocol LoginViewControllerProtocole: AnyObject {
     
 }
 
@@ -20,7 +20,7 @@ final class LoginViewController: UIViewController {
     let registerButton = UIButton(configuration: .filled())
     let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
     
-    var loginPresenter: ILoginPresenter?
+    var loginPresenter: LoginPresenterProtocole?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -187,6 +187,6 @@ extension LoginViewController: UITextFieldDelegate {
 
 //MARK: - Protocole
 
-extension LoginViewController: ILoginViewController {
+extension LoginViewController: LoginViewControllerProtocole {
     
 }

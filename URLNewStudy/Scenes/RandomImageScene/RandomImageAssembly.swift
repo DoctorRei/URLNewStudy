@@ -21,8 +21,8 @@ class RandomImageAssembly {
         guard let randomImgVC = viewController as? RandomImageVC else { return }
         let router = RandomImageRouter(navigationController: navigationController)
         let networkManager = NetworkManager()
-        let worker = RandomImageWorker(networkManager: networkManager)
         let storageManager = StorageManager.shared
+        let worker = RandomImageWorker(networkManager: networkManager, storageManager: storageManager)
         let presenter = RandomImagePresenter(router: router, worker: worker, storageManager: storageManager, view: randomImgVC)
         
         randomImgVC.presenter = presenter

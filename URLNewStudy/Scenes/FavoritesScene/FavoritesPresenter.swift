@@ -6,33 +6,44 @@
 //
 
 import Foundation
+import UIKit
 
 protocol FavoritesPresenterProtocole {
     func render()
-    func loadLikedImages() -> [Girl]
+    func loadLikedImages() -> [UIImage]
 }
 
 final class FavoritesPresenter {
     weak var view: FavoritesViewControllerProtocole?
-    private let router: IFavoritesRouter
+    private let router: FavoritesRouterProtocole
     private let storageManager: StorageManagerProtocole
+    private let worker: FavoritesWorkerProtocole
     
-    init(router: IFavoritesRouter, storageManager: StorageManagerProtocole, view: FavoritesViewControllerProtocole) {
-        self.router = router
-        self.storageManager = storageManager
-        self.view = view
-    }
+    init(
+        view: FavoritesViewControllerProtocole,
+        router: FavoritesRouterProtocole,
+        storageManager: StorageManagerProtocole,
+        worker: FavoritesWorkerProtocole) {
+            self.view = view
+            self.router = router
+            self.storageManager = storageManager
+            self.worker = worker
+        }
 }
 
 extension FavoritesPresenter: FavoritesPresenterProtocole {
     func render() {
     }
     
-    func loadLikedImages() -> [Girl] {
-        storageManager.fetchImages()
+    func loadLikedImages() -> [UIImage] {
+        let urlKeys = storageManager.fetchImages()
+        let urls = urlKeys.compactMap { $0.url }
+        
+        let imagesToCollection = worker.getFromStorage(with: urls)
+        return imagesToCollection
     }
     
-    func loadImagesFromKF() -> UIImage {
+    func loadImagesFromKF() {
         
     }
 }

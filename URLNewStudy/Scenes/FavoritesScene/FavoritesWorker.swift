@@ -10,28 +10,40 @@ import Kingfisher
 import UIKit
 
 protocol FavoritesWorkerProtocole {
-    
+    func getFromStorage(with url: [String]) -> [UIImage]
 }
 
 final class FavoritesWorker {
     
-    private let networkManager: NetworkManagerProtocole
+    private let storageManager: StorageManager
     
-    init(networkManager: NetworkManagerProtocole) {
-        self.networkManager = networkManager
+    init(storageManager: StorageManager) {
+        self.storageManager = storageManager
     }
 }
 
-extension FavoritesWorker {
-    func getFromStorage(with url: String, completion: @escaping (UIImage) -> Void) {
-        KingfisherManager.shared.cache.retrieveImageInDiskCache(forKey: url) { result in
-            switch result {
-            case .success(let image):
-                completion(image ?? UIImage())
-            case .failure(let error):
-                print(error.localizedDescription)
+extension FavoritesWorker: FavoritesWorkerProtocole {
+    func getFromStorage(with url: [String]) -> [UIImage] {
+        var likedImages: [UIImage] = []
+        
+        let group = DispatchGroup()
+        
+        url.forEach { urlIntoCache in
+            group.enter()
+            KingfisherManager.shared.cache.retrieveImageInDiskCache(forKey: urlIntoCache) { result in
+                defer {
+                    group.leave()
+                }
+                switch result {
+                case .success(let image):
+                    likedImages.append(image ?? UIImage())
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
             }
         }
+        group.wait()
+        return likedImages
     }
 }
 

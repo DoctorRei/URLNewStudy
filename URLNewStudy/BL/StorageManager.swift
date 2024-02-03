@@ -9,12 +9,9 @@ import UIKit
 import CoreData
 
 protocol StorageManagerProtocole {
-    func createImage(with id: UUID, url: String, Image: Data)
+    func createImage(url: String)
     func fetchImages() -> [Girl]
-    func fetchImage(id: UUID) -> Girl?
-    func updateImage(id: UUID, url: String)
     func deleteAllImages()
-    func deleteImage(id: UUID)
 }
 
 //MARK: - CRUD
@@ -51,13 +48,11 @@ final class StorageManager: StorageManagerProtocole {
         }
     }
     
-    func createImage(with id: UUID, url: String, Image: Data) {
+    func createImage(url: String) {
         guard let imageDescription = NSEntityDescription.entity(forEntityName: "Girl", in: context) else { return }
         let image = Girl(entity: imageDescription, insertInto: context)
-        
-        image.id = id
+
         image.url = url
-        image.image = Image
         
         saveContext()
     }
@@ -69,22 +64,22 @@ final class StorageManager: StorageManagerProtocole {
         }
     }
     
-    func fetchImage(id: UUID) -> Girl? {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
-        do {
-            let images = try? context.fetch(fetchRequest) as? [Girl]
-            return images?.first(where: {$0.id == id})
-        }
-    }
-    
-    func updateImage(id: UUID, url: String) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
-        do {
-            guard let images = try? context.fetch(fetchRequest) as? [Girl],
-                  let image = images.first(where: {$0.id == id}) else { return }
-            image.url = url
-        }
-    }
+//    func fetchImage(id: UUID) -> Girl? {
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
+//        do {
+//            let images = try? context.fetch(fetchRequest) as? [Girl]
+//            return images?.first(where: {$0.id == id})
+//        }
+//    }
+//
+//    func updateImage(id: UUID, url: String) {
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
+//        do {
+//            guard let images = try? context.fetch(fetchRequest) as? [Girl],
+//                  let image = images.first(where: {$0.id == id}) else { return }
+//            image.url = url
+//        }
+//    }
     
     func deleteAllImages() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
@@ -96,15 +91,15 @@ final class StorageManager: StorageManagerProtocole {
         print("сработало")
     }
     
-    func deleteImage(id: UUID) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
-        do {
-            guard let images = try? context.fetch(fetchRequest) as? [Girl],
-                  let image = images.first(where: { $0.id == id}) else { return }
-            context.delete(image)
-        }
-        saveContext()
-    }
+//    func deleteImage(id: UUID) {
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
+//        do {
+//            guard let images = try? context.fetch(fetchRequest) as? [Girl],
+//                  let image = images.first(where: { $0.id == id}) else { return }
+//            context.delete(image)
+//        }
+//        saveContext()
+//    }
     
     
     
