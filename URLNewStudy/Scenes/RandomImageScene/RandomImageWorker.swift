@@ -10,7 +10,7 @@ import Kingfisher
 
 protocol RandomImageWorkerProtocole {
     func getImage(completion: @escaping (UIImage, String, Data) -> Void)
-    func getImageFromKF(imageUrl: URL, completion: @escaping (UIImageView) -> Void)
+    func getImageFromKF(imageToVC: UIImageView, completion: @escaping (UIImageView) -> Void)
     func getUrlFromApi(completion: @escaping (String) -> Void)
 }
 
@@ -64,23 +64,25 @@ extension RandomImageWorker {
         }
     }
     
-    func getImageFromKF(imageUrl: URL, completion: @escaping (UIImageView) -> Void) {
-        var randomPicture = UIImageView()
-
-        let resource = KF.ImageResource(downloadURL: imageUrl)
-        let placeholder = UIImage(named: "forXCode2")
-
-        randomPicture.kf.setImage(
-            with: resource,
-            placeholder: placeholder) { receivedSize, totalSize in
-                let percentage = Float(receivedSize) / Float(totalSize) * 100.0
-                print("Download is \(percentage)")
-            } completionHandler: { result in
-                self.hande(result)
+    func getImageFromKF(imageToVC: UIImageView, completion: @escaping (UIImageView) -> Void) {
+            getUrlFromApi { urlImage in
+                guard let defaultURL = URL(string: "https://sun9-19.userapi.com/impg/t_fEO35dURufOivHNYcPN9k8BJrnD5PlfV76IQ/VK3nAtHWRLs.jpg?size=810x1080&quality=96&sign=ef13cb5692320947667d494e5c58730f&type=album") else { return }
+                let resource = KF.ImageResource(downloadURL: URL(string: urlImage) ?? defaultURL)
+                let processor = DefaultImageProcessor()
+                
+                imageToVC.kf.indicatorType = .activity
+                imageToVC.kf.setImage(with: resource, options: [.processor(processor)]) { receivedSize, totalSize in
+                    let percentage = Float(receivedSize) / Float(totalSize) * 100.0
+                    print("Download is \(percentage)")
+                } completionHandler: { (result) in
+                    hande(result)
+                }
+                completion(imageToVC)
             }
-        completion(randomPicture)
+        }
+        
     }
-
+    
     func hande(_ result: Result<RetrieveImageResult, KingfisherError>) {
         switch result {
         case .success(let downloadedImage):
@@ -93,4 +95,3 @@ extension RandomImageWorker {
             print(error.localizedDescription)
         }
     }
-}

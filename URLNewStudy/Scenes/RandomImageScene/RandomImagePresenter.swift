@@ -10,7 +10,7 @@ import UIKit
 protocol RandomImagePresenterProtocole {
     func render()
     func saveToStorage()
-    func renderWithKF()
+    func renderWithKF(imageToWorker: UIImageView)
     func getUrlFromApi() -> String
 }
 
@@ -21,6 +21,7 @@ final class RandomImagePresenter {
     private var storageManager: StorageManagerProtocole
     weak var view: IRandomImageVC!
     
+    private var imageViewTest = UIImageView()
     private var urlToKF = Links.shinobu.url
     private var imageID: UUID?
     private var imageURL: String?
@@ -58,16 +59,19 @@ extension RandomImagePresenter: RandomImagePresenterProtocole {
         }
     }
     
-    func renderWithKF() {
-        worker.getImageFromKF(imageUrl: urlToKF) { data in
-            self.view.renderKF(with: data)
+    func renderWithKF(imageToWorker: UIImageView) {
+        imageViewTest = imageToWorker
+        worker.getImageFromKF(imageToVC: imageViewTest) { [weak self] image in
+            self?.imageViewTest = image
+            self?.view.renderKF(with: self?.imageViewTest ?? UIImageView())
         }
     }
     
     func getUrlFromApi() -> String {
-        worker.getUrlFromApi { url in
-            self.imageURL = url
+            worker.getUrlFromApi { url in
+                self.imageURL = url
+            }
+            return imageURL ?? ""
         }
-        return imageURL ?? ""
-    }
+    
 }

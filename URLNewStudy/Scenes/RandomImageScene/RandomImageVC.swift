@@ -32,7 +32,7 @@ final class RandomImageVC: UIViewController {
 
 private extension RandomImageVC {
     @objc func touchGoButton() {
-        testDownload()
+        testRender()
     }
     
     @objc func touchImage() {
@@ -46,7 +46,7 @@ private extension RandomImageVC {
 
 private extension RandomImageVC {
     func setupView() {
-        view.backgroundColor = .cyan
+        view.backgroundColor = .white
         addSubViews()
         setupRandomImageLabel()
         setupImageView()
@@ -145,17 +145,23 @@ extension RandomImageVC: IRandomImageVC {
         }
     }
     
+    func testRender() {
+        presenter?.renderWithKF(imageToWorker: self.mainImage)
+    }
+    
     func renderKF(with image: UIImageView) {
-        self.mainImage = image
+        DispatchQueue.main.async {
+            self.mainImage = image
+        }
     }
     
     func testDownload() {
         guard let url = presenter?.getUrlFromApi() else { return }
         let resource = KF.ImageResource(downloadURL: URL(string: url) ?? Links.awoo.url)
-        let placeholder = UIImage(named: "forXCode2")
         let processor = DefaultImageProcessor()
 
-        mainImage.kf.setImage(with: resource, placeholder: placeholder, options: [.processor(processor)]) { receivedSize, totalSize in
+        mainImage.kf.indicatorType = .activity
+        mainImage.kf.setImage(with: resource, options: [.processor(processor)]) { receivedSize, totalSize in
             let percentage = Float(receivedSize) / Float(totalSize) * 100.0
             print("Download is \(percentage)")
         } completionHandler: { (result) in
