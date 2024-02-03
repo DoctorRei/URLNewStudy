@@ -97,7 +97,6 @@ private extension RandomImageVC {
             action: #selector(touchGoButton),
             for: .touchUpInside)
     }
-    
 }
 
 //MARK: - Setting
@@ -130,7 +129,6 @@ private extension RandomImageVC {
             goButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
             goButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
             goButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
-            
         ])
     }
 }

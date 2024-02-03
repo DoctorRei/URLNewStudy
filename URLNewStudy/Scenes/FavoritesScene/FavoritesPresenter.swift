@@ -32,4 +32,7 @@ extension FavoritesPresenter: FavoritesPresenterProtocole {
         storageManager.fetchImages()
     }
     
+    func loadImagesFromKF() -> UIImage {
+        
+    }
 }

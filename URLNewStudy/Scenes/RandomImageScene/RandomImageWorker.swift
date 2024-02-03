@@ -10,8 +10,11 @@ import Kingfisher
 
 protocol RandomImageWorkerProtocole {
     func getImage(completion: @escaping (UIImage, String, Data) -> Void)
-    func getImageFromKF(imageToVC: UIImageView, completion: @escaping (UIImageView) -> Void)
+    func getImageFromKF(imageToVC: UIImageView, completion: @escaping (UIImageView, String) -> Void)
     func getUrlFromApi(completion: @escaping (String) -> Void)
+    func saveToStorage(with url: String, likedImage: UIImageView)
+    func getFromStorage(with url: String, completion: @escaping (UIImage) -> Void)
+    
 }
 
 final class RandomImageWorker {
@@ -64,24 +67,23 @@ extension RandomImageWorker {
         }
     }
     
-    func getImageFromKF(imageToVC: UIImageView, completion: @escaping (UIImageView) -> Void) {
-            getUrlFromApi { urlImage in
-                guard let defaultURL = URL(string: "https://sun9-19.userapi.com/impg/t_fEO35dURufOivHNYcPN9k8BJrnD5PlfV76IQ/VK3nAtHWRLs.jpg?size=810x1080&quality=96&sign=ef13cb5692320947667d494e5c58730f&type=album") else { return }
-                let resource = KF.ImageResource(downloadURL: URL(string: urlImage) ?? defaultURL)
-                let processor = DefaultImageProcessor()
-                
-                imageToVC.kf.indicatorType = .activity
-                imageToVC.kf.setImage(with: resource, options: [.processor(processor)]) { receivedSize, totalSize in
-                    let percentage = Float(receivedSize) / Float(totalSize) * 100.0
-                    print("Download is \(percentage)")
-                } completionHandler: { (result) in
-                    hande(result)
-                }
-                completion(imageToVC)
+    func getImageFromKF(imageToVC: UIImageView, completion: @escaping (UIImageView, String) -> Void) {
+        getUrlFromApi { urlImage in
+            guard let defaultURL = URL(string: "https://sun9-19.userapi.com/impg/t_fEO35dURufOivHNYcPN9k8BJrnD5PlfV76IQ/VK3nAtHWRLs.jpg?size=810x1080&quality=96&sign=ef13cb5692320947667d494e5c58730f&type=album") else { return }
+            let resource = KF.ImageResource(downloadURL: URL(string: urlImage) ?? defaultURL)
+            let processor = DefaultImageProcessor()
+            
+            imageToVC.kf.indicatorType = .activity
+            imageToVC.kf.setImage(with: resource, options: [.processor(processor)]) { receivedSize, totalSize in
+                let percentage = Float(receivedSize) / Float(totalSize) * 100.0
+                print("Download is \(percentage)")
+            } completionHandler: { (result) in
+                self.hande(result)
             }
+            completion(imageToVC, urlImage)
         }
-        
     }
+    
     
     func hande(_ result: Result<RetrieveImageResult, KingfisherError>) {
         switch result {
@@ -95,3 +97,21 @@ extension RandomImageWorker {
             print(error.localizedDescription)
         }
     }
+    
+    func saveToStorage(with url: String, likedImage: UIImageView) {
+        guard let imageToSave = likedImage.image else { return }
+        KingfisherManager.shared.cache.store(imageToSave, forKey: url)
+        print("Сейв сработал")
+    }
+    
+    func getFromStorage(with url: String, completion: @escaping (UIImage) -> Void) {
+        KingfisherManager.shared.cache.retrieveImageInDiskCache(forKey: url) { result in
+            switch result {
+            case .success(let image):
+                completion(image ?? UIImage())
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+}
