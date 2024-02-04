@@ -7,10 +7,12 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 protocol FavoritesPresenterProtocole {
     func render()
     func loadLikedImages() -> [UIImage]
+    func testKF(completion: @escaping ([UIImage]) -> Void)
 }
 
 final class FavoritesPresenter {
@@ -43,7 +45,29 @@ extension FavoritesPresenter: FavoritesPresenterProtocole {
         return imagesToCollection
     }
     
-    func loadImagesFromKF() {
+    func testCache(completion: @escaping ([String]) -> Void) {
+        let urlKeys = storageManager.fetchImages()
+        let urls = urlKeys.compactMap { $0.url }
         
+        completion(urls)
     }
+    
+    func testKF(completion: @escaping ([UIImage]) -> Void) {
+        testCache { cache in
+            cache.forEach { url in
+                var arrayImages: [UIImage] = []
+                
+                KingfisherManager.shared.cache.retrieveImage(forKey: url) { result in
+                    switch result {
+                    case .success(let imageFromCache):
+                        arrayImages.append(imageFromCache.image ?? UIImage())
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                completion(arrayImages)
+            }
+        }
+    }
+    
 }

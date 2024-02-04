@@ -17,18 +17,21 @@ final class FavoritesViewController: UIViewController {
     
     var presenter: FavoritesPresenterProtocole?
     var collectionView: UICollectionView!
-    lazy var source = render()
+    lazy var source: [UIImage] = []
     
     //MARK: - ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        render2()
         setupCollectionView()
+        collectionView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        source = render()
+        source = []
+        render2()
         collectionView.reloadData()
     }
     
@@ -91,5 +94,11 @@ extension FavoritesViewController: FavoritesViewControllerProtocole {
     func render() -> [UIImage] {
        guard let girlImages = presenter?.loadLikedImages() else { return [] }
         return girlImages
+    }
+    
+    func render2() {
+        presenter?.testKF(completion: { image in
+            self.source.append(contentsOf: image)
+        })
     }
 }
