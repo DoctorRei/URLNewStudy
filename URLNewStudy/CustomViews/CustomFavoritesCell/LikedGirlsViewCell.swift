@@ -23,6 +23,7 @@ class LikedGirlsViewCell: UICollectionViewCell {
         self.contentView.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.borderWidth = 1        
         
         self.clipsToBounds = true
         

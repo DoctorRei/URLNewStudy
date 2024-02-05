@@ -83,8 +83,7 @@ private extension RandomImageVC {
         
         mainImage.layer.cornerRadius = 25
         mainImage.layer.borderWidth = 2
-        mainImage.layer.borderColor = UIColor.white.cgColor
-        
+        mainImage.layer.borderColor = UIColor.black.cgColor
     }
 }
 

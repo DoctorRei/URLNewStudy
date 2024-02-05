@@ -18,14 +18,16 @@ final class FavoritesViewController: UIViewController {
     var presenter: FavoritesPresenterProtocole?
     var collectionView: UICollectionView!
     var activityIndicator: UIActivityIndicatorView?
-    lazy var source: [UIImage] = []
+    var source: [UIImage] = []
     
     //MARK: - ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupCollectionView()
         setupActivityIndicator()
+        activityIndicator?.startAnimating()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,7 +42,7 @@ final class FavoritesViewController: UIViewController {
         activityIndicator?.center = view.center
         activityIndicator?.hidesWhenStopped = true
         view.addSubview(activityIndicator ?? UIActivityIndicatorView(style: .large))
-        activityIndicator?.startAnimating()
+        
     }
     
     func stopActivityIndicator() {
@@ -93,7 +95,9 @@ extension FavoritesViewController: UICollectionViewDataSource {
             for: indexPath
         ) as? LikedGirlsViewCell else { return UICollectionViewCell() }
         
-        cell.imageView.image = source[indexPath.item]
+//        DispatchQueue.main.async {
+            cell.imageView.image = self.source[indexPath.item]
+//        }
         return cell
     }
 }
@@ -104,8 +108,8 @@ extension FavoritesViewController: FavoritesViewControllerProtocole {
     func render() {
         //TODO: - ViewWillAppear
         source = []
-        self.presenter?.testKF(completion: { image in
-            self.source.append(contentsOf: image)
+        self.presenter?.testKF(completion: { images in
+            self.source.append(contentsOf: images)
         })
         
     }

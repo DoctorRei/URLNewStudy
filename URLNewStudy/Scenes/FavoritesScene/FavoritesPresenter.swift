@@ -56,7 +56,6 @@ extension FavoritesPresenter: FavoritesPresenterProtocole {
         testCache { cache in
             var arrayImages: [UIImage] = []
             cache.forEach { url in
-                
                 KingfisherManager.shared.cache.retrieveImage(forKey: url) { result in
                     switch result {
                     case .success(let imageFromCache):
