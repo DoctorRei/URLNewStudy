@@ -24,6 +24,11 @@ final class RandomImageVC: UIViewController {
         
         setupView()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.alpha = 0
+    }
 }
 
 //MARK: - Actions

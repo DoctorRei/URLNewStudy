@@ -8,7 +8,7 @@
 import UIKit
 
 protocol FavoritesViewControllerProtocole: AnyObject {
-    func render() -> [UIImage]
+    func render()
 }
 
 final class FavoritesViewController: UIViewController {
@@ -17,31 +17,41 @@ final class FavoritesViewController: UIViewController {
     
     var presenter: FavoritesPresenterProtocole?
     var collectionView: UICollectionView!
+    var activityIndicator: UIActivityIndicatorView?
     lazy var source: [UIImage] = []
     
     //MARK: - ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        render2()
         setupCollectionView()
-        collectionView.reloadData()
+        setupActivityIndicator()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        source = []
-        render2()
+        render()
         collectionView.reloadData()
+        stopActivityIndicator()
     }
     
+    func setupActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator?.center = view.center
+        activityIndicator?.hidesWhenStopped = true
+        view.addSubview(activityIndicator ?? UIActivityIndicatorView(style: .large))
+        activityIndicator?.startAnimating()
+    }
+    
+    func stopActivityIndicator() {
+        activityIndicator?.stopAnimating()
+    }
     
     //MARK: - Setup Collection
     
     func setupCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: setupFlowLayout())
         collectionView.dataSource = self
-        collectionView.backgroundColor = .cyan
         
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -91,14 +101,12 @@ extension FavoritesViewController: UICollectionViewDataSource {
 //MARK: - FavoritesViewController Protocol
 
 extension FavoritesViewController: FavoritesViewControllerProtocole {
-    func render() -> [UIImage] {
-       guard let girlImages = presenter?.loadLikedImages() else { return [] }
-        return girlImages
-    }
-    
-    func render2() {
-        presenter?.testKF(completion: { image in
+    func render() {
+        //TODO: - ViewWillAppear
+        source = []
+        self.presenter?.testKF(completion: { image in
             self.source.append(contentsOf: image)
         })
+        
     }
 }

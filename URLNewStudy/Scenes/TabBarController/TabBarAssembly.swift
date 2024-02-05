@@ -45,6 +45,7 @@ extension TabBarAssembly: BaseAssemblyProtocole {
         favoritesVC.tabBarItem.image = UIImage(systemName: "heart")
         favoritesVC.tabBarItem.selectedImage = UIImage(systemName: "heart.fill")
         favoritesVC.title = "Third"
+        favoritesVC.render()
         
         tabBarVC.presenter?.buildTabBar(
             with: randomImgVC,

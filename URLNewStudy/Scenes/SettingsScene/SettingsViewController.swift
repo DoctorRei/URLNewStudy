@@ -14,14 +14,29 @@ protocol ISettingsViewController: AnyObject {
 final class SettingsViewController: UIViewController {
     
     var presenter: ISettingsPresenter?
+    var activityIndicator = UIActivityIndicatorView(style: .large)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupActivityIndicator()
+        
     }
     
     func setupView() {
-        self.view.backgroundColor = .brown
+        
+    }
+    
+    func setupActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+    }
+    
+    func stopActivityIndicator() {
+        activityIndicator.stopAnimating()
     }
     
 }

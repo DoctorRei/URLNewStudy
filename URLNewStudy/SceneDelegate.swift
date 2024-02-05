@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         loginAssembly.configure(viewController: loginVC)
         
         window?.rootViewController = navigationController
-        window?.backgroundColor = .cyan
+        window?.backgroundColor = .white
         window?.makeKeyAndVisible()
     }
 }

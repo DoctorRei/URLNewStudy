@@ -54,8 +54,8 @@ extension FavoritesPresenter: FavoritesPresenterProtocole {
     
     func testKF(completion: @escaping ([UIImage]) -> Void) {
         testCache { cache in
+            var arrayImages: [UIImage] = []
             cache.forEach { url in
-                var arrayImages: [UIImage] = []
                 
                 KingfisherManager.shared.cache.retrieveImage(forKey: url) { result in
                     switch result {
@@ -65,8 +65,8 @@ extension FavoritesPresenter: FavoritesPresenterProtocole {
                         print(error.localizedDescription)
                     }
                 }
-                completion(arrayImages)
             }
+            completion(arrayImages)
         }
     }
     
