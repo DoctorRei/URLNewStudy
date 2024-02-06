@@ -20,7 +20,7 @@ final class LoginViewController: UIViewController {
     let registerButton = UIButton(configuration: .filled())
     let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
     
-    var loginPresenter: LoginPresenterProtocole?
+    var presenter: LoginPresenterProtocole?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +32,13 @@ final class LoginViewController: UIViewController {
 
 private extension LoginViewController {
     @objc func touchRegisterButton() {
-        loginPresenter?.runRegisterFlow()
+        presenter?.runRegisterFlow()
     }
     
     @objc func touchEnterButton() {
         guard let password = passwordTF.text else {return}
         guard let login = loginTF.text else {return}
-        loginPresenter?.validatePassword(login: login, password: password)
+        presenter?.validatePassword(login: login, password: password)
     }
 }
 
@@ -178,9 +178,9 @@ extension LoginViewController: UITextFieldDelegate {
         guard let text = textField.text else { return }
 
         if textField == loginTF {
-            loginPresenter?.getLogin(login: text)
+            presenter?.getLogin(login: text)
         } else {
-            loginPresenter?.getPassword(password: text)
+            presenter?.getPassword(password: text)
         }
     }
 }

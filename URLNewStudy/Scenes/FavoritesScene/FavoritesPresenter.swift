@@ -11,8 +11,8 @@ import Kingfisher
 
 protocol FavoritesPresenterProtocole {
     func render()
-    func loadLikedImages() -> [UIImage]
-    func testKF(completion: @escaping ([UIImage]) -> Void)
+    func uploadImages(completion: @escaping ([UIImage]) -> Void)
+    func runSelectedImage(with selectedImage: UIImage)
 }
 
 final class FavoritesPresenter {
@@ -37,13 +37,7 @@ extension FavoritesPresenter: FavoritesPresenterProtocole {
     func render() {
     }
     
-    func loadLikedImages() -> [UIImage] {
-        let urlKeys = storageManager.fetchImages()
-        let urls = urlKeys.compactMap { $0.url }
-        
-        let imagesToCollection = worker.getFromStorage(with: urls)
-        return imagesToCollection
-    }
+    //MARK: - Download Images
     
     func testCache(completion: @escaping ([String]) -> Void) {
         let urlKeys = storageManager.fetchImages()
@@ -52,7 +46,7 @@ extension FavoritesPresenter: FavoritesPresenterProtocole {
         completion(urls)
     }
     
-    func testKF(completion: @escaping ([UIImage]) -> Void) {
+    func uploadImages(completion: @escaping ([UIImage]) -> Void) {
         testCache { cache in
             var arrayImages: [UIImage] = []
             cache.forEach { url in
@@ -67,6 +61,12 @@ extension FavoritesPresenter: FavoritesPresenterProtocole {
             }
             completion(arrayImages)
         }
+    }
+    
+    //MARK: - Navigation
+    
+    func runSelectedImage(with selectedImage: UIImage) {
+        router.routeTo(scene: FavoritesRouter.Target.selectedImage(image: selectedImage))
     }
     
 }

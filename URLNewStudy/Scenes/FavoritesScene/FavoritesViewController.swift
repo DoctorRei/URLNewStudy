@@ -53,6 +53,7 @@ final class FavoritesViewController: UIViewController {
     func setupCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: setupFlowLayout())
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.backgroundColor = .white
         
         view.addSubview(collectionView)
@@ -84,7 +85,7 @@ final class FavoritesViewController: UIViewController {
 
 //MARK: - Data Source
 
-extension FavoritesViewController: UICollectionViewDataSource {
+extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         source.count
     }
@@ -99,6 +100,12 @@ extension FavoritesViewController: UICollectionViewDataSource {
 
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //TODO: - Доделать завтра
+        presenter?.runSelectedImage(with: UIImage())
+    }
+    
 }
 
 //MARK: - FavoritesViewController Protocol
@@ -107,7 +114,7 @@ extension FavoritesViewController: FavoritesViewControllerProtocole {
     func render() {
         //TODO: - ViewWillAppear
         source = []
-        self.presenter?.testKF(completion: { images in
+        self.presenter?.uploadImages(completion: { images in
             self.source.append(contentsOf: images)
         })
         

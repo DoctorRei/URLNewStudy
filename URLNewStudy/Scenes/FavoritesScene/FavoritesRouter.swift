@@ -14,7 +14,7 @@ protocol FavoritesRouterProtocole: BaseRoutingProtocole {
 final class FavoritesRouter {
     
     enum Target {
-        case selectedImage
+        case selectedImage(image: UIImage)
         case mainScene
     }
     
@@ -32,8 +32,13 @@ extension FavoritesRouter: FavoritesRouterProtocole {
         guard let favoritesTarget = scene as? FavoritesRouter.Target else {return}
         
         switch favoritesTarget {
-        case .selectedImage:
-            break
+        case .selectedImage(let image):
+            let selectedImageVC = SelectedImageViewController()
+            let selectedImageAssembly = SelectedImageAssembly(navigationController: navigationController, selectedImage: image)
+            selectedImageAssembly.configure(viewController: selectedImageVC)
+            
+            navigationController.pushViewController(selectedImageVC, animated: true)
+            
         case .mainScene:
             break
         }

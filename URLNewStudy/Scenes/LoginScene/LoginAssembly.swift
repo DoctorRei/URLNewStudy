@@ -25,7 +25,7 @@ extension LoginAssembly: BaseAssemblyProtocole {
         let router = LoginRouter(navigationController: navigationController)
         let worker = LoginWorker()
         let presenter = LoginPresenter(router: router, worker: worker, keychainManager: keychainManager)
-        loginVC.loginPresenter = presenter
+        loginVC.presenter = presenter
         presenter.view = loginVC
     }
     

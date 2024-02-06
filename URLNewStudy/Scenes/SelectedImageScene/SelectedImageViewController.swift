@@ -13,9 +13,11 @@ protocol SelectedImageViewControllerProtocole: AnyObject {
 
 class SelectedImageViewController: UIViewController {
 
+    var presenter: SelectedImagePresenterProtocole?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .black
     }
     
 }

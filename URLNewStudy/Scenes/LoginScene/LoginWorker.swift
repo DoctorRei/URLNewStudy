@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ILoginWorker {
+protocol LoginWorkerProtocole {
     func updateModel(login: String, password: String)
     func login(login: String, password: String) -> Bool
 }
@@ -19,7 +19,7 @@ final class LoginWorker {
     private var validPassword = "admin"
 }
 
-extension LoginWorker: ILoginWorker {
+extension LoginWorker: LoginWorkerProtocole {
     func updateModel(login: String, password: String) {
         validPassword = password
         validLogin = password
