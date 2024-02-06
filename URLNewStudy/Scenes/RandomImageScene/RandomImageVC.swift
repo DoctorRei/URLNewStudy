@@ -16,6 +16,7 @@ final class RandomImageVC: UIViewController {
     private let testLabel = UILabel()
     private var mainImage = UIImageView()
     private let goButton = UIButton(configuration: .filled())
+    let tabBarAppearance = UITabBarAppearance()
     
     var presenter: RandomImagePresenterProtocole?
     
@@ -23,13 +24,17 @@ final class RandomImageVC: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        tabBarAppearance.configureWithOpaqueBackground()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.alpha = 0
+        
+        tabBarAppearance.configureWithOpaqueBackground()
     }
 }
+
 
 //MARK: - Actions
 

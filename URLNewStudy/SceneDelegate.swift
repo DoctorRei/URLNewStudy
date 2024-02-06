@@ -20,6 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationController = UINavigationController(rootViewController: loginVC)
         let loginAssembly = LoginAssembly(navigationController: navigationController)
         loginAssembly.configure(viewController: loginVC)
+       
         
         window?.rootViewController = navigationController
         window?.backgroundColor = .white

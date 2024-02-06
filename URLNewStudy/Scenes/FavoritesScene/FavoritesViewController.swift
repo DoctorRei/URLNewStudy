@@ -42,7 +42,6 @@ final class FavoritesViewController: UIViewController {
         activityIndicator?.center = view.center
         activityIndicator?.hidesWhenStopped = true
         view.addSubview(activityIndicator ?? UIActivityIndicatorView(style: .large))
-        
     }
     
     func stopActivityIndicator() {
@@ -54,6 +53,7 @@ final class FavoritesViewController: UIViewController {
     func setupCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: setupFlowLayout())
         collectionView.dataSource = self
+        collectionView.backgroundColor = .white
         
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -94,10 +94,9 @@ extension FavoritesViewController: UICollectionViewDataSource {
             withReuseIdentifier: "\(LikedGirlsViewCell.self)",
             for: indexPath
         ) as? LikedGirlsViewCell else { return UICollectionViewCell() }
-        
-//        DispatchQueue.main.async {
-            cell.imageView.image = self.source[indexPath.item]
-//        }
+            
+        cell.imageView.image = self.source[indexPath.item]
+
         return cell
     }
 }

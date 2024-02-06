@@ -12,13 +12,22 @@ protocol TabBarProtocole: AnyObject {
 }
 
 final class TabBarView: UITabBarController {
-
+    
     var presenter: TabBarPresenterProtocole?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.hidesBackButton = true
+        
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        appearance.shadowColor = nil
+        UITabBar.appearance().standardAppearance = appearance
+        UITabBar.appearance().scrollEdgeAppearance = UITabBar.appearance().standardAppearance
+        
+        
     }
 }
 
@@ -26,6 +35,8 @@ extension TabBarView {
     func createTabBarButton() -> UIButton {
         return UIButton()
     }
+    
+    
 }
 
 extension TabBarView: TabBarProtocole {

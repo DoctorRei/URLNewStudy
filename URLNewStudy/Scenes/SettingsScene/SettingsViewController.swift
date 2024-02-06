@@ -15,31 +15,30 @@ final class SettingsViewController: UIViewController {
     
     var presenter: ISettingsPresenter?
     var activityIndicator = UIActivityIndicatorView(style: .large)
+    var tabbleView: UITableView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        setupActivityIndicator()
-        
     }
     
     func setupView() {
         
     }
     
-    func setupActivityIndicator() {
-        activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.center = view.center
-        activityIndicator.hidesWhenStopped = true
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-    }
-    
-    func stopActivityIndicator() {
-        activityIndicator.stopAnimating()
-    }
-    
 }
+
+//extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//    
+//    }
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        
+//    }
+//    
+//    
+//}
 
 extension SettingsViewController: ISettingsViewController {
     func render() {

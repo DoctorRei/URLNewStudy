@@ -35,6 +35,7 @@ extension TabBarAssembly: BaseAssemblyProtocole {
         randomImgVC.tabBarItem.image = UIImage(systemName: "sparkles")
         randomImgVC.tabBarItem.selectedImage?.withTintColor(.yellow)
         randomImgVC.tabBarItem.selectedImage?.withTintColor(.yellow, renderingMode: .automatic)
+    
         
         guard let settingsVC = createSettingsViewController() as? SettingsViewController else {return}
         settingsVC.title = "Second"
