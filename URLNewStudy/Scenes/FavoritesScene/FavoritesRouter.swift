@@ -14,7 +14,7 @@ protocol FavoritesRouterProtocole: BaseRoutingProtocole {
 final class FavoritesRouter {
     
     enum Target {
-        case favoritesVC
+        case selectedImage
         case mainScene
     }
     
@@ -29,10 +29,10 @@ final class FavoritesRouter {
 
 extension FavoritesRouter: FavoritesRouterProtocole {
     func routeTo(scene: Any) {
-        guard let randomImageTarget = scene as? RandomImageRouter.Target else {return}
+        guard let favoritesTarget = scene as? FavoritesRouter.Target else {return}
         
-        switch randomImageTarget {
-        case .favoritesVC:
+        switch favoritesTarget {
+        case .selectedImage:
             break
         case .mainScene:
             break

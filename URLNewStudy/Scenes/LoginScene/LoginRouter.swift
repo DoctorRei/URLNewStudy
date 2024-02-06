@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ILoginRouter: BaseRoutingProtocole {
+protocol LoginRouterProtocole: BaseRoutingProtocole {
     func routeTo(scene: Any)
     func showError(message: String)
 }
@@ -39,7 +39,7 @@ extension LoginRouter {
     }
 }
 
-extension LoginRouter: ILoginRouter {
+extension LoginRouter: LoginRouterProtocole {
     func routeTo(scene: Any) {
         guard let registerTarget = scene as? LoginRouter.Target else { return }
         

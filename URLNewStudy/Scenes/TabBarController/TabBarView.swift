@@ -26,8 +26,6 @@ final class TabBarView: UITabBarController {
         appearance.shadowColor = nil
         UITabBar.appearance().standardAppearance = appearance
         UITabBar.appearance().scrollEdgeAppearance = UITabBar.appearance().standardAppearance
-        
-        
     }
 }
 

@@ -30,11 +30,11 @@ final class LoginPresenter {
     weak var view: LoginViewControllerProtocole?
     private let keychainManager: KeychainManagerProtocole!
     private let worker: ILoginWorker
-    private let router: ILoginRouter
+    private let router: LoginRouterProtocole
     private var name = ""
     private var password = Data()
     
-    init(router: ILoginRouter, worker: ILoginWorker, keychainManager: KeychainManagerProtocole!) {
+    init(router: LoginRouterProtocole, worker: ILoginWorker, keychainManager: KeychainManagerProtocole!) {
         self.router = router
         self.worker = worker
         self.keychainManager = keychainManager
