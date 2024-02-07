@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol IRegisterRouter: BaseRoutingProtocole  {
+protocol RegisterRouterProtocole: BaseRoutingProtocole  {
     
 }
 
@@ -25,7 +25,7 @@ final class RegisterRouter {
     }
 }
 
-extension RegisterRouter: IRegisterRouter {
+extension RegisterRouter: RegisterRouterProtocole {
     func routeTo(scene: Any) {
         guard let registerTarget = scene as? RegisterRouter.Target else {return}
         

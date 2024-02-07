@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ITabBarAssembly {
+protocol TabBarAssemblyProtocole {
     func createRandomImageViewController() -> UIViewController
     func createSettingsViewController() -> UIViewController
     func createFavoritesViewController() -> UIViewController
@@ -55,7 +55,7 @@ extension TabBarAssembly: BaseAssemblyProtocole {
     }
 }
 
-extension TabBarAssembly: ITabBarAssembly {
+extension TabBarAssembly: TabBarAssemblyProtocole {
     func createRandomImageViewController() -> UIViewController {
         let randomImgVC = RandomImageVC()
         let router = RandomImageRouter(navigationController: navigationController)

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ISettingsRouter: BaseRoutingProtocole  {
+protocol SettingsRouterProtocole: BaseRoutingProtocole  {
     
 }
 
@@ -27,7 +27,7 @@ final class SettingsRouter {
 
 //TODO: - Заглушка навигации
 
-extension SettingsRouter: ISettingsRouter {
+extension SettingsRouter: SettingsRouterProtocole {
     func routeTo(scene: Any) {
         guard let settingsRouter = scene as? SettingsRouter.Target else {return}
         

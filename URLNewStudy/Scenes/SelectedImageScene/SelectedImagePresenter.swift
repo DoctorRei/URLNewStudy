@@ -11,16 +11,18 @@ protocol SelectedImagePresenterProtocole {
     func render()
 }
 
-class SelectedImagePresenter {
+final class SelectedImagePresenter {
     
     weak var view: SelectedImageViewControllerProtocole?
     private var router: SelectedImageRouterProtocole
-    private let selectedImage: UIImage
+    private let selectedImages: [UIImage]
+    private let selectedIndex: Int
     
-    init(view: SelectedImageViewControllerProtocole?, router: SelectedImageRouterProtocole, selectedImage: UIImage) {
+    init(view: SelectedImageViewControllerProtocole? = nil, router: SelectedImageRouterProtocole, selectedImages: [UIImage], selectedIndex: Int) {
         self.view = view
         self.router = router
-        self.selectedImage = selectedImage
+        self.selectedImages = selectedImages
+        self.selectedIndex = selectedIndex
     }
     
 }

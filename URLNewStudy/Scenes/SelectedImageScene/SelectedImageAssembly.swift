@@ -10,11 +10,13 @@ import UIKit
 final class SelectedImageAssembly {
     
     private var navigationController: UINavigationController
-    private let selectedImage: UIImage
+    private let selectedImages: [UIImage]
+    private let selectedIndex: Int
     
-    init(navigationController: UINavigationController, selectedImage: UIImage) {
+    init(navigationController: UINavigationController, selectedImages: [UIImage], selectedIndex: Int) {
         self.navigationController = navigationController
-        self.selectedImage = selectedImage
+        self.selectedImages = selectedImages
+        self.selectedIndex = selectedIndex
     }
 }
 
@@ -25,7 +27,8 @@ extension SelectedImageAssembly: BaseAssemblyProtocole {
         let presenter = SelectedImagePresenter(
             view: selectedImageVC,
             router: router,
-            selectedImage: selectedImage
+            selectedImages: selectedImages,
+            selectedIndex: selectedIndex
         )
         
         selectedImageVC.presenter = presenter

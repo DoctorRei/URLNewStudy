@@ -11,7 +11,7 @@ protocol SelectedImageRouterProtocole: BaseRoutingProtocole {
     
 }
 
-class SelectedImageRouter {
+final class SelectedImageRouter {
     
     let navigationController: UINavigationController
     

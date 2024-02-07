@@ -19,7 +19,7 @@ final class RandomImagePresenter {
     let router: RandomImageRouterProtocole
     private var worker: RandomImageWorkerProtocole
     private var storageManager: StorageManagerProtocole
-    weak var view: IRandomImageVC!
+    weak var view: RandomImageVCProtocole!
     
     private var imageViewTest = UIImageView()
     private var urlToKF = Links.shinobu.url
@@ -29,7 +29,7 @@ final class RandomImagePresenter {
         router: RandomImageRouterProtocole,
         worker: RandomImageWorkerProtocole!,
         storageManager: StorageManagerProtocole,
-        view: IRandomImageVC!
+        view: RandomImageVCProtocole!
     ) {
         self.router = router
         self.worker = worker

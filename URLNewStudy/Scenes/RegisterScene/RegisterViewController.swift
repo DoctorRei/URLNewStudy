@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol IRegisterViewController: AnyObject {
+protocol RegisterViewControllerProtocole: AnyObject {
     func render(viewModel: RegisterViewModel)
     func checkValidPassword() -> Bool
 }
@@ -21,7 +21,7 @@ final class RegisterViewController: UIViewController {
     private let registerButton = UIButton(configuration: .filled())
     private var statusTest = ""
     
-    var presenter: IRegisterPresenter?
+    var presenter: RegisterPresenterProtocole?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,7 +136,7 @@ private extension RegisterViewController {
 
 //MARK: - Protocol
 
-extension RegisterViewController: IRegisterViewController {
+extension RegisterViewController: RegisterViewControllerProtocole {
     func checkValidPassword() -> Bool {
         passwordTF.text == verifyPasswordTF.text
     }

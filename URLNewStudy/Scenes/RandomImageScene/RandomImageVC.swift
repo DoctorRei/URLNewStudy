@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol IRandomImageVC: AnyObject {
+protocol RandomImageVCProtocole: AnyObject {
     func render(with image: UIImageView)
 }
 
@@ -143,7 +143,7 @@ private extension RandomImageVC {
 
 //MARK: - Protocole
 
-extension RandomImageVC: IRandomImageVC {
+extension RandomImageVC: RandomImageVCProtocole {
     
     func updateImage() {
         presenter?.render(imageToWorker: self.mainImage)

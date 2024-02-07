@@ -7,20 +7,20 @@
 
 import UIKit
 
-protocol ISettingsPresenter {
+protocol SettingsPresenterProtocole {
     func render()
 }
 
 final class SettingsPresenter {
-    weak var view: ISettingsViewController?
-    private let router: ISettingsRouter
+    weak var view: SettingsViewControllerProtocole?
+    private let router: SettingsRouterProtocole
     
-    init(router: ISettingsRouter) {
+    init(router: SettingsRouterProtocole) {
         self.router = router
     }
 }
 
-extension SettingsPresenter: ISettingsPresenter {
+extension SettingsPresenter: SettingsPresenterProtocole {
     func render() {
         
     }

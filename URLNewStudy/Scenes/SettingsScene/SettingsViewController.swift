@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol ISettingsViewController: AnyObject {
+protocol SettingsViewControllerProtocole: AnyObject {
     func render()
 }
 
 final class SettingsViewController: UIViewController {
     
-    var presenter: ISettingsPresenter?
+    var presenter: SettingsPresenterProtocole?
     var activityIndicator = UIActivityIndicatorView(style: .large)
     var tabbleView: UITableView?
     
@@ -40,7 +40,7 @@ final class SettingsViewController: UIViewController {
 //    
 //}
 
-extension SettingsViewController: ISettingsViewController {
+extension SettingsViewController: SettingsViewControllerProtocole {
     func render() {
         
     }

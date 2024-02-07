@@ -12,7 +12,7 @@ struct RegisterViewModel {
     var password: Data
 }
 
-protocol IRegisterPresenter {
+protocol RegisterPresenterProtocole {
     func render()
     func runRandomImageVCFlow()
     func saveNewUser(login: String, password: Data)
@@ -20,8 +20,8 @@ protocol IRegisterPresenter {
 
 final class RegisterPresenter {
     
-    let router: IRegisterRouter
-    private weak var view: IRegisterViewController!
+    let router: RegisterRouterProtocole
+    private weak var view: RegisterViewControllerProtocole!
     private let keychainManager: KeychainManagerProtocole!
     
     private let name: String
@@ -29,8 +29,8 @@ final class RegisterPresenter {
     private var status: String
     
     init(
-        router: IRegisterRouter,
-        view: IRegisterViewController!,
+        router: RegisterRouterProtocole,
+        view: RegisterViewControllerProtocole!,
         keychainManager: KeychainManagerProtocole,
         name: String, password: Data,
         status: String
@@ -44,7 +44,7 @@ final class RegisterPresenter {
     }
 }
 
-extension RegisterPresenter: IRegisterPresenter {
+extension RegisterPresenter: RegisterPresenterProtocole {
     func saveNewUser(login: String, password: Data) {
         let viewModel = RegisterViewModel(login: login, password: password)
         

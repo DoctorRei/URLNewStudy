@@ -12,7 +12,7 @@ import Kingfisher
 protocol FavoritesPresenterProtocole {
     func render()
     func uploadImages(completion: @escaping ([UIImage]) -> Void)
-    func runSelectedImage(with selectedImage: UIImage)
+    func runSelectedImage(with selectedImage: [UIImage], at indexPath: Int)
 }
 
 final class FavoritesPresenter {
@@ -65,8 +65,8 @@ extension FavoritesPresenter: FavoritesPresenterProtocole {
     
     //MARK: - Navigation
     
-    func runSelectedImage(with selectedImage: UIImage) {
-        router.routeTo(scene: FavoritesRouter.Target.selectedImage(image: selectedImage))
+    func runSelectedImage(with selectedImage: [UIImage], at indexPath: Int) {
+        router.routeTo(scene: FavoritesRouter.Target.selectedImage(images: selectedImage, index: indexPath))
     }
     
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingsAssembly {
+final class SettingsAssembly {
     
     let navigationController: UINavigationController
     

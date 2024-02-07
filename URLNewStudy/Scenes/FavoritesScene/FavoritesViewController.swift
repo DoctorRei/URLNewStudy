@@ -103,7 +103,7 @@ extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //TODO: - Доделать завтра
-        presenter?.runSelectedImage(with: UIImage())
+        presenter?.runSelectedImage(with: source, at: indexPath.row)
     }
     
 }
