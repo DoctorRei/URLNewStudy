@@ -37,6 +37,8 @@ final class FavoritesViewController: UIViewController {
         stopActivityIndicator()
     }
     
+    //MARK: - Setup Activity Indicator
+    
     func setupActivityIndicator() {
         activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator?.center = view.center

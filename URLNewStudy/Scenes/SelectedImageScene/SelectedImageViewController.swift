@@ -15,19 +15,22 @@ final class SelectedImageViewController: UIViewController  {
 
     var presenter: SelectedImagePresenterProtocole?
     private let scrollView = UIScrollView()
-    private let selectedImage = UIImageView()
+    private var selectedImage = UIImageView()
     private let countLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupView()
-    }
-    
-    func setupView() {
         setupScrollView()
         setupSelectedImage()
         setupCountLabel()
+        setupSubviews()
+        setupLayout()
+        setupImage()
+        
+    }
+    
+    func setupView() {
+       
     }
     
     func setupSelectedImage() {
@@ -43,11 +46,23 @@ final class SelectedImageViewController: UIViewController  {
     
     func setupSubviews() {
         view.addSubview(scrollView)
+        view.addSubview(countLabel)
         scrollView.addSubview(selectedImage)
     }
     
     func setupLayout() {
-        
+        scrollView.frame = view.bounds
+        selectedImage.frame = scrollView.bounds
+        countLabel.frame = CGRect(
+            x: 20,
+            y: view.frame.height - 50,
+            width: view.frame.width - 40,
+            height: 21)
+    }
+    
+    func setupImage() {
+        selectedImage.image = presenter?.setupPhoto()
+        countLabel.text = presenter?.setupLabel()
     }
 }
 
