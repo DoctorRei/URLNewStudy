@@ -40,7 +40,7 @@ final class SelectedImageViewController: UIViewController  {
     }
     
     func setupCountLabel() {
-        countLabel.textColor = .white
+        countLabel.textColor = .black
         countLabel.textAlignment = .center
     }
     
@@ -51,8 +51,21 @@ final class SelectedImageViewController: UIViewController  {
     }
     
     func setupLayout() {
-        scrollView.frame = view.bounds
-        selectedImage.frame = scrollView.bounds
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        selectedImage.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            selectedImage.topAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.topAnchor),
+            selectedImage.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor),
+            selectedImage.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor),
+            selectedImage.bottomAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.bottomAnchor)
+        ])
+        
         countLabel.frame = CGRect(
             x: 20,
             y: view.frame.height - 50,
@@ -71,7 +84,7 @@ extension SelectedImageViewController: UIScrollViewDelegate {
         scrollView.contentMode = .scaleAspectFit
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
-        scrollView.backgroundColor = .black
+        scrollView.backgroundColor = .white
         scrollView.minimumZoomScale = 1
         scrollView.maximumZoomScale = 6
         

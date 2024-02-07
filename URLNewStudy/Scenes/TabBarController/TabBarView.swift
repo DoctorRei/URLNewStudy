@@ -27,6 +27,12 @@ final class TabBarView: UITabBarController {
         UITabBar.appearance().standardAppearance = appearance
         UITabBar.appearance().scrollEdgeAppearance = UITabBar.appearance().standardAppearance
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+    }
 }
 
 extension TabBarView {
