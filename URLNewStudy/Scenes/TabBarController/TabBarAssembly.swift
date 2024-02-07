@@ -28,6 +28,8 @@ extension TabBarAssembly: BaseAssemblyProtocole {
         tabBarVC.presenter = presenter
         presenter.view = tabBarVC
         
+        navigationController.navigationBar.isHidden = true
+        
         //TODO: - Настройку реализовать потом адекватно
         
         guard let randomImgVC = createRandomImageViewController() as? RandomImageVC else { return}

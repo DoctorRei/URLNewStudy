@@ -24,14 +24,11 @@ final class RandomImageVC: UIViewController {
         super.viewDidLoad()
         
         setupView()
-        tabBarAppearance.configureWithOpaqueBackground()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navigationController?.navigationBar.alpha = 0
         
-        tabBarAppearance.configureWithOpaqueBackground()
     }
 }
 

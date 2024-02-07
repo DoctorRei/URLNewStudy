@@ -26,7 +26,10 @@ final class SelectedImageViewController: UIViewController  {
         setupSubviews()
         setupLayout()
         setupImage()
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
     }
     
     func setupView() {
