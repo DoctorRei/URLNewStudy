@@ -22,7 +22,12 @@ extension FavoritesAssembly: BaseAssemblyProtocole {
         let router = FavoritesRouter(navigationController: navigationController)
         let storageManager = StorageManager.shared
         let worker = FavoritesWorker(storageManager: storageManager)
-        let presenter = FavoritesPresenter(view: favoritesVC, router: router, storageManager: storageManager, worker: worker)
+        let presenter = FavoritesPresenter(
+            view: favoritesVC,
+            router: router,
+            storageManager: storageManager,
+            worker: worker
+        )
         
         favoritesVC.presenter = presenter
         presenter.view = favoritesVC

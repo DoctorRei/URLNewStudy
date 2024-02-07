@@ -40,7 +40,9 @@ extension FavoritesRouter: FavoritesRouterProtocole {
                 selectedIndex: index
             )
             selectedImageAssembly.configure(viewController: selectedImageVC)
-            navigationController.pushViewController(selectedImageVC, animated: true)
+            navigationController.pushViewController(
+                selectedImageVC,
+                animated: true)
             
         case .mainScene:
             break

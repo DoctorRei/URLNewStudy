@@ -24,6 +24,7 @@ extension SelectedImageAssembly: BaseAssemblyProtocole {
     func configure(viewController: UIViewController) {
         guard let selectedImageVC = viewController as? SelectedImageViewController else { return }
         navigationController.navigationBar.isHidden = false
+        
         let router = SelectedImageRouter(navigationController: navigationController)
         let presenter = SelectedImagePresenter(
             view: selectedImageVC,
@@ -35,4 +36,5 @@ extension SelectedImageAssembly: BaseAssemblyProtocole {
         selectedImageVC.presenter = presenter
         presenter.view = selectedImageVC
     }
+    
 }
