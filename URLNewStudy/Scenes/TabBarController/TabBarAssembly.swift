@@ -48,7 +48,6 @@ extension TabBarAssembly: BaseAssemblyProtocole {
         favoritesVC.tabBarItem.image = UIImage(systemName: "heart")
         favoritesVC.tabBarItem.selectedImage = UIImage(systemName: "heart.fill")
         favoritesVC.title = "Third"
-        favoritesVC.render()
         
         tabBarVC.presenter?.buildTabBar(
             with: randomImgVC,
@@ -63,7 +62,9 @@ extension TabBarAssembly: TabBarAssemblyProtocole {
         let router = RandomImageRouter(navigationController: navigationController)
         let networkManager = NetworkManager()
         let storageManager = StorageManager.shared
-        let worker = RandomImageWorker(networkManager: networkManager, storageManager: storageManager)
+        let worker = RandomImageWorker(
+            networkManager: networkManager,
+            storageManager: storageManager)
         let presenter = RandomImagePresenter(
             router: router,
             worker: worker,
@@ -91,8 +92,10 @@ extension TabBarAssembly: TabBarAssemblyProtocole {
         let favoritesVC = FavoritesViewController()
         let router = FavoritesRouter(navigationController: navigationController)
         let storageManager = StorageManager.shared
-        let worker = FavoritesWorker(storageManager: storageManager)
-        let presenter = FavoritesPresenter(view: favoritesVC, router: router, storageManager: storageManager, worker: worker)
+        let presenter = FavoritesPresenter(
+            view: favoritesVC,
+            router: router,
+            storageManager: storageManager)
         
         presenter.view = favoritesVC
         favoritesVC.presenter = presenter

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol FavoritesViewControllerProtocole: AnyObject {
     func render()
@@ -18,7 +19,7 @@ final class FavoritesViewController: UIViewController {
     var presenter: FavoritesPresenterProtocole?
     var collectionView: UICollectionView!
     var activityIndicator: UIActivityIndicatorView?
-    var source: [UIImage] = []
+    var source: [String] = []
     
     //MARK: - ViewDidLoad
     
@@ -97,16 +98,26 @@ extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewD
             withReuseIdentifier: "\(LikedGirlsViewCell.self)",
             for: indexPath
         ) as? LikedGirlsViewCell else { return UICollectionViewCell() }
-            
-        cell.imageView.image = self.source[indexPath.item]
-
+        let url = self.source[indexPath.item]
+        let processor = DownsamplingImageProcessor(size: CGSize(width: 100, height: 100))
+            |> RoundCornerImageProcessor(cornerRadius: 20)
+        let options: KingfisherOptionsInfo = [
+            .processor(processor),
+            .scaleFactor(UIScreen.main.scale),
+            .transition(.fade(1)),
+            .cacheOriginalImage
+        ]
+        
+        cell.imageView.kf.indicatorType = .activity
+        cell.imageView.kf.setImage(with: URL(string: url), options: options)
+       
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //TODO: - Доделать завтра
-        presenter?.runSelectedImage(with: source, at: indexPath.row)
-    }
+    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    //        //TODO: - Доделать завтра
+    //        presenter?.runSelectedImage(with: source, at: indexPath.row)
+    //    }
     
 }
 
@@ -116,8 +127,8 @@ extension FavoritesViewController: FavoritesViewControllerProtocole {
     func render() {
         //TODO: - ViewWillAppear
         source = []
-        self.presenter?.uploadImages(completion: { images in
-            self.source.append(contentsOf: images)
+        self.presenter?.testCache(completion: { urls in
+            self.source.append(contentsOf: urls)
         })
         
     }

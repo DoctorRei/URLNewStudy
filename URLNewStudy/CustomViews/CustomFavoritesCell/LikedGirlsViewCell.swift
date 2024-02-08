@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class LikedGirlsViewCell: UICollectionViewCell {
     var imageView = UIImageView()
     
@@ -23,7 +24,7 @@ class LikedGirlsViewCell: UICollectionViewCell {
         self.contentView.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.borderWidth = 1        
+        imageView.layer.borderWidth = 1
         
         self.clipsToBounds = true
         
