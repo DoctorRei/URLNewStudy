@@ -14,7 +14,7 @@ protocol FavoritesRouterProtocole: BaseRoutingProtocole {
 final class FavoritesRouter {
     
     enum Target {
-        case selectedImage(images: [UIImage], index: Int)
+        case selectedImage(images: [String], index: Int)
         case mainScene
     }
     

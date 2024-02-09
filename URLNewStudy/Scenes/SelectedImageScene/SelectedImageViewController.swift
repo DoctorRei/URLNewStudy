@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol SelectedImageViewControllerProtocole: AnyObject {
     func render()
@@ -77,7 +78,8 @@ final class SelectedImageViewController: UIViewController  {
     }
     
     func setupImage() {
-        selectedImage.image = presenter?.setupPhoto()
+        let url = URL(string: presenter?.setupPhoto() ?? "")
+        selectedImage.kf.setImage(with: url)
         countLabel.text = presenter?.setupLabel()
     }
 }

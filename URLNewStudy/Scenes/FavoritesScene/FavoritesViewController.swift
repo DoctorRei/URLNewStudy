@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 protocol FavoritesViewControllerProtocole: AnyObject {
-    func render()
+    func render() -> [String]
 }
 
 final class FavoritesViewController: UIViewController {
@@ -19,7 +19,6 @@ final class FavoritesViewController: UIViewController {
     var presenter: FavoritesPresenterProtocole?
     var collectionView: UICollectionView!
     var activityIndicator: UIActivityIndicatorView?
-    var source: [String] = []
     
     //MARK: - ViewDidLoad
     
@@ -33,7 +32,6 @@ final class FavoritesViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        render()
         collectionView.reloadData()
         stopActivityIndicator()
     }
@@ -90,7 +88,7 @@ final class FavoritesViewController: UIViewController {
 
 extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        source.count
+        render().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -98,9 +96,16 @@ extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewD
             withReuseIdentifier: "\(LikedGirlsViewCell.self)",
             for: indexPath
         ) as? LikedGirlsViewCell else { return UICollectionViewCell() }
-        let url = self.source[indexPath.item]
-        let processor = DownsamplingImageProcessor(size: CGSize(width: 100, height: 100))
-            |> RoundCornerImageProcessor(cornerRadius: 20)
+        
+        let url = render()[indexPath.item]
+        
+        let processor = DownsamplingImageProcessor(
+            size: CGSize(
+                width: 100,
+                height: 100
+            )
+        )
+        
         let options: KingfisherOptionsInfo = [
             .processor(processor),
             .scaleFactor(UIScreen.main.scale),
@@ -114,22 +119,18 @@ extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewD
         return cell
     }
     
-    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    //        //TODO: - Доделать завтра
-    //        presenter?.runSelectedImage(with: source, at: indexPath.row)
-    //    }
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            //TODO: - Доделать завтра
+            guard let source = presenter?.getLikedGirlsUrls() else { return }
+            presenter?.runSelectedImage(with: source, at: indexPath.row)
+        }
     
 }
 
 //MARK: - FavoritesViewController Protocol
 
 extension FavoritesViewController: FavoritesViewControllerProtocole {
-    func render() {
-        //TODO: - ViewWillAppear
-        source = []
-        self.presenter?.testCache(completion: { urls in
-            self.source.append(contentsOf: urls)
-        })
-        
+    func render() -> [String] {
+        presenter?.getLikedGirlsUrls() ?? []
     }
 }

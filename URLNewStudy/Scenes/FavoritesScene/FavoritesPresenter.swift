@@ -11,16 +11,16 @@ import Kingfisher
 
 protocol FavoritesPresenterProtocole {
     func render()
-    func runSelectedImage(with selectedImage: [UIImage], at indexPath: Int)
-    func testCache(completion: @escaping ([String]) -> Void)
+    func runSelectedImage(with selectedImage: [String], at indexPath: Int)
+    func getLikedGirlsUrls() -> [String]
 }
 
 final class FavoritesPresenter {
     weak var view: FavoritesViewControllerProtocole?
     private let router: FavoritesRouterProtocole
     private let storageManager: StorageManagerProtocole
+    private var source: [String] = []
 
-    
     init(
         view: FavoritesViewControllerProtocole,
         router: FavoritesRouterProtocole,
@@ -37,16 +37,16 @@ extension FavoritesPresenter: FavoritesPresenterProtocole {
     
     //MARK: - Download Images
     
-    func testCache(completion: @escaping ([String]) -> Void) {
+    func getLikedGirlsUrls() -> [String] {
         let urlKeys = storageManager.fetchImages()
-        let urls = urlKeys.compactMap { $0.url }
+        source = urlKeys.compactMap { $0.url }
         
-        completion(urls)
+        return source
     }
     
     //MARK: - Navigation
     
-    func runSelectedImage(with selectedImage: [UIImage], at indexPath: Int) {
+    func runSelectedImage(with selectedImage: [String], at indexPath: Int) {
         router.routeTo(scene: FavoritesRouter.Target.selectedImage(images: selectedImage, index: indexPath))
     }
     

@@ -10,10 +10,10 @@ import UIKit
 final class SelectedImageAssembly {
     
     private var navigationController: UINavigationController
-    private let selectedImages: [UIImage]
+    private let selectedImages: [String]
     private let selectedIndex: Int
     
-    init(navigationController: UINavigationController, selectedImages: [UIImage], selectedIndex: Int) {
+    init(navigationController: UINavigationController, selectedImages: [String], selectedIndex: Int) {
         self.navigationController = navigationController
         self.selectedImages = selectedImages
         self.selectedIndex = selectedIndex

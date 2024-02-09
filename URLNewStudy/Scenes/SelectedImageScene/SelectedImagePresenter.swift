@@ -9,7 +9,7 @@ import UIKit
 
 protocol SelectedImagePresenterProtocole {
     func render()
-    func setupPhoto() -> UIImage
+    func setupPhoto() -> String
     func setupLabel() -> String
 }
 
@@ -17,12 +17,12 @@ final class SelectedImagePresenter {
     
     weak var view: SelectedImageViewControllerProtocole?
     private var router: SelectedImageRouterProtocole
-    private let selectedImages: [UIImage]
+    private let selectedImages: [String]
     private let selectedIndex: Int
     
     init(view: SelectedImageViewControllerProtocole? = nil,
          router: SelectedImageRouterProtocole,
-         selectedImages: [UIImage],
+         selectedImages: [String],
          selectedIndex: Int) {
         self.view = view
         self.router = router
@@ -33,7 +33,7 @@ final class SelectedImagePresenter {
 }
 
 extension SelectedImagePresenter {
-    func setupPhoto() -> UIImage {
+    func setupPhoto() -> String {
         let image = selectedImages[selectedIndex]
         print(image)
         return image
