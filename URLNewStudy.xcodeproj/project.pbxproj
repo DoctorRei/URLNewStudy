@@ -14,6 +14,7 @@
 		E97DE5412B5558F0003EC6EC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5402B5558F0003EC6EC /* NetworkManager.swift */; };
 		E97DE5462B557D1E003EC6EC /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5452B557D1E003EC6EC /* Links.swift */; };
 		E97DE5482B557D2B003EC6EC /* JSon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5472B557D2B003EC6EC /* JSon.swift */; };
+		E97F378B2B7656A700BDCC05 /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97F378A2B7656A700BDCC05 /* CustomScrollView.swift */; };
 		E983504E2B72A1DE0045CDF5 /* SelectedImageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983504D2B72A1DE0045CDF5 /* SelectedImageAssembly.swift */; };
 		E98350502B72A1FA0045CDF5 /* SelectedImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983504F2B72A1FA0045CDF5 /* SelectedImageViewController.swift */; };
 		E98350522B72A20F0045CDF5 /* SelectedImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98350512B72A20F0045CDF5 /* SelectedImagePresenter.swift */; };
@@ -61,6 +62,7 @@
 		E97DE5402B5558F0003EC6EC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E97DE5452B557D1E003EC6EC /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		E97DE5472B557D2B003EC6EC /* JSon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSon.swift; sourceTree = "<group>"; };
+		E97F378A2B7656A700BDCC05 /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
 		E983504D2B72A1DE0045CDF5 /* SelectedImageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImageAssembly.swift; sourceTree = "<group>"; };
 		E983504F2B72A1FA0045CDF5 /* SelectedImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImageViewController.swift; sourceTree = "<group>"; };
 		E98350512B72A20F0045CDF5 /* SelectedImagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImagePresenter.swift; sourceTree = "<group>"; };
@@ -130,6 +132,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		E97F378C2B7656AE00BDCC05 /* CustomScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				E97F378A2B7656A700BDCC05 /* CustomScrollView.swift */,
+			);
+			path = CustomScrollView;
+			sourceTree = "<group>";
+		};
 		E980C56F2B5EE2BC0022674C /* CustomFavoritesCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +205,7 @@
 			children = (
 				E980C56F2B5EE2BC0022674C /* CustomFavoritesCell */,
 				E99693E02B5D8EBE003C7D47 /* CustomTextField */,
+				E97F378C2B7656AE00BDCC05 /* CustomScrollView */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -386,6 +397,7 @@
 			files = (
 				E97A4CE82B61380B0040AED6 /* LikedGirlsViewCell.swift in Sources */,
 				E9958D072B35E0A3001B4290 /* RandomImageVC.swift in Sources */,
+				E97F378B2B7656A700BDCC05 /* CustomScrollView.swift in Sources */,
 				E99C53B82B5C2ED9009DF497 /* TabBarAssembly.swift in Sources */,
 				E9958D032B35E0A3001B4290 /* AppDelegate.swift in Sources */,
 				E99C53A32B5C2421009DF497 /* SettingsAssembly.swift in Sources */,
