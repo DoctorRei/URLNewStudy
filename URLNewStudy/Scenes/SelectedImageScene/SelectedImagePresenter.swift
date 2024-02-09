@@ -11,6 +11,12 @@ protocol SelectedImagePresenterProtocole {
     func render()
     func setupPhoto() -> String
     func setupLabel() -> String
+    func changeIndex(with: WorkWithIndexes)
+}
+
+enum WorkWithIndexes {
+    case minus
+    case plus
 }
 
 final class SelectedImagePresenter {
@@ -18,7 +24,7 @@ final class SelectedImagePresenter {
     weak var view: SelectedImageViewControllerProtocole?
     private var router: SelectedImageRouterProtocole
     private let selectedImages: [String]
-    private let selectedIndex: Int
+    private var selectedIndex: Int
     
     init(view: SelectedImageViewControllerProtocole? = nil,
          router: SelectedImageRouterProtocole,
@@ -37,7 +43,15 @@ extension SelectedImagePresenter {
         let image = selectedImages[selectedIndex]
         print(image)
         return image
-        
+    }
+    
+    func changeIndex(with: WorkWithIndexes) {
+        switch with {
+        case .minus:
+            selectedIndex = max(selectedIndex - 1, 0)
+        case .plus:
+            selectedIndex = min(selectedIndex + 1, selectedImages.count - 1)
+        }
     }
     
     func setupLabel() -> String {

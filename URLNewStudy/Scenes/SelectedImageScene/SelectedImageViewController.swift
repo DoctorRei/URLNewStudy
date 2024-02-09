@@ -21,12 +21,10 @@ final class SelectedImageViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupScrollView()
-        setupSelectedImage()
-        setupCountLabel()
-        setupSubviews()
+        setupView()
         setupLayout()
         setupImage()
+        setupGesture()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -34,7 +32,43 @@ final class SelectedImageViewController: UIViewController  {
     }
     
     func setupView() {
+        setupScrollView()
+        setupSelectedImage()
+        setupCountLabel()
+        setupSubviews()
+    }
+    
+    func setupGesture() {
+        let rightSwipe: UISwipeGestureRecognizer = UISwipeGestureRecognizer(
+            target: self,
+            action: #selector(
+                handleSwipeFrom(recognizer:)))
+        rightSwipe.direction = .right
+        
+        let leftSwipe: UISwipeGestureRecognizer = UISwipeGestureRecognizer(
+            target: self,
+            action: #selector(
+                handleSwipeFrom(recognizer:)))
+        leftSwipe.direction = .left
+        
+        scrollView.addGestureRecognizer(rightSwipe)
+        scrollView.addGestureRecognizer(leftSwipe)
+    }
+    
+   @objc func handleSwipeFrom(recognizer: UISwipeGestureRecognizer) {
+        
+       let direction: UISwipeGestureRecognizer.Direction = recognizer.direction
        
+       switch direction {
+       case UISwipeGestureRecognizer.Direction.right:
+           presenter?.changeIndex(with: .minus)
+       case UISwipeGestureRecognizer.Direction.left:
+           presenter?.changeIndex(with: .plus)
+       default:
+           break
+       }
+       
+       setupImage()
     }
     
     func setupSelectedImage() {
