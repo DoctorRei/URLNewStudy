@@ -107,7 +107,8 @@ final class SelectedImageViewController: UIViewController  {
             countLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             countLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             countLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            countLabel.heightAnchor.constraint(equalToConstant: 20)
+            countLabel.heightAnchor.constraint(equalToConstant: 21),
+            countLabel.topAnchor.constraint(equalTo: selectedImage.bottomAnchor, constant: 10)
         ])
     }
     
