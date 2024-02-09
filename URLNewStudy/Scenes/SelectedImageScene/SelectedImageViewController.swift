@@ -91,6 +91,7 @@ final class SelectedImageViewController: UIViewController  {
     func setupLayout() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         selectedImage.translatesAutoresizingMaskIntoConstraints = false
+        countLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -101,14 +102,13 @@ final class SelectedImageViewController: UIViewController  {
             selectedImage.topAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.topAnchor),
             selectedImage.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor),
             selectedImage.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor),
-            selectedImage.bottomAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.bottomAnchor)
+            selectedImage.bottomAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.bottomAnchor),
+            
+            countLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            countLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            countLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            countLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
-        
-        countLabel.frame = CGRect(
-            x: 20,
-            y: view.frame.height - 50,
-            width: view.frame.width - 40,
-            height: 21)
     }
     
     func setupImage() {
@@ -129,6 +129,8 @@ extension SelectedImageViewController: UIScrollViewDelegate {
         
         scrollView.delegate = self
     }
+    
+    
     
 }
 
