@@ -76,6 +76,7 @@ private extension RandomImageVC {
 private extension RandomImageVC {
     func setupButton() {
         goButton.setTitle("GO", for: .normal)
+        goButton.configuration?.cornerStyle = .capsule
     }
     
     func addActions() {
@@ -104,14 +105,15 @@ private extension RandomImageVC {
         
         NSLayoutConstraint.activate([
             
-            mainImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            mainImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
             mainImage.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             mainImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
-            mainImage.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.65),
+            mainImage.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.7),
             
-            goButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 100),
-            goButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -100),
-            goButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
+            goButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            goButton.widthAnchor.constraint(equalToConstant: 80),
+            goButton.heightAnchor.constraint(equalToConstant: 80),
+            goButton.topAnchor.constraint(equalTo: mainImage.bottomAnchor, constant: 10)
         ])
     }
 }
