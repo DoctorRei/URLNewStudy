@@ -18,9 +18,9 @@ import Kingfisher
 /// let options - настройка изображения и его отображения на экране + анимация
 
 extension UIImageView {
-    func configureForKingfisher(withURL url: String) {
+    func configureForKingfisher(withURL url: String, width: Int = 100, height: Int = 100) {
         let processor = DownsamplingImageProcessor(
-            size: CGSize(width: 100, height: 100)
+            size: CGSize(width: width, height: height)
         )
         
         let options: KingfisherOptionsInfo = [

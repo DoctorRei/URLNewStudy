@@ -8,7 +8,6 @@
 import UIKit
 
 protocol RandomImagePresenterProtocole {
-    //    func saveToStorage()
     func deleteAll()
     func render(imageToWorker: UIImageView)
     func saveToStorage()

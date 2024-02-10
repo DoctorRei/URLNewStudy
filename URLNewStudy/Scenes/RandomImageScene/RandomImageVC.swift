@@ -23,9 +23,7 @@ final class RandomImageVC: UIViewController {
         super.viewDidLoad()
         setupView()
     }
- 
 }
-
 
 //MARK: - Actions
 
@@ -68,6 +66,11 @@ private extension RandomImageVC {
         mainImage.layer.cornerRadius = 25
         mainImage.layer.borderWidth = 2
         mainImage.layer.borderColor = UIColor.black.cgColor
+        
+        mainImage.layer.shadowColor = UIColor.black.cgColor
+        mainImage.layer.shadowOpacity = 0.5
+        mainImage.layer.shadowOffset = CGSize(width: 0, height: 2)
+        mainImage.layer.shadowRadius = 4
     }
 }
 
