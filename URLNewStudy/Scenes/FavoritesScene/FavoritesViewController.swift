@@ -28,6 +28,7 @@ final class FavoritesViewController: UIViewController {
         setupCollectionView()
         setupActivityIndicator()
         activityIndicator?.startAnimating()
+//        navigationController?.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -93,38 +94,20 @@ extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "\(LikedGirlsViewCell.self)",
-            for: indexPath
-        ) as? LikedGirlsViewCell else { return UICollectionViewCell() }
-        
-        let url = render()[indexPath.item]
-        
-        let processor = DownsamplingImageProcessor(
-            size: CGSize(
-                width: 100,
-                height: 100
-            )
-        )
-        
-        let options: KingfisherOptionsInfo = [
-            .processor(processor),
-            .scaleFactor(UIScreen.main.scale),
-            .transition(.fade(1)),
-            .cacheOriginalImage
-        ]
-        
-        cell.imageView.kf.indicatorType = .activity
-        cell.imageView.kf.setImage(with: URL(string: url), options: options)
-       
-        return cell
+               withReuseIdentifier: "\(LikedGirlsViewCell.self)",
+               for: indexPath
+           ) as? LikedGirlsViewCell else { return UICollectionViewCell() }
+           
+           let url = render()[indexPath.item]
+           cell.imageView.configureForKingfisher(withURL: url)
+           
+           return cell
     }
     
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            //TODO: - Доделать завтра
-            guard let source = presenter?.getLikedGirlsUrls() else { return }
-            presenter?.runSelectedImage(with: source, at: indexPath.row)
-        }
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let source = presenter?.getLikedGirlsUrls() else { return }
+        presenter?.runSelectedImage(with: source, at: indexPath.row)
+    }
 }
 
 //MARK: - FavoritesViewController Protocol

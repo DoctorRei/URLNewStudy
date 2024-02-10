@@ -41,7 +41,6 @@ final class SelectedImagePresenter {
 extension SelectedImagePresenter {
     func setupPhoto() -> String {
         let image = selectedImages[selectedIndex]
-        print(image)
         return image
     }
     
@@ -59,9 +58,7 @@ extension SelectedImagePresenter {
             format: "%ld / %ld",
             selectedIndex + 1,
             selectedImages.count)
-        print(text)
         return text
-        
     }
 }
 

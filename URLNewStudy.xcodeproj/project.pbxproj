@@ -11,6 +11,8 @@
 		E93B6D3F2B64C3EE004DAD7F /* GirlCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93B6D3D2B64C3EE004DAD7F /* GirlCoreData.swift */; };
 		E97A4CE82B61380B0040AED6 /* LikedGirlsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A4CE72B61380B0040AED6 /* LikedGirlsViewCell.swift */; };
 		E97A4CED2B615F9C0040AED6 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A4CEC2B615F9C0040AED6 /* StorageManager.swift */; };
+		E97DCA1D2B77907500FF0D0E /* ExtensionNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DCA1C2B77907500FF0D0E /* ExtensionNavigationController.swift */; };
+		E97DCA202B77D44100FF0D0E /* ExtensionUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DCA1F2B77D44100FF0D0E /* ExtensionUIImageView.swift */; };
 		E97DE5412B5558F0003EC6EC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5402B5558F0003EC6EC /* NetworkManager.swift */; };
 		E97DE5462B557D1E003EC6EC /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5452B557D1E003EC6EC /* Links.swift */; };
 		E97DE5482B557D2B003EC6EC /* JSon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5472B557D2B003EC6EC /* JSon.swift */; };
@@ -58,6 +60,8 @@
 		E93B6D3D2B64C3EE004DAD7F /* GirlCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GirlCoreData.swift; sourceTree = "<group>"; };
 		E97A4CE72B61380B0040AED6 /* LikedGirlsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedGirlsViewCell.swift; sourceTree = "<group>"; };
 		E97A4CEC2B615F9C0040AED6 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		E97DCA1C2B77907500FF0D0E /* ExtensionNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNavigationController.swift; sourceTree = "<group>"; };
+		E97DCA1F2B77D44100FF0D0E /* ExtensionUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIImageView.swift; sourceTree = "<group>"; };
 		E97DE5402B5558F0003EC6EC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E97DE5452B557D1E003EC6EC /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		E97DE5472B557D2B003EC6EC /* JSon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSon.swift; sourceTree = "<group>"; };
@@ -113,6 +117,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E97DCA1E2B77C83100FF0D0E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E97DCA1C2B77907500FF0D0E /* ExtensionNavigationController.swift */,
+				E97DCA1F2B77D44100FF0D0E /* ExtensionUIImageView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E97DE5422B5576DE003EC6EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +182,7 @@
 		E9958D012B35E0A3001B4290 /* URLNewStudy */ = {
 			isa = PBXGroup;
 			children = (
+				E97DCA1E2B77C83100FF0D0E /* Extensions */,
 				E996B13C2B4B22090025ECD6 /* CustomViews */,
 				E9AB5FF52B496A9200297486 /* Base */,
 				E9AB5FF02B49659500297486 /* BL */,
@@ -390,6 +404,7 @@
 				E9958D032B35E0A3001B4290 /* AppDelegate.swift in Sources */,
 				E99C53A32B5C2421009DF497 /* SettingsAssembly.swift in Sources */,
 				E9AB5FF22B4967C400297486 /* LoginPresenter.swift in Sources */,
+				E97DCA1D2B77907500FF0D0E /* ExtensionNavigationController.swift in Sources */,
 				E99C53B62B5C2DCC009DF497 /* TabBarPresenter.swift in Sources */,
 				E99C53B12B5C29E9009DF497 /* FavoritesRouter.swift in Sources */,
 				E97DE5412B5558F0003EC6EC /* NetworkManager.swift in Sources */,
@@ -403,6 +418,7 @@
 				E9AB5FFF2B4991D300297486 /* RandomImageRouter.swift in Sources */,
 				E97A4CED2B615F9C0040AED6 /* StorageManager.swift in Sources */,
 				E996DD422B4ABE91003700A4 /* RegisterPresenter.swift in Sources */,
+				E97DCA202B77D44100FF0D0E /* ExtensionUIImageView.swift in Sources */,
 				E99C53AB2B5C2933009DF497 /* FavoritesAssembly.swift in Sources */,
 				E99C53A72B5C2440009DF497 /* SettingsPresenter.swift in Sources */,
 				E9958D052B35E0A3001B4290 /* SceneDelegate.swift in Sources */,

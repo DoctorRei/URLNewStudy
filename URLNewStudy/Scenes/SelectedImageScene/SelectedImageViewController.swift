@@ -13,7 +13,7 @@ protocol SelectedImageViewControllerProtocole: AnyObject {
 }
 
 final class SelectedImageViewController: UIViewController  {
-
+    
     var presenter: SelectedImagePresenterProtocole?
     private let scrollView = UIScrollView()
     private var selectedImage = UIImageView()
@@ -21,9 +21,10 @@ final class SelectedImageViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationButton()
         setupView()
         setupLayout()
-        setupImage()
+        setupContent()
         setupGesture()
     }
     
@@ -31,12 +32,8 @@ final class SelectedImageViewController: UIViewController  {
         navigationController?.navigationBar.isHidden = true
     }
     
-    func setupView() {
-        setupScrollView()
-        setupSelectedImage()
-        setupCountLabel()
-        setupSubviews()
-    }
+    
+    // MARK: - Setup Gestures
     
     func setupGesture() {
         let rightSwipe: UISwipeGestureRecognizer = UISwipeGestureRecognizer(
@@ -55,20 +52,41 @@ final class SelectedImageViewController: UIViewController  {
         scrollView.addGestureRecognizer(leftSwipe)
     }
     
-   @objc func handleSwipeFrom(recognizer: UISwipeGestureRecognizer) {
+    @objc func handleSwipeFrom(recognizer: UISwipeGestureRecognizer) {
+        let direction: UISwipeGestureRecognizer.Direction = recognizer.direction
         
-       let direction: UISwipeGestureRecognizer.Direction = recognizer.direction
-       
-       switch direction {
-       case UISwipeGestureRecognizer.Direction.right:
-           presenter?.changeIndex(with: .minus)
-       case UISwipeGestureRecognizer.Direction.left:
-           presenter?.changeIndex(with: .plus)
-       default:
-           break
-       }
-       
-       setupImage()
+        switch direction {
+        case UISwipeGestureRecognizer.Direction.right:
+            presenter?.changeIndex(with: .minus)
+        case UISwipeGestureRecognizer.Direction.left:
+            presenter?.changeIndex(with: .plus)
+        default:
+            break
+        }
+        
+        setupContent()
+    }
+    
+    //MARK: - SetupNavigationBar
+    
+    func setupNavigationButton() {
+        let backButton = UIBarButtonItem(
+            title: "< Back",
+            style: .plain,
+            target: navigationController,
+            action: #selector(navigationController?.popWithNewAnimation)
+        )
+        
+        navigationItem.leftBarButtonItem = backButton
+    }
+    
+    //MARK: - Setup UI
+    
+    func setupView() {
+        setupScrollView()
+        setupSelectedImage()
+        setupCountLabel()
+        setupSubviews()
     }
     
     func setupSelectedImage() {
@@ -82,11 +100,19 @@ final class SelectedImageViewController: UIViewController  {
         countLabel.textAlignment = .center
     }
     
+    func setupContent() {
+        let url = URL(string: presenter?.setupPhoto() ?? "")
+        selectedImage.kf.setImage(with: url)
+        countLabel.text = presenter?.setupLabel()
+    }
+    
     func setupSubviews() {
         view.addSubview(scrollView)
         view.addSubview(countLabel)
         scrollView.addSubview(selectedImage)
     }
+    
+    //MARK: - Layout
     
     func setupLayout() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -107,17 +133,13 @@ final class SelectedImageViewController: UIViewController  {
             countLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             countLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             countLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            countLabel.heightAnchor.constraint(equalToConstant: 21),
+            countLabel.heightAnchor.constraint(equalToConstant: 20),
             countLabel.topAnchor.constraint(equalTo: selectedImage.bottomAnchor, constant: 10)
         ])
     }
-    
-    func setupImage() {
-        let url = URL(string: presenter?.setupPhoto() ?? "")
-        selectedImage.kf.setImage(with: url)
-        countLabel.text = presenter?.setupLabel()
-    }
 }
+
+//MARK: - Setup Scroll View
 
 extension SelectedImageViewController: UIScrollViewDelegate {
     func setupScrollView() {
@@ -125,14 +147,9 @@ extension SelectedImageViewController: UIScrollViewDelegate {
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.backgroundColor = .white
-        scrollView.minimumZoomScale = 1
-        scrollView.maximumZoomScale = 6
         
-        scrollView.delegate = self
+        scrollView.delegate = self // В будущем реализую зум
     }
-    
-    
-    
 }
 
 extension SelectedImageViewController: SelectedImageViewControllerProtocole {
