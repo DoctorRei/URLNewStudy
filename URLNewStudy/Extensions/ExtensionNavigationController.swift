@@ -26,6 +26,7 @@ extension UINavigationController {
         
         view.window?.layer.add(transition, forKey: kCATransition)
         pushViewController(controller, animated: false)
+        
     }
     
     /// Альтернатива popViewController(animated: Bool)

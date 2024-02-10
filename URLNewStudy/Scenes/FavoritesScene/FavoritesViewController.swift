@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Kingfisher
+
 
 protocol FavoritesViewControllerProtocole: AnyObject {
     func render() -> [String]
@@ -28,7 +28,6 @@ final class FavoritesViewController: UIViewController {
         setupCollectionView()
         setupActivityIndicator()
         activityIndicator?.startAnimating()
-//        navigationController?.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {

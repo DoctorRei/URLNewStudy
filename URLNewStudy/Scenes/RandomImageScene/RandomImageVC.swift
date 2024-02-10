@@ -13,7 +13,6 @@ protocol RandomImageVCProtocole: AnyObject {
 
 final class RandomImageVC: UIViewController {
     
-    private let testLabel = UILabel()
     private var mainImage = UIImageView()
     private let goButton = UIButton(configuration: .filled())
     let tabBarAppearance = UITabBarAppearance()
@@ -22,14 +21,9 @@ final class RandomImageVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupView()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
+ 
 }
 
 
@@ -40,10 +34,8 @@ private extension RandomImageVC {
         updateImage()
     }
     
-    @objc func touchImage() {
+    @objc func doubleTapImage() {
         presenter?.saveToStorage()
-        
-        print("Сработал тач")
     }
 }
 
@@ -53,7 +45,6 @@ private extension RandomImageVC {
     func setupView() {
         view.backgroundColor = .white
         addSubViews()
-        setupRandomImageLabel()
         setupImageView()
         setupButton()
         setupLayout()
@@ -61,20 +52,11 @@ private extension RandomImageVC {
     }
 }
 
-//MARK: - Setup Label
-
-private extension RandomImageVC {
-    func setupRandomImageLabel() {
-        testLabel.text = "Welcome"
-        testLabel.textColor = .black
-    }
-}
-
 //MARK: - SetupImage
 
 private extension RandomImageVC {
     func setupImageView() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(touchImage))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTapImage))
         tapGesture.numberOfTapsRequired = 2
         mainImage.addGestureRecognizer(tapGesture)
         mainImage.isUserInteractionEnabled = true
@@ -108,7 +90,6 @@ private extension RandomImageVC {
 
 private extension RandomImageVC {
     func addSubViews() {
-        view.addSubview(testLabel)
         view.addSubview(mainImage)
         view.addSubview(goButton)
     }
@@ -118,22 +99,19 @@ private extension RandomImageVC {
 
 private extension RandomImageVC {
     private func setupLayout() {
-        testLabel.translatesAutoresizingMaskIntoConstraints = false
         mainImage.translatesAutoresizingMaskIntoConstraints = false
         goButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            testLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            testLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            mainImage.topAnchor.constraint(equalTo: testLabel.bottomAnchor, constant: 30),
-            mainImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            mainImage.widthAnchor.constraint(equalToConstant: 310),
-            mainImage.heightAnchor.constraint(equalToConstant: 510),
+            mainImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            mainImage.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            mainImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
+            mainImage.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.65),
             
-            goButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
-            goButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
-            goButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
+            goButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 100),
+            goButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -100),
+            goButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
         ])
     }
 }

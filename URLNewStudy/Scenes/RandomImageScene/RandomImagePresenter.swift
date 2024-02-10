@@ -55,7 +55,6 @@ extension RandomImagePresenter: RandomImagePresenterProtocole {
             return
         }
         worker.saveToStorage(with: url, likedImage: imageViewTest)
-        
     }
     
     func deleteAll() {

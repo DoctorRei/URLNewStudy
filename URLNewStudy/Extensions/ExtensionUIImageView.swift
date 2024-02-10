@@ -8,6 +8,15 @@
 import UIKit
 import Kingfisher
 
+
+/// Демонстрация реализации одного из подходов к работе с фреймворком
+///
+/// В данном случае мы применяем загрузку через фреймворк KingFisher
+/// let processor -  отвечает за то, чтобы ухудшить качество изображения и скачать его в формате 100х100
+/// Это помогает не засорять память пользователя и так же облегчает работу коллекции
+///
+/// let options - настройка изображения и его отображения на экране + анимация
+
 extension UIImageView {
     func configureForKingfisher(withURL url: String) {
         let processor = DownsamplingImageProcessor(
