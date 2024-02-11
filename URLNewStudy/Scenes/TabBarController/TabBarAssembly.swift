@@ -37,7 +37,7 @@ extension TabBarAssembly: BaseAssemblyProtocole {
         randomImgVC.tabBarItem.image = UIImage(systemName: "sparkles")
         randomImgVC.tabBarItem.selectedImage?.withTintColor(.yellow)
         randomImgVC.tabBarItem.selectedImage?.withTintColor(.yellow, renderingMode: .automatic)
-    
+        
         
         guard let settingsVC = createSettingsViewController() as? SettingsViewController else {return}
         settingsVC.title = "Second"
@@ -62,14 +62,17 @@ extension TabBarAssembly: TabBarAssemblyProtocole {
         let router = RandomImageRouter(navigationController: navigationController)
         let networkManager = NetworkManager()
         let storageManager = StorageManager.shared
+        let userDefaultsManager = UserDefaultsManager()
         let worker = RandomImageWorker(
             networkManager: networkManager,
-            storageManager: storageManager)
+            storageManager: storageManager,
+            userDefaultsManager: userDefaultsManager)
         let presenter = RandomImagePresenter(
             router: router,
             worker: worker,
             storageManager: storageManager,
-            view: randomImgVC)
+            view: randomImgVC,
+            userDefaultsManager: userDefaultsManager)
         
         presenter.view = randomImgVC
         randomImgVC.presenter = presenter
@@ -80,7 +83,10 @@ extension TabBarAssembly: TabBarAssemblyProtocole {
     func createSettingsViewController() -> UIViewController {
         let settingsVC = SettingsViewController()
         let router = SettingsRouter(navigationController: navigationController)
-        let presenter = SettingsPresenter(router: router)
+        let userDefaultsManager = UserDefaultsManager()
+        let presenter = SettingsPresenter(
+            router: router,
+            userDefaultsManager: userDefaultsManager)
         
         presenter.view = settingsVC
         settingsVC.presenter = presenter

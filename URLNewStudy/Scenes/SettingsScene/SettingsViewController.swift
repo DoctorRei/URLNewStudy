@@ -75,15 +75,17 @@ extension SettingsViewController: UICollectionViewDelegate, UICollectionViewData
             switch indexPath.item {
             case 0:
                 if isOn {
-                    print("First Switch is ON")
+                    let nekoCase = Links.dance.url.absoluteString
+                    self?.presenter?.saveFilter(with: nekoCase)
                 } else {
-                    print("First Switch is OFF")
+                    self?.presenter?.deleteSwitchPosition()
                 }
             case 1:
                 if isOn {
-                    print("Second Switch is ON")
+                    let shinobuCase = Links.shinobu.url.absoluteString
+                    self?.presenter?.saveFilter(with: shinobuCase)
                 } else {
-                    print("Second Switch is OFF")
+                    self?.presenter?.deleteSwitchPosition()
                 }
             default:
                 break
@@ -106,6 +108,10 @@ extension SettingsViewController: UICollectionViewDelegate, UICollectionViewData
 extension SettingsViewController: SettingsViewControllerProtocole {
     func render() {
         
+    }
+    
+    func updateChoosenFilters(with link: String) {
+        presenter?.updateLinkList(link)
     }
     
 }

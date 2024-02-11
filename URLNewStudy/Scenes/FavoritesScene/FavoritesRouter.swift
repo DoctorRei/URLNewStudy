@@ -14,7 +14,7 @@ protocol FavoritesRouterProtocole: BaseRoutingProtocole {
 final class FavoritesRouter {
     
     enum Target {
-        case selectedImage(images: [String], index: Int)
+        case selectedImage(image: [String], index: Int)
         case mainScene
     }
     
@@ -32,11 +32,11 @@ extension FavoritesRouter: FavoritesRouterProtocole {
         guard let favoritesTarget = scene as? FavoritesRouter.Target else {return}
         
         switch favoritesTarget {
-        case .selectedImage(let images, let index):
+        case .selectedImage(let image, let index):
             let selectedImageVC = SelectedImageViewController()
             let selectedImageAssembly = SelectedImageAssembly(
                 navigationController: navigationController,
-                selectedImages: images,
+                selectedImages: image,
                 selectedIndex: index
             )
             selectedImageAssembly.configure(viewController: selectedImageVC)

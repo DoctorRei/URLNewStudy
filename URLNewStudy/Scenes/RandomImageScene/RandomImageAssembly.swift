@@ -9,21 +9,33 @@ import UIKit
 
 class RandomImageAssembly {
     
+    private let linkFromFilters: String?
+    
     let navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, linkFromFilters: String? = nil) {
         self.navigationController = navigationController
+        self.linkFromFilters = linkFromFilters
     }
 }
 
- extension RandomImageAssembly: BaseAssemblyProtocole {
+extension RandomImageAssembly: BaseAssemblyProtocole {
     func configure(viewController: UIViewController) {
         guard let randomImgVC = viewController as? RandomImageVC else { return }
         let router = RandomImageRouter(navigationController: navigationController)
         let networkManager = NetworkManager()
         let storageManager = StorageManager.shared
-        let worker = RandomImageWorker(networkManager: networkManager, storageManager: storageManager)
-        let presenter = RandomImagePresenter(router: router, worker: worker, storageManager: storageManager, view: randomImgVC)
+        let userDefaultsManager = UserDefaultsManager()
+        let worker = RandomImageWorker(
+            networkManager: networkManager,
+            storageManager: storageManager,
+            userDefaultsManager: userDefaultsManager)
+        let presenter = RandomImagePresenter(
+            router: router,
+            worker: worker,
+            storageManager: storageManager,
+            view: randomImgVC,
+            userDefaultsManager: userDefaultsManager)
         
         randomImgVC.presenter = presenter
         presenter.view = randomImgVC

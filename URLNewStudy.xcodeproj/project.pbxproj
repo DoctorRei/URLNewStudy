@@ -17,6 +17,7 @@
 		E97DE5462B557D1E003EC6EC /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5452B557D1E003EC6EC /* Links.swift */; };
 		E97DE5482B557D2B003EC6EC /* JSon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5472B557D2B003EC6EC /* JSon.swift */; };
 		E97EC4462B78A1EE00F1C3F5 /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EC4452B78A1EE00F1C3F5 /* SettingsViewCell.swift */; };
+		E97EC4482B78F91900F1C3F5 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EC4472B78F91900F1C3F5 /* UserDefaultsManager.swift */; };
 		E983504E2B72A1DE0045CDF5 /* SelectedImageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983504D2B72A1DE0045CDF5 /* SelectedImageAssembly.swift */; };
 		E98350502B72A1FA0045CDF5 /* SelectedImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983504F2B72A1FA0045CDF5 /* SelectedImageViewController.swift */; };
 		E98350522B72A20F0045CDF5 /* SelectedImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98350512B72A20F0045CDF5 /* SelectedImagePresenter.swift */; };
@@ -67,6 +68,7 @@
 		E97DE5452B557D1E003EC6EC /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		E97DE5472B557D2B003EC6EC /* JSon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSon.swift; sourceTree = "<group>"; };
 		E97EC4452B78A1EE00F1C3F5 /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
+		E97EC4472B78F91900F1C3F5 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		E983504D2B72A1DE0045CDF5 /* SelectedImageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImageAssembly.swift; sourceTree = "<group>"; };
 		E983504F2B72A1FA0045CDF5 /* SelectedImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImageViewController.swift; sourceTree = "<group>"; };
 		E98350512B72A20F0045CDF5 /* SelectedImagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImagePresenter.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				E97A4CEC2B615F9C0040AED6 /* StorageManager.swift */,
+				E97EC4472B78F91900F1C3F5 /* UserDefaultsManager.swift */,
 				E9A7996A2B519FB1005220F2 /* KeychainManager.swift */,
 				E97DE5442B557D05003EC6EC /* Network */,
 				E9AB5FEF2B49656C00297486 /* Models */,
@@ -442,6 +445,7 @@
 				E97DE5462B557D1E003EC6EC /* Links.swift in Sources */,
 				E9AB5FF92B496C2F00297486 /* LoginRouter.swift in Sources */,
 				E9A591942B4ED8AB00A498D3 /* LoginWorker.swift in Sources */,
+				E97EC4482B78F91900F1C3F5 /* UserDefaultsManager.swift in Sources */,
 				E99C53A52B5C2433009DF497 /* SettingsViewController.swift in Sources */,
 				E9AB5FF42B496A6F00297486 /* LoginAssembly.swift in Sources */,
 				E9A7996B2B519FB1005220F2 /* KeychainManager.swift in Sources */,

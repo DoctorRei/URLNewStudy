@@ -16,24 +16,26 @@ protocol RandomImagePresenterProtocole {
 final class RandomImagePresenter {
     
     let router: RandomImageRouterProtocole
+    weak var view: RandomImageVCProtocole!
     private var worker: RandomImageWorkerProtocole
     private var storageManager: StorageManagerProtocole
-    weak var view: RandomImageVCProtocole!
+    private var userDefaultsManager: UserDefaultsManagerProtocole
     
     private var downloadedImageView = UIImageView()
-    private var urlToKF = Links.shinobu.url
     private var imageURL: String?
     
     init(
         router: RandomImageRouterProtocole,
         worker: RandomImageWorkerProtocole!,
         storageManager: StorageManagerProtocole,
-        view: RandomImageVCProtocole!
+        view: RandomImageVCProtocole!,
+        userDefaultsManager: UserDefaultsManagerProtocole
     ) {
         self.router = router
         self.worker = worker
         self.storageManager = storageManager
         self.view = view
+        self.userDefaultsManager = userDefaultsManager
     }
 }
 

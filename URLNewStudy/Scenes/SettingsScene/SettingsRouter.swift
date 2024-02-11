@@ -14,7 +14,7 @@ protocol SettingsRouterProtocole: BaseRoutingProtocole  {
 final class SettingsRouter {
     
     enum Target {
-        case loginScene
+        case updateArrayLinks
         case mainScene
     }
     
@@ -32,7 +32,7 @@ extension SettingsRouter: SettingsRouterProtocole {
         guard let settingsRouter = scene as? SettingsRouter.Target else {return}
         
         switch settingsRouter {
-        case .loginScene:
+        case .updateArrayLinks:
             break
         case .mainScene:
             break

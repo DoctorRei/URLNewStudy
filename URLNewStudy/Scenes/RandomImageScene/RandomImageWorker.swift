@@ -9,7 +9,6 @@ import UIKit
 import Kingfisher
 
 protocol RandomImageWorkerProtocole {
-    func getImage(completion: @escaping (UIImage, String, Data) -> Void)
     func getImageFromKF(imageToVC: UIImageView, completion: @escaping (UIImageView, String) -> Void)
     func getUrlFromApi(completion: @escaping (String) -> Void)
     func saveToStorage(with url: String, likedImage: UIImageView)
@@ -20,45 +19,27 @@ protocol RandomImageWorkerProtocole {
 final class RandomImageWorker {
     
     private let networkManager: NetworkManagerProtocole
-    private let storageManager: StorageManager
+    private let storageManager: StorageManagerProtocole
+    private let userDefaultsManager: UserDefaultsManagerProtocole
     
-    init(networkManager: NetworkManagerProtocole, storageManager: StorageManager) {
+    init(
+        networkManager: NetworkManagerProtocole,
+        storageManager: StorageManagerProtocole,
+        userDefaultsManager: UserDefaultsManagerProtocole
+    ) {
         self.networkManager = networkManager
         self.storageManager = storageManager
+        self.userDefaultsManager = userDefaultsManager
     }
 }
 
 extension RandomImageWorker: RandomImageWorkerProtocole {
-    func getImage(completion: @escaping (UIImage, String, Data) -> Void) {
-        //TODO: - Сделать метод, который принимает Set() с юрлами и вкидывает их сюда
-        let url = Links.shinobu.url // пока заглушка, в идеале реализовать фильтры по картинкам
-        
-        DispatchQueue.global().sync {
-            networkManager.fetch(JsonForPictures.self, from: url) { data in
-                switch data {
-                case .success(let imageFromUrl):
-                    self.networkManager.downloadImage(with: imageFromUrl.url) { downloadedImage in
-                        guard let image = UIImage(data: downloadedImage) else { return }
-                        DispatchQueue.global().sync {
-                            completion(image, imageFromUrl.url, downloadedImage)
-                        }
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
-        }
-    }
-}
-
-
-extension RandomImageWorker {
     
     func getUrlFromApi(completion: @escaping (String) -> Void) {
-        let apiLink = Links.shinobu.url
+        guard let testURL = URL(string: userDefaultsManager.getString(forKey: .string) ?? "") else { return }
         
         DispatchQueue.global().sync {
-            networkManager.fetch(JsonForPictures.self, from: apiLink) { url in
+            networkManager.fetch(JsonForPictures.self, from: testURL) { url in
                 switch url {
                 case .success(let url):
                     completion(url.url)

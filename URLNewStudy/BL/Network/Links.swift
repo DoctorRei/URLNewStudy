@@ -103,5 +103,6 @@ enum Links: String, CaseIterable {
             return URL(string: "https://api.waifu.pics/sfw/dance")!
         }
     }
+    
 }
 

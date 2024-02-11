@@ -47,7 +47,7 @@ extension FavoritesPresenter: FavoritesPresenterProtocole {
     //MARK: - Navigation
     
     func runSelectedImage(with selectedImage: [String], at indexPath: Int) {
-        router.routeTo(scene: FavoritesRouter.Target.selectedImage(images: selectedImage, index: indexPath))
+        router.routeTo(scene: FavoritesRouter.Target.selectedImage(image: selectedImage, index: indexPath))
     }
     
 }
