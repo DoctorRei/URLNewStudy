@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Links: String {
+enum Links: String, CaseIterable {
    
     case neko
     case shinobu

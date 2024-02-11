@@ -16,6 +16,7 @@
 		E97DE5412B5558F0003EC6EC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5402B5558F0003EC6EC /* NetworkManager.swift */; };
 		E97DE5462B557D1E003EC6EC /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5452B557D1E003EC6EC /* Links.swift */; };
 		E97DE5482B557D2B003EC6EC /* JSon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5472B557D2B003EC6EC /* JSon.swift */; };
+		E97EC4462B78A1EE00F1C3F5 /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EC4452B78A1EE00F1C3F5 /* SettingsViewCell.swift */; };
 		E983504E2B72A1DE0045CDF5 /* SelectedImageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983504D2B72A1DE0045CDF5 /* SelectedImageAssembly.swift */; };
 		E98350502B72A1FA0045CDF5 /* SelectedImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983504F2B72A1FA0045CDF5 /* SelectedImageViewController.swift */; };
 		E98350522B72A20F0045CDF5 /* SelectedImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98350512B72A20F0045CDF5 /* SelectedImagePresenter.swift */; };
@@ -65,6 +66,7 @@
 		E97DE5402B5558F0003EC6EC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E97DE5452B557D1E003EC6EC /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		E97DE5472B557D2B003EC6EC /* JSon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSon.swift; sourceTree = "<group>"; };
+		E97EC4452B78A1EE00F1C3F5 /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
 		E983504D2B72A1DE0045CDF5 /* SelectedImageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImageAssembly.swift; sourceTree = "<group>"; };
 		E983504F2B72A1FA0045CDF5 /* SelectedImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImageViewController.swift; sourceTree = "<group>"; };
 		E98350512B72A20F0045CDF5 /* SelectedImagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImagePresenter.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 			children = (
 				E99C53A22B5C2421009DF497 /* SettingsAssembly.swift */,
 				E99C53A42B5C2433009DF497 /* SettingsViewController.swift */,
+				E97EC4452B78A1EE00F1C3F5 /* SettingsViewCell.swift */,
 				E99C53A62B5C2440009DF497 /* SettingsPresenter.swift */,
 				E99C53A82B5C2449009DF497 /* SettingsRouter.swift */,
 			);
@@ -408,6 +411,7 @@
 				E99C53B62B5C2DCC009DF497 /* TabBarPresenter.swift in Sources */,
 				E99C53B12B5C29E9009DF497 /* FavoritesRouter.swift in Sources */,
 				E97DE5412B5558F0003EC6EC /* NetworkManager.swift in Sources */,
+				E97EC4462B78A1EE00F1C3F5 /* SettingsViewCell.swift in Sources */,
 				E996DD3E2B4ABE7C003700A4 /* RegisterAssembly.swift in Sources */,
 				E9AB5FF72B496AA500297486 /* MVXProtocol.swift in Sources */,
 				E996DD402B4ABE88003700A4 /* RegisterViewController.swift in Sources */,

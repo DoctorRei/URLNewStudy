@@ -52,7 +52,9 @@ final class FavoritesViewController: UIViewController {
     //MARK: - Setup Collection
     
     func setupCollectionView() {
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: setupFlowLayout())
+        collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: setupFlowLayout())
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .white
