@@ -30,12 +30,20 @@ final class SettingsViewController: UIViewController {
     }
     
     func setupCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: setupFlowLayout())
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(SettingsViewCell.self, forCellWithReuseIdentifier: "SettingsViewCell")
         view.addSubview(collectionView)
+    }
+    
+    func setupFlowLayout() -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        
+        return layout
     }
     
     func setupLayout() {
@@ -63,6 +71,26 @@ extension SettingsViewController: UICollectionViewDelegate, UICollectionViewData
         let links = presenter?.getLinks()
         cell.titleLabel.text = links?[indexPath.item].rawValue.capitalized
         
+        cell.switchActionHandler = { [weak self] isOn in
+            switch indexPath.item {
+            case 0:
+                if isOn {
+                    print("First Switch is ON")
+                } else {
+                    print("First Switch is OFF")
+                }
+            case 1:
+                if isOn {
+                    print("Second Switch is ON")
+                } else {
+                    print("Second Switch is OFF")
+                }
+            default:
+                break
+            }
+            
+        }
+        
         return cell
     }
     
@@ -71,8 +99,8 @@ extension SettingsViewController: UICollectionViewDelegate, UICollectionViewData
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath) -> CGSize {
             
-        return CGSize(width: collectionView.bounds.width, height: 50)
-    }
+            return CGSize(width: collectionView.bounds.width, height: 50)
+        }
 }
 
 extension SettingsViewController: SettingsViewControllerProtocole {

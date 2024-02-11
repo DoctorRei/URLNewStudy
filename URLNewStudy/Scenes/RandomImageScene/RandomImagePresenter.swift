@@ -20,7 +20,7 @@ final class RandomImagePresenter {
     private var storageManager: StorageManagerProtocole
     weak var view: RandomImageVCProtocole!
     
-    private var imageViewTest = UIImageView()
+    private var downloadedImageView = UIImageView()
     private var urlToKF = Links.shinobu.url
     private var imageURL: String?
     
@@ -40,11 +40,11 @@ final class RandomImagePresenter {
 extension RandomImagePresenter: RandomImagePresenterProtocole {
     
     func render(imageToWorker: UIImageView) {
-        imageViewTest = imageToWorker
-        worker.getImageFromKF(imageToVC: imageViewTest) { [weak self] image, url  in
-            self?.imageViewTest = image
+        downloadedImageView = imageToWorker
+        worker.getImageFromKF(imageToVC: downloadedImageView) { [weak self] image, url  in
+            self?.downloadedImageView = image
             self?.imageURL = url
-            self?.view.render(with: self?.imageViewTest ?? UIImageView())
+            self?.view.render(with: self?.downloadedImageView ?? UIImageView())
         }
     }
     
@@ -53,7 +53,7 @@ extension RandomImagePresenter: RandomImagePresenterProtocole {
             print("Cache empty")
             return
         }
-        worker.saveToStorage(with: url, likedImage: imageViewTest)
+        worker.saveToStorage(with: url, likedImage: downloadedImageView)
     }
     
     func deleteAll() {

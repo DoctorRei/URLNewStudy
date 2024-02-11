@@ -7,12 +7,13 @@
 
 import UIKit
 
-class SettingsViewCell: UICollectionViewCell {
+final class SettingsViewCell: UICollectionViewCell {
     
     static let cellIdentifer = "SettingsViewCell"
     
     var titleLabel = UILabel()
     var filterSwitch = UISwitch()
+    var switchActionHandler: ((Bool) -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,17 +24,24 @@ class SettingsViewCell: UICollectionViewCell {
         setupConstraints()
     }
     
+    @objc func switchValueChanged(_ sender: UISwitch) {
+        switchActionHandler?(sender.isOn)
+    }
+    
     func setupLabel() {
         titleLabel = UILabel(frame: bounds)
         titleLabel.textAlignment = .left
     }
     
     func setupSwitch() {
-        
+        filterSwitch.addTarget(
+            self,
+            action: #selector(switchValueChanged(_:)),
+            for: .valueChanged)
     }
     
     func setupContentView() {
-        contentView.backgroundColor = .systemBlue
+        contentView.backgroundColor = .white
     }
     
     func setupSubviews() {
@@ -56,7 +64,7 @@ class SettingsViewCell: UICollectionViewCell {
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             
             filterSwitch.topAnchor.constraint(equalTo: contentView.topAnchor, constant: contentView.frame.height / 5),
-            filterSwitch.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
+            filterSwitch.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12)
         ])
     }
     

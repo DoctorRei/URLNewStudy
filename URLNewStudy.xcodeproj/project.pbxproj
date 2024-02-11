@@ -145,12 +145,13 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		E980C56F2B5EE2BC0022674C /* CustomFavoritesCell */ = {
+		E980C56F2B5EE2BC0022674C /* CustomCollectionCells */ = {
 			isa = PBXGroup;
 			children = (
 				E97A4CE72B61380B0040AED6 /* LikedGirlsViewCell.swift */,
+				E97EC4452B78A1EE00F1C3F5 /* SettingsViewCell.swift */,
 			);
-			path = CustomFavoritesCell;
+			path = CustomCollectionCells;
 			sourceTree = "<group>";
 		};
 		E983504C2B72A13A0045CDF5 /* SelectedImageScene */ = {
@@ -209,7 +210,7 @@
 		E996B13C2B4B22090025ECD6 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				E980C56F2B5EE2BC0022674C /* CustomFavoritesCell */,
+				E980C56F2B5EE2BC0022674C /* CustomCollectionCells */,
 				E99693E02B5D8EBE003C7D47 /* CustomTextField */,
 			);
 			path = CustomViews;
@@ -243,7 +244,6 @@
 			children = (
 				E99C53A22B5C2421009DF497 /* SettingsAssembly.swift */,
 				E99C53A42B5C2433009DF497 /* SettingsViewController.swift */,
-				E97EC4452B78A1EE00F1C3F5 /* SettingsViewCell.swift */,
 				E99C53A62B5C2440009DF497 /* SettingsPresenter.swift */,
 				E99C53A82B5C2449009DF497 /* SettingsRouter.swift */,
 			);
