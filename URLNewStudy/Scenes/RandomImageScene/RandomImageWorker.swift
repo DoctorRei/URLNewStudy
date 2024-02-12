@@ -12,8 +12,6 @@ protocol RandomImageWorkerProtocole {
     func getImageFromKF(imageToVC: UIImageView, completion: @escaping (UIImageView, String) -> Void)
     func getUrlFromApi(completion: @escaping (String) -> Void)
     func saveToStorage(with url: String, likedImage: UIImageView)
-    func getFromStorage(with url: String, completion: @escaping (UIImage) -> Void)
-    
 }
 
 final class RandomImageWorker {
@@ -36,7 +34,9 @@ final class RandomImageWorker {
 extension RandomImageWorker: RandomImageWorkerProtocole {
     
     /// Здесь мы берем ссылку на API и разворачиваем из нее юрл картинки.
-    /// apiURL - свойство, которое получает значение из ЮзерДефолтс
+    /// choosenFilters - получает массив фильтров, которые мы сохранили в сцене Settings
+    /// randomURL - получаем случайное значение из choosenFilters
+    /// apiURL - конвертируем randomURL в полноценное юрл, которое дальше парсится и достается url картинки.
     
     func getUrlFromApi(completion: @escaping (String) -> Void) {
         guard let choosenFilters = userDefaultsManager.getFilters(forKey: .selectedFilters) else { return }
@@ -56,6 +56,12 @@ extension RandomImageWorker: RandomImageWorkerProtocole {
         }
     }
     
+    /// Здесь мы загружаем картинку
+    /// Кингфишер загружает картинку и применяет к ней изменения
+    /// Устанавливает активити индикатор
+    /// В комплишене загруженная картинку возвращается как параметр комплишена обратно презентеру
+    /// Передается так же юрл самой картинки для дальнейшей работы с ней, если понадобится
+    
     func getImageFromKF(imageToVC: UIImageView, completion: @escaping (UIImageView, String) -> Void) {
         getUrlFromApi { urlImage in
             guard let defaultURL = URL(string: "https://sun9-19.userapi.com/impg/t_fEO35dURufOivHNYcPN9k8BJrnD5PlfV76IQ/VK3nAtHWRLs.jpg?size=810x1080&quality=96&sign=ef13cb5692320947667d494e5c58730f&type=album") else { return }
@@ -73,6 +79,8 @@ extension RandomImageWorker: RandomImageWorkerProtocole {
         }
     }
     
+    /// Метод нужен нам для того, чтобы визуально разбить большой метод
+    /// Выводит информацию о процессе скачивания изображения
     
     func hande(_ result: Result<RetrieveImageResult, KingfisherError>) {
         switch result {
@@ -87,21 +95,12 @@ extension RandomImageWorker: RandomImageWorkerProtocole {
         }
     }
     
+    /// Метод сохраняет юрл картинки в хранилище coreData для дальнейшего взаимодействия
+    /// Метод так же сохраняет картинку в кеш KingFisher
+    
     func saveToStorage(with url: String, likedImage: UIImageView) {
         guard let imageToSave = likedImage.image else { return }
         KingfisherManager.shared.cache.store(imageToSave, forKey: url)
         storageManager.createImage(url: url)
-        print("Сейв сработал")
-    }
-    
-    func getFromStorage(with url: String, completion: @escaping (UIImage) -> Void) {
-        KingfisherManager.shared.cache.retrieveImageInDiskCache(forKey: url) { result in
-            switch result {
-            case .success(let image):
-                completion(image ?? UIImage())
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
     }
 }
