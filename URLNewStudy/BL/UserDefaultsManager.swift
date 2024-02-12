@@ -26,6 +26,7 @@ final class UserDefaultsManager {
         case data
         case bool
         case string
+        case array
     }
     
     private let userDefaults = UserDefaults.standard
