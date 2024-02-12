@@ -42,6 +42,7 @@ extension SettingsPresenter: SettingsPresenterProtocole {
     
     func saveFilter(with link: String) {
         userDefaultsManager.setObject(link, forKey: .string)
+        print(link)
     }
     
     func saveSwitchPosition(with position: Bool) {

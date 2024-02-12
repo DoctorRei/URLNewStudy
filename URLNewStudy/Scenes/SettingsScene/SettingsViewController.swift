@@ -69,28 +69,17 @@ extension SettingsViewController: UICollectionViewDelegate, UICollectionViewData
             for: indexPath) as? SettingsViewCell else { return UICollectionViewCell()}
         
         let links = presenter?.getLinks()
-        cell.titleLabel.text = links?[indexPath.item].rawValue.capitalized
-        
+           cell.titleLabel.text = links?[indexPath.item].rawValue.capitalized
+           let testLinks = links?.compactMap({ $0.url.absoluteString })
+           
         cell.switchActionHandler = { [weak self] isOn in
-            switch indexPath.item {
-            case 0:
+            indexPath.forEach { index in
                 if isOn {
-                    let nekoCase = Links.dance.url.absoluteString
-                    self?.presenter?.saveFilter(with: nekoCase)
+                    self?.presenter?.saveFilter(with: testLinks?[index] ?? "")
                 } else {
                     self?.presenter?.deleteSwitchPosition()
                 }
-            case 1:
-                if isOn {
-                    let shinobuCase = Links.shinobu.url.absoluteString
-                    self?.presenter?.saveFilter(with: shinobuCase)
-                } else {
-                    self?.presenter?.deleteSwitchPosition()
-                }
-            default:
-                break
             }
-            
         }
         
         return cell
@@ -109,9 +98,4 @@ extension SettingsViewController: SettingsViewControllerProtocole {
     func render() {
         
     }
-    
-    func updateChoosenFilters(with link: String) {
-        presenter?.updateLinkList(link)
-    }
-    
 }

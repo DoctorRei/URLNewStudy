@@ -5,6 +5,8 @@
 //  Created by Акира on 11.02.2024.
 //
 
+/// В приложении уже реализована КорДата, но по большей части ЮзерДефолтс реализован для моей же практики
+
 import Foundation
 
 protocol UserDefaultsManagerProtocole {
