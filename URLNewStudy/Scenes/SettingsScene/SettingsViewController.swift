@@ -73,16 +73,16 @@ extension SettingsViewController: UICollectionViewDelegate, UICollectionViewData
         
         let links = presenter?.getLinks()
            cell.titleLabel.text = links?[indexPath.item].rawValue.capitalized
-           let testLinks = links?.compactMap({ $0.url.absoluteString })
+        guard let testLinks = links?.compactMap({ $0.url.absoluteString }) else { return UICollectionViewCell()}
         
                    
         cell.switchActionHandler = { [weak self] isOn in
             if isOn {
-                self?.selectedFilters.append(testLinks?[indexPath.item] ?? "")
+                self?.selectedFilters.append(testLinks[indexPath.item])
                 self?.presenter?.saveFilters(with: self?.selectedFilters ?? [])
                 print(self?.selectedFilters)
             } else {
-                self?.selectedFilters = (self?.selectedFilters.filter { $0 != testLinks?[indexPath.item]})!
+                self?.selectedFilters = self?.selectedFilters.filter { $0 != testLinks[indexPath.item]} ?? []
                 print(self?.selectedFilters)
             }
         }

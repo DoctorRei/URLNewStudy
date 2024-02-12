@@ -17,6 +17,7 @@ protocol UserDefaultsManagerProtocole {
     func getData(forKey key: UserDefaultsManager.Keys) -> Data?
     func getBool(forKey key: UserDefaultsManager.Keys) -> Bool?
     func getString(forKey key: UserDefaultsManager.Keys) -> String?
+    func getFilters(forKey key: UserDefaultsManager.Keys) -> [String]?
     
 }
 
@@ -26,7 +27,7 @@ final class UserDefaultsManager {
         case data
         case bool
         case string
-        case array
+        case selectedFilters
     }
     
     private let userDefaults = UserDefaults.standard
@@ -65,6 +66,10 @@ extension UserDefaultsManager: UserDefaultsManagerProtocole {
     func getCodableData<T:Decodable>(forKey key: UserDefaultsManager.Keys) -> T? {
         guard let data = restore(forKey: key.rawValue) as? Data else { return nil }
         return try? JSONDecoder().decode(T.self, from: data)
+    }
+    
+    func getFilters(forKey key: UserDefaultsManager.Keys) -> [String]? {
+        restore(forKey: key.rawValue) as? [String]
     }
     
     func deleteObject(forKey key: UserDefaultsManager.Keys) {
