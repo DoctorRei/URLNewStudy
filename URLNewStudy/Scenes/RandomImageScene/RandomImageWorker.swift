@@ -35,11 +35,17 @@ final class RandomImageWorker {
 
 extension RandomImageWorker: RandomImageWorkerProtocole {
     
+    /// Здесь мы берем ссылку на API и разворачиваем из нее юрл картинки.
+    /// apiURL - свойство, которое получает значение из ЮзерДефолтс
+    
     func getUrlFromApi(completion: @escaping (String) -> Void) {
-        guard let testURL = URL(string: userDefaultsManager.getString(forKey: .string) ?? "") else { return }
+        guard let choosenFilters = userDefaultsManager.getFilters(forKey: .selectedFilters) else { return }
+        guard let randomURL = choosenFilters.randomElement() else { return }
+        guard let apiURL = URL(string: randomURL) else {return}
         
         DispatchQueue.global().sync {
-            networkManager.fetch(JsonForPictures.self, from: testURL) { url in
+            networkManager.fetch(JsonForPictures.self, from: apiURL) { url in
+                print(url)
                 switch url {
                 case .success(let url):
                     completion(url.url)
