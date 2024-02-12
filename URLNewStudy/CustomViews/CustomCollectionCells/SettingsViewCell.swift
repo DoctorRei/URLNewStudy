@@ -14,6 +14,7 @@ final class SettingsViewCell: UICollectionViewCell {
     var titleLabel = UILabel()
     var filterSwitch = UISwitch()
     var switchActionHandler: ((Bool) -> Void)?
+    var switchPositions: [Int: Bool] = [:]
 
     override init(frame: CGRect) {
         super.init(frame: frame)

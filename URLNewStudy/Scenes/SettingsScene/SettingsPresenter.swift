@@ -11,6 +11,7 @@ protocol SettingsPresenterProtocole {
     func render()
     func getLinks() -> [Links]
     func saveFilter(with link: String)
+    func saveFilters(with links: [String])
     func saveSwitchPosition(with position: Bool)
     func deleteSwitchPosition()
 }
@@ -43,6 +44,10 @@ extension SettingsPresenter: SettingsPresenterProtocole {
     func saveFilter(with link: String) {
         userDefaultsManager.setObject(link, forKey: .string)
         print(link)
+    }
+    
+    func saveFilters(with links: [String]) {
+        userDefaultsManager.setObject(links, forKey: .array)
     }
     
     func saveSwitchPosition(with position: Bool) {

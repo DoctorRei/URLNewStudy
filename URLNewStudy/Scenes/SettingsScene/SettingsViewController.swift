@@ -19,6 +19,7 @@ final class SettingsViewController: UIViewController {
         frame: .zero,
         collectionViewLayout: UICollectionViewLayout()
     )
+    var selectedFilters: [String] = []
     
     
     override func viewDidLoad() {
@@ -28,6 +29,8 @@ final class SettingsViewController: UIViewController {
         setupCollectionView()
         setupLayout()
     }
+    
+    
     
     func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: setupFlowLayout())
@@ -71,16 +74,19 @@ extension SettingsViewController: UICollectionViewDelegate, UICollectionViewData
         let links = presenter?.getLinks()
            cell.titleLabel.text = links?[indexPath.item].rawValue.capitalized
            let testLinks = links?.compactMap({ $0.url.absoluteString })
-           
+        
+                   
         cell.switchActionHandler = { [weak self] isOn in
-            indexPath.forEach { index in
-                if isOn {
-                    self?.presenter?.saveFilter(with: testLinks?[index] ?? "")
-                } else {
-                    self?.presenter?.deleteSwitchPosition()
-                }
+            if isOn {
+                self?.selectedFilters.append(testLinks?[indexPath.item] ?? "")
+                self?.presenter?.saveFilters(with: self?.selectedFilters ?? [])
+                print(self?.selectedFilters)
+            } else {
+                self?.selectedFilters = (self?.selectedFilters.filter { $0 != testLinks?[indexPath.item]})!
+                print(self?.selectedFilters)
             }
         }
+        
         
         return cell
     }
