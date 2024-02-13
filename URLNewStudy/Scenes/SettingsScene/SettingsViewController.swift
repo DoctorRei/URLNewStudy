@@ -12,16 +12,14 @@ protocol SettingsViewControllerProtocole: AnyObject {
 }
 
 final class SettingsViewController: UIViewController {
-    
     var presenter: SettingsPresenterProtocole?
-    var activityIndicator = UIActivityIndicatorView(style: .large)
-    var collectionView = UICollectionView(
+    private var activityIndicator = UIActivityIndicatorView(style: .large)
+    private var collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: UICollectionViewLayout()
     )
-    var selectedFilters: [String] = []
-    var links: [Links] = []
-    
+    private var selectedFilters: [String] = []
+    private var links: [Links] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +30,16 @@ final class SettingsViewController: UIViewController {
         setupSources()
     }
     
-    func setupSources() {
+    /// Берем данные из презентера и присваиваем их тут для дальнейшей конфигурации ячейки
+    
+    private func setupSources() {
         selectedFilters = presenter?.loadFilters() ?? []
         links = presenter?.getLinks() ?? []
     }
     
-    func setupCollectionView() {
+    /// Базовая настройка коллекции
+    
+    private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: setupFlowLayout())
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -45,7 +47,7 @@ final class SettingsViewController: UIViewController {
         view.addSubview(collectionView)
     }
     
-    func setupFlowLayout() -> UICollectionViewFlowLayout {
+    private func setupFlowLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         layout.minimumLineSpacing = 0
@@ -54,7 +56,9 @@ final class SettingsViewController: UIViewController {
         return layout
     }
     
-    func setupLayout() {
+    /// Устанавливаем констреинты
+    
+    private func setupLayout() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -66,10 +70,22 @@ final class SettingsViewController: UIViewController {
     }
 }
 
+/// Создаем список на основе списка ссылок на наши API
+
 extension SettingsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         presenter?.getLinks().count ?? 1
     }
+    
+    /// Создаем и настраиваем ячейки
+    /// Создаем ячейку и кастим ее до типа нашей кастомной ячейки SettingsViewCell
+    /// Присваиваем ей текст на основе наших ссылок на API , указываем с большой буквы
+    /// let choosenLinks - Переводим ссылки из ЮРЛ в Стринг
+    /// cell.filterSwitch.isOn - тут мы загружаем данные (положение свича) из юзерДефолта
+    ///
+    /// cell.switchActionHandler - прописываем логику того, что будет происходит при включенном и
+    /// выключенном свитче. Либо мы добавляем новый фильтр, либо убираем его. Все это автоматически
+    /// сохранится в юзерДефолтс
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
@@ -91,7 +107,9 @@ extension SettingsViewController: UICollectionViewDelegate, UICollectionViewData
         return cell
     }
     
-    func workWithSwitch(choosenLinks: [String], indexPath: IndexPath, position: Bool) {
+    /// Метод-сапорт. Реализована логика сохрания данных в юзерДефолтс для позиций Свитча (тру или фолс)
+    
+    private func workWithSwitch(choosenLinks: [String], indexPath: IndexPath, position: Bool) {
         if position {
             self.selectedFilters.append(choosenLinks[indexPath.item])
             self.presenter?.saveFilters(with: self.selectedFilters)
