@@ -13,6 +13,7 @@ protocol SettingsPresenterProtocole {
     func saveFilters(with links: [String])
     func savePosition(key: Int, position: Bool)
     func loadPosition(key: Int) -> Bool
+    func loadFilters() -> [String]
 }
 
 final class SettingsPresenter {
@@ -20,6 +21,7 @@ final class SettingsPresenter {
     private let router: SettingsRouterProtocole
     private let userDefaultsManager: UserDefaultsManagerProtocole
     private let links = Links.allCases
+    private var selectedFilters: [String] = []
     
     init(
         router: SettingsRouterProtocole,
@@ -50,4 +52,10 @@ extension SettingsPresenter: SettingsPresenterProtocole {
         guard let switchPosition = userDefaultsManager.getBoolTestForSwitch(forKey: "IndexPath\(key)") else { return false }
         return switchPosition
     }
+    
+    func loadFilters() -> [String] {
+        guard let selectedFilters = userDefaultsManager.getFilters(forKey: .selectedFilters) else { return []}
+        return selectedFilters
+    }
+    
 }
