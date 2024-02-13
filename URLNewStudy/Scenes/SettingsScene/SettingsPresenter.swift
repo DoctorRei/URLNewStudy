@@ -10,10 +10,9 @@ import UIKit
 protocol SettingsPresenterProtocole {
     func render()
     func getLinks() -> [Links]
-    func saveFilter(with link: String)
     func saveFilters(with links: [String])
-    func saveSwitchPosition(with position: Bool)
-    func deleteSwitchPosition()
+    func savePosition(key: Int, position: Bool)
+    func loadPosition(key: Int) -> Bool
 }
 
 final class SettingsPresenter {
@@ -32,30 +31,23 @@ final class SettingsPresenter {
 }
 
 extension SettingsPresenter: SettingsPresenterProtocole {
-    
     func render() {
-        
     }
     
     func getLinks() -> [Links] {
         links
     }
     
-    func saveFilter(with link: String) {
-        userDefaultsManager.setObject(link, forKey: .string)
-        print(link)
-    }
-    
     func saveFilters(with links: [String]) {
         userDefaultsManager.setObject(links, forKey: .selectedFilters)
     }
     
-    func saveSwitchPosition(with position: Bool) {
-        userDefaultsManager.setObject(position, forKey: .bool)
+    func savePosition(key: Int, position: Bool) {
+        userDefaultsManager.setObjectTestForSwitch(position, forKey: "IndexPath\(key)")
     }
     
-    func deleteSwitchPosition() {
-        userDefaultsManager.deleteObject(forKey: .bool)
+    func loadPosition(key: Int) -> Bool {
+        guard let switchPosition = userDefaultsManager.getBoolTestForSwitch(forKey: "IndexPath\(key)") else { return false }
+        return switchPosition
     }
-    
 }
