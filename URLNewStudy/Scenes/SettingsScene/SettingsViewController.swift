@@ -20,6 +20,7 @@ final class SettingsViewController: UIViewController {
         collectionViewLayout: UICollectionViewLayout()
     )
     var selectedFilters: [String] = []
+    var links: [Links] = []
     
     
     override func viewDidLoad() {
@@ -28,6 +29,11 @@ final class SettingsViewController: UIViewController {
         collectionView.dataSource = self
         setupCollectionView()
         setupLayout()
+        selectedFilters = presenter?.loadFilters() ?? []
+        print(selectedFilters)
+        
+        links = presenter?.getLinks() ?? []
+        print(links)
     }
     
     
@@ -71,30 +77,31 @@ extension SettingsViewController: UICollectionViewDelegate, UICollectionViewData
             withReuseIdentifier: SettingsViewCell.cellIdentifer,
             for: indexPath) as? SettingsViewCell else { return UICollectionViewCell()}
         
-        let links = presenter?.getLinks()
-           cell.titleLabel.text = links?[indexPath.item].rawValue.capitalized
-        guard let testLinks = links?.compactMap({ $0.url.absoluteString }) else { return UICollectionViewCell()}
+        cell.titleLabel.text = links[indexPath.item].rawValue.capitalized
+        let choosenLinks = links.compactMap({ $0.url.absoluteString })
         
         cell.filterSwitch.isOn = presenter?.loadPosition(key: indexPath.item) ?? false
-                   
+        
         cell.switchActionHandler = { [weak self] isOn in
             if isOn {
-                self?.selectedFilters.append(testLinks[indexPath.item])
+                self?.selectedFilters.append(choosenLinks[indexPath.item])
                 self?.presenter?.saveFilters(with: self?.selectedFilters ?? [])
                 self?.presenter?.savePosition(key: indexPath.item, position: true)
-                
-                print(self?.selectedFilters)
             } else {
-                self?.selectedFilters = self?.selectedFilters.filter { $0 != testLinks[indexPath.item]} ?? []
+                self?.selectedFilters = self?.selectedFilters.filter { $0 != choosenLinks[indexPath.item]} ?? []
+                self?.presenter?.saveFilters(with: self?.selectedFilters ?? [])
                 self?.presenter?.savePosition(key: indexPath.item, position: false)
-                print(self?.selectedFilters)
-                
             }
         }
-        
-        
         return cell
     }
+    
+    func workWithSwitch(model: [String], indexPath: IndexPath, position: Bool) {
+        self.selectedFilters.append(model[indexPath.item])
+        self.presenter?.saveFilters(with: self.selectedFilters)
+        self.presenter?.savePosition(key: indexPath.item, position: position)
+    }
+    
     
     func collectionView(
         _ collectionView: UICollectionView,
@@ -104,6 +111,7 @@ extension SettingsViewController: UICollectionViewDelegate, UICollectionViewData
             return CGSize(width: collectionView.bounds.width, height: 50)
         }
 }
+
 
 extension SettingsViewController: SettingsViewControllerProtocole {
     func render() {

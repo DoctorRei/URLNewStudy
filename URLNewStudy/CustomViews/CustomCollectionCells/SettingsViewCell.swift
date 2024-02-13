@@ -15,7 +15,6 @@ final class SettingsViewCell: UICollectionViewCell {
     var filterSwitch = UISwitch()
     var switchActionHandler: ((Bool) -> Void)?
     var switchPositions: [Int: Bool] = [:]
-    var userDefaultsManager = UserDefaultsManager()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,10 +27,6 @@ final class SettingsViewCell: UICollectionViewCell {
     
     @objc func switchValueChanged(_ sender: UISwitch) {
         switchActionHandler?(sender.isOn)
-    }
-    
-    @objc func savePosition(_ sender: UISwitch, for indexPath: Int, position: Bool) {
-        userDefaultsManager.setObjectTestForSwitch(position, forKey: "IndexPath\(indexPath)")
     }
     
     func setupLabel() {
