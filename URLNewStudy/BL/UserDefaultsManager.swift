@@ -19,6 +19,9 @@ protocol UserDefaultsManagerProtocole {
     func getString(forKey key: UserDefaultsManager.Keys) -> String?
     func getFilters(forKey key: UserDefaultsManager.Keys) -> [String]?
     
+    func setObjectTestForSwitch(_ object: Any?, forKey key: String)
+    func getBoolTestForSwitch(forKey key: String) -> Bool?
+    
 }
 
 final class UserDefaultsManager {
@@ -76,8 +79,11 @@ extension UserDefaultsManager: UserDefaultsManagerProtocole {
         userDefaults.removeObject(forKey: key.rawValue)
     }
     
+    func setObjectTestForSwitch(_ object: Any?, forKey key: String) {
+        save(object, key: key)
+    }
     
-    
-        
-    
+    func getBoolTestForSwitch(forKey key: String) -> Bool? {
+        restore(forKey: key) as? Bool
+    }
 }

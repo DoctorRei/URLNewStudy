@@ -5,6 +5,9 @@
 //  Created by Акира on 18.01.2024.
 //
 
+/// В этом классе мы реализовывем работу с сетью и сохранением в базу данных информацию о
+/// картинках, которые мы загружаем из сети
+
 import UIKit
 import Kingfisher
 
@@ -62,7 +65,10 @@ extension RandomImageWorker: RandomImageWorkerProtocole {
     /// В комплишене загруженная картинку возвращается как параметр комплишена обратно презентеру
     /// Передается так же юрл самой картинки для дальнейшей работы с ней, если понадобится
     
-    func getImageFromKF(imageToVC: UIImageView, completion: @escaping (UIImageView, String) -> Void) {
+    func getImageFromKF(
+        imageToVC: UIImageView,
+        completion: @escaping (UIImageView, String) -> Void
+    ) {
         getUrlFromApi { urlImage in
             guard let defaultURL = URL(string: "https://sun9-19.userapi.com/impg/t_fEO35dURufOivHNYcPN9k8BJrnD5PlfV76IQ/VK3nAtHWRLs.jpg?size=810x1080&quality=96&sign=ef13cb5692320947667d494e5c58730f&type=album") else { return }
             let resource = KF.ImageResource(downloadURL: URL(string: urlImage) ?? defaultURL)

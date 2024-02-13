@@ -9,7 +9,6 @@ import Foundation
 
 enum Links: String, CaseIterable {
    
-    case neko
     case shinobu
     case megumin
     case bully
@@ -43,8 +42,6 @@ enum Links: String, CaseIterable {
         
         switch self {
             
-        case .neko:
-            return URL(string: "https://api.waifu.pics/sfw/waifuneko")!
         case .shinobu:
             return URL(string: "https://api.waifu.pics/sfw/shinobu")!
         case .megumin:
