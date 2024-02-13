@@ -36,26 +36,36 @@ extension SettingsPresenter: SettingsPresenterProtocole {
     func render() {
     }
     
+    /// Получаем список ссылок на API
+    
     func getLinks() -> [Links] {
         links
     }
+    
+    /// Сохраняем выбранные пользователем фиьтры
     
     func saveFilters(with links: [String]) {
         userDefaultsManager.setObject(links, forKey: .selectedFilters)
     }
     
-    func savePosition(key: Int, position: Bool) {
-        userDefaultsManager.setObjectTestForSwitch(position, forKey: "IndexPath\(key)")
-    }
-    
-    func loadPosition(key: Int) -> Bool {
-        guard let switchPosition = userDefaultsManager.getBoolTestForSwitch(forKey: "IndexPath\(key)") else { return false }
-        return switchPosition
-    }
+    /// Получаем список фильтров, которые раннее выбрал пользователь
     
     func loadFilters() -> [String] {
         guard let selectedFilters = userDefaultsManager.getFilters(forKey: .selectedFilters) else { return []}
         return selectedFilters
     }
     
+    /// Сохраняем позицию ползунка UISwitch, которую выбрал пользователь
+    
+    func savePosition(key: Int, position: Bool) {
+        userDefaultsManager.setObjectTestForSwitch(position, forKey: "IndexPath\(key)")
+    }
+    
+    /// Загружаем позиции ползунка UISwitch для того, чтобы при входе в приложение
+    /// они отобразились включенными у пользователя
+    
+    func loadPosition(key: Int) -> Bool {
+        guard let switchPosition = userDefaultsManager.getBoolTestForSwitch(forKey: "IndexPath\(key)") else { return false }
+        return switchPosition
+    }
 }

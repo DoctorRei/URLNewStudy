@@ -32,7 +32,6 @@ final class StorageManager: StorageManagerProtocole {
         return container
     }()
     
-    
     private init () {
         context = persistentContainer.viewContext
     }
@@ -63,24 +62,7 @@ final class StorageManager: StorageManagerProtocole {
             return (try? context.fetch(fetchRequest) as? [Girl]) ?? []
         }
     }
-    
-//    func fetchImage(id: UUID) -> Girl? {
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
-//        do {
-//            let images = try? context.fetch(fetchRequest) as? [Girl]
-//            return images?.first(where: {$0.id == id})
-//        }
-//    }
-//
-//    func updateImage(id: UUID, url: String) {
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
-//        do {
-//            guard let images = try? context.fetch(fetchRequest) as? [Girl],
-//                  let image = images.first(where: {$0.id == id}) else { return }
-//            image.url = url
-//        }
-//    }
-    
+
     func deleteAllImages() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
         do {
@@ -90,17 +72,4 @@ final class StorageManager: StorageManagerProtocole {
         saveContext()
         print("сработало")
     }
-    
-//    func deleteImage(id: UUID) {
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
-//        do {
-//            guard let images = try? context.fetch(fetchRequest) as? [Girl],
-//                  let image = images.first(where: { $0.id == id}) else { return }
-//            context.delete(image)
-//        }
-//        saveContext()
-//    }
-    
-    
-    
 }
