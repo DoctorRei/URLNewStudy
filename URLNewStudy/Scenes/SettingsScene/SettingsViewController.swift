@@ -29,14 +29,13 @@ final class SettingsViewController: UIViewController {
         collectionView.dataSource = self
         setupCollectionView()
         setupLayout()
-        selectedFilters = presenter?.loadFilters() ?? []
-        print(selectedFilters)
-        
-        links = presenter?.getLinks() ?? []
-        print(links)
+        setupSources()
     }
     
-    
+    func setupSources() {
+        selectedFilters = presenter?.loadFilters() ?? []
+        links = presenter?.getLinks() ?? []
+    }
     
     func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: setupFlowLayout())
@@ -84,24 +83,25 @@ extension SettingsViewController: UICollectionViewDelegate, UICollectionViewData
         
         cell.switchActionHandler = { [weak self] isOn in
             if isOn {
-                self?.selectedFilters.append(choosenLinks[indexPath.item])
-                self?.presenter?.saveFilters(with: self?.selectedFilters ?? [])
-                self?.presenter?.savePosition(key: indexPath.item, position: true)
+                self?.workWithSwitch(choosenLinks: choosenLinks, indexPath: indexPath, position: true)
             } else {
-                self?.selectedFilters = self?.selectedFilters.filter { $0 != choosenLinks[indexPath.item]} ?? []
-                self?.presenter?.saveFilters(with: self?.selectedFilters ?? [])
-                self?.presenter?.savePosition(key: indexPath.item, position: false)
+                self?.workWithSwitch(choosenLinks: choosenLinks, indexPath: indexPath, position: false)
             }
         }
         return cell
     }
     
-    func workWithSwitch(model: [String], indexPath: IndexPath, position: Bool) {
-        self.selectedFilters.append(model[indexPath.item])
-        self.presenter?.saveFilters(with: self.selectedFilters)
-        self.presenter?.savePosition(key: indexPath.item, position: position)
+    func workWithSwitch(choosenLinks: [String], indexPath: IndexPath, position: Bool) {
+        if position {
+            self.selectedFilters.append(choosenLinks[indexPath.item])
+            self.presenter?.saveFilters(with: self.selectedFilters)
+            self.presenter?.savePosition(key: indexPath.item, position: position)
+        } else {
+            self.selectedFilters = self.selectedFilters.filter { $0 != choosenLinks[indexPath.item]}
+            self.presenter?.saveFilters(with: self.selectedFilters)
+            self.presenter?.savePosition(key: indexPath.item, position: position)
+        }
     }
-    
     
     func collectionView(
         _ collectionView: UICollectionView,
