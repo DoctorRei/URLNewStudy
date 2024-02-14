@@ -98,7 +98,6 @@ class SettingsViewController: UIViewController {
             clearGalleryButton.translatesAutoresizingMaskIntoConstraints = false
             logOutButton.translatesAutoresizingMaskIntoConstraints = false
             
-            
             NSLayoutConstraint.activate([
                 filtersButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height / 4),
                 filtersButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),

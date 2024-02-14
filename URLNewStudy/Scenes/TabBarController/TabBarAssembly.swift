@@ -38,11 +38,15 @@ extension TabBarAssembly: BaseAssemblyProtocole {
         randomImgVC.tabBarItem.selectedImage?.withTintColor(.yellow)
         randomImgVC.tabBarItem.selectedImage?.withTintColor(.yellow, renderingMode: .automatic)
         
-        
-        guard let settingsVC = createSettingsViewController() as? FiltersViewController else {return}
+        guard let settingsVC = createSettingsViewController() as? SettingsViewController else {return}
         settingsVC.title = "Settings"
         settingsVC.tabBarItem.image = UIImage(systemName: "gearshape")
         settingsVC.tabBarItem.selectedImage = UIImage(systemName: "gearshape.fill")
+        
+//        guard let settingsVC = createSettingsViewController() as? FiltersViewController else {return}
+//        settingsVC.title = "Settings"
+//        settingsVC.tabBarItem.image = UIImage(systemName: "gearshape")
+//        settingsVC.tabBarItem.selectedImage = UIImage(systemName: "gearshape.fill")
         
         guard let favoritesVC = createFavoritesViewController() as? FavoritesViewController else {return}
         favoritesVC.tabBarItem.image = UIImage(systemName: "heart")
@@ -55,6 +59,8 @@ extension TabBarAssembly: BaseAssemblyProtocole {
             thirdItemVC: favoritesVC)
     }
 }
+
+//TODO: - Проверить, мб можно просто ассемблай конфигур вызвать
 
 extension TabBarAssembly: TabBarAssemblyProtocole {
     func createRandomImageViewController() -> UIViewController {
@@ -81,18 +87,30 @@ extension TabBarAssembly: TabBarAssemblyProtocole {
     }
     
     func createSettingsViewController() -> UIViewController {
-        let settingsVC = FiltersViewController()
-        let router = FiltersRouter(navigationController: navigationController)
-        let userDefaultsManager = UserDefaultsManager()
-        let presenter = FiltersPresenter(
-            router: router,
-            userDefaultsManager: userDefaultsManager)
-        
+        let settingsVC = SettingsViewController()
+        let router = SettingsRouter(navigationController: navigationController)
+        let presenter = SettingsPresenter(router: router)
+
         presenter.view = settingsVC
         settingsVC.presenter = presenter
-        
+
         return settingsVC
     }
+    
+    ///Переход на фильтры. Хочу подфиксить их
+//    func createSettingsViewController() -> UIViewController {
+//        let settingsVC = FiltersViewController()
+//        let router = FiltersRouter(navigationController: navigationController)
+//        let userDefaultsManager = UserDefaultsManager()
+//        let presenter = FiltersPresenter(
+//            router: router,
+//            userDefaultsManager: userDefaultsManager)
+//
+//        presenter.view = settingsVC
+//        settingsVC.presenter = presenter
+//
+//        return settingsVC
+//    }
     
     func createFavoritesViewController() -> UIViewController {
         let favoritesVC = FavoritesViewController()
