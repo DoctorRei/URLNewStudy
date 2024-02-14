@@ -9,6 +9,8 @@ import UIKit
 
 protocol SettingsPresenterProtocole {
     func render()
+    func roadToFiltersScene()
+    func roadToLoginScene()
 }
 
 final class SettingsPresenter {
@@ -23,6 +25,14 @@ final class SettingsPresenter {
 extension SettingsPresenter: SettingsPresenterProtocole {
     func render() {
         
+    }
+    
+    func roadToFiltersScene() {
+        router.routeTo(scene: SettingsRouter.Target.filtersScene)
+    }
+    
+    func roadToLoginScene() {
+        router.routeTo(scene: SettingsRouter.Target.backToLoginScene)
     }
     
 }

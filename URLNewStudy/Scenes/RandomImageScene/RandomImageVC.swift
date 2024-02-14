@@ -66,11 +66,6 @@ private extension RandomImageVC {
         mainImage.layer.cornerRadius = 25
         mainImage.layer.borderWidth = 2
         mainImage.layer.borderColor = UIColor.black.cgColor
-        
-        mainImage.layer.shadowColor = UIColor.black.cgColor
-        mainImage.layer.shadowOpacity = 0.5
-        mainImage.layer.shadowOffset = CGSize(width: 0, height: 2)
-        mainImage.layer.shadowRadius = 4
     }
 }
 
@@ -107,7 +102,6 @@ private extension RandomImageVC {
         goButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            
             mainImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
             mainImage.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             mainImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),

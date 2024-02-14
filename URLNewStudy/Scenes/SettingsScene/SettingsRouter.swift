@@ -34,7 +34,11 @@ extension SettingsRouter: SettingsRouterProtocole {
         case .backToLoginScene:
             navigationController.popToRootViewController(animated: true)
         case .filtersScene:
-            break
+            let filtersVC = FiltersViewController()
+            let assembly = FiltersAssembly(navigationController: navigationController)
+            assembly.configure(viewController: filtersVC)
+            
+            navigationController.pushWithNewAnimation(controller: filtersVC)
         }
     }
     
