@@ -229,6 +229,14 @@
 			path = RegisterScene;
 			sourceTree = "<group>";
 		};
+		E9999E982B7D003700083C82 /* SettingsScene */ = {
+			isa = PBXGroup;
+			children = (
+				E99C53A02B5C2340009DF497 /* FiltersScene */,
+			);
+			path = SettingsScene;
+			sourceTree = "<group>";
+		};
 		E99A282F2B35E4AC00C6F151 /* RandomImageScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,7 +249,7 @@
 			path = RandomImageScene;
 			sourceTree = "<group>";
 		};
-		E99C53A02B5C2340009DF497 /* SettingsScene */ = {
+		E99C53A02B5C2340009DF497 /* FiltersScene */ = {
 			isa = PBXGroup;
 			children = (
 				E99C53A22B5C2421009DF497 /* SettingsAssembly.swift */,
@@ -249,7 +257,7 @@
 				E99C53A62B5C2440009DF497 /* SettingsPresenter.swift */,
 				E99C53A82B5C2449009DF497 /* SettingsRouter.swift */,
 			);
-			path = SettingsScene;
+			path = FiltersScene;
 			sourceTree = "<group>";
 		};
 		E99C53A12B5C235E009DF497 /* FavoritesScene */ = {
@@ -292,7 +300,7 @@
 				E9A150472B38472300AB2799 /* LoginScene */,
 				E996DD3C2B4ABE3A003700A4 /* RegisterScene */,
 				E99A282F2B35E4AC00C6F151 /* RandomImageScene */,
-				E99C53A02B5C2340009DF497 /* SettingsScene */,
+				E9999E982B7D003700083C82 /* SettingsScene */,
 				E99C53A12B5C235E009DF497 /* FavoritesScene */,
 				E983504C2B72A13A0045CDF5 /* SelectedImageScene */,
 			);

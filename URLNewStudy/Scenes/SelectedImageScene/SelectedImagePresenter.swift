@@ -35,7 +35,6 @@ final class SelectedImagePresenter {
         self.selectedImages = selectedImages
         self.selectedIndex = selectedIndex
     }
-    
 }
 
 extension SelectedImagePresenter {

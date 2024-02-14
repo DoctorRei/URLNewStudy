@@ -12,7 +12,6 @@ protocol LoginViewControllerProtocole: AnyObject {
 }
 
 final class LoginViewController: UIViewController {
-    
     let loginLabel = UILabel()
     let loginTF = CustomTextField(placeholder: "Enter you'r login")
     let passwordTF = CustomTextField(placeholder: "Enter you'r password")
@@ -24,6 +23,7 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .black
         setupViews()
     }
 }
@@ -75,7 +75,7 @@ private extension LoginViewController {
     func setupImage() {
         backgroundImage.image = UIImage(named: "AnimeGirls")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
-        backgroundImage.alpha = 1
+        backgroundImage.alpha = 0.7
     }
 }
 
@@ -118,10 +118,12 @@ private extension LoginViewController {
     
     func setupLoginButton() {
         loginButton.setTitle("Enter", for: .normal)
+        loginButton.configuration?.cornerStyle = .capsule
     }
     
     func setupRegisterButton() {
         registerButton.setTitle("Register", for: .normal)
+        registerButton.configuration?.cornerStyle = .capsule
     }
     
     func addActions() {
@@ -149,24 +151,26 @@ private extension LoginViewController {
         
         NSLayoutConstraint.activate([
             
-            loginLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
-            loginLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height / 5),
+            loginLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             
             loginTF.topAnchor.constraint(equalTo: loginLabel.topAnchor, constant: 40),
-            loginTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
-            loginTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
+            loginTF.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 100),
+            loginTF.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -100),
+            loginTF.heightAnchor.constraint(equalToConstant: 25),
             
-            passwordTF.topAnchor.constraint(equalTo: loginTF.topAnchor, constant: 40),
-            passwordTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
-            passwordTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
+            passwordTF.topAnchor.constraint(equalTo: loginTF.topAnchor, constant: 30),
+            passwordTF.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 100),
+            passwordTF.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -100),
+            passwordTF.heightAnchor.constraint(equalToConstant: 25),
             
             loginButton.topAnchor.constraint(equalTo: passwordTF.topAnchor, constant: 40),
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
+            loginButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 100),
+            loginButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -100),
             
             registerButton.topAnchor.constraint(equalTo: loginButton.topAnchor, constant: 40),
-            registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
-            registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100)
+            registerButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 100),
+            registerButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -100)
         ])
     }
 }
