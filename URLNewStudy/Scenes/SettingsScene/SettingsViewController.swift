@@ -20,7 +20,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupViews()
     }
     
     //MARK: - Actions
@@ -54,7 +54,22 @@ class SettingsViewController: UIViewController {
             for: .touchUpInside)
     }
     
+    //MARK: - SetupViews
+    
+    func setupViews() {
+        setupButtons()
+        setupSubviews()
+        setupLayout()
+    }
+    
     //MARK: - Setup Buttons
+    
+    func setupButtons() {
+        setupFiltersButton()
+        setupClearGalleryButton()
+        setupLogOutButton()
+        setupButtonsActions()
+    }
     
     func setupFiltersButton() {
         filtersButton.titleLabel?.text = "Filters"
@@ -95,7 +110,6 @@ class SettingsViewController: UIViewController {
                 logOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ])
         }
-    
 }
 
 
