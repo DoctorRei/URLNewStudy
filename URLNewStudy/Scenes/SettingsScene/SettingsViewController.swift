@@ -72,16 +72,16 @@ class SettingsViewController: UIViewController {
     }
     
     func setupFiltersButton() {
-        filtersButton.titleLabel?.text = "Filters"
+        filtersButton.setTitle("Filters", for: .normal)
     }
     
     func setupClearGalleryButton() {
-        clearGalleryButton.titleLabel?.text = "DeleteGallery"
-        logOutButton.tintColor = .systemRed
+        clearGalleryButton.setTitle("Clear Gallery", for: .normal)
+        clearGalleryButton.tintColor = .systemRed
     }
     
     func setupLogOutButton() {
-        logOutButton.titleLabel?.text = "Log Out"
+        logOutButton.setTitle("Log Out", for: .normal)
         logOutButton.tintColor = .systemRed
     }
     
@@ -100,13 +100,19 @@ class SettingsViewController: UIViewController {
             
             NSLayoutConstraint.activate([
                 filtersButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height / 4),
-                filtersButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                filtersButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 100),
+                filtersButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -100),
+                filtersButton.heightAnchor.constraint(equalToConstant: 30),
                 
                 clearGalleryButton.topAnchor.constraint(equalTo: filtersButton.bottomAnchor, constant: 100),
-                clearGalleryButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                clearGalleryButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 100),
+                clearGalleryButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -100),
+                clearGalleryButton.heightAnchor.constraint(equalToConstant: 30),
                 
                 logOutButton.topAnchor.constraint(equalTo: clearGalleryButton.bottomAnchor, constant: 100),
-                logOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+                logOutButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 100),
+                logOutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -100),
+                logOutButton.heightAnchor.constraint(equalToConstant: 30)
             ])
         }
 }
