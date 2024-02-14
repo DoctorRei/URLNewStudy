@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SettingsPresenterProtocole {
+protocol FiltersPresenterProtocole {
     func render()
     func getLinks() -> [Links]
     func saveFilters(with links: [String])
@@ -16,15 +16,15 @@ protocol SettingsPresenterProtocole {
     func loadFilters() -> [String]
 }
 
-final class SettingsPresenter {
-    weak var view: SettingsViewControllerProtocole?
-    private let router: SettingsRouterProtocole
+final class FiltersPresenter {
+    weak var view: FiltersViewControllerProtocole?
+    private let router: FiltersRouterProtocole
     private let userDefaultsManager: UserDefaultsManagerProtocole
     private let links = Links.allCases
     private var selectedFilters: [String] = []
     
     init(
-        router: SettingsRouterProtocole,
+        router: FiltersRouterProtocole,
         userDefaultsManager: UserDefaultsManagerProtocole
     ) {
         self.router = router
@@ -32,7 +32,7 @@ final class SettingsPresenter {
     }
 }
 
-extension SettingsPresenter: SettingsPresenterProtocole {
+extension FiltersPresenter: FiltersPresenterProtocole {
     func render() {
     }
     

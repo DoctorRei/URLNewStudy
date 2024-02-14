@@ -1,21 +1,21 @@
 //
-//  SettingsRouter.swift
+//  GlobalSettingsRouter.swift
 //  URLNewStudy
 //
-//  Created by Акира on 20.01.2024.
+//  Created by Акира on 14.02.2024.
 //
 
 import UIKit
 
-protocol SettingsRouterProtocole: BaseRoutingProtocole  {
+protocol SettingsRouterProtocole: BaseRoutingProtocole {
     
 }
 
 final class SettingsRouter {
     
     enum Target {
-        case updateArrayLinks
-        case mainScene
+        case backToLoginScene
+        case filtersScene
     }
     
     let navigationController: UINavigationController
@@ -23,19 +23,19 @@ final class SettingsRouter {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
+    
 }
-
-//TODO: - Заглушка навигации
 
 extension SettingsRouter: SettingsRouterProtocole {
     func routeTo(scene: Any) {
         guard let settingsRouter = scene as? SettingsRouter.Target else {return}
         
         switch settingsRouter {
-        case .updateArrayLinks:
-            break
-        case .mainScene:
+        case .backToLoginScene:
+            navigationController.popToRootViewController(animated: true)
+        case .filtersScene:
             break
         }
     }
+    
 }

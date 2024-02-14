@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SettingsViewCell: UICollectionViewCell {
+final class FiltersViewCell: UICollectionViewCell {
     
     static let cellIdentifer = "SettingsViewCell"
     

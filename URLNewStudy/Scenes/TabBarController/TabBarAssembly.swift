@@ -33,21 +33,21 @@ extension TabBarAssembly: BaseAssemblyProtocole {
         //TODO: - Настройку реализовать потом адекватно
         
         guard let randomImgVC = createRandomImageViewController() as? RandomImageVC else { return}
-        randomImgVC.title = "First"
+        randomImgVC.title = "New Photos"
         randomImgVC.tabBarItem.image = UIImage(systemName: "sparkles")
         randomImgVC.tabBarItem.selectedImage?.withTintColor(.yellow)
         randomImgVC.tabBarItem.selectedImage?.withTintColor(.yellow, renderingMode: .automatic)
         
         
-        guard let settingsVC = createSettingsViewController() as? SettingsViewController else {return}
-        settingsVC.title = "Second"
+        guard let settingsVC = createSettingsViewController() as? FiltersViewController else {return}
+        settingsVC.title = "Settings"
         settingsVC.tabBarItem.image = UIImage(systemName: "gearshape")
         settingsVC.tabBarItem.selectedImage = UIImage(systemName: "gearshape.fill")
         
         guard let favoritesVC = createFavoritesViewController() as? FavoritesViewController else {return}
         favoritesVC.tabBarItem.image = UIImage(systemName: "heart")
         favoritesVC.tabBarItem.selectedImage = UIImage(systemName: "heart.fill")
-        favoritesVC.title = "Third"
+        favoritesVC.title = "Gallery"
         
         tabBarVC.presenter?.buildTabBar(
             with: randomImgVC,
@@ -81,10 +81,10 @@ extension TabBarAssembly: TabBarAssemblyProtocole {
     }
     
     func createSettingsViewController() -> UIViewController {
-        let settingsVC = SettingsViewController()
-        let router = SettingsRouter(navigationController: navigationController)
+        let settingsVC = FiltersViewController()
+        let router = FiltersRouter(navigationController: navigationController)
         let userDefaultsManager = UserDefaultsManager()
-        let presenter = SettingsPresenter(
+        let presenter = FiltersPresenter(
             router: router,
             userDefaultsManager: userDefaultsManager)
         

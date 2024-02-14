@@ -7,12 +7,12 @@
 
 import UIKit
 
-protocol SettingsViewControllerProtocole: AnyObject {
+protocol FiltersViewControllerProtocole: AnyObject {
     func render()
 }
 
-final class SettingsViewController: UIViewController {
-    var presenter: SettingsPresenterProtocole?
+final class FiltersViewController: UIViewController {
+    var presenter: FiltersPresenterProtocole?
     private var activityIndicator = UIActivityIndicatorView(style: .large)
     private var collectionView = UICollectionView(
         frame: .zero,
@@ -40,10 +40,17 @@ final class SettingsViewController: UIViewController {
     /// Базовая настройка коллекции
     
     private func setupCollectionView() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: setupFlowLayout())
+        collectionView = UICollectionView(
+            frame: view.bounds,
+            collectionViewLayout: setupFlowLayout()
+        )
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(SettingsViewCell.self, forCellWithReuseIdentifier: "SettingsViewCell")
+        collectionView.register(
+            FiltersViewCell.self,
+            forCellWithReuseIdentifier: "SettingsViewCell"
+        )
+        
         view.addSubview(collectionView)
     }
     
@@ -72,7 +79,7 @@ final class SettingsViewController: UIViewController {
 
 /// Создаем список на основе списка ссылок на наши API
 
-extension SettingsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension FiltersViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         presenter?.getLinks().count ?? 1
     }
@@ -89,8 +96,8 @@ extension SettingsViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: SettingsViewCell.cellIdentifer,
-            for: indexPath) as? SettingsViewCell else { return UICollectionViewCell()}
+            withReuseIdentifier: FiltersViewCell.cellIdentifer,
+            for: indexPath) as? FiltersViewCell else { return UICollectionViewCell()}
         
         cell.titleLabel.text = links[indexPath.item].rawValue.capitalized
         let choosenLinks = links.compactMap({ $0.url.absoluteString })
@@ -131,7 +138,7 @@ extension SettingsViewController: UICollectionViewDelegate, UICollectionViewData
 }
 
 
-extension SettingsViewController: SettingsViewControllerProtocole {
+extension FiltersViewController: FiltersViewControllerProtocole {
     func render() {
         
     }
