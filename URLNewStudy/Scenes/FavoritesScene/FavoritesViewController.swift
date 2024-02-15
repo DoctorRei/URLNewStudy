@@ -95,14 +95,14 @@ extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-               withReuseIdentifier: "\(LikedGirlsViewCell.self)",
-               for: indexPath
-           ) as? LikedGirlsViewCell else { return UICollectionViewCell() }
-           
-           let url = render()[indexPath.item]
-           cell.imageView.configureForKingfisher(withURL: url)
-           
-           return cell
+            withReuseIdentifier: "\(LikedGirlsViewCell.self)",
+            for: indexPath
+        ) as? LikedGirlsViewCell else { return UICollectionViewCell() }
+        
+        let url = render()[indexPath.item]
+        cell.imageView.configureForKingfisher(withURL: url)
+        
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -110,6 +110,7 @@ extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewD
         presenter?.runSelectedImage(with: source, at: indexPath.row)
     }
 }
+
 
 //MARK: - FavoritesViewController Protocol
 

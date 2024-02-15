@@ -35,6 +35,8 @@ final class SelectedImageViewController: UIViewController  {
     
     // MARK: - Setup Gestures
     
+    /// Обрабатываем жесты свайпа вправо и влево для дальнейшего перехода между экранами
+    
     func setupGesture() {
         let rightSwipe: UISwipeGestureRecognizer = UISwipeGestureRecognizer(
             target: self,
@@ -51,6 +53,13 @@ final class SelectedImageViewController: UIViewController  {
         scrollView.addGestureRecognizer(rightSwipe)
         scrollView.addGestureRecognizer(leftSwipe)
     }
+    
+    ///  Переход между экранами.
+    ///  При свайпе слева-направо срабатывает метод презентора, который обращается к методу changeIndex
+    ///  Этот метод принимает таргет своего enum. Всего два кейса .minus и .plus
+    ///  Минус - уходим на индекс -1 и смотрим картинку по этому индексу
+    ///  Плюс - уходим на индекс +1 и смотрим картинку по этому индексу
+    ///  После этого мы обновляем картинку и лейбл с новыми данными
     
     @objc func handleSwipeFrom(recognizer: UISwipeGestureRecognizer) {
         let direction: UISwipeGestureRecognizer.Direction = recognizer.direction
@@ -76,8 +85,39 @@ final class SelectedImageViewController: UIViewController  {
             action: #selector(navigationController?.popWithNewAnimation)
         )
         
+        let menuButton = UIBarButtonItem(
+            title: "Settings",
+            image: UIImage(systemName: "gearshape"),
+            target: self, action: nil)
+        
+        let actions = [
+            UIAction(title: "Action1", handler: { _ in
+                print("Action ONE")
+            }),
+            UIAction(title: "Action2", handler: { _ in
+                print("Action Two")
+            })
+        ]
+        
+        
+        menuButton.menu = .init(children: actions)
         navigationItem.leftBarButtonItem = backButton
+        navigationItem.rightBarButtonItem = menuButton
     }
+    
+//    func setupMenuActions() -> UIMenu {
+//       let menuActions = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions in
+//            let actions = [
+//                UIAction(title: "Action1", handler: { _ in
+//                    print("Action ONE")
+//                }),
+//                UIAction(title: "Action2", handler: { _ in
+//                    print("Action Two")
+//                })
+//            ]
+//        }
+//        return UIMenu(children: menuActions)
+//    }
     
     //MARK: - Setup UI
     
@@ -89,9 +129,12 @@ final class SelectedImageViewController: UIViewController  {
     }
     
     func setupSelectedImage() {
+        let iteraction = UIContextMenuInteraction(delegate: self)
+        
         selectedImage.contentMode = .scaleAspectFit
         selectedImage.clipsToBounds = true
         selectedImage.isUserInteractionEnabled = true
+        selectedImage.addInteraction(iteraction)
     }
     
     func setupCountLabel() {
@@ -149,6 +192,30 @@ extension SelectedImageViewController: UIScrollViewDelegate {
         
         scrollView.delegate = self // В будущем реализую зум
     }
+}
+
+//MARK: - UIContextMenuInteractionDelegate
+
+/// Тут мы создаем меню и список с действиями, которые будут отрабатывать при взаимодействии
+/// с его элементами. Мы создаем actions и прописываем каждому логику, после чего на нужном нам вью
+/// вызываем .addInteraction и передаем ему это меню из делегата
+
+extension SelectedImageViewController: UIContextMenuInteractionDelegate {
+    func contextMenuInteraction(
+        _ interaction: UIContextMenuInteraction,
+        configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+            UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions in
+                let actions = [
+                    UIAction(title: "Action1", handler: { _ in
+                        print("Action ONE")
+                    }),
+                    UIAction(title: "Action2", handler: { _ in
+                        print("Action Two")
+                    })
+                ]
+                return UIMenu(children: actions)
+            }
+        }
 }
 
 extension SelectedImageViewController: SelectedImageViewControllerProtocole {
