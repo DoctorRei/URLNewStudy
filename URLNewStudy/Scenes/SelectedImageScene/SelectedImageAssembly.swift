@@ -7,6 +7,13 @@
 
 import UIKit
 
+/// Мы получаем два свойства.
+/// SelectedImages дает нам массив ссылок на сами картинки,
+/// дальше мы будем с их помощью устанавливать новое значение для UIImageView
+///
+/// SelectedIndex - Индекс выбранной картинки. По ней мы будем доставть нужный элемент из массива
+/// Юрлов и присваивать  его к UIImageView.
+
 final class SelectedImageAssembly {
     
     private var navigationController: UINavigationController

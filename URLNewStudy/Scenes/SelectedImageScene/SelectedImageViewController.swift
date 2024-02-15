@@ -99,7 +99,8 @@ final class SelectedImageViewController: UIViewController  {
                 title: "Delete image",
                 image: UIImage(systemName: "trash"),
                 handler: { _ in
-                    print("Delete image")
+                    self.presenter?.changeIndex(with: .delete)
+                    self.setupContent()
                 })
             
         ]

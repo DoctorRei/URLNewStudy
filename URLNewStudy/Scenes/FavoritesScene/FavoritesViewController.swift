@@ -111,7 +111,6 @@ extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewD
     }
 }
 
-
 //MARK: - FavoritesViewController Protocol
 
 extension FavoritesViewController: FavoritesViewControllerProtocole {
