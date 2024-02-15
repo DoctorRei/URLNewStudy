@@ -19,6 +19,7 @@ final class FiltersAssembly {
 extension FiltersAssembly: BaseAssemblyProtocole {
      func configure(viewController: UIViewController) {
         guard let settingsVC = viewController as? FiltersViewController else { return}
+        navigationController.navigationBar.isHidden = false
         
         let router = FiltersRouter(navigationController: navigationController)
         let userDefaultsManager = UserDefaultsManager()

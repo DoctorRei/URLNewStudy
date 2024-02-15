@@ -21,6 +21,8 @@ final class FiltersViewController: UIViewController {
     private var selectedFilters: [String] = []
     private var links: [Links] = []
     
+    //MARK: - ViewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
@@ -30,6 +32,14 @@ final class FiltersViewController: UIViewController {
         setupSources()
     }
     
+    //MARK: - ViewWillDisappear
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    //MARK: - Source
     /// Берем данные из презентера и присваиваем их тут для дальнейшей конфигурации ячейки
     
     private func setupSources() {
@@ -37,7 +47,7 @@ final class FiltersViewController: UIViewController {
         links = presenter?.getLinks() ?? []
     }
     
-    /// Базовая настройка коллекции
+    //MARK: - Setup Collection
     
     private func setupCollectionView() {
         collectionView = UICollectionView(
@@ -63,7 +73,7 @@ final class FiltersViewController: UIViewController {
         return layout
     }
     
-    /// Устанавливаем констреинты
+    //MARK: - Layout
     
     private func setupLayout() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -77,6 +87,7 @@ final class FiltersViewController: UIViewController {
     }
 }
 
+//MARK: - UICollectionViewDataSource / Delegate / DelegateFlowLayout
 /// Создаем список на основе списка ссылок на наши API
 
 extension FiltersViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

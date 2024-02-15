@@ -21,7 +21,9 @@ extension SettingsAssembly: BaseAssemblyProtocole {
         guard let settingsVC = viewController as? SettingsViewController else { return }
         
         let router = SettingsRouter(navigationController: navigationController)
-        let presenter = SettingsPresenter(router: router)
+        let storageManager = StorageManager.shared
+        let worker = SettingsWorker(storageManager: storageManager)
+        let presenter = SettingsPresenter(router: router, worker: worker)
         
         settingsVC.presenter = presenter
         presenter.view = settingsVC

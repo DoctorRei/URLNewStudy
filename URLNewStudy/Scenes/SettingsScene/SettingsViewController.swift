@@ -30,7 +30,7 @@ class SettingsViewController: UIViewController {
     }
     
     @objc func clearGalleyButtonTapped() {
-        print("TEST")
+        presenter?.clearGallery()
     }
     
     @objc func logOutButtonTapped() {

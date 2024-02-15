@@ -11,14 +11,17 @@ protocol SettingsPresenterProtocole {
     func render()
     func roadToFiltersScene()
     func roadToLoginScene()
+    func clearGallery()
 }
 
 final class SettingsPresenter {
     weak var view: SettingsViewControllerProtocole?
     let router: SettingsRouterProtocole
+    let worker: SettingsWorkerProtocole
     
-    init(router: SettingsRouterProtocole) {
+    init(router: SettingsRouterProtocole, worker: SettingsWorkerProtocole) {
         self.router = router
+        self.worker = worker
     }
 }
 
@@ -35,4 +38,7 @@ extension SettingsPresenter: SettingsPresenterProtocole {
         router.routeTo(scene: SettingsRouter.Target.backToLoginScene)
     }
     
+    func clearGallery() {
+        worker.clearImages()
+    }
 }

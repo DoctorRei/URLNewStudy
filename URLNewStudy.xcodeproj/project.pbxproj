@@ -37,6 +37,7 @@
 		E9999E9C2B7D01E500083C82 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9999E9B2B7D01E500083C82 /* SettingsViewController.swift */; };
 		E9999E9E2B7D01EF00083C82 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9999E9D2B7D01EF00083C82 /* SettingsPresenter.swift */; };
 		E9999EA02B7D021900083C82 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9999E9F2B7D021900083C82 /* SettingsRouter.swift */; };
+		E99B1EB02B7E081100CA1255 /* SettingsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B1EAF2B7E081100CA1255 /* SettingsWorker.swift */; };
 		E99C53A32B5C2421009DF497 /* FiltersAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C53A22B5C2421009DF497 /* FiltersAssembly.swift */; };
 		E99C53A52B5C2433009DF497 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C53A42B5C2433009DF497 /* FiltersViewController.swift */; };
 		E99C53A72B5C2440009DF497 /* FiltersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C53A62B5C2440009DF497 /* FiltersPresenter.swift */; };
@@ -94,6 +95,7 @@
 		E9999E9B2B7D01E500083C82 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E9999E9D2B7D01EF00083C82 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		E9999E9F2B7D021900083C82 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
+		E99B1EAF2B7E081100CA1255 /* SettingsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWorker.swift; sourceTree = "<group>"; };
 		E99C53A22B5C2421009DF497 /* FiltersAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersAssembly.swift; sourceTree = "<group>"; };
 		E99C53A42B5C2433009DF497 /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		E99C53A62B5C2440009DF497 /* FiltersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersPresenter.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				E9999E992B7D01C700083C82 /* SettingsAssembly.swift */,
 				E9999E9B2B7D01E500083C82 /* SettingsViewController.swift */,
 				E9999E9D2B7D01EF00083C82 /* SettingsPresenter.swift */,
+				E99B1EAF2B7E081100CA1255 /* SettingsWorker.swift */,
 				E9999E9F2B7D021900083C82 /* SettingsRouter.swift */,
 			);
 			path = SettingsScene;
@@ -464,6 +467,7 @@
 				E99C53AF2B5C29B1009DF497 /* FavoritesPresenter.swift in Sources */,
 				E99C53A92B5C2449009DF497 /* FiltersRouter.swift in Sources */,
 				E9A150462B38471600AB2799 /* LoginViewController.swift in Sources */,
+				E99B1EB02B7E081100CA1255 /* SettingsWorker.swift in Sources */,
 				E98350522B72A20F0045CDF5 /* SelectedImagePresenter.swift in Sources */,
 				E9AB5FFB2B4991B700297486 /* RandomImageAssembly.swift in Sources */,
 				E99C53B42B5C2D7C009DF497 /* TabBarView.swift in Sources */,

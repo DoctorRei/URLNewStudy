@@ -63,7 +63,6 @@ final class SelectedImageViewController: UIViewController  {
         default:
             break
         }
-        
         setupContent()
     }
     
