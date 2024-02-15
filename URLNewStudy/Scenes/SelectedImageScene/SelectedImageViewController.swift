@@ -14,10 +14,14 @@ protocol SelectedImageViewControllerProtocole: AnyObject {
 
 final class SelectedImageViewController: UIViewController  {
     
+    //MARK: - Stored Property
+    
     var presenter: SelectedImagePresenterProtocole?
     private let scrollView = UIScrollView()
     private var selectedImage = UIImageView()
     private let countLabel = UILabel()
+    
+    //MARK: - ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +31,8 @@ final class SelectedImageViewController: UIViewController  {
         setupContent()
         setupGesture()
     }
+    
+    //MARK: - ViewWillDisappear
     
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
@@ -75,6 +81,31 @@ final class SelectedImageViewController: UIViewController  {
         setupContent()
     }
     
+    //MARK: - Actions
+    
+    /// Устанавливаем кнопки для нашего меню настроек
+    
+    func setupMenuActions() -> [UIAction] {
+        let actions = [
+            UIAction(
+                title: "Copy image URL",
+                image: UIImage(systemName: "doc.on.doc"),
+                handler: { _ in
+                    guard let url = self.presenter?.getImageUrl() else { return }
+                    UIPasteboard.general.string = url
+                    print(url)
+                }),
+            UIAction(
+                title: "Delete image",
+                image: UIImage(systemName: "trash"),
+                handler: { _ in
+                    print("Delete image")
+                })
+            
+        ]
+        return actions
+    }
+    
     //MARK: - SetupNavigationBar
     
     func setupNavigationButton() {
@@ -90,34 +121,10 @@ final class SelectedImageViewController: UIViewController  {
             image: UIImage(systemName: "gearshape"),
             target: self, action: nil)
         
-        let actions = [
-            UIAction(title: "Action1", handler: { _ in
-                print("Action ONE")
-            }),
-            UIAction(title: "Action2", handler: { _ in
-                print("Action Two")
-            })
-        ]
-        
-        
-        menuButton.menu = .init(children: actions)
+        menuButton.menu = .init(children: setupMenuActions())
         navigationItem.leftBarButtonItem = backButton
         navigationItem.rightBarButtonItem = menuButton
     }
-    
-//    func setupMenuActions() -> UIMenu {
-//       let menuActions = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions in
-//            let actions = [
-//                UIAction(title: "Action1", handler: { _ in
-//                    print("Action ONE")
-//                }),
-//                UIAction(title: "Action2", handler: { _ in
-//                    print("Action Two")
-//                })
-//            ]
-//        }
-//        return UIMenu(children: menuActions)
-//    }
     
     //MARK: - Setup UI
     
@@ -129,12 +136,9 @@ final class SelectedImageViewController: UIViewController  {
     }
     
     func setupSelectedImage() {
-        let iteraction = UIContextMenuInteraction(delegate: self)
-        
         selectedImage.contentMode = .scaleAspectFit
         selectedImage.clipsToBounds = true
         selectedImage.isUserInteractionEnabled = true
-        selectedImage.addInteraction(iteraction)
     }
     
     func setupCountLabel() {
@@ -143,7 +147,7 @@ final class SelectedImageViewController: UIViewController  {
     }
     
     func setupContent() {
-        let url = URL(string: presenter?.setupPhoto() ?? "")
+        let url = URL(string: presenter?.getImageUrl() ?? "")
         selectedImage.kf.setImage(with: url)
         countLabel.text = presenter?.setupLabel()
     }
@@ -192,30 +196,6 @@ extension SelectedImageViewController: UIScrollViewDelegate {
         
         scrollView.delegate = self // В будущем реализую зум
     }
-}
-
-//MARK: - UIContextMenuInteractionDelegate
-
-/// Тут мы создаем меню и список с действиями, которые будут отрабатывать при взаимодействии
-/// с его элементами. Мы создаем actions и прописываем каждому логику, после чего на нужном нам вью
-/// вызываем .addInteraction и передаем ему это меню из делегата
-
-extension SelectedImageViewController: UIContextMenuInteractionDelegate {
-    func contextMenuInteraction(
-        _ interaction: UIContextMenuInteraction,
-        configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
-            UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions in
-                let actions = [
-                    UIAction(title: "Action1", handler: { _ in
-                        print("Action ONE")
-                    }),
-                    UIAction(title: "Action2", handler: { _ in
-                        print("Action Two")
-                    })
-                ]
-                return UIMenu(children: actions)
-            }
-        }
 }
 
 extension SelectedImageViewController: SelectedImageViewControllerProtocole {

@@ -9,7 +9,7 @@ import UIKit
 
 protocol SelectedImagePresenterProtocole {
     func render()
-    func setupPhoto() -> String
+    func getImageUrl() -> String
     func setupLabel() -> String
     func changeIndex(with: WorkWithIndexes)
 }
@@ -38,7 +38,7 @@ final class SelectedImagePresenter {
 }
 
 extension SelectedImagePresenter {
-    func setupPhoto() -> String {
+    func getImageUrl() -> String {
         let image = selectedImages[selectedIndex]
         return image
     }
