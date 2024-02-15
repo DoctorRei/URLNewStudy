@@ -12,7 +12,6 @@ protocol SettingsViewControllerProtocole: AnyObject {
 }
 
 class SettingsViewController: UIViewController {
-    
     var presenter: SettingsPresenterProtocole?
     let filtersButton = UIButton(configuration: .filled())
     let clearGalleryButton = UIButton(configuration: .filled())
