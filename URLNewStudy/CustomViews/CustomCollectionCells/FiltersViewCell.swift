@@ -7,6 +7,13 @@
 
 import UIKit
 
+/// Кастомная ячейка. Используется для отображения фильтров поиска картинок
+/// В ней есть titleLabel (лейбл, в котором пишется названия фильтра)
+/// filterSwitch (свич) для отображения выбранных фильтров пользователем
+/// switchActionHandler - хендлер, который позволяет задавать логику при взаимодействии со свичом
+/// при изменении положения свитча вызывается хендлер, который в зависимости от положения свитча
+/// реализует логику, которая задается в коллекции при конфигурации ячейки
+
 final class FiltersViewCell: UICollectionViewCell {
     
     static let cellIdentifer = "SettingsViewCell"
@@ -14,7 +21,6 @@ final class FiltersViewCell: UICollectionViewCell {
     var titleLabel = UILabel()
     var filterSwitch = UISwitch()
     var switchActionHandler: ((Bool) -> Void)?
-    var switchPositions: [Int: Bool] = [:]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -50,6 +56,7 @@ final class FiltersViewCell: UICollectionViewCell {
         contentView.addSubview(filterSwitch)
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

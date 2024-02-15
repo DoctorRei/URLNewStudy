@@ -21,7 +21,7 @@ class RandomImageAssembly {
 
 extension RandomImageAssembly: BaseAssemblyProtocole {
     func configure(viewController: UIViewController) {
-        guard let randomImgVC = viewController as? RandomImageVC else { return }
+        guard let randomImgVC = viewController as? RandomImageViewController else { return }
         let router = RandomImageRouter(navigationController: navigationController)
         let networkManager = NetworkManager()
         let storageManager = StorageManager.shared

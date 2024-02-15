@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol RandomImageVCProtocole: AnyObject {
+protocol RandomImageViewControllerProtocole: AnyObject {
     func render(with image: UIImageView)
 }
 
-final class RandomImageVC: UIViewController {
+final class RandomImageViewController: UIViewController {
     
     private var mainImage = UIImageView()
     private let goButton = UIButton(configuration: .filled())
@@ -27,7 +27,7 @@ final class RandomImageVC: UIViewController {
 
 //MARK: - Actions
 
-private extension RandomImageVC {
+private extension RandomImageViewController {
     @objc func touchGoButton() {
         updateImage()
     }
@@ -39,7 +39,7 @@ private extension RandomImageVC {
 
 //MARK: - Setup View
 
-private extension RandomImageVC {
+private extension RandomImageViewController {
     func setupView() {
         view.backgroundColor = .white
         addSubViews()
@@ -52,7 +52,7 @@ private extension RandomImageVC {
 
 //MARK: - SetupImage
 
-private extension RandomImageVC {
+private extension RandomImageViewController {
     func setupImageView() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTapImage))
         tapGesture.numberOfTapsRequired = 2
@@ -71,7 +71,7 @@ private extension RandomImageVC {
 
 //MARK: - SetupButton
 
-private extension RandomImageVC {
+private extension RandomImageViewController {
     func setupButton() {
         goButton.setTitle("GO", for: .normal)
         goButton.configuration?.cornerStyle = .capsule
@@ -87,7 +87,7 @@ private extension RandomImageVC {
 
 //MARK: - Setting
 
-private extension RandomImageVC {
+private extension RandomImageViewController {
     func addSubViews() {
         view.addSubview(mainImage)
         view.addSubview(goButton)
@@ -96,7 +96,7 @@ private extension RandomImageVC {
 
 //MARK: - Layout
 
-private extension RandomImageVC {
+private extension RandomImageViewController {
     private func setupLayout() {
         mainImage.translatesAutoresizingMaskIntoConstraints = false
         goButton.translatesAutoresizingMaskIntoConstraints = false
@@ -117,7 +117,7 @@ private extension RandomImageVC {
 
 //MARK: - Protocole
 
-extension RandomImageVC: RandomImageVCProtocole {
+extension RandomImageViewController: RandomImageViewControllerProtocole {
     
     func updateImage() {
         presenter?.render(imageToWorker: self.mainImage)

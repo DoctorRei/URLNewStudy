@@ -12,14 +12,13 @@ protocol StorageManagerProtocole {
     func createImage(url: String)
     func fetchImages() -> [Girl]
     func deleteAllImages()
+    func deleteImage(with index: Int)
 }
 
 //MARK: - CRUD
 
 final class StorageManager: StorageManagerProtocole {
-    
     static var shared = StorageManager()
-    
     private let context: NSManagedObjectContext
     
     private let persistentContainer: NSPersistentContainer = {
@@ -36,6 +35,8 @@ final class StorageManager: StorageManagerProtocole {
         context = persistentContainer.viewContext
     }
     
+    /// Сохраняем изменени в кор дате
+    
     func saveContext() {
         if context.hasChanges {
             do {
@@ -47,14 +48,18 @@ final class StorageManager: StorageManagerProtocole {
         }
     }
     
+    /// Записываем в кор дату конкретную юрлу, которую решил пользователь сохранить
+    
     func createImage(url: String) {
         guard let imageDescription = NSEntityDescription.entity(forEntityName: "Girl", in: context) else { return }
         let image = Girl(entity: imageDescription, insertInto: context)
-
+        
         image.url = url
         
         saveContext()
     }
+    
+    /// Получаем весь список сохраненных ссылок на изображения из кордаты
     
     func fetchImages() -> [Girl] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
@@ -62,7 +67,9 @@ final class StorageManager: StorageManagerProtocole {
             return (try? context.fetch(fetchRequest) as? [Girl]) ?? []
         }
     }
-
+    
+    /// Удалить все ссылки на изображения из КорДата
+    
     func deleteAllImages() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
         do {
@@ -70,6 +77,17 @@ final class StorageManager: StorageManagerProtocole {
             images?.forEach{ context.delete($0) }
         }
         saveContext()
-        print("сработало")
+    }
+    
+    /// Удаляем один конкреный элемент из кор даты по индексу
+    
+    func deleteImage(with index: Int) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Girl")
+        do {
+            let images = try? context.fetch(fetchRequest) as? [Girl]
+            guard let image = images?[index] else { return }
+            context.delete(image)
+        }
+        saveContext()
     }
 }

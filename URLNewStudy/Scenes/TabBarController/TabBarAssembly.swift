@@ -30,7 +30,7 @@ extension TabBarAssembly: BaseAssemblyProtocole {
         
         navigationController.navigationBar.isHidden = true
         
-        guard let randomImgVC = createRandomImageViewController() as? RandomImageVC else { return}
+        guard let randomImgVC = createRandomImageViewController() as? RandomImageViewController else { return}
         randomImgVC.title = "Get!"
         randomImgVC.tabBarItem.image = UIImage(systemName: "sparkles")
         
@@ -53,7 +53,7 @@ extension TabBarAssembly: BaseAssemblyProtocole {
 
 extension TabBarAssembly: TabBarAssemblyProtocole {
     func createRandomImageViewController() -> UIViewController {
-        let randomImageVC = RandomImageVC()
+        let randomImageVC = RandomImageViewController()
         let assembly = RandomImageAssembly(navigationController: navigationController)
         assembly.configure(viewController: randomImageVC)
         

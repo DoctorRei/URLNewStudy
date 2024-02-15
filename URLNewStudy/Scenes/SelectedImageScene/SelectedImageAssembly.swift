@@ -32,10 +32,12 @@ extension SelectedImageAssembly: BaseAssemblyProtocole {
         guard let selectedImageVC = viewController as? SelectedImageViewController else { return }
         navigationController.navigationBar.isHidden = false
         
+        let storageManager = StorageManager.shared
         let router = SelectedImageRouter(navigationController: navigationController)
         let presenter = SelectedImagePresenter(
             view: selectedImageVC,
             router: router,
+            storageManager: storageManager,
             selectedImages: selectedImages,
             selectedIndex: selectedIndex
         )

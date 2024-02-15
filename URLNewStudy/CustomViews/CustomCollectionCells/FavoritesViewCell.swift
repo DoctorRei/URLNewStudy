@@ -7,8 +7,13 @@
 
 import UIKit
 
+/// Настройка ячеек коллекции для FavoritesScene.
+/// Здесь мы задаем базовые размеры изображения (100х100)
+/// Саму картинку в imageView
+/// В setupCell() мы задаем контент мод, рамку для изображения
+/// Констреинты
 
-class LikedGirlsViewCell: UICollectionViewCell {
+class FavoritesViewCell: UICollectionViewCell {
     var imageView = UIImageView()
     
     override init(frame: CGRect) {
@@ -16,6 +21,7 @@ class LikedGirlsViewCell: UICollectionViewCell {
         setupCell()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

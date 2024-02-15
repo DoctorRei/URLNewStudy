@@ -16,7 +16,7 @@ protocol RandomImagePresenterProtocole {
 final class RandomImagePresenter {
     
     let router: RandomImageRouterProtocole
-    weak var view: RandomImageVCProtocole!
+    weak var view: RandomImageViewControllerProtocole!
     private var worker: RandomImageWorkerProtocole
     private var storageManager: StorageManagerProtocole
     private var userDefaultsManager: UserDefaultsManagerProtocole
@@ -28,7 +28,7 @@ final class RandomImagePresenter {
         router: RandomImageRouterProtocole,
         worker: RandomImageWorkerProtocole!,
         storageManager: StorageManagerProtocole,
-        view: RandomImageVCProtocole!,
+        view: RandomImageViewControllerProtocole!,
         userDefaultsManager: UserDefaultsManagerProtocole
     ) {
         self.router = router

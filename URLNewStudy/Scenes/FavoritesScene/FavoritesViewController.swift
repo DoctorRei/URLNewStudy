@@ -70,8 +70,8 @@ final class FavoritesViewController: UIViewController {
         ])
         
         collectionView.register(
-            LikedGirlsViewCell.self,
-            forCellWithReuseIdentifier: "\(LikedGirlsViewCell.self)"
+            FavoritesViewCell.self,
+            forCellWithReuseIdentifier: "\(FavoritesViewCell.self)"
         )
     }
     
@@ -95,9 +95,9 @@ extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "\(LikedGirlsViewCell.self)",
+            withReuseIdentifier: "\(FavoritesViewCell.self)",
             for: indexPath
-        ) as? LikedGirlsViewCell else { return UICollectionViewCell() }
+        ) as? FavoritesViewCell else { return UICollectionViewCell() }
         
         let url = render()[indexPath.item]
         cell.imageView.configureForKingfisher(withURL: url)

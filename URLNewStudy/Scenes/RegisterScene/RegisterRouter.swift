@@ -33,7 +33,7 @@ extension RegisterRouter: RegisterRouterProtocole {
         case .loginScene:
             break
         case .randomImgScene:
-            let randomImageVC = RandomImageVC()
+            let randomImageVC = RandomImageViewController()
             let randomImageAssembly = RandomImageAssembly(navigationController: navigationController)
             randomImageAssembly.configure(viewController: randomImageVC)
             

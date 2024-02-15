@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E93B6D3B2B64C3C6004DAD7F /* Girl.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E93B6D392B64C3C6004DAD7F /* Girl.xcdatamodeld */; };
 		E93B6D3F2B64C3EE004DAD7F /* GirlCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93B6D3D2B64C3EE004DAD7F /* GirlCoreData.swift */; };
-		E97A4CE82B61380B0040AED6 /* LikedGirlsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A4CE72B61380B0040AED6 /* LikedGirlsViewCell.swift */; };
+		E97A4CE82B61380B0040AED6 /* FavoritesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A4CE72B61380B0040AED6 /* FavoritesViewCell.swift */; };
 		E97A4CED2B615F9C0040AED6 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A4CEC2B615F9C0040AED6 /* StorageManager.swift */; };
 		E97DCA1D2B77907500FF0D0E /* ExtensionNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DCA1C2B77907500FF0D0E /* ExtensionNavigationController.swift */; };
 		E97DCA202B77D44100FF0D0E /* ExtensionUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DCA1F2B77D44100FF0D0E /* ExtensionUIImageView.swift */; };
@@ -24,7 +24,7 @@
 		E98350542B72A2190045CDF5 /* SelectedImageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98350532B72A2190045CDF5 /* SelectedImageRouter.swift */; };
 		E9958D032B35E0A3001B4290 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9958D022B35E0A3001B4290 /* AppDelegate.swift */; };
 		E9958D052B35E0A3001B4290 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9958D042B35E0A3001B4290 /* SceneDelegate.swift */; };
-		E9958D072B35E0A3001B4290 /* RandomImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9958D062B35E0A3001B4290 /* RandomImageVC.swift */; };
+		E9958D072B35E0A3001B4290 /* RandomImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9958D062B35E0A3001B4290 /* RandomImageViewController.swift */; };
 		E9958D0F2B35E0A4001B4290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9958D0E2B35E0A4001B4290 /* Assets.xcassets */; };
 		E9958D122B35E0A4001B4290 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9958D102B35E0A4001B4290 /* LaunchScreen.storyboard */; };
 		E996B13E2B4B22260025ECD6 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996B13D2B4B22260025ECD6 /* CustomTextField.swift */; };
@@ -65,7 +65,7 @@
 /* Begin PBXFileReference section */
 		E93B6D3A2B64C3C6004DAD7F /* Girl.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Girl.xcdatamodel; sourceTree = "<group>"; };
 		E93B6D3D2B64C3EE004DAD7F /* GirlCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GirlCoreData.swift; sourceTree = "<group>"; };
-		E97A4CE72B61380B0040AED6 /* LikedGirlsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedGirlsViewCell.swift; sourceTree = "<group>"; };
+		E97A4CE72B61380B0040AED6 /* FavoritesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewCell.swift; sourceTree = "<group>"; };
 		E97A4CEC2B615F9C0040AED6 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		E97DCA1C2B77907500FF0D0E /* ExtensionNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNavigationController.swift; sourceTree = "<group>"; };
 		E97DCA1F2B77D44100FF0D0E /* ExtensionUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIImageView.swift; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 		E9958CFF2B35E0A3001B4290 /* URLNewStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URLNewStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9958D022B35E0A3001B4290 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9958D042B35E0A3001B4290 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E9958D062B35E0A3001B4290 /* RandomImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomImageVC.swift; sourceTree = "<group>"; };
+		E9958D062B35E0A3001B4290 /* RandomImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomImageViewController.swift; sourceTree = "<group>"; };
 		E9958D0E2B35E0A4001B4290 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9958D112B35E0A4001B4290 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9958D132B35E0A4001B4290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 		E980C56F2B5EE2BC0022674C /* CustomCollectionCells */ = {
 			isa = PBXGroup;
 			children = (
-				E97A4CE72B61380B0040AED6 /* LikedGirlsViewCell.swift */,
+				E97A4CE72B61380B0040AED6 /* FavoritesViewCell.swift */,
 				E97EC4452B78A1EE00F1C3F5 /* FiltersViewCell.swift */,
 			);
 			path = CustomCollectionCells;
@@ -265,7 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				E9AB5FFA2B4991B700297486 /* RandomImageAssembly.swift */,
-				E9958D062B35E0A3001B4290 /* RandomImageVC.swift */,
+				E9958D062B35E0A3001B4290 /* RandomImageViewController.swift */,
 				E9AB5FFC2B4991CA00297486 /* RandomImagePresenter.swift */,
 				E9972C382B59453F00413AB2 /* RandomImageWorker.swift */,
 				E9AB5FFE2B4991D300297486 /* RandomImageRouter.swift */,
@@ -435,8 +435,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E97A4CE82B61380B0040AED6 /* LikedGirlsViewCell.swift in Sources */,
-				E9958D072B35E0A3001B4290 /* RandomImageVC.swift in Sources */,
+				E97A4CE82B61380B0040AED6 /* FavoritesViewCell.swift in Sources */,
+				E9958D072B35E0A3001B4290 /* RandomImageViewController.swift in Sources */,
 				E99C53B82B5C2ED9009DF497 /* TabBarAssembly.swift in Sources */,
 				E9958D032B35E0A3001B4290 /* AppDelegate.swift in Sources */,
 				E99C53A32B5C2421009DF497 /* FiltersAssembly.swift in Sources */,
