@@ -14,6 +14,7 @@ protocol FavoritesPresenterProtocole {
     func runSelectedImage(with selectedImage: [String], at indexPath: Int)
     func getLikedGirlsUrls() -> [String]
     func getImageUrl(with index: Int) -> String
+    func deleteImage(with index: Int)
 }
 
 final class FavoritesPresenter {
@@ -49,6 +50,12 @@ extension FavoritesPresenter: FavoritesPresenterProtocole {
         let image = getLikedGirlsUrls()
         let selectedImage = image[index]
         return selectedImage
+    }
+    
+    //MARK: - Delete Image
+    
+    func deleteImage(with index: Int) {
+        storageManager.deleteImage(with: index)
     }
     
     //MARK: - Navigation

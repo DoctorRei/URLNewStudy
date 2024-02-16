@@ -54,7 +54,8 @@ final class FavoritesViewController: UIViewController {
                 title: "Delete image",
                 image: UIImage(systemName: "trash"),
                 handler: { _ in
-                    print("1")
+                    self.presenter?.deleteImage(with: index)
+                    self.collectionView.reloadData()
                 })
         ]
         return actions
@@ -81,7 +82,6 @@ final class FavoritesViewController: UIViewController {
             collectionViewLayout: setupFlowLayout())
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = .white
         
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -146,8 +146,6 @@ extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewD
         }
         return configuration
     }
-  
-    
 }
 
 //MARK: - FavoritesViewController Protocol
