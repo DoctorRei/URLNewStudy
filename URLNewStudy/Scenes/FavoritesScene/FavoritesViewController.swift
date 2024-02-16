@@ -35,6 +35,30 @@ final class FavoritesViewController: UIViewController {
         collectionView.reloadData()
         stopActivityIndicator()
     }
+
+    //MARK: - Actions
+    
+    /// Здесь мы настраиваем действия для меню ячеек коллекции
+    
+    func setupMenuActions(with index: Int) -> [UIAction] {
+        let actions = [
+            UIAction(
+                title: "Copy image URL",
+                image: UIImage(systemName: "doc.on.doc"),
+                handler: { _ in
+                    guard let url = self.presenter?.getImageUrl(with: index) else { return }
+                    UIPasteboard.general.string = url
+                    print(url)
+                }),
+            UIAction(
+                title: "Delete image",
+                image: UIImage(systemName: "trash"),
+                handler: { _ in
+                    print("1")
+                })
+        ]
+        return actions
+    }
     
     //MARK: - Setup Activity Indicator
     
@@ -86,7 +110,7 @@ final class FavoritesViewController: UIViewController {
     }
 }
 
-//MARK: - Data Source
+//MARK: - Data Source, Delegate protocole
 
 extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -105,10 +129,25 @@ extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewD
         return cell
     }
     
+    /// Переход на сцену SelectedImage по выбранной фотографии. По тапу обращаемся в презентер
+    /// Тот дергает роутер и роутер собирает сцену, запушив нас на новую сцену с выбранной картинкой
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let source = presenter?.getLikedGirlsUrls() else { return }
         presenter?.runSelectedImage(with: source, at: indexPath.row)
     }
+    
+    /// Настройка Menu для элементов коллекции
+    
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemsAt indexPaths: [IndexPath], point: CGPoint) -> UIContextMenuConfiguration? {
+        let actions = setupMenuActions(with: indexPaths.first?.row ?? 0)
+        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+            UIMenu(title: "What do you want to do?", children: actions)
+        }
+        return configuration
+    }
+  
+    
 }
 
 //MARK: - FavoritesViewController Protocol

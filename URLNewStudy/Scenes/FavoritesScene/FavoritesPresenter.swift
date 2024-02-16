@@ -13,6 +13,7 @@ protocol FavoritesPresenterProtocole {
     func render()
     func runSelectedImage(with selectedImage: [String], at indexPath: Int)
     func getLikedGirlsUrls() -> [String]
+    func getImageUrl(with index: Int) -> String
 }
 
 final class FavoritesPresenter {
@@ -42,6 +43,12 @@ extension FavoritesPresenter: FavoritesPresenterProtocole {
         source = urlKeys.compactMap { $0.url }
         
         return source
+    }
+    
+    func getImageUrl(with index: Int) -> String {
+        let image = getLikedGirlsUrls()
+        let selectedImage = image[index]
+        return selectedImage
     }
     
     //MARK: - Navigation

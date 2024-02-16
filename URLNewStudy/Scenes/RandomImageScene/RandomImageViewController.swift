@@ -54,7 +54,10 @@ private extension RandomImageViewController {
 
 private extension RandomImageViewController {
     func setupImageView() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTapImage))
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(doubleTapImage)
+        )
         tapGesture.numberOfTapsRequired = 2
         mainImage.addGestureRecognizer(tapGesture)
         mainImage.isUserInteractionEnabled = true

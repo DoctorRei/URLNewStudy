@@ -14,6 +14,8 @@ protocol SelectedImagePresenterProtocole {
     func changeIndex(with: WorkWithIndexes)
 }
 
+/// Энам для работы с индексами
+
 enum WorkWithIndexes {
     case minus
     case plus
@@ -79,6 +81,7 @@ extension SelectedImagePresenter: SelectedImagePresenterProtocole {
     func render() {
     }
     
+    /// Настраиваем Лейбл, в котором отображается выбранный индекс элемента (+1) из всего массива фотографий
     func setupLabel() -> String {
         let text = String(
             format: "%ld / %ld",
