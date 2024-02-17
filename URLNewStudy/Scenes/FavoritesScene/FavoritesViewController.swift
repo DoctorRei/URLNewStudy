@@ -113,11 +113,17 @@ final class FavoritesViewController: UIViewController {
 //MARK: - Data Source, Delegate protocole
 
 extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int) -> Int
+    {
         render().count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "\(FavoritesViewCell.self)",
             for: indexPath
@@ -132,14 +138,21 @@ extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewD
     /// Переход на сцену SelectedImage по выбранной фотографии. По тапу обращаемся в презентер
     /// Тот дергает роутер и роутер собирает сцену, запушив нас на новую сцену с выбранной картинкой
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath)
+    {
         guard let source = presenter?.getLikedGirlsUrls() else { return }
         presenter?.runSelectedImage(with: source, at: indexPath.row)
     }
     
     /// Настройка Menu для элементов коллекции
     
-    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemsAt indexPaths: [IndexPath], point: CGPoint) -> UIContextMenuConfiguration? {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        contextMenuConfigurationForItemsAt indexPaths: [IndexPath],
+        point: CGPoint) -> UIContextMenuConfiguration?
+    {
         let actions = setupMenuActions(with: indexPaths.first?.row ?? 0)
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
             UIMenu(title: "What do you want to do?", children: actions)
@@ -149,6 +162,8 @@ extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewD
 }
 
 //MARK: - FavoritesViewController Protocol
+
+/// Получаем массив юрлов картинок, чтобы по ним устанавливать изображния
 
 extension FavoritesViewController: FavoritesViewControllerProtocole {
     func render() -> [String] {

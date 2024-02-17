@@ -64,7 +64,7 @@ private extension RandomImageViewController {
         
         mainImage.image = UIImage(named: "imageTestForXcode")
         mainImage.contentMode = .scaleAspectFill
-        mainImage.clipsToBounds = true
+//        mainImage.clipsToBounds = true
         
         mainImage.layer.cornerRadius = 25
         mainImage.layer.borderWidth = 2
