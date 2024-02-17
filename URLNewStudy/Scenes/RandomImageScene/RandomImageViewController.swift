@@ -13,11 +13,13 @@ protocol RandomImageViewControllerProtocole: AnyObject {
 
 final class RandomImageViewController: UIViewController {
     
+    //MARK: - StoredPropertys
+    
     private var mainImage = UIImageView()
     private let goButton = UIButton(configuration: .filled())
-    let tabBarAppearance = UITabBarAppearance()
-    
     var presenter: RandomImagePresenterProtocole?
+    
+    //MARK: - ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +66,7 @@ private extension RandomImageViewController {
         
         mainImage.image = UIImage(named: "imageTestForXcode")
         mainImage.contentMode = .scaleAspectFill
-//        mainImage.clipsToBounds = true
+        mainImage.clipsToBounds = true
         
         mainImage.layer.cornerRadius = 25
         mainImage.layer.borderWidth = 2

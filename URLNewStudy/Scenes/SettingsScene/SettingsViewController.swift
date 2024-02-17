@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 protocol SettingsViewControllerProtocole: AnyObject {
     func render()
@@ -16,6 +17,10 @@ class SettingsViewController: UIViewController {
     let filtersButton = UIButton(configuration: .filled())
     let clearGalleryButton = UIButton(configuration: .filled())
     let logOutButton = UIButton(configuration: .filled())
+    let githubButton = UIButton(configuration: .filled())
+    let profileImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+    let nameLabel = UILabel()
+    let statusLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +63,36 @@ class SettingsViewController: UIViewController {
     func setupViews() {
         setupButtons()
         setupSubviews()
+        setupImageView()
+        setupNameLabel()
+        setupStatusLabel()
+        
         setupLayout()
+    }
+    
+    //MARK: - ImageView
+    
+    func setupImageView() {
+        profileImage.configureForKingfisher(withURL: "https://sun9-78.userapi.com/impg/Iqyqf4gMXLqxJqYi5LWw8SmWw35zvU4DEVtPWQ/2Knp5gVMgC4.jpg?size=864x1080&quality=95&sign=392a8a0a1db5e2e1af46aaf3b405bd22&type=album", width: 150, height: 150)
+        profileImage.clipsToBounds = true
+        profileImage.layer.borderWidth = 1
+        profileImage.layer.borderColor = UIColor.black.cgColor
+        profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
+    }
+    
+    //MARK: - Setup Labels
+    
+    func setupNameLabel() {
+        nameLabel.text = "Akira Rei"
+        nameLabel.font = .boldSystemFont(ofSize: 24)
+        nameLabel.textAlignment = .center
+    }
+    
+    func setupStatusLabel() {
+        statusLabel.text = "Я ищу работу. Ребят, я чертовски хорош. Не самый умный, конечно, но усидчивый как черт и талантливый"
+        statusLabel.font = .italicSystemFont(ofSize: 14)
+        statusLabel.textAlignment = .center
+        statusLabel.numberOfLines = 3
     }
     
     //MARK: - Setup Buttons
@@ -67,6 +101,7 @@ class SettingsViewController: UIViewController {
         setupFiltersButton()
         setupClearGalleryButton()
         setupLogOutButton()
+        setupGitHubButton()
         setupButtonsActions()
     }
     
@@ -84,36 +119,67 @@ class SettingsViewController: UIViewController {
         logOutButton.tintColor = .systemRed
     }
     
-    func setupSubviews() {
-        view.addSubview(filtersButton)
-        view.addSubview(clearGalleryButton)
-        view.addSubview(logOutButton)
+    func setupGitHubButton() {
+        githubButton.setTitle("My GitHub", for: .normal)
     }
     
     //MARK: - Layout
     
-        private func setupLayout() {
-            filtersButton.translatesAutoresizingMaskIntoConstraints = false
-            clearGalleryButton.translatesAutoresizingMaskIntoConstraints = false
-            logOutButton.translatesAutoresizingMaskIntoConstraints = false
-            
-            NSLayoutConstraint.activate([
-                filtersButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height / 4),
-                filtersButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 100),
-                filtersButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -100),
-                filtersButton.heightAnchor.constraint(equalToConstant: 30),
-                
-                clearGalleryButton.topAnchor.constraint(equalTo: filtersButton.bottomAnchor, constant: 100),
-                clearGalleryButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 100),
-                clearGalleryButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -100),
-                clearGalleryButton.heightAnchor.constraint(equalToConstant: 30),
-                
-                logOutButton.topAnchor.constraint(equalTo: clearGalleryButton.bottomAnchor, constant: 100),
-                logOutButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 100),
-                logOutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -100),
-                logOutButton.heightAnchor.constraint(equalToConstant: 30)
-            ])
+    func setupSubviews() {
+        view.addSubview(filtersButton)
+        view.addSubview(clearGalleryButton)
+        view.addSubview(logOutButton)
+        view.addSubview(githubButton)
+        view.addSubview(profileImage)
+        view.addSubview(nameLabel)
+        view.addSubview(statusLabel)
+    }
+    
+    private func setupLayout() {
+        
+        profileImage.snp.makeConstraints { make in
+            make.top.equalTo(view.snp.top).offset(view.frame.size.height / 11)
+            make.centerX.equalTo(view.snp.centerX)
+            make.width.equalTo(150)
+            make.height.equalTo(150)
         }
+        
+        nameLabel.snp.makeConstraints { make in
+            make.top.equalTo(profileImage.snp.bottom).offset(20)
+            make.centerX.equalTo(view.snp.centerX)
+        }
+        
+        statusLabel.snp.makeConstraints { make in
+            make.top.equalTo(nameLabel.snp.bottom).offset(10)
+            make.centerX.equalTo(view.snp.centerX)
+            make.width.equalTo(view.snp.width).inset(70)
+        }
+        
+        githubButton.snp.makeConstraints { make in
+            make.top.equalTo(statusLabel.snp.bottom).offset(20)
+            make.centerX.equalTo(view.snp.centerX)
+            make.width.equalTo(view.snp.width).inset(70)
+        }
+        
+        filtersButton.snp.makeConstraints { make in
+            make.top.equalTo(githubButton.snp.bottom).offset(10)
+            make.centerX.equalTo(view.snp.centerX)
+            make.width.equalTo(view.snp.width).inset(70)
+        }
+        
+        clearGalleryButton.snp.makeConstraints { make in
+            make.top.equalTo(filtersButton.snp.bottom).offset(10)
+            make.centerX.equalTo(view.snp.centerX)
+            make.width.equalTo(view.snp.width).inset(70)
+        }
+        
+        logOutButton.snp.makeConstraints { make in
+            make.top.equalTo(clearGalleryButton.snp.bottom).offset(10)
+            make.centerX.equalTo(view.snp.centerX)
+            make.width.equalTo(view.snp.width).inset(70)
+        }
+        
+    }
 }
 
 
