@@ -33,5 +33,6 @@ extension RegisterAssembly: BaseAssemblyProtocole {
         )
          
         registerVC.presenter = presenter
+        
     }
 }

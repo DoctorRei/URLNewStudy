@@ -29,6 +29,11 @@ final class RegisterViewController: UIViewController {
         setupLayout()
         presenter?.render()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
 }
 
 //MARK: - Actions

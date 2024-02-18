@@ -14,7 +14,7 @@ protocol LoginViewControllerProtocole: AnyObject {
 final class LoginViewController: UIViewController {
     let loginLabel = UILabel()
     let loginTF = CustomTextField(placeholder: "Enter you'r login")
-    let passwordTF = CustomTextField(placeholder: "Enter you'r password")
+    let passwordTF = PasswordTextField(placeholder: "Enter you'r password")
     let loginButton = UIButton(configuration: .filled())
     let registerButton = UIButton(configuration: .filled())
     let backgroundImage = UIImageView(frame: UIScreen.main.bounds)

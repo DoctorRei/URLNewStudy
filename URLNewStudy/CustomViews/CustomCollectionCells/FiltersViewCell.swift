@@ -31,6 +31,11 @@ final class FiltersViewCell: UICollectionViewCell {
         setupConstraints()
     }
     
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     @objc func switchValueChanged(_ sender: UISwitch) {
         switchActionHandler?(sender.isOn)
     }
@@ -54,11 +59,6 @@ final class FiltersViewCell: UICollectionViewCell {
     func setupSubviews() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(filterSwitch)
-    }
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     func setupConstraints() {

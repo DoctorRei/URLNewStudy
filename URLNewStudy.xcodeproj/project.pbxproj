@@ -11,6 +11,7 @@
 		E93B6D3F2B64C3EE004DAD7F /* GirlCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93B6D3D2B64C3EE004DAD7F /* GirlCoreData.swift */; };
 		E97A4CE82B61380B0040AED6 /* FavoritesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A4CE72B61380B0040AED6 /* FavoritesViewCell.swift */; };
 		E97A4CED2B615F9C0040AED6 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A4CEC2B615F9C0040AED6 /* StorageManager.swift */; };
+		E97BBB902B827C9E00AC815B /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97BBB8F2B827C9E00AC815B /* PasswordTextField.swift */; };
 		E97DCA1D2B77907500FF0D0E /* ExtensionNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DCA1C2B77907500FF0D0E /* ExtensionNavigationController.swift */; };
 		E97DCA202B77D44100FF0D0E /* ExtensionUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DCA1F2B77D44100FF0D0E /* ExtensionUIImageView.swift */; };
 		E97DE5412B5558F0003EC6EC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DE5402B5558F0003EC6EC /* NetworkManager.swift */; };
@@ -68,6 +69,7 @@
 		E93B6D3D2B64C3EE004DAD7F /* GirlCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GirlCoreData.swift; sourceTree = "<group>"; };
 		E97A4CE72B61380B0040AED6 /* FavoritesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewCell.swift; sourceTree = "<group>"; };
 		E97A4CEC2B615F9C0040AED6 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		E97BBB8F2B827C9E00AC815B /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		E97DCA1C2B77907500FF0D0E /* ExtensionNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNavigationController.swift; sourceTree = "<group>"; };
 		E97DCA1F2B77D44100FF0D0E /* ExtensionUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIImageView.swift; sourceTree = "<group>"; };
 		E97DE5402B5558F0003EC6EC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				E996B13D2B4B22260025ECD6 /* CustomTextField.swift */,
+				E97BBB8F2B827C9E00AC815B /* PasswordTextField.swift */,
 			);
 			path = CustomTextField;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				E9AB5FFF2B4991D300297486 /* RandomImageRouter.swift in Sources */,
 				E97A4CED2B615F9C0040AED6 /* StorageManager.swift in Sources */,
 				E996DD422B4ABE91003700A4 /* RegisterPresenter.swift in Sources */,
+				E97BBB902B827C9E00AC815B /* PasswordTextField.swift in Sources */,
 				E97DCA202B77D44100FF0D0E /* ExtensionUIImageView.swift in Sources */,
 				E99C53AB2B5C2933009DF497 /* FavoritesAssembly.swift in Sources */,
 				E99C53A72B5C2440009DF497 /* FiltersPresenter.swift in Sources */,
