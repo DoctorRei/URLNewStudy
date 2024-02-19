@@ -33,7 +33,7 @@ final class PasswordTextField: UITextField {
     }
     
     func setupSecurityTextField() {
-        isSecureTextEntry = true
+//        isSecureTextEntry = true
         autocorrectionType = .no
         autocapitalizationType = .none
         spellCheckingType = .no
@@ -71,7 +71,7 @@ final class PasswordTextField: UITextField {
 
 extension PasswordTextField {
     @objc func togglePasswordView(_ sender: Any) {
-        self.isSecureTextEntry.toggle()
+//        self.isSecureTextEntry.toggle()
         eyeButton.isSelected.toggle()
     }
     
