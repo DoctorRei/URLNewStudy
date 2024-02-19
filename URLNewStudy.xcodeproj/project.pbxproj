@@ -23,6 +23,7 @@
 		E98350502B72A1FA0045CDF5 /* SelectedImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E983504F2B72A1FA0045CDF5 /* SelectedImageViewController.swift */; };
 		E98350522B72A20F0045CDF5 /* SelectedImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98350512B72A20F0045CDF5 /* SelectedImagePresenter.swift */; };
 		E98350542B72A2190045CDF5 /* SelectedImageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98350532B72A2190045CDF5 /* SelectedImageRouter.swift */; };
+		E9866E402B837C0400FDC872 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9866E3F2B837C0400FDC872 /* TestView.swift */; };
 		E9958D032B35E0A3001B4290 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9958D022B35E0A3001B4290 /* AppDelegate.swift */; };
 		E9958D052B35E0A3001B4290 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9958D042B35E0A3001B4290 /* SceneDelegate.swift */; };
 		E9958D072B35E0A3001B4290 /* RandomImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9958D062B35E0A3001B4290 /* RandomImageViewController.swift */; };
@@ -81,6 +82,7 @@
 		E983504F2B72A1FA0045CDF5 /* SelectedImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImageViewController.swift; sourceTree = "<group>"; };
 		E98350512B72A20F0045CDF5 /* SelectedImagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImagePresenter.swift; sourceTree = "<group>"; };
 		E98350532B72A2190045CDF5 /* SelectedImageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImageRouter.swift; sourceTree = "<group>"; };
+		E9866E3F2B837C0400FDC872 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		E9958CFF2B35E0A3001B4290 /* URLNewStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URLNewStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9958D022B35E0A3001B4290 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9958D042B35E0A3001B4290 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			children = (
 				E996B13D2B4B22260025ECD6 /* CustomTextField.swift */,
 				E97BBB8F2B827C9E00AC815B /* PasswordTextField.swift */,
+				E9866E3F2B837C0400FDC872 /* TestView.swift */,
 			);
 			path = CustomTextField;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				E97A4CED2B615F9C0040AED6 /* StorageManager.swift in Sources */,
 				E996DD422B4ABE91003700A4 /* RegisterPresenter.swift in Sources */,
 				E97BBB902B827C9E00AC815B /* PasswordTextField.swift in Sources */,
+				E9866E402B837C0400FDC872 /* TestView.swift in Sources */,
 				E97DCA202B77D44100FF0D0E /* ExtensionUIImageView.swift in Sources */,
 				E99C53AB2B5C2933009DF497 /* FavoritesAssembly.swift in Sources */,
 				E99C53A72B5C2440009DF497 /* FiltersPresenter.swift in Sources */,
