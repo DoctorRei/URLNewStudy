@@ -22,6 +22,7 @@ final class PasswordTextField: UITextField {
         self.layer.borderColor = UIColor.systemBlue.cgColor
         self.layer.borderWidth = 2.0
         self.layer.cornerRadius = 10
+        self.textContentType = .oneTimeCode
         
         setupSecurityTextField()
         setupEyeButton()
@@ -33,7 +34,7 @@ final class PasswordTextField: UITextField {
     }
     
     func setupSecurityTextField() {
-//        isSecureTextEntry = true
+        isSecureTextEntry = true
         autocorrectionType = .no
         autocapitalizationType = .none
         spellCheckingType = .no
@@ -49,8 +50,6 @@ final class PasswordTextField: UITextField {
         rightView = eyeButton
         rightViewMode = .always
     }
-    
-    
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         let rightPadding = eyeButton.frame.width + padding.right / 2
@@ -71,10 +70,7 @@ final class PasswordTextField: UITextField {
 
 extension PasswordTextField {
     @objc func togglePasswordView(_ sender: Any) {
-//        self.isSecureTextEntry.toggle()
+        self.isSecureTextEntry.toggle()
         eyeButton.isSelected.toggle()
     }
-    
-    
 }
-
