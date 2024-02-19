@@ -10,7 +10,7 @@ import UIKit
 
 final class PasswordTextField: UITextField {
     var eyeButton = UIButton(type: .custom)
-    let padding = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
+    let padding = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     
     init(placeholder: String) {
         super.init(frame: .zero)
@@ -43,8 +43,9 @@ final class PasswordTextField: UITextField {
     func setupEyeButton() {
         eyeButton.setImage(UIImage(systemName: "eye"), for: .normal)
         eyeButton.setImage(UIImage(systemName: "eye.fill"), for: .selected)
-        eyeButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        eyeButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 10) // Расположение иконки в кнопке
+        eyeButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+        eyeButton.configuration?.imagePadding = 10
+        
         eyeButton.addTarget(self, action: #selector(togglePasswordView), for: .touchUpInside)
         
         rightView = eyeButton
@@ -52,17 +53,17 @@ final class PasswordTextField: UITextField {
     }
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {
-        let rightPadding = eyeButton.frame.width + padding.right / 2
+        let rightPadding = eyeButton.frame.width + padding.right / 2 - 10
         return bounds.inset(by: UIEdgeInsets(top: padding.top, left: padding.left, bottom: padding.bottom, right: rightPadding))
     }
     
     override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        let rightPadding = eyeButton.frame.width + padding.right / 2
+        let rightPadding = eyeButton.frame.width + padding.right / 2 - 10
         return bounds.inset(by: UIEdgeInsets(top: padding.top, left: padding.left, bottom: padding.bottom, right: rightPadding))
     }
     
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        let rightPadding = eyeButton.frame.width + padding.right / 2
+        let rightPadding = eyeButton.frame.width + padding.right / 2 - 10
         return bounds.inset(by: UIEdgeInsets(top: padding.top, left: padding.left, bottom: padding.bottom, right: rightPadding))
     }
     
