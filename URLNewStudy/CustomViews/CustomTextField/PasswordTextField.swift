@@ -32,7 +32,7 @@ final class PasswordTextField: UITextField {
     }
     
     func setupSecurityTextField() {
-//        isSecureTextEntry = true
+        isSecureTextEntry = true
         autocorrectionType = .no
         autocapitalizationType = .none
         spellCheckingType = .no
