@@ -34,7 +34,11 @@ final class LoginPresenter {
     private var name = ""
     private var password = Data()
     
-    init(router: LoginRouterProtocole, worker: LoginWorkerProtocole, keychainManager: KeychainManagerProtocole?) {
+    init(
+        router: LoginRouterProtocole,
+        worker: LoginWorkerProtocole,
+        keychainManager: KeychainManagerProtocole?
+    ) {
         self.router = router
         self.worker = worker
         self.keychainManager = keychainManager
@@ -50,7 +54,10 @@ final class LoginPresenter {
 //TODO: - Навести порядок в этом дерьме и разложить все по полочкам.
 
 extension LoginPresenter: LoginPresenterProtocole {
-    func validatePassword(login: String, password: String) {
+    func validatePassword(
+        login: String,
+        password: String
+    ) {
         let viewModel = ViewModelLogin(login: login, password: password)
         do {
             let data = try keychainManager?.checkPassword(for: login)

@@ -45,7 +45,7 @@ final class FavoritesViewController: UIViewController {
             UIAction(
                 title: "Copy image URL",
                 image: UIImage(systemName: "doc.on.doc"),
-                handler: { _ in
+                handler: { [unowned self] _ in
                     guard let url = self.presenter?.getImageUrl(with: index) else { return }
                     UIPasteboard.general.string = url
                     print(url)
@@ -53,7 +53,7 @@ final class FavoritesViewController: UIViewController {
             UIAction(
                 title: "Delete image",
                 image: UIImage(systemName: "trash"),
-                handler: { _ in
+                handler: { [unowned self] _ in
                     self.presenter?.deleteImage(with: index)
                     self.collectionView.reloadData()
                 })

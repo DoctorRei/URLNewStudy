@@ -17,6 +17,9 @@ final class RandomImageViewController: UIViewController {
     
     private var mainImage = UIImageView()
     private let goButton = UIButton(configuration: .filled())
+    private let likeImage = UIImageView()
+    private let containerView = UIView()
+    
     var presenter: RandomImagePresenterProtocole?
     
     //MARK: - ViewDidLoad
@@ -45,16 +48,26 @@ private extension RandomImageViewController {
     func setupView() {
         view.backgroundColor = .white
         addSubViews()
+        setupContainerView()
         setupImageView()
+        setupLikeImage()
         setupButton()
         setupLayout()
         addActions()
     }
 }
 
-//MARK: - SetupImage
+//MARK: - SetupGraphicViews
 
 private extension RandomImageViewController {
+    func setupContainerView() {
+        
+        containerView.layer.cornerRadius = 25 // задаем радиус скругления
+        containerView.layer.shadowColor = UIColor.black.cgColor // цвет тени
+        containerView.layer.shadowOpacity = 0.8 // прозрачность тени
+        containerView.layer.shadowRadius = 10 // радиус размытия тени
+    }
+    
     func setupImageView() {
         let tapGesture = UITapGestureRecognizer(
             target: self,
@@ -71,6 +84,11 @@ private extension RandomImageViewController {
         mainImage.layer.cornerRadius = 25
         mainImage.layer.borderWidth = 2
         mainImage.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    func setupLikeImage() {
+        likeImage.image = UIImage(systemName: "heart.fill")
+        likeImage.tintColor = .red
     }
 }
 
@@ -94,8 +112,10 @@ private extension RandomImageViewController {
 
 private extension RandomImageViewController {
     func addSubViews() {
-        view.addSubview(mainImage)
         view.addSubview(goButton)
+        view.addSubview(containerView)
+        containerView.addSubview(mainImage)
+        mainImage.addSubview(likeImage)
     }
 }
 
@@ -105,17 +125,29 @@ private extension RandomImageViewController {
     private func setupLayout() {
         mainImage.translatesAutoresizingMaskIntoConstraints = false
         goButton.translatesAutoresizingMaskIntoConstraints = false
+        likeImage.translatesAutoresizingMaskIntoConstraints = false
+        containerView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            mainImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
-            mainImage.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            mainImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
-            mainImage.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.7),
+            containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
+            containerView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            containerView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
+            containerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.7),
+            
+            mainImage.topAnchor.constraint(equalTo: containerView.topAnchor),
+            mainImage.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            mainImage.widthAnchor.constraint(equalTo: containerView.widthAnchor),
+            mainImage.heightAnchor.constraint(equalTo: containerView.heightAnchor),
             
             goButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             goButton.widthAnchor.constraint(equalToConstant: 80),
             goButton.heightAnchor.constraint(equalToConstant: 80),
-            goButton.topAnchor.constraint(equalTo: mainImage.bottomAnchor, constant: 10)
+            goButton.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 10),
+            
+            likeImage.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            likeImage.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            likeImage.widthAnchor.constraint(equalToConstant: 80),
+            likeImage.heightAnchor.constraint(equalToConstant: 80)
         ])
     }
 }

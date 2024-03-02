@@ -62,3 +62,4 @@ extension RandomImagePresenter: RandomImagePresenterProtocole {
         storageManager.deleteAllImages()
     }
 }
+
