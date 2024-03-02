@@ -11,6 +11,7 @@ protocol RandomImagePresenterProtocole {
     func deleteAll()
     func render(imageToWorker: UIImageView)
     func saveToStorage()
+    func animateLikeImage(with image: UIImageView)
 }
 
 final class RandomImagePresenter {
@@ -56,6 +57,17 @@ extension RandomImagePresenter: RandomImagePresenterProtocole {
             return
         }
         worker.saveToStorage(with: url, likedImage: downloadedImageView)
+    }
+    
+    func animateLikeImage(with image: UIImageView) {
+        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut) {
+            image.alpha = 1
+        } completion: { _ in
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn) {
+                image.alpha = 0
+                image.transform = .identity
+            }
+        }
     }
     
     func deleteAll() {

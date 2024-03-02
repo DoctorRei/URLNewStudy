@@ -39,6 +39,7 @@ private extension RandomImageViewController {
     
     @objc func doubleTapImage() {
         presenter?.saveToStorage()
+        presenter?.animateLikeImage(with: likeImage)
     }
 }
 
@@ -61,11 +62,10 @@ private extension RandomImageViewController {
 
 private extension RandomImageViewController {
     func setupContainerView() {
-        
-        containerView.layer.cornerRadius = 25 // задаем радиус скругления
-        containerView.layer.shadowColor = UIColor.black.cgColor // цвет тени
-        containerView.layer.shadowOpacity = 0.8 // прозрачность тени
-        containerView.layer.shadowRadius = 10 // радиус размытия тени
+        containerView.layer.cornerRadius = 25
+        containerView.layer.shadowColor = UIColor.black.cgColor
+        containerView.layer.shadowOpacity = 0.8
+        containerView.layer.shadowRadius = 10
     }
     
     func setupImageView() {
@@ -89,6 +89,7 @@ private extension RandomImageViewController {
     func setupLikeImage() {
         likeImage.image = UIImage(systemName: "heart.fill")
         likeImage.tintColor = .red
+        likeImage.alpha = 0
     }
 }
 
@@ -146,8 +147,8 @@ private extension RandomImageViewController {
             
             likeImage.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
             likeImage.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            likeImage.widthAnchor.constraint(equalToConstant: 80),
-            likeImage.heightAnchor.constraint(equalToConstant: 80)
+            likeImage.widthAnchor.constraint(equalToConstant: 70),
+            likeImage.heightAnchor.constraint(equalToConstant: 70)
         ])
     }
 }
@@ -155,7 +156,6 @@ private extension RandomImageViewController {
 //MARK: - Protocole
 
 extension RandomImageViewController: RandomImageViewControllerProtocole {
-    
     func updateImage() {
         presenter?.render(imageToWorker: self.mainImage)
     }
