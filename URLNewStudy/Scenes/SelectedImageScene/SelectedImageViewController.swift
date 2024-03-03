@@ -60,6 +60,8 @@ final class SelectedImageViewController: UIViewController  {
         scrollView.addGestureRecognizer(leftSwipe)
     }
     
+    //TODO: - Вынести анимация в презентер и поработать с ним получше
+    
     ///  Переход между экранами.
     ///  При свайпе слева-направо срабатывает метод презентора, который обращается к методу changeIndex
     ///  Этот метод принимает таргет своего enum. Всего два кейса .minus и .plus
@@ -72,9 +74,17 @@ final class SelectedImageViewController: UIViewController  {
         
         switch direction {
         case UISwipeGestureRecognizer.Direction.right:
-            presenter?.changeIndex(with: .minus)
+            UIView.animate(withDuration: 0.2) {
+                self.selectedImage.alpha = 0.5
+                self.presenter?.changeIndex(with: .minus)
+                self.selectedImage.alpha = 1
+            }
         case UISwipeGestureRecognizer.Direction.left:
-            presenter?.changeIndex(with: .plus)
+            UIView.animate(withDuration: 0.2) {
+                self.selectedImage.alpha = 0.5
+                self.presenter?.changeIndex(with: .plus)
+                self.selectedImage.alpha = 1
+            }
         default:
             break
         }
@@ -138,7 +148,6 @@ final class SelectedImageViewController: UIViewController  {
     
     func setupSelectedImage() {
         selectedImage.contentMode = .scaleAspectFit
-        selectedImage.clipsToBounds = true
         selectedImage.isUserInteractionEnabled = true
     }
     
@@ -147,9 +156,17 @@ final class SelectedImageViewController: UIViewController  {
         countLabel.textAlignment = .center
     }
     
+    //TODO: - Animation
+    
     func setupContent() {
         let url = URL(string: presenter?.getImageUrl() ?? "")
-        selectedImage.kf.setImage(with: url)
+        
+        let options: KingfisherOptionsInfo = [
+            .transition(.fade(1))
+        ]
+        
+        selectedImage.kf.setImage(with: url, options: options)
+        
         countLabel.text = presenter?.setupLabel()
     }
     

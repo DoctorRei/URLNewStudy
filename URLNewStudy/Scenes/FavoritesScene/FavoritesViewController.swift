@@ -120,10 +120,9 @@ extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewD
         render().count
     }
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-    {
+    func collectionView(_ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "\(FavoritesViewCell.self)",
             for: indexPath
